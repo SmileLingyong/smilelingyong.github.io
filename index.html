@@ -356,15 +356,8 @@
         
           <span itemprop="articleBody">
             
-            
-
-SVM实现多分类
-1. 直接法
-2. 间接法
-一对多法（one-versus-rest 简称OVR SVMs）
-基于决策树的SVMs（ST-SVMs）层次支持向量机
-一对一法（one-versus-one 简称OVO SVMs）
-有向无环图SVMs(Directed Acyclic Graph 
+            SVM本身是一个二值分类器。SVM算法最初是为二值分类问题设计的，当处理多类问题时，就需要构造合适的多类分类器。目前，构造SVM多类分类器的方法主要有两类：直接法 和 间接法。
+1. 直接法直接在目标函数上进行修改，将多个分类面的参数求解合并到一个最优化问题中，通过求解该最优化问题“一次性”实现多类
             ...
           </span>
           <div class="post-more-link text-center">
