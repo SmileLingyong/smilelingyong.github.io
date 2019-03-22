@@ -1,2 +1,2 @@
-# smilelingyong.github.io
-This is my blog website.
+# Hello~
+This is my blog website: [smilelingyong.github.io](smilelingyong.github.io)
