@@ -56,7 +56,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/03/20/SVM实现多分类/ST-SVMs.png">
 <meta property="og:image" content="http://yoursite.com/2019/03/20/SVM实现多分类/DAG_SVM.png">
 <meta property="og:image" content="http://yoursite.com/2019/03/20/SVM实现多分类/纠错编码SVM.png">
-<meta property="og:updated_time" content="2019-03-23T07:42:30.285Z">
+<meta property="og:updated_time" content="2019-03-23T07:46:40.099Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SVM实现多分类">
 <meta name="twitter:description" content="code{white-space: pre;}         SVM本身是一个二值分类器。SVM算法最初是为二值分类问题设计的，当处理多类问题时，就需要构造合适的多类分类器。目前，构造SVM多类分类器的方法主要有两类：直接法 和 间接法。">
@@ -280,8 +280,7 @@
 　　（4）D所对应的向量作为正集，A，B，C所对应的向量作为负集；<br>
 使用这四个训练集分别进行训练，然后的得到四个训练结果文件。</p>
 <p>在测试的时候，把对应的测试向量分别利用这四个训练结果文件进行测试。最后每个测试都有一个结果 <span class="math inline">\(f1(x)，f2(x)，f3(x)，f4(x)\)</span> 于是最终的结果便是这四个值中最大的一个作为分类结果。</p>
-<p><strong>评价：</strong><br>
-这种方法有种缺陷，训练数据集不平衡，因而不是很实用。可以在抽取数据集的时候，从完整的负集中再抽取三分之一作为训练负集。</p>
+<p><strong>评价：</strong>这种方法有种缺陷，训练数据集不平衡，因而不是很实用。可以在抽取数据集的时候，从完整的负集中再抽取三分之一作为训练负集。</p>
 <h3 id="基于决策树的svmsst-svms层次支持向量机">基于决策树的SVMs（ST-SVMs）层次支持向量机</h3>
 <p>从“一对多”的方法又衍生出基于决策树的分类：首先将所有类别分为两个类别，再将子类进一步划分为两个次级子类，如此循环下去，直到所有的节点都只包含一个单独的类别为止，此节点也是二叉树树种的叶子。该分类将原有的分类问题同样分解成了一系列的两类分类问题，其中两个子类间的分类函数采用SVM。如下图表示：</p>
 <div class="figure">
