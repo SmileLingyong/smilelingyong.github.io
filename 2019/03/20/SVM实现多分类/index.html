@@ -45,21 +45,21 @@
   <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=0.4.5.2" />
 
 
-<meta name="description" content="code{white-space: pre;}         SVM本身是一个二值分类器。SVM算法最初是为二值分类问题设计的，当处理多类问题时，就需要构造合适的多类分类器。目前，构造SVM多类分类器的方法主要有两类：直接法 和 间接法。 1. 直接法 直接在目标函数上进行修改，将多个分类面的参数求解合并到一个最优化问题中，通过求解该最优化问题“一次性”实现多类">
+<meta name="description" content="code{white-space: pre;}         SVM本身是一个二值分类器。SVM算法最初是为二值分类问题设计的，当处理多类问题时，就需要构造合适的多类分类器。目前，构造SVM多类分类器的方法主要有两类：直接法 和 间接法。">
 <meta name="keywords" content="学习笔记,Machine Learning,SVM">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SVM实现多分类">
 <meta property="og:url" content="http://yoursite.com/2019/03/20/SVM实现多分类/index.html">
 <meta property="og:site_name" content="SmileLingyong">
-<meta property="og:description" content="code{white-space: pre;}         SVM本身是一个二值分类器。SVM算法最初是为二值分类问题设计的，当处理多类问题时，就需要构造合适的多类分类器。目前，构造SVM多类分类器的方法主要有两类：直接法 和 间接法。 1. 直接法 直接在目标函数上进行修改，将多个分类面的参数求解合并到一个最优化问题中，通过求解该最优化问题“一次性”实现多类">
+<meta property="og:description" content="code{white-space: pre;}         SVM本身是一个二值分类器。SVM算法最初是为二值分类问题设计的，当处理多类问题时，就需要构造合适的多类分类器。目前，构造SVM多类分类器的方法主要有两类：直接法 和 间接法。">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2019/03/20/SVM实现多分类/ST-SVMs.png">
 <meta property="og:image" content="http://yoursite.com/2019/03/20/SVM实现多分类/DAG_SVM.png">
 <meta property="og:image" content="http://yoursite.com/2019/03/20/SVM实现多分类/纠错编码SVM.png">
-<meta property="og:updated_time" content="2019-03-23T03:57:13.212Z">
+<meta property="og:updated_time" content="2019-03-23T07:42:30.285Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SVM实现多分类">
-<meta name="twitter:description" content="code{white-space: pre;}         SVM本身是一个二值分类器。SVM算法最初是为二值分类问题设计的，当处理多类问题时，就需要构造合适的多类分类器。目前，构造SVM多类分类器的方法主要有两类：直接法 和 间接法。 1. 直接法 直接在目标函数上进行修改，将多个分类面的参数求解合并到一个最优化问题中，通过求解该最优化问题“一次性”实现多类">
+<meta name="twitter:description" content="code{white-space: pre;}         SVM本身是一个二值分类器。SVM算法最初是为二值分类问题设计的，当处理多类问题时，就需要构造合适的多类分类器。目前，构造SVM多类分类器的方法主要有两类：直接法 和 间接法。">
 <meta name="twitter:image" content="http://yoursite.com/2019/03/20/SVM实现多分类/ST-SVMs.png">
 
 
@@ -265,9 +265,10 @@
 </head>
 <body>
 <p>SVM本身是一个二值分类器。SVM算法最初是为二值分类问题设计的，当处理多类问题时，就需要构造合适的多类分类器。目前，构造SVM多类分类器的方法主要有两类：<strong>直接法</strong> 和 <strong>间接法</strong>。</p>
-<h2 id="直接法">1. 直接法</h2>
+<a id="more"></a>
+<h2 id="一直接法">一、直接法</h2>
 <p>直接在目标函数上进行修改，将多个分类面的参数求解合并到一个最优化问题中，通过求解该最优化问题“一次性”实现多类分类。这种方法看似简单，但其计算复杂度比较高，实现起来比较困难，只适合用于小型问题中。</p>
-<h2 id="间接法">2. 间接法</h2>
+<h2 id="二间接法">二、间接法</h2>
 <p>主要是通过组合多个二分类器来实现多分类器的构造，常见的方法有 <code>one-against-one</code> 和 <code>one-against-all</code> 两种。</p>
 <h3 id="一对多法one-versus-rest-简称ovr-svms">一对多法（one-versus-rest 简称OVR SVMs）</h3>
 <p>训练时依次把某个类别的样本归为一类，其他剩余的样本归为另一类，这样k个类别的样本就构造出了k个SVM。分类时将未知样本分类为具有最大分类函数值的那类。<br>
@@ -473,7 +474,7 @@ The decision is the Max(A，B，C，D)</p>
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#直接法"><span class="nav-number">1.</span> <span class="nav-text">1. 直接法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#间接法"><span class="nav-number">2.</span> <span class="nav-text">2. 间接法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一对多法one-versus-rest-简称ovr-svms"><span class="nav-number">2.1.</span> <span class="nav-text">一对多法（one-versus-rest 简称OVR SVMs）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基于决策树的svmsst-svms层次支持向量机"><span class="nav-number">2.2.</span> <span class="nav-text">基于决策树的SVMs（ST-SVMs）层次支持向量机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一对一法one-versus-one-简称ovo-svms"><span class="nav-number">2.3.</span> <span class="nav-text">一对一法（one-versus-one 简称OVO SVMs）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#有向无环图svmsdirected-acyclic-graph-svms"><span class="nav-number">2.4.</span> <span class="nav-text">有向无环图SVMs(Directed Acyclic Graph SVMs)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#纠错编码-svms"><span class="nav-number">2.5.</span> <span class="nav-text">纠错编码 SVMs</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reference"><span class="nav-number">3.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一直接法"><span class="nav-number">1.</span> <span class="nav-text">一、直接法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二间接法"><span class="nav-number">2.</span> <span class="nav-text">二、间接法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一对多法one-versus-rest-简称ovr-svms"><span class="nav-number">2.1.</span> <span class="nav-text">一对多法（one-versus-rest 简称OVR SVMs）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基于决策树的svmsst-svms层次支持向量机"><span class="nav-number">2.2.</span> <span class="nav-text">基于决策树的SVMs（ST-SVMs）层次支持向量机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一对一法one-versus-one-简称ovo-svms"><span class="nav-number">2.3.</span> <span class="nav-text">一对一法（one-versus-one 简称OVO SVMs）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#有向无环图svmsdirected-acyclic-graph-svms"><span class="nav-number">2.4.</span> <span class="nav-text">有向无环图SVMs(Directed Acyclic Graph SVMs)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#纠错编码-svms"><span class="nav-number">2.5.</span> <span class="nav-text">纠错编码 SVMs</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reference"><span class="nav-number">3.</span> <span class="nav-text">Reference</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
