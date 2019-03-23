@@ -64,13 +64,13 @@
   <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=0.4.5.2" />
 
 
-<meta name="description" content="code{white-space: pre;}      ML-机器学习基础 Index   偏差与方差 导致偏差和方差的原因 深度学习中的偏差与方差 偏差/方差 与 Boosting/Bagging 偏差与方差的计算公式 偏差与方差的权衡（过拟合与模型复杂度的权衡） 生成模型与判别模型 先验概率与后验概率   偏差与方差  《机器学习》 2.5 偏差与方差 -">
+<meta name="description" content="code{white-space: pre;}      ML-机器学习基础 (说明：以上内容都来自 imhuay/Algorithm_Interview_Notes-Chinese， 自己只是为了方便补充学习才放到blog中复习，如有侵权则立即删除，再次感谢博主的分享，很详细，谢谢！) Index   偏差与方差 导致偏差和方差的原因 深度学习中的偏差与方差 偏">
 <meta name="keywords" content="Machine Learning,Deeping Learning,job">
 <meta property="og:type" content="article">
 <meta property="og:title" content="面试准备">
 <meta property="og:url" content="http://yoursite.com/2019/03/23/面试准备/index.html">
 <meta property="og:site_name" content="SmileLingyong">
-<meta property="og:description" content="code{white-space: pre;}      ML-机器学习基础 Index   偏差与方差 导致偏差和方差的原因 深度学习中的偏差与方差 偏差/方差 与 Boosting/Bagging 偏差与方差的计算公式 偏差与方差的权衡（过拟合与模型复杂度的权衡） 生成模型与判别模型 先验概率与后验概率   偏差与方差  《机器学习》 2.5 偏差与方差 -">
+<meta property="og:description" content="code{white-space: pre;}      ML-机器学习基础 (说明：以上内容都来自 imhuay/Algorithm_Interview_Notes-Chinese， 自己只是为了方便补充学习才放到blog中复习，如有侵权则立即删除，再次感谢博主的分享，很详细，谢谢！) Index   偏差与方差 导致偏差和方差的原因 深度学习中的偏差与方差 偏">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2019/03/23/面试准备/TIM截图20180817204652.png">
 <meta property="og:image" content="http://yoursite.com/2019/03/23/面试准备/TIM截图20180817192259.png">
@@ -92,10 +92,10 @@
 <meta property="og:image" content="http://yoursite.com/2019/03/23/面试准备/公式_20180620204006.png">
 <meta property="og:image" content="http://yoursite.com/2019/03/23/面试准备/公式_20180620205055.png">
 <meta property="og:image" content="http://yoursite.com/2019/03/23/面试准备/公式_20180620213601.png">
-<meta property="og:updated_time" content="2019-03-23T11:51:25.257Z">
+<meta property="og:updated_time" content="2019-03-23T12:14:01.959Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试准备">
-<meta name="twitter:description" content="code{white-space: pre;}      ML-机器学习基础 Index   偏差与方差 导致偏差和方差的原因 深度学习中的偏差与方差 偏差/方差 与 Boosting/Bagging 偏差与方差的计算公式 偏差与方差的权衡（过拟合与模型复杂度的权衡） 生成模型与判别模型 先验概率与后验概率   偏差与方差  《机器学习》 2.5 偏差与方差 -">
+<meta name="twitter:description" content="code{white-space: pre;}      ML-机器学习基础 (说明：以上内容都来自 imhuay/Algorithm_Interview_Notes-Chinese， 自己只是为了方便补充学习才放到blog中复习，如有侵权则立即删除，再次感谢博主的分享，很详细，谢谢！) Index   偏差与方差 导致偏差和方差的原因 深度学习中的偏差与方差 偏">
 <meta name="twitter:image" content="http://yoursite.com/2019/03/23/面试准备/TIM截图20180817204652.png">
 
 
@@ -243,8 +243,8 @@
         <div class="post-meta">
           <span class="post-time">
             Posted on
-            <time itemprop="dateCreated" datetime="2019-03-23T19:51:25+08:00" content="2019-03-23">
-              2019-03-23 19:51
+            <time itemprop="dateCreated" datetime="2019-03-23T20:14:01+08:00" content="2019-03-23">
+              2019-03-23 20:14
             </time>
           </span>
 
@@ -312,6 +312,7 @@
 </head>
 <body>
 <h1 id="ml-机器学习基础">ML-机器学习基础</h1>
+<p>(说明：以上内容都来自 <a href="https://github.com/imhuay/Algorithm_Interview_Notes-Chinese" target="_blank" rel="noopener">imhuay/Algorithm_Interview_Notes-Chinese</a>， 自己只是为了方便补充学习才放到blog中复习，如有侵权则立即删除，再次感谢博主的分享，很详细，谢谢！)</p>
 <h2 id="index">Index</h2>
 <!-- TOC -->
 <ul>
@@ -325,6 +326,7 @@
 <li><a href="#先验概率与后验概率">先验概率与后验概率</a></li>
 </ul>
 <!-- /TOC -->
+<a id="more"></a>
 <h2 id="偏差与方差">偏差与方差</h2>
 <blockquote>
 <p>《机器学习》 2.5 偏差与方差 - 周志华</p>
