@@ -58,7 +58,7 @@
 
 
 
-  <meta name="keywords" content="Blog," />
+  <meta name="keywords" content="Linux,Blog," />
 
 
 
@@ -68,14 +68,14 @@
 
 
 <meta name="description" content="code{white-space: pre;}      1. 环境准备 1.1 安装Node.js 去 官网下载 Node.js , 注意安装 Node.js 会包含环境变量及 npm 的安装。 安装后，检测 Node.js 是否安装成功：">
-<meta name="keywords" content="Blog">
+<meta name="keywords" content="Linux,Blog">
 <meta property="og:type" content="article">
 <meta property="og:title" content="博客搭建hexo+github">
 <meta property="og:url" content="http://yoursite.com/2019/03/23/博客搭建hexo-github/index.html">
 <meta property="og:site_name" content="SmileLingyong">
 <meta property="og:description" content="code{white-space: pre;}      1. 环境准备 1.1 安装Node.js 去 官网下载 Node.js , 注意安装 Node.js 会包含环境变量及 npm 的安装。 安装后，检测 Node.js 是否安装成功：">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-23T08:10:16.124Z">
+<meta property="og:updated_time" content="2019-03-25T13:19:29.403Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="博客搭建hexo+github">
 <meta name="twitter:description" content="code{white-space: pre;}      1. 环境准备 1.1 安装Node.js 去 官网下载 Node.js , 注意安装 Node.js 会包含环境变量及 npm 的安装。 安装后，检测 Node.js 是否安装成功：">
@@ -235,6 +235,42 @@
               &nbsp; | &nbsp; In
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Tools/" itemprop="url" rel="index">
+                    <span itemprop="name">Tools</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/Blog/" itemprop="url" rel="index">
                     <span itemprop="name">Blog</span>
                   </a>
@@ -295,7 +331,7 @@
 <h2 id="利用hexo搭建博客">2. 利用Hexo搭建博客</h2>
 <h3 id="创建本地博客">2.1 创建本地博客</h3>
 <p>创建博客目录，以后的博客都会写在这里 <code>~/Blog</code></p>
-<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">cd</span> ~</span><br><span class="line"><span class="symbol">hexo</span> init <span class="keyword">Blog</span></span><br><span class="line"><span class="keyword">cd </span><span class="keyword">Blog</span></span><br><span class="line"><span class="keyword">npm </span>install</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line">hexo init Blog</span><br><span class="line"><span class="built_in">cd</span> Blog</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
 <p>生成一个测试静态页面并运行</p>
 <figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo <span class="keyword">new</span> <span class="type">test_my_site</span></span><br><span class="line"><span class="type">hexo</span> clean</span><br><span class="line">hexo g	<span class="meta"># 生成静态页面</span></span><br><span class="line">hexo s  <span class="meta"># 运行</span></span><br></pre></td></tr></table></figure>
 <p>打开浏览器，输入地址 <strong>localhost:4000</strong> 即可看到效果</p>
@@ -350,10 +386,10 @@
 <p>很重要</p>
 <h4 id="在文章中添加tags">在文章中添加tags</h4>
 <p>在文章<code>xx.md</code>中添加：<br>
-<figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">tags:</span> </span><br><span class="line">	- Tag1</span><br><span class="line">	- Tag2</span><br><span class="line">	- Tag3</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">tags:</span> </span><br><span class="line">	- [Tag1]</span><br><span class="line">	- [Tag2]</span><br><span class="line">	- [Tag3]</span><br></pre></td></tr></table></figure></p>
 <p>多个Tag可按上面的格式添加。<br>
 其文件头部类似：</p>
-<figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">title: TagEditText</span><br><span class="line">date: 2019<span class="string">-03</span><span class="string">-22</span> 23:51:56</span><br><span class="line"><span class="keyword">tags:</span> </span><br><span class="line">	- Tag1</span><br><span class="line">	- Tag2</span><br><span class="line">	- Tag3</span><br></pre></td></tr></table></figure>
+<figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">title: TagEditText</span><br><span class="line">date: 2019<span class="string">-03</span><span class="string">-22</span> 23:51:56</span><br><span class="line"><span class="keyword">tags:</span> </span><br><span class="line">	- [Tag1]</span><br><span class="line">	- [Tag2]</span><br><span class="line">	- [Tag3]</span><br></pre></td></tr></table></figure>
 <h3 id="分类给文章归档">2.7 分类，给文章归档</h3>
 <h4 id="两个确认-1">两个确认</h4>
 <ul>
@@ -374,9 +410,9 @@
 <p>很重要</p>
 <h4 id="在文章中添加categories">在文章中添加categories</h4>
 <p>在文章xx.md中添加：<br>
-<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">categories:</span> </span><br><span class="line">	- cate</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">categories: </span><br><span class="line">	- <span class="string">[cate]</span></span><br></pre></td></tr></table></figure></p>
 <p>其文件头部类似：<br>
-<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">title:</span> TagEditText</span><br><span class="line"><span class="symbol">date:</span> <span class="number">2019</span><span class="number">-03</span><span class="number">-22</span> <span class="number">23</span>:<span class="number">51</span>:<span class="number">56</span></span><br><span class="line"><span class="symbol">categories:</span> </span><br><span class="line">	- cate</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">title:</span> TagEditText</span><br><span class="line"><span class="symbol">date:</span> <span class="number">2019</span><span class="number">-03</span><span class="number">-22</span> <span class="number">23</span>:<span class="number">51</span>:<span class="number">56</span></span><br><span class="line"><span class="symbol">categories:</span> </span><br><span class="line">	- [cate]</span><br></pre></td></tr></table></figure></p>
 <h3 id="添加评论功能">2.8 添加评论功能</h3>
 <p>评论功能在国内一般使用<a href="http://duoshuo.com/" target="_blank" rel="noopener">多说</a>。</p>
 <h4 id="注册多说账号">注册<a href="http://duoshuo.com/" target="_blank" rel="noopener">多说</a>账号</h4>
@@ -437,7 +473,7 @@
 <li><a href="https://juejin.im/post/5a31bf7451882512a8615077" class="uri" target="_blank" rel="noopener">https://juejin.im/post/5a31bf7451882512a8615077</a></li>
 <li><a href="http://chitanda.me/2015/06/11/tips-for-setup-hexo/" class="uri" target="_blank" rel="noopener">http://chitanda.me/2015/06/11/tips-for-setup-hexo/</a></li>
 <li><a href="https://segmentfault.com/a/1190000013660164" class="uri" target="_blank" rel="noopener">https://segmentfault.com/a/1190000013660164</a></li>
-<li><a href="https://blog.rule55.com/hexo/#%E5%85%B3%E4%BA%8E%E6%9B%B4%E6%96%B0-hexo-renderer-pandoc-%E7%89%88%E6%9C%AC" target="_blank" rel="noopener">公式无法正常显示解决方案1</a></li>
+<li><a href="https://blog.rule55.com/hexo/#%E5%85%B3%E4%BA%8E%E6%9B%B4%E6%96%B0-hexo-renderer-pandoc-%E7%89%88%E6%9C%AC" target="_blank" rel="noopener">公式无法正常显示解决方案</a></li>
 <li><a href="https://zhuanlan.zhihu.com/p/58392526" class="uri" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/58392526</a></li>
 <li><a href="https://jdhao.github.io/2017/10/06/hexo-markdown-latex-equation/" class="uri" target="_blank" rel="noopener">https://jdhao.github.io/2017/10/06/hexo-markdown-latex-equation/</a></li>
 <li><a href="https://ryderchan.github.io/2017/01/26/hexo%E5%B0%8F%E6%8A%80%E5%B7%A7-%E9%A6%96%E9%A1%B5%E6%98%BE%E7%A4%BA%E6%96%87%E7%AB%A0%E6%91%98%E8%A6%81%E5%8F%8A%E5%9B%BE%E7%89%87/" target="_blank" rel="noopener">显示摘要的方法</a></li>
@@ -452,6 +488,8 @@
       
         <div class="post-tags">
           
+            <a href="/tags/Linux/" rel="tag">#Linux</a>
+          
             <a href="/tags/Blog/" rel="tag">#Blog</a>
           
         </div>
@@ -461,7 +499,7 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/03/24/面试准备/" rel="prev">
+              <a href="/2019/03/25/面试准备/" rel="prev">
                 <i class="fa fa-chevron-left"></i> 面试准备
               </a>
             
@@ -535,21 +573,21 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-count">11</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-count">9</span>
               <span class="site-state-item-name">categories</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-count">13</span>
               <span class="site-state-item-name">tags</span>
               </a>
           </div>

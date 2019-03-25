@@ -58,7 +58,7 @@
 
 
 
-  <meta name="keywords" content="Hexo,next" />
+  <meta name="keywords" content="MATLAB,Tools," />
 
 
 
@@ -67,22 +67,20 @@
   <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=0.4.5.2" />
 
 
-<meta name="description" content="code{white-space: pre;}       最近正在学习机器学习算法SVM，然后需要用到libsvm库，于是整理了下自己配置的大致过程。自己的平台环境：win10 MATLAB 2017b libsvm 3.22   1 . 下载libsvm。   并将其拷贝到MATLAB安装目录下的toolbox目录下。 例如我的是：C:\Program Fil">
+<meta name="description" content="code{white-space: pre;}      1. 自动使用不同的颜色 1plot(x1,y2,x2,y2,x3,y3,...); 此方法比较简单，能满足一般需要。但默认只能在7种颜色之间循环，具体的颜色可通过以下命令查看">
+<meta name="keywords" content="MATLAB,Tools">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MATLAB中使用libsvm">
-<meta property="og:url" content="http://yoursite.com/2019/03/25/MATLAB中使用libsvm/index.html">
+<meta property="og:title" content="MATLAB画图使用不同颜色">
+<meta property="og:url" content="http://yoursite.com/2018/04/11/MATLAB画图使用不同颜色/index.html">
 <meta property="og:site_name" content="SmileLingyong">
-<meta property="og:description" content="code{white-space: pre;}       最近正在学习机器学习算法SVM，然后需要用到libsvm库，于是整理了下自己配置的大致过程。自己的平台环境：win10 MATLAB 2017b libsvm 3.22   1 . 下载libsvm。   并将其拷贝到MATLAB安装目录下的toolbox目录下。 例如我的是：C:\Program Fil">
+<meta property="og:description" content="code{white-space: pre;}      1. 自动使用不同的颜色 1plot(x1,y2,x2,y2,x3,y3,...); 此方法比较简单，能满足一般需要。但默认只能在7种颜色之间循环，具体的颜色可通过以下命令查看">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/2019/03/25/MATLAB中使用libsvm/img1.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/25/MATLAB中使用libsvm/img2.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/25/MATLAB中使用libsvm/img3.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/25/MATLAB中使用libsvm/img4.png">
-<meta property="og:updated_time" content="2019-03-25T11:40:49.150Z">
+<meta property="og:image" content="http://yoursite.com/2018/04/11/MATLAB画图使用不同颜色/img.png">
+<meta property="og:updated_time" content="2019-03-25T13:20:53.976Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MATLAB中使用libsvm">
-<meta name="twitter:description" content="code{white-space: pre;}       最近正在学习机器学习算法SVM，然后需要用到libsvm库，于是整理了下自己配置的大致过程。自己的平台环境：win10 MATLAB 2017b libsvm 3.22   1 . 下载libsvm。   并将其拷贝到MATLAB安装目录下的toolbox目录下。 例如我的是：C:\Program Fil">
-<meta name="twitter:image" content="http://yoursite.com/2019/03/25/MATLAB中使用libsvm/img1.png">
+<meta name="twitter:title" content="MATLAB画图使用不同颜色">
+<meta name="twitter:description" content="code{white-space: pre;}      1. 自动使用不同的颜色 1plot(x1,y2,x2,y2,x3,y3,...); 此方法比较简单，能满足一般需要。但默认只能在7种颜色之间循环，具体的颜色可通过以下命令查看">
+<meta name="twitter:image" content="http://yoursite.com/2018/04/11/MATLAB画图使用不同颜色/img.png">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -94,7 +92,7 @@
 
 
 
-  <title> MATLAB中使用libsvm | SmileLingyong </title>
+  <title> MATLAB画图使用不同颜色 | SmileLingyong </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -220,7 +218,7 @@
             
             
               
-                MATLAB中使用libsvm
+                MATLAB画图使用不同颜色
               
             
           </h1>
@@ -229,11 +227,50 @@
         <div class="post-meta">
           <span class="post-time">
             Posted on
-            <time itemprop="dateCreated" datetime="2019-03-25T19:34:07+08:00" content="2019-03-25">
-              2019-03-25 19:34
+            <time itemprop="dateCreated" datetime="2018-04-11T19:02:43+08:00" content="2018-04-11">
+              2018-04-11 19:02
             </time>
           </span>
 
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; In
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Tools/" itemprop="url" rel="index">
+                    <span itemprop="name">Tools</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/MATLAB/" itemprop="url" rel="index">
+                    <span itemprop="name">MATLAB</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
           
 
           
@@ -243,7 +280,7 @@
           
 
           
-            <span id="/2019/03/25/MATLAB中使用libsvm/"class="leancloud_visitors"  data-flag-title="MATLAB中使用libsvm">
+            <span id="/2018/04/11/MATLAB画图使用不同颜色/"class="leancloud_visitors"  data-flag-title="MATLAB画图使用不同颜色">
             &nbsp; | &nbsp;   
             views
             </span>
@@ -270,63 +307,29 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pygments-css@1.0.0/github.min.css" type="text/css">
 </head>
 <body>
-<blockquote>
-<p>最近正在学习机器学习算法SVM，然后需要用到libsvm库，于是整理了下自己配置的大致过程。自己的平台环境：<code>win10</code> <code>MATLAB 2017b</code> <code>libsvm 3.22</code></p>
-</blockquote>
-<hr>
-<p>1 . 下载libsvm。<br>
-  并将其拷贝到MATLAB安装目录下的toolbox目录下。<br>
-例如我的是：<code>C:\Program Files\MATLAB\R2017b\toolbox\</code><br>
-下载地址：<a href="http://www.csie.ntu.edu.tw/~cjlin/libsvm/#download" class="uri" target="_blank" rel="noopener">http://www.csie.ntu.edu.tw/~cjlin/libsvm/#download</a></p>
-<p>2 . 下载 MinGW-w64 C/C++ 编译器。<br>
-  自己使用的是matlab2017工具平台，然而libsvm是使用C++开发的，这样我们就需要先使用C++的编译工具，将libsvm编译成matlab能直接使用的文件,于是就按照matlab官网的提示安装了MinGW-w64 C/C++ compiler 这个编译器。因为从matlab官网安装的一直会下不下来，自己就独立安装了 <a href="https://sourceforge.net/projects/tdm-gcc/files/TDM-GCC%20Installer/Previous/1.1309.0/tdm64-gcc-4.9.2.exe/download?use_mirror=nchc" target="_blank" rel="noopener">tdm64-gcc-4.9.2.exe</a><br>
-安装好后，最好配置一下环境变量，方便matlab查找已安装的编译器。<br>
-如：安装目录为：<code>C:\TDM-GCC-64</code><br>
-  添加系统环境变量：变量名 <code>MW_MINGW64_LOC</code> 目录为安装目录 <code>C:\TDM-GCC-64</code><br>
-  然后在matlab中运行：<code>setenv('MW_MINGW64_LOC','C:\TDM-GCC-64')</code><br>
-这样编译器的环境就配好了。<br>
-​<br>
-3 . 然后在matlab命令行输入：<code>mex -setup</code> 会提示 MEX配置使用 MinGW-w64 C/C++ compiler 编译器，并伴有一个警告，但不影响。</p>
+<h2 id="自动使用不同的颜色">1. 自动使用不同的颜色</h2>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">plot</span>(x1,y2,x2,y2,x3,y3,...);</span><br></pre></td></tr></table></figure>
+<p>此方法比较简单，能满足一般需要。但默认只能在7种颜色之间循环，具体的颜色可通过以下命令查看 <a id="more"></a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">get(gca,'ColorOrder')</span><br></pre></td></tr></table></figure>
+<p>具体实例：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x1 = linspace(1,10,100);</span><br><span class="line">y1 = sin(x1);</span><br><span class="line">y2 = cos(x1);</span><br><span class="line">y3 = 1./(x1);</span><br><span class="line">plot(x1, y1, x1, y2, x1, y3);</span><br></pre></td></tr></table></figure>
+<h2 id="设置一个颜色rgb数组通过循环使用不同颜色">2. 设置一个颜色<code>rgb</code>数组，通过循环使用不同颜色</h2>
+<p>基本命令：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">plot</span>(y,<span class="string">'color'</span>, [<span class="number">1</span> <span class="number">0</span> <span class="number">0</span>]);</span><br></pre></td></tr></table></figure>
+<p>具体实例：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">close all;</span><br><span class="line">clear;  </span><br><span class="line">clc;</span><br><span class="line">M = <span class="number">10</span>; </span><br><span class="line">N = <span class="number">10</span>;  </span><br><span class="line">data = <span class="built_in">rand</span>(M,N); <span class="comment">% 生成M组N点演示数据  </span></span><br><span class="line">color = [<span class="number">0</span> <span class="number">0</span> <span class="number">0</span>  </span><br><span class="line"><span class="number">0</span> <span class="number">0</span> <span class="number">1</span>  </span><br><span class="line"><span class="number">0</span> <span class="number">1</span> <span class="number">0</span>  </span><br><span class="line"><span class="number">0</span> <span class="number">1</span> <span class="number">1</span>  </span><br><span class="line"><span class="number">1</span> <span class="number">0</span> <span class="number">0</span>  </span><br><span class="line"><span class="number">1</span> <span class="number">0</span> <span class="number">1</span>  </span><br><span class="line"><span class="number">1</span> <span class="number">1</span> <span class="number">0</span>  </span><br><span class="line"><span class="number">1</span> <span class="number">1</span> <span class="number">1</span>  </span><br><span class="line"><span class="number">0</span> <span class="number">.5</span> <span class="number">0</span>  </span><br><span class="line"><span class="number">0</span> <span class="number">.75</span> <span class="number">.75</span>  </span><br><span class="line">] ; <span class="comment">% 自定义M组颜色</span></span><br><span class="line"><span class="built_in">figure</span>(<span class="number">1</span>);</span><br><span class="line"><span class="built_in">hold</span> on; <span class="comment">% 在同一张图上绘制  </span></span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span> = <span class="number">1</span> : M  </span><br><span class="line">    <span class="built_in">plot</span>(data(<span class="built_in">i</span>,:),<span class="string">'color'</span>,color(<span class="built_in">i</span>,:));  </span><br><span class="line">    pause(<span class="number">0.5</span>); <span class="comment">% 暂停0.5s</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>对于上面的color，你也可以使用系统定义好的<code>colormap</code> ，基本命令：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">color = colormap(jet(M));  <span class="comment">% M 是你要用的颜色数量</span></span><br></pre></td></tr></table></figure>
+<p>具体实例：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">close all;</span><br><span class="line">clear;  </span><br><span class="line">clc;</span><br><span class="line">M = <span class="number">10</span>; </span><br><span class="line">N = <span class="number">10</span>;  </span><br><span class="line">data = <span class="built_in">rand</span>(M,N);  <span class="comment">% 生成M组N点演示数据  </span></span><br><span class="line">color = colormap(jet(M));</span><br><span class="line"><span class="built_in">figure</span>(<span class="number">1</span>);</span><br><span class="line"><span class="built_in">hold</span> on;  <span class="comment">% 在同一张图上绘制  </span></span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span> = <span class="number">1</span> : M  </span><br><span class="line">    <span class="built_in">plot</span>(data(<span class="built_in">i</span>,:),<span class="string">'color'</span>,color(<span class="built_in">i</span>,:));  </span><br><span class="line">    pause(<span class="number">0.5</span>); <span class="comment">% 暂停0.5s</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
 <div class="figure">
-<img src="/2019/03/25/MATLAB中使用libsvm/img1.png">
+<img src="/2018/04/11/MATLAB画图使用不同颜色/img.png">
 
 </div>
-<p>4 . 接着输入命令：<code>make</code> 会报一个错误，如下：</p>
-<p><img src="/2019/03/25/MATLAB中使用libsvm/img2.png">   提示用户权限不够，因此，我们可以先将libsvm-3.22文件夹，在别的盘（如D盘）编译好，再复制到C盘下MATLAB的安装目录<code>C:\Program Files\MATLAB\R2017b\toolbox\</code> 之中。</p>
-<div class="figure">
-<img src="/2019/03/25/MATLAB中使用libsvm/img3.png">
-
-</div>
-<p>  这里因为开始不知道可以在别的盘直接用 MinGW-w64 C/C++编译好，于是就下了visual studio 2017，然后用Microsoft Visual C++ 2017 编译的，如上。其实可以直接用MinGW-w64 C/C++编译是一样的。编译好你会看到目录下多了4个.mexw64格式的文件：</p>
-<div class="figure">
-<img src="/2019/03/25/MATLAB中使用libsvm/img4.png">
-
-</div>
-<blockquote>
-<p>注意：这里使用用 visual studio 编译时，需要查看官网MATLAB能够使用对应版本的visual studio，或者其他工具.<br>
-如：matlab 2017 b —— visual studio 2017, 而matlab 2017 a 却不能使用 visual studio 2017 编译。</p>
-<p>因此，建议大家直接下载 tdm64-gcc-4.9.2.exe 单独安装文件，并在别的盘先编译好，然后再拷贝到matlab的安装目录之中。</p>
-</blockquote>
-<p>5 .测试libsvm库<br>
-  在libsvm-3.22目录下有一个hear_scale 数据文件，我们可以通过使用libsvmread()函数将其转化成matlab格式，然后再进行相应的操作。</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;</span>[heart_scale_label,heart_scale_inst]=libsvmread(<span class="string">'heart_scale'</span>);</span><br><span class="line"><span class="meta">&gt;&gt;</span> model = svmtrain(heart_scale_label,heart_scale_inst, <span class="string">'-c 1 -g 0.07'</span>)</span><br></pre></td></tr></table></figure>
-<blockquote>
+<h2 id="reference">3. Reference:</h2>
 <ul>
-<li>optimization finished, #iter = 134<br>
-nu = 0.433785<br>
-obj = -101.855060, rho = 0.426412<br>
-nSV = 130, nBSV = 107<br>
-Total nSV = 130</li>
+<li><a href="https://blog.csdn.net/minidick/article/details/1921457" class="uri" target="_blank" rel="noopener">https://blog.csdn.net/minidick/article/details/1921457</a></li>
 </ul>
-</blockquote>
-<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; [predict_label, accuracy, dec_values] = svmpredict(heart_scale_label, heart_scale_inst, model);  <span class="comment">% test the trainingdat</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>Accuracy = 86.6667% (234/270) (classification)</p>
-</blockquote>
-<p>看到这样的结果，就说明你可以在matlab中使用SVM了。</p>
-<p>参考博客：<br>
-- <a href="http://apinetree.blog.51cto.com/714152/1560254" class="uri" target="_blank" rel="noopener">http://apinetree.blog.51cto.com/714152/1560254</a><br>
-- <a href="http://blog.csdn.net/buaasuozi/article/details/50781615" class="uri" target="_blank" rel="noopener">http://blog.csdn.net/buaasuozi/article/details/50781615</a></p>
 </body>
 </html>
 </span>
@@ -335,17 +338,29 @@ Total nSV = 130</li>
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/MATLAB/" rel="tag">#MATLAB</a>
+          
+            <a href="/tags/Tools/" rel="tag">#Tools</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2019/03/20/SVM实现多分类/" rel="prev">
+                <i class="fa fa-chevron-left"></i> SVM实现多分类
+              </a>
+            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/24/面试准备/" rel="next">
-                面试准备 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/04/07/Ubuntu系统配置/" rel="next">
+                Ubuntu系统配置 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -410,21 +425,21 @@ Total nSV = 130</li>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-count">11</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-count">9</span>
               <span class="site-state-item-name">categories</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-count">13</span>
               <span class="site-state-item-name">tags</span>
               </a>
           </div>
@@ -472,7 +487,7 @@ Total nSV = 130</li>
           <div class="post-toc">
             
             
-              <p class="post-toc-empty">This post does not have a Table Of Contents</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#自动使用不同的颜色"><span class="nav-text">1. 自动使用不同的颜色</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置一个颜色rgb数组通过循环使用不同颜色"><span class="nav-text">2. 设置一个颜色rgb数组，通过循环使用不同颜色</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reference"><span class="nav-text">3. Reference:</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
