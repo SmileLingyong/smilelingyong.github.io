@@ -67,13 +67,13 @@
   <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=0.4.5.2" />
 
 
-<meta name="description" content="code{white-space: pre;}        题目要求：对用户轨迹进行分类，相同或相近的轨迹归为一类   背景：多个人在操场上随意散步。从用户进入操场到离开操场记录下他每步踩下的坐标（x,y） 假设他共走了n步，把他经过的全部坐标按序记录下来，就是他的运动轨迹：(x1,y1) (x2,y2),…(xn,yn) 要求把全部M个人的轨迹分类，相同或相近">
+<meta name="description" content="code{white-space: pre;}       1. 题目要求：对用户轨迹进行分类，相同或相近的轨迹归为一类  背景：多个人在操场上随意散步。从用户进入操场到离开操场记录下他每步踩下的坐标（x,y） 假设他共走了n步，把他经过的全部坐标按序记录下来，就是他的运动轨迹：(x1,y1) (x2,y2),…(xn,yn) 要求把全部M个人的轨迹分类，相同或相">
 <meta name="keywords" content="学习笔记,MATLAB,ML">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MATLAB实现轨迹分类（路径、曲线分类）">
 <meta property="og:url" content="http://yoursite.com/2017/11/04/MATLAB实现轨迹分类（路径、曲线分类）/index.html">
 <meta property="og:site_name" content="SmileLingyong">
-<meta property="og:description" content="code{white-space: pre;}        题目要求：对用户轨迹进行分类，相同或相近的轨迹归为一类   背景：多个人在操场上随意散步。从用户进入操场到离开操场记录下他每步踩下的坐标（x,y） 假设他共走了n步，把他经过的全部坐标按序记录下来，就是他的运动轨迹：(x1,y1) (x2,y2),…(xn,yn) 要求把全部M个人的轨迹分类，相同或相近">
+<meta property="og:description" content="code{white-space: pre;}       1. 题目要求：对用户轨迹进行分类，相同或相近的轨迹归为一类  背景：多个人在操场上随意散步。从用户进入操场到离开操场记录下他每步踩下的坐标（x,y） 假设他共走了n步，把他经过的全部坐标按序记录下来，就是他的运动轨迹：(x1,y1) (x2,y2),…(xn,yn) 要求把全部M个人的轨迹分类，相同或相">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2017/11/04/MATLAB实现轨迹分类（路径、曲线分类）/img0.png">
 <meta property="og:image" content="http://yoursite.com/2017/11/04/MATLAB实现轨迹分类（路径、曲线分类）/img1.png">
@@ -82,10 +82,10 @@
 <meta property="og:image" content="http://yoursite.com/2017/11/04/MATLAB实现轨迹分类（路径、曲线分类）/img4.png">
 <meta property="og:image" content="http://yoursite.com/2017/11/04/MATLAB实现轨迹分类（路径、曲线分类）/img5.png">
 <meta property="og:image" content="http://yoursite.com/2017/11/04/MATLAB实现轨迹分类（路径、曲线分类）/img6.png">
-<meta property="og:updated_time" content="2019-03-25T09:07:18.930Z">
+<meta property="og:updated_time" content="2019-03-25T12:07:09.177Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MATLAB实现轨迹分类（路径、曲线分类）">
-<meta name="twitter:description" content="code{white-space: pre;}        题目要求：对用户轨迹进行分类，相同或相近的轨迹归为一类   背景：多个人在操场上随意散步。从用户进入操场到离开操场记录下他每步踩下的坐标（x,y） 假设他共走了n步，把他经过的全部坐标按序记录下来，就是他的运动轨迹：(x1,y1) (x2,y2),…(xn,yn) 要求把全部M个人的轨迹分类，相同或相近">
+<meta name="twitter:description" content="code{white-space: pre;}       1. 题目要求：对用户轨迹进行分类，相同或相近的轨迹归为一类  背景：多个人在操场上随意散步。从用户进入操场到离开操场记录下他每步踩下的坐标（x,y） 假设他共走了n步，把他经过的全部坐标按序记录下来，就是他的运动轨迹：(x1,y1) (x2,y2),…(xn,yn) 要求把全部M个人的轨迹分类，相同或相">
 <meta name="twitter:image" content="http://yoursite.com/2017/11/04/MATLAB实现轨迹分类（路径、曲线分类）/img0.png">
 
 
@@ -290,9 +290,7 @@
 </head>
 <body>
 <blockquote>
-<ol style="list-style-type: decimal">
-<li><strong>题目要求</strong>：对用户轨迹进行分类，相同或相近的轨迹归为一类</li>
-</ol>
+<h4 id="题目要求对用户轨迹进行分类相同或相近的轨迹归为一类"><strong>1. 题目要求</strong>：对用户轨迹进行分类，相同或相近的轨迹归为一类</h4>
 </blockquote>
 <p><strong>背景</strong>：多个人在操场上随意散步。从用户进入操场到离开操场记录下他每步踩下的坐标（x,y）<br>
 假设他共走了n步，把他经过的全部坐标按序记录下来，就是他的运动轨迹：(x1,y1) (x2,y2),…(xn,yn)<br>
@@ -308,33 +306,25 @@
 </div>
 <a id="more"></a>
 <blockquote>
-<ol start="2" style="list-style-type: decimal">
-<li><strong>轨迹分类思想</strong></li>
-</ol>
+<h4 id="轨迹分类思想"><strong>2. 轨迹分类思想</strong></h4>
 </blockquote>
 <p>​ 首先，我们要获取用户的这些轨迹点，即每个用户都会对应一个轨迹点集（可以用二维数组，结构体等实现），将这些轨迹点连接成线，就可以绘制出如上的轨迹曲线。<br>
 ​ 然后，我们要求每条轨迹曲线间的距离。在计算之前，我们需要先自己拟定一个计算两条轨迹曲线间距离的方法。自己是这样计算的，比如有两条曲线，曲线A 和 曲线B，我们计算曲线A和B间的距离，可以先通过计算曲线A上的一点a1，到曲线B上所有点的欧式距离最小的距离，作为曲线A上点a1到曲线B的距离。然后，同样按照这种方法，可以计算出曲线A上其余轨迹点a2, a3, … , an到曲线B的距离。最后，我们将这些距离的平均值作为曲线A到曲线B的距离。<br>
 ​ 通过以上方法，我们就可以求得所有曲线间的距离，并可以得到一个距离矩阵。接着我们就需要来分析这个距离矩阵，并加上认为设定的阈值，一起作为曲线分类的判别条件。<br>
 ​ 比如：我们计算了曲线A到其余曲线的距离，然后找到了这些距离中的最小值，并将其与阈值进行比较，若比阈值大，则将曲线A自己单独归为一类；若比阈值小，则将曲线A与相距那条的曲线归为一类。通过以上过程，我们就可以成功的将这些轨迹曲线进行分类，并输出最终分类结果。</p>
 <blockquote>
-<ol start="3" style="list-style-type: decimal">
-<li><strong>程序设计思想</strong></li>
-</ol>
+<h4 id="程序设计思想"><strong>3. 程序设计思想</strong></h4>
 </blockquote>
 <div class="figure">
 <img src="/2017/11/04/MATLAB实现轨迹分类（路径、曲线分类）/img1.png">
 
 </div>
 <blockquote>
-<ol start="4" style="list-style-type: decimal">
-<li><strong>MATLAB代码实现</strong></li>
-</ol>
+<h4 id="matlab代码实现"><strong>4. MATLAB代码实现</strong></h4>
 </blockquote>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">%% Homework of Advanced software development technology and tools </span></span><br><span class="line"><span class="comment">% Creation         :    17-Oct-2017</span></span><br><span class="line"><span class="comment">% Last Reversion   :    21-Oct-2017</span></span><br><span class="line"><span class="comment">% Author           :    Lingyong Smile &#123;smilelingyong@163.com&#125;</span></span><br><span class="line"><span class="comment">% File Type        :    Matlab</span></span><br><span class="line"><span class="comment">% -------------------------------------------------------------------------</span></span><br><span class="line"><span class="comment">% Lingyong Smile @ 2017</span></span><br><span class="line"><span class="comment">% </span></span><br><span class="line"><span class="comment">% 作业要求：</span></span><br><span class="line"><span class="comment">%     对用户轨迹进行分类，相同或相近的轨迹归为一类</span></span><br><span class="line"><span class="comment">% 背景：多个人在操场上随意散步。从用户进入操场到离开操场记录下他每步踩下的坐标（x,y）</span></span><br><span class="line"><span class="comment">% 假设他共走了n步，把他经过的全部坐标按序记录下来，就是他的运动轨迹：(x1,y1) (x2,y2),…(xn,yn)</span></span><br><span class="line"><span class="comment">% 要求把全部M个人的轨迹分类，相同或相近的轨迹归为一类。</span></span><br><span class="line"><span class="comment">% 注意：每个人的步数可能不一样，步距也可能步一样，进入和离开操场的地点都是随意的。</span></span><br><span class="line"><span class="comment">% 输入：M个人轨迹；相近轨迹距离最大值；XXX参数，……</span></span><br><span class="line"><span class="comment">% 输出：若干个分类(每类包含的路径）</span></span><br><span class="line"><span class="comment">% 算法：常规算法，分类/聚类算法，……</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">%% Init</span></span><br><span class="line">clc;</span><br><span class="line">clear;</span><br><span class="line">close all;</span><br><span class="line"></span><br><span class="line"><span class="comment">% 设置阈值</span></span><br><span class="line">MAX_DISTENCE = <span class="number">0.08</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">%% 手动绘制每个用户的轨迹点并记录下来，然后画出运动轨迹（用直线依次连接每一点）</span></span><br><span class="line"><span class="built_in">figure</span>(<span class="number">1</span>);</span><br><span class="line">person_num = input(<span class="string">'输入需要绘制轨迹人数：'</span>);</span><br><span class="line">legend_list = cell(person_num, <span class="number">1</span>);          <span class="comment">% 创建一个cell数组,用于存放每条轨迹的用户名</span></span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span> = <span class="number">1</span> : person_num</span><br><span class="line">    [person(<span class="built_in">i</span>).x, person(<span class="built_in">i</span>).y] = ginput;    <span class="comment">% 记录每个用户的轨迹坐标</span></span><br><span class="line">    person(<span class="built_in">i</span>).<span class="built_in">length</span> = <span class="built_in">length</span>(person(<span class="built_in">i</span>).x);</span><br><span class="line">    person(<span class="built_in">i</span>).kind = <span class="built_in">i</span>;  <span class="comment">% 初始化用户的种类</span></span><br><span class="line">    person(<span class="built_in">i</span>).flag = <span class="number">0</span>;  <span class="comment">% 初始化用户的种类标记位</span></span><br><span class="line">    <span class="built_in">plot</span>(person(<span class="built_in">i</span>).x, person(<span class="built_in">i</span>).y); <span class="comment">% 绘制用户轨迹曲线        </span></span><br><span class="line">    axis([<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>]);     <span class="comment">% 设置坐标范围在 0-1  0-1</span></span><br><span class="line">    legend_list&#123;<span class="built_in">i</span>&#125; = num2str(<span class="built_in">i</span>); <span class="comment">% 记录每条轨迹的用户名     </span></span><br><span class="line">    text(person(<span class="built_in">i</span>).x(<span class="number">2</span>), person(<span class="built_in">i</span>).y(<span class="number">2</span>), num2str(<span class="built_in">i</span>));   <span class="comment">% 为每条轨迹线标注，便于直接在线上区分</span></span><br><span class="line">    text(<span class="number">0.82</span>, <span class="number">0.09</span>, [<span class="string">'阈值为:'</span>,num2str(MAX_DISTENCE)]); <span class="comment">% 在图上显示当前输出的阈值</span></span><br><span class="line">    <span class="built_in">hold</span> on;</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="built_in">legend</span>(legend_list);  <span class="comment">% 添加图例      </span></span><br><span class="line">title(<span class="string">'The original trajectory of the user on the playground'</span>);  <span class="comment">% 添加标题</span></span><br><span class="line"><span class="comment">% save(['person_', num2str(person_num), '.mat']);  % 保存用户轨迹数据，用于测试时使用</span></span><br><span class="line"><span class="built_in">hold</span> off;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">%% 求得距离矩阵,并进行相应的数据处理</span></span><br><span class="line">distance = cell(<span class="number">1</span>, person_num);  <span class="comment">% 初始化距离cell数组，用于存放第i条曲线到 所有 曲线的欧式距离</span></span><br><span class="line">dist_idx = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">% 求曲线间的最近距离关系</span></span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span> = <span class="number">1</span> : person_num</span><br><span class="line">    <span class="comment">% 求曲线i到所有曲线的欧式距离</span></span><br><span class="line">    <span class="keyword">for</span> <span class="built_in">j</span> = <span class="number">1</span> : person_num</span><br><span class="line">        distance&#123;dist_idx&#125; = pdist2([person(<span class="built_in">i</span>).x, person(<span class="built_in">i</span>).y], [person(<span class="built_in">j</span>).x, person(<span class="built_in">j</span>).y]);  <span class="comment">% 求条曲线i上每一点，到曲线j上每一点距离</span></span><br><span class="line">        distance_point_to_line_min&#123;dist_idx&#125; = <span class="built_in">min</span>(distance&#123;dist_idx&#125;, [], <span class="number">2</span>);   <span class="comment">% 求曲线i上每个点，到第j条曲线上所有点的最小值, 每一行取最小值</span></span><br><span class="line">        person(<span class="built_in">i</span>).distance_line_to_line_min&#123;dist_idx&#125; = sum(distance_point_to_line_min&#123;dist_idx&#125;) / <span class="built_in">length</span>(person(<span class="built_in">i</span>).x); <span class="comment">% 计算曲线i到曲线j的距离最小值的平均值</span></span><br><span class="line">        dist_idx = dist_idx + <span class="number">1</span>;             </span><br><span class="line">    <span class="keyword">end</span>   </span><br><span class="line">    dist_idx = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% 得到曲线间最近距离矩阵A</span></span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span> = <span class="number">1</span> : person_num</span><br><span class="line">    A(<span class="built_in">i</span>, :) = person(<span class="built_in">i</span>).distance_line_to_line_min;</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">A = cell2mat(A);   <span class="comment">% 将cell型转化为矩阵类型</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% 对距离数组进行分类</span></span><br><span class="line">m = <span class="built_in">size</span>(A, <span class="number">1</span>);</span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span> = <span class="number">1</span> : m</span><br><span class="line">    [min_dist, min_dist_idx] = findSecondMin(A(<span class="built_in">i</span>, :));</span><br><span class="line">    <span class="keyword">if</span>(A(<span class="built_in">i</span>, min_dist_idx) &lt; MAX_DISTENCE)     </span><br><span class="line">        <span class="keyword">if</span> person(<span class="built_in">i</span>).flag == <span class="number">0</span></span><br><span class="line">            person(<span class="built_in">i</span>).kind = min_dist_idx;</span><br><span class="line">            person(min_dist_idx).flag = <span class="number">1</span>;           </span><br><span class="line">        <span class="keyword">end</span> </span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="comment">%     fprintf("第 %d 条曲线属于 %d 类\n",i, person(i).kind);</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">%% 得到类别数组，并进行分类 (unique())</span></span><br><span class="line">kind_array = <span class="built_in">zeros</span>(person_num, <span class="number">1</span>);</span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span> = <span class="number">1</span> : person_num</span><br><span class="line">    kind_array(<span class="built_in">i</span>) = person(<span class="built_in">i</span>).kind;</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">[cluster, ia, kind_idx] = unique(kind_array);</span><br><span class="line"><span class="comment">% 其中 cluster 分的类别种类， kind_idx 当前属于第几类</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">%% 打印输出类别信息</span></span><br><span class="line">fprintf(<span class="string">"总共有 %d 类:\n"</span>, <span class="built_in">length</span>(cluster));</span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span> = <span class="number">1</span> : person_num</span><br><span class="line">    fprintf(<span class="string">"第 %d 条曲线属于 第 %d 类\n"</span>,<span class="built_in">i</span>, kind_idx(<span class="built_in">i</span>));</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">%% 函数功能： 找一维数组A中第二小的元素以及下标</span></span><br><span class="line"><span class="comment">% 输入： </span></span><br><span class="line"><span class="comment">%       A: 一维数组</span></span><br><span class="line"><span class="comment">% 输入：</span></span><br><span class="line"><span class="comment">%       secondMin:第二小的数</span></span><br><span class="line"><span class="comment">%       idx      :第二小的数对应的下标</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="params">[secondMin, idx]</span> = <span class="title">findSecondMin</span><span class="params">(A)</span></span></span><br><span class="line">    B = A;</span><br><span class="line">    n = <span class="built_in">length</span>(A);</span><br><span class="line">    <span class="keyword">for</span> <span class="built_in">i</span> = <span class="number">1</span> : n - <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> <span class="built_in">j</span> = <span class="built_in">i</span> + <span class="number">1</span> : n</span><br><span class="line">            <span class="keyword">if</span> A(<span class="built_in">i</span>) &gt; A(<span class="built_in">j</span>)</span><br><span class="line">                temp = A(<span class="built_in">j</span>);</span><br><span class="line">                A(<span class="built_in">j</span>) = A(<span class="built_in">i</span>);</span><br><span class="line">                A(<span class="built_in">i</span>) = temp;</span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    </span><br><span class="line">    secondMin = A(<span class="number">2</span>);</span><br><span class="line">    idx = <span class="built_in">find</span>(B == secondMin);</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
 <blockquote>
-<ol start="5" style="list-style-type: decimal">
-<li><strong>程序使用说明</strong></li>
-</ol>
+<h4 id="程序使用说明"><strong>5. 程序使用说明</strong></h4>
 </blockquote>
 <ul>
 <li>运行程序<br>
@@ -346,9 +336,7 @@
 ​ <code>MAX_DISTENCE</code> ，初始值为0.08，用户可以根据自己绘制的轨迹图像分类结果进行适当的调整。如将 <code>MAX_DISTENCE</code> 调大，则会将轨迹距离离得远一点也可分为同一类；调小则相反。</li>
 </ul>
 <blockquote>
-<ol start="6" style="list-style-type: decimal">
-<li><strong>运行流程及测试结果</strong></li>
-</ol>
+<h4 id="运行流程及测试结果"><strong>6. 运行流程及测试结果</strong></h4>
 </blockquote>
 <ol style="list-style-type: decimal">
 <li>点击MATLAB运行按钮，提示输入需要绘制轨迹人数。</li>
@@ -412,8 +400,8 @@
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/19/MATLAB学习笔记/" rel="next">
-                MATLAB学习笔记 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/10/01/MATLAB中使用libsvm/" rel="next">
+                MATLAB中使用libsvm <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -478,7 +466,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-count">9</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -540,7 +528,7 @@
           <div class="post-toc">
             
             
-              <p class="post-toc-empty">This post does not have a Table Of Contents</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目要求对用户轨迹进行分类相同或相近的轨迹归为一类"><span class="nav-text">1. 题目要求：对用户轨迹进行分类，相同或相近的轨迹归为一类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#轨迹分类思想"><span class="nav-text">2. 轨迹分类思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#程序设计思想"><span class="nav-text">3. 程序设计思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#matlab代码实现"><span class="nav-text">4. MATLAB代码实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#程序使用说明"><span class="nav-text">5. 程序使用说明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#运行流程及测试结果"><span class="nav-text">6. 运行流程及测试结果</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>

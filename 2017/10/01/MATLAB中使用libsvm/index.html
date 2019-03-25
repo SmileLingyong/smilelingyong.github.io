@@ -58,7 +58,7 @@
 
 
 
-  <meta name="keywords" content="C,算法,数据结构," />
+  <meta name="keywords" content="Hexo,next" />
 
 
 
@@ -67,18 +67,22 @@
   <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=0.4.5.2" />
 
 
-<meta name="description" content="code{white-space: pre;}      华科复试面试题：C语言如何实现C++ 中的类 12345678910111213141516171819202122232425262728293031#include &amp;lt;stdio.h&amp;gt;//C 语言没有类，但可以用结构体充当一个类//与类不同，结构体只能定义变量，不能够定义函数，可以通过函数指">
-<meta name="keywords" content="C,算法,数据结构">
+<meta name="description" content="code{white-space: pre;}       最近正在学习机器学习算法SVM，然后需要用到libsvm库，于是整理了下自己配置的大致过程。 自己的平台环境：win10 MATLAB 2017b libsvm 3.22">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C语言实现C++中的类">
-<meta property="og:url" content="http://yoursite.com/2017/03/11/C语言实现C-中的类/index.html">
+<meta property="og:title" content="MATLAB中使用libsvm">
+<meta property="og:url" content="http://yoursite.com/2017/10/01/MATLAB中使用libsvm/index.html">
 <meta property="og:site_name" content="SmileLingyong">
-<meta property="og:description" content="code{white-space: pre;}      华科复试面试题：C语言如何实现C++ 中的类 12345678910111213141516171819202122232425262728293031#include &amp;lt;stdio.h&amp;gt;//C 语言没有类，但可以用结构体充当一个类//与类不同，结构体只能定义变量，不能够定义函数，可以通过函数指">
+<meta property="og:description" content="code{white-space: pre;}       最近正在学习机器学习算法SVM，然后需要用到libsvm库，于是整理了下自己配置的大致过程。 自己的平台环境：win10 MATLAB 2017b libsvm 3.22">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-25T09:42:28.227Z">
+<meta property="og:image" content="http://yoursite.com/2017/10/01/MATLAB中使用libsvm/img1.png">
+<meta property="og:image" content="http://yoursite.com/2017/10/01/MATLAB中使用libsvm/img2.png">
+<meta property="og:image" content="http://yoursite.com/2017/10/01/MATLAB中使用libsvm/img3.png">
+<meta property="og:image" content="http://yoursite.com/2017/10/01/MATLAB中使用libsvm/img4.png">
+<meta property="og:updated_time" content="2019-03-25T12:10:17.079Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="C语言实现C++中的类">
-<meta name="twitter:description" content="code{white-space: pre;}      华科复试面试题：C语言如何实现C++ 中的类 12345678910111213141516171819202122232425262728293031#include &amp;lt;stdio.h&amp;gt;//C 语言没有类，但可以用结构体充当一个类//与类不同，结构体只能定义变量，不能够定义函数，可以通过函数指">
+<meta name="twitter:title" content="MATLAB中使用libsvm">
+<meta name="twitter:description" content="code{white-space: pre;}       最近正在学习机器学习算法SVM，然后需要用到libsvm库，于是整理了下自己配置的大致过程。 自己的平台环境：win10 MATLAB 2017b libsvm 3.22">
+<meta name="twitter:image" content="http://yoursite.com/2017/10/01/MATLAB中使用libsvm/img1.png">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -90,7 +94,7 @@
 
 
 
-  <title> C语言实现C++中的类 | SmileLingyong </title>
+  <title> MATLAB中使用libsvm | SmileLingyong </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -216,7 +220,7 @@
             
             
               
-                C语言实现C++中的类
+                MATLAB中使用libsvm
               
             
           </h1>
@@ -225,26 +229,11 @@
         <div class="post-meta">
           <span class="post-time">
             Posted on
-            <time itemprop="dateCreated" datetime="2017-03-11T21:58:09+08:00" content="2017-03-11">
-              2017-03-11 21:58
+            <time itemprop="dateCreated" datetime="2017-10-01T17:33:56+08:00" content="2017-10-01">
+              2017-10-01 17:33
             </time>
           </span>
 
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp; In
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/算法与数据结构/" itemprop="url" rel="index">
-                    <span itemprop="name">算法与数据结构</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
           
 
           
@@ -254,7 +243,7 @@
           
 
           
-            <span id="/2017/03/11/C语言实现C-中的类/"class="leancloud_visitors"  data-flag-title="C语言实现C++中的类">
+            <span id="/2017/10/01/MATLAB中使用libsvm/"class="leancloud_visitors"  data-flag-title="MATLAB中使用libsvm">
             &nbsp; | &nbsp;   
             views
             </span>
@@ -281,10 +270,67 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pygments-css@1.0.0/github.min.css" type="text/css">
 </head>
 <body>
-<p>华科复试面试题：C语言如何实现C++ 中的类</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="comment">//C 语言没有类，但可以用结构体充当一个类</span></span><br><span class="line"><span class="comment">//与类不同，结构体只能定义变量，不能够定义函数，可以通过函数指针的方法来实现其功能 </span></span><br><span class="line"><span class="comment">//定义“类 ”的成员变量以及方法 </span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Person</span>&#123;</span></span><br><span class="line">	<span class="keyword">char</span> name;</span><br><span class="line">	<span class="keyword">int</span> age;</span><br><span class="line">	<span class="keyword">void</span> (*EatFunction)(struct Person <span class="keyword">this</span>, <span class="keyword">int</span> num);</span><br><span class="line">&#125;Person; </span><br><span class="line"> </span><br><span class="line"><span class="comment">//定义函数功能 </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">EatFunction</span><span class="params">(struct Person <span class="keyword">this</span>, <span class="keyword">int</span> num)</span></span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"Test\n"</span>);</span><br><span class="line">&#125; </span><br><span class="line"> </span><br><span class="line"><span class="comment">//定义“类 ”的构造函数</span></span><br><span class="line"><span class="comment">//与面向对象不同，C语言的“类”的 构造函数不能放在“类”中，只能放在“类”外</span></span><br><span class="line"><span class="comment">//构造函数主要完成 变量的初始化，以及函数指针的赋值 </span></span><br><span class="line"><span class="function">Person *<span class="title">NewPerson</span><span class="params">(Person *<span class="keyword">this</span>)</span></span>&#123;</span><br><span class="line">	<span class="keyword">this</span>-&gt;name = <span class="string">'A'</span>;</span><br><span class="line">	<span class="keyword">this</span>-&gt;age = <span class="number">18</span>;</span><br><span class="line">	<span class="keyword">this</span>-&gt;EatFunction = EatFunction;</span><br><span class="line">&#125; </span><br><span class="line"> </span><br><span class="line"><span class="comment">//主函数调用 </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	Person person;</span><br><span class="line">	NewPerson(&amp;person);</span><br><span class="line">	person.EatFunction(person,<span class="number">0</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>注意：</strong>测试的时候要保存为<code>.c</code> 格式，<code>.cpp</code> 格式运行会报错，因为 C++中 <code>this</code> 是关键字 。 <a id="more"></a></p>
-<p>参考博客：<a href="http://dongxicheng.org/cpp/ooc/" class="uri" target="_blank" rel="noopener">http://dongxicheng.org/cpp/ooc/</a></p>
+<blockquote>
+<p>最近正在学习机器学习算法SVM，然后需要用到libsvm库，于是整理了下自己配置的大致过程。<br>
+自己的平台环境：<code>win10</code> <code>MATLAB 2017b</code> <code>libsvm 3.22</code></p>
+</blockquote>
+<p><a id="more"></a></p>
+<h4 id="下载libsvm">1 . 下载libsvm</h4>
+<p>并将其拷贝到MATLAB安装目录下的toolbox目录下。例如我的是：<code>C:\Program Files\MATLAB\R2017b\toolbox\</code><br>
+下载地址：<a href="http://www.csie.ntu.edu.tw/~cjlin/libsvm/#download" class="uri" target="_blank" rel="noopener">http://www.csie.ntu.edu.tw/~cjlin/libsvm/#download</a></p>
+<h4 id="下载-mingw-w64-cc-编译器">2 . 下载 MinGW-w64 C/C++ 编译器</h4>
+<p>自己使用的是matlab2017工具平台，然而libsvm是使用C++开发的，这样我们就需要先使用C++的编译工具，将libsvm编译成matlab能直接使用的文件,于是就按照matlab官网的提示安装了MinGW-w64 C/C++ compiler 这个编译器。因为从matlab官网安装的一直会下不下来，自己就独立安装了 <a href="https://sourceforge.net/projects/tdm-gcc/files/TDM-GCC%20Installer/Previous/1.1309.0/tdm64-gcc-4.9.2.exe/download?use_mirror=nchc" target="_blank" rel="noopener">tdm64-gcc-4.9.2.exe</a><br>
+安装好后，最好配置一下环境变量，方便matlab查找已安装的编译器。<br>
+如：安装目录为：<code>C:\TDM-GCC-64</code></p>
+<ul>
+<li>添加系统环境变量：变量名 <code>MW_MINGW64_LOC</code> 目录为安装目录 <code>C:\TDM-GCC-64</code></li>
+<li>然后在matlab中运行：<code>setenv('MW_MINGW64_LOC','C:\TDM-GCC-64')</code><br>
+这样编译器的环境就配好了。</li>
+</ul>
+<h4 id="matlab中验证环境">3 . MATLAB中验证环境</h4>
+<p>然后在matlab命令行输入：<code>mex -setup</code> 会提示 MEX配置使用 MinGW-w64 C/C++ compiler 编译器，并伴有一个警告，但不影响。</p>
+<div class="figure">
+<img src="/2017/10/01/MATLAB中使用libsvm/img1.png">
+
+</div>
+<h4 id="接着输入命令make-会报一个错误如下">4 . 接着输入命令：<code>make</code> 会报一个错误，如下</h4>
+<p><img src="/2017/10/01/MATLAB中使用libsvm/img2.png"> 提示用户权限不够，因此，我们可以先将libsvm-3.22文件夹，在别的盘（如D盘）编译好，再复制到C盘下MATLAB的安装目录<code>C:\Program Files\MATLAB\R2017b\toolbox\</code> 之中。</p>
+<div class="figure">
+<img src="/2017/10/01/MATLAB中使用libsvm/img3.png">
+
+</div>
+<p>这里因为开始不知道可以在别的盘直接用 MinGW-w64 C/C++编译好，于是就下了visual studio 2017，然后用Microsoft Visual C++ 2017 编译的，如上。其实可以直接用MinGW-w64 C/C++编译是一样的。编译好你会看到目录下多了4个.mexw64格式的文件：</p>
+<div class="figure">
+<img src="/2017/10/01/MATLAB中使用libsvm/img4.png">
+
+</div>
+<blockquote>
+<p>注意：这里使用用 visual studio 编译时，需要查看官网MATLAB能够使用对应版本的visual studio，或者其他工具.<br>
+如：matlab 2017 b —— visual studio 2017, 而matlab 2017 a 却不能使用 visual studio 2017 编译。<br>
+因此，建议大家直接下载 tdm64-gcc-4.9.2.exe 单独安装文件，并在别的盘先编译好，然后再拷贝到matlab的安装目录之中。</p>
+</blockquote>
+<h4 id="测试libsvm库">5 .测试libsvm库</h4>
+<p>在libsvm-3.22目录下有一个hear_scale 数据文件，我们可以通过使用libsvmread()函数将其转化成matlab格式，然后再进行相应的操作。</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;[heart_scale_label,heart_scale_inst]=libsvmread(<span class="string">'heart_scale'</span>);</span><br><span class="line">&gt;&gt; model = svmtrain(heart_scale_label,heart_scale_inst, <span class="string">'-c 1 -g 0.07'</span>)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>optimization finished, #iter = 134<br>
+nu = 0.433785<br>
+obj = -101.855060, rho = 0.426412<br>
+nSV = 130, nBSV = 107<br>
+Total nSV = 130</li>
+</ul>
+</blockquote>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; [predict_label, accuracy, dec_values] = svmpredict(heart_scale_label, heart_scale_inst, model);  <span class="comment">% test the trainingdat</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Accuracy = 86.6667% (234/270) (classification)</p>
+</blockquote>
+<p>看到这样的结果，就说明你可以在matlab中使用SVM了。</p>
+<h4 id="参考博客">6 .参考博客</h4>
+<ul>
+<li><a href="http://apinetree.blog.51cto.com/714152/1560254" class="uri" target="_blank" rel="noopener">http://apinetree.blog.51cto.com/714152/1560254</a></li>
+<li><a href="http://blog.csdn.net/buaasuozi/article/details/50781615" class="uri" target="_blank" rel="noopener">http://blog.csdn.net/buaasuozi/article/details/50781615</a></li>
+</ul>
 </body>
 </html>
 </span>
@@ -293,31 +339,21 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/C/" rel="tag">#C</a>
-          
-            <a href="/tags/算法/" rel="tag">#算法</a>
-          
-            <a href="/tags/数据结构/" rel="tag">#数据结构</a>
-          
-        </div>
-      
 
       
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/05/19/MATLAB学习笔记/" rel="prev">
-                <i class="fa fa-chevron-left"></i> MATLAB学习笔记
+              <a href="/2017/11/04/MATLAB实现轨迹分类（路径、曲线分类）/" rel="prev">
+                <i class="fa fa-chevron-left"></i> MATLAB实现轨迹分类（路径、曲线分类）
               </a>
             
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/12/26/考研初试心得/" rel="next">
-                考研初试心得 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/05/19/MATLAB学习笔记/" rel="next">
+                MATLAB学习笔记 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -444,7 +480,7 @@
           <div class="post-toc">
             
             
-              <p class="post-toc-empty">This post does not have a Table Of Contents</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#下载libsvm"><span class="nav-text">1 . 下载libsvm</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#下载-mingw-w64-cc-编译器"><span class="nav-text">2 . 下载 MinGW-w64 C/C++ 编译器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#matlab中验证环境"><span class="nav-text">3 . MATLAB中验证环境</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#接着输入命令make-会报一个错误如下"><span class="nav-text">4 . 接着输入命令：make 会报一个错误，如下</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#测试libsvm库"><span class="nav-text">5 .测试libsvm库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参考博客"><span class="nav-text">6 .参考博客</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
