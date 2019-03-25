@@ -82,7 +82,7 @@
 <meta property="og:image" content="http://yoursite.com/2017/11/04/MATLAB实现轨迹分类（路径、曲线分类）/img4.png">
 <meta property="og:image" content="http://yoursite.com/2017/11/04/MATLAB实现轨迹分类（路径、曲线分类）/img5.png">
 <meta property="og:image" content="http://yoursite.com/2017/11/04/MATLAB实现轨迹分类（路径、曲线分类）/img6.png">
-<meta property="og:updated_time" content="2019-03-25T09:00:24.998Z">
+<meta property="og:updated_time" content="2019-03-25T09:07:18.930Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MATLAB实现轨迹分类（路径、曲线分类）">
 <meta name="twitter:description" content="code{white-space: pre;}        题目要求：对用户轨迹进行分类，相同或相近的轨迹归为一类   背景：多个人在操场上随意散步。从用户进入操场到离开操场记录下他每步踩下的坐标（x,y） 假设他共走了n步，把他经过的全部坐标按序记录下来，就是他的运动轨迹：(x1,y1) (x2,y2),…(xn,yn) 要求把全部M个人的轨迹分类，相同或相近">
@@ -316,7 +316,6 @@
 ​ 然后，我们要求每条轨迹曲线间的距离。在计算之前，我们需要先自己拟定一个计算两条轨迹曲线间距离的方法。自己是这样计算的，比如有两条曲线，曲线A 和 曲线B，我们计算曲线A和B间的距离，可以先通过计算曲线A上的一点a1，到曲线B上所有点的欧式距离最小的距离，作为曲线A上点a1到曲线B的距离。然后，同样按照这种方法，可以计算出曲线A上其余轨迹点a2, a3, … , an到曲线B的距离。最后，我们将这些距离的平均值作为曲线A到曲线B的距离。<br>
 ​ 通过以上方法，我们就可以求得所有曲线间的距离，并可以得到一个距离矩阵。接着我们就需要来分析这个距离矩阵，并加上认为设定的阈值，一起作为曲线分类的判别条件。<br>
 ​ 比如：我们计算了曲线A到其余曲线的距离，然后找到了这些距离中的最小值，并将其与阈值进行比较，若比阈值大，则将曲线A自己单独归为一类；若比阈值小，则将曲线A与相距那条的曲线归为一类。通过以上过程，我们就可以成功的将这些轨迹曲线进行分类，并输出最终分类结果。</p>
-<p>​</p>
 <blockquote>
 <ol start="3" style="list-style-type: decimal">
 <li><strong>程序设计思想</strong></li>
@@ -338,17 +337,14 @@
 </ol>
 </blockquote>
 <ul>
-<li>运行程序</li>
+<li>运行程序<br>
+​ 打开<code>person_trace_classification.m</code>文件，使用MATLAB运行即可。</li>
+<li>输入需要绘制的轨迹数n。</li>
+<li>在窗口用鼠标一一点出用户的轨迹，回车结束。</li>
+<li>控制台打印输入分类结果。</li>
+<li>可以调整的参数<br>
+​ <code>MAX_DISTENCE</code> ，初始值为0.08，用户可以根据自己绘制的轨迹图像分类结果进行适当的调整。如将 <code>MAX_DISTENCE</code> 调大，则会将轨迹距离离得远一点也可分为同一类；调小则相反。</li>
 </ul>
-<p>​ 打开<code>person_trace_classification.m</code>文件，使用MATLAB运行即可。</p>
-<ul>
-<li><p>输入需要绘制的轨迹数n。</p></li>
-<li><p>在窗口用鼠标一一点出用户的轨迹，回车结束。</p></li>
-<li><p>控制台打印输入分类结果。</p></li>
-<li><p>可以调整的参数</p></li>
-</ul>
-<p>​ MAX_DISTENCE，初始值为0.08，用户可以根据自己绘制的轨迹图像分类结果进行适当的调整。如将MAX_DISTENCE调大，则会将轨迹距离离得远一点也可分为同一类；调小则相反。</p>
-<p>​</p>
 <blockquote>
 <ol start="6" style="list-style-type: decimal">
 <li><strong>运行流程及测试结果</strong></li>
