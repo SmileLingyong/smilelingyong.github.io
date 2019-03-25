@@ -58,7 +58,7 @@
 
 
 
-  <meta name="keywords" content="Hexo,next" />
+  <meta name="keywords" content="学习笔记,MATLAB,ML," />
 
 
 
@@ -67,25 +67,26 @@
   <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=0.4.5.2" />
 
 
-<meta name="description" content="code{white-space: pre;}      MATLAB 实现轨迹分类（路径分类）   题目要求：对用户轨迹进行分类，相同或相近的轨迹归为一类   背景：多个人在操场上随意散步。从用户进入操场到离开操场记录下他每步踩下的坐标（x,y） 假设他共走了n步，把他经过的全部坐标按序记录下来，就是他的运动轨迹：(x1,y1) (x2,y2),…(xn,yn)">
+<meta name="description" content="code{white-space: pre;}        题目要求：对用户轨迹进行分类，相同或相近的轨迹归为一类   背景：多个人在操场上随意散步。从用户进入操场到离开操场记录下他每步踩下的坐标（x,y） 假设他共走了n步，把他经过的全部坐标按序记录下来，就是他的运动轨迹：(x1,y1) (x2,y2),…(xn,yn) 要求把全部M个人的轨迹分类，相同或相近">
+<meta name="keywords" content="学习笔记,MATLAB,ML">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SmileLingyong">
-<meta property="og:url" content="http://yoursite.com/2019/03/25/MATLAB-实现轨迹分类（路径分类）/index.html">
+<meta property="og:title" content="MATLAB实现轨迹分类（路径、曲线分类）">
+<meta property="og:url" content="http://yoursite.com/2017/11/04/MATLAB实现轨迹分类（路径、曲线分类）/index.html">
 <meta property="og:site_name" content="SmileLingyong">
-<meta property="og:description" content="code{white-space: pre;}      MATLAB 实现轨迹分类（路径分类）   题目要求：对用户轨迹进行分类，相同或相近的轨迹归为一类   背景：多个人在操场上随意散步。从用户进入操场到离开操场记录下他每步踩下的坐标（x,y） 假设他共走了n步，把他经过的全部坐标按序记录下来，就是他的运动轨迹：(x1,y1) (x2,y2),…(xn,yn)">
+<meta property="og:description" content="code{white-space: pre;}        题目要求：对用户轨迹进行分类，相同或相近的轨迹归为一类   背景：多个人在操场上随意散步。从用户进入操场到离开操场记录下他每步踩下的坐标（x,y） 假设他共走了n步，把他经过的全部坐标按序记录下来，就是他的运动轨迹：(x1,y1) (x2,y2),…(xn,yn) 要求把全部M个人的轨迹分类，相同或相近">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/2019/03/25/MATLAB-实现轨迹分类（路径分类）/img0.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/25/MATLAB-实现轨迹分类（路径分类）/img1.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/25/MATLAB-实现轨迹分类（路径分类）/img2.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/25/MATLAB-实现轨迹分类（路径分类）/img3.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/25/MATLAB-实现轨迹分类（路径分类）/img4.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/25/MATLAB-实现轨迹分类（路径分类）/img5.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/25/MATLAB-实现轨迹分类（路径分类）/img6.png">
-<meta property="og:updated_time" content="2019-03-25T08:57:44.040Z">
+<meta property="og:image" content="http://yoursite.com/2017/11/04/MATLAB实现轨迹分类（路径、曲线分类）/img0.png">
+<meta property="og:image" content="http://yoursite.com/2017/11/04/MATLAB实现轨迹分类（路径、曲线分类）/img1.png">
+<meta property="og:image" content="http://yoursite.com/2017/11/04/MATLAB实现轨迹分类（路径、曲线分类）/img2.png">
+<meta property="og:image" content="http://yoursite.com/2017/11/04/MATLAB实现轨迹分类（路径、曲线分类）/img3.png">
+<meta property="og:image" content="http://yoursite.com/2017/11/04/MATLAB实现轨迹分类（路径、曲线分类）/img4.png">
+<meta property="og:image" content="http://yoursite.com/2017/11/04/MATLAB实现轨迹分类（路径、曲线分类）/img5.png">
+<meta property="og:image" content="http://yoursite.com/2017/11/04/MATLAB实现轨迹分类（路径、曲线分类）/img6.png">
+<meta property="og:updated_time" content="2019-03-25T09:00:24.998Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SmileLingyong">
-<meta name="twitter:description" content="code{white-space: pre;}      MATLAB 实现轨迹分类（路径分类）   题目要求：对用户轨迹进行分类，相同或相近的轨迹归为一类   背景：多个人在操场上随意散步。从用户进入操场到离开操场记录下他每步踩下的坐标（x,y） 假设他共走了n步，把他经过的全部坐标按序记录下来，就是他的运动轨迹：(x1,y1) (x2,y2),…(xn,yn)">
-<meta name="twitter:image" content="http://yoursite.com/2019/03/25/MATLAB-实现轨迹分类（路径分类）/img0.png">
+<meta name="twitter:title" content="MATLAB实现轨迹分类（路径、曲线分类）">
+<meta name="twitter:description" content="code{white-space: pre;}        题目要求：对用户轨迹进行分类，相同或相近的轨迹归为一类   背景：多个人在操场上随意散步。从用户进入操场到离开操场记录下他每步踩下的坐标（x,y） 假设他共走了n步，把他经过的全部坐标按序记录下来，就是他的运动轨迹：(x1,y1) (x2,y2),…(xn,yn) 要求把全部M个人的轨迹分类，相同或相近">
+<meta name="twitter:image" content="http://yoursite.com/2017/11/04/MATLAB实现轨迹分类（路径、曲线分类）/img0.png">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -97,7 +98,7 @@
 
 
 
-  <title>  | SmileLingyong </title>
+  <title> MATLAB实现轨迹分类（路径、曲线分类） | SmileLingyong </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -223,7 +224,7 @@
             
             
               
-                
+                MATLAB实现轨迹分类（路径、曲线分类）
               
             
           </h1>
@@ -232,11 +233,26 @@
         <div class="post-meta">
           <span class="post-time">
             Posted on
-            <time itemprop="dateCreated" datetime="2019-03-25T16:57:44+08:00" content="2019-03-25">
-              2019-03-25 16:57
+            <time itemprop="dateCreated" datetime="2017-11-04T12:14:21+08:00" content="2017-11-04">
+              2017-11-04 12:14
             </time>
           </span>
 
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; In
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/MATLAB/" itemprop="url" rel="index">
+                    <span itemprop="name">MATLAB</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
           
 
           
@@ -246,7 +262,7 @@
           
 
           
-            <span id="/2019/03/25/MATLAB-实现轨迹分类（路径分类）/"class="leancloud_visitors"  data-flag-title="">
+            <span id="/2017/11/04/MATLAB实现轨迹分类（路径、曲线分类）/"class="leancloud_visitors"  data-flag-title="MATLAB实现轨迹分类（路径、曲线分类）">
             &nbsp; | &nbsp;   
             views
             </span>
@@ -273,7 +289,6 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pygments-css@1.0.0/github.min.css" type="text/css">
 </head>
 <body>
-<h3 id="matlab-实现轨迹分类路径分类">MATLAB 实现轨迹分类（路径分类）</h3>
 <blockquote>
 <ol style="list-style-type: decimal">
 <li><strong>题目要求</strong>：对用户轨迹进行分类，相同或相近的轨迹归为一类</li>
@@ -288,7 +303,7 @@
 <strong>算法</strong>：常规算法，分类/聚类算法，……</p>
 <p><strong>例如</strong>：这样的运动轨迹图</p>
 <div class="figure">
-<img src="/2019/03/25/MATLAB-实现轨迹分类（路径分类）/img0.png">
+<img src="/2017/11/04/MATLAB实现轨迹分类（路径、曲线分类）/img0.png">
 
 </div>
 <a id="more"></a>
@@ -308,7 +323,7 @@
 </ol>
 </blockquote>
 <div class="figure">
-<img src="/2019/03/25/MATLAB-实现轨迹分类（路径分类）/img1.png">
+<img src="/2017/11/04/MATLAB实现轨迹分类（路径、曲线分类）/img1.png">
 
 </div>
 <blockquote>
@@ -343,18 +358,18 @@
 <li>点击MATLAB运行按钮，提示输入需要绘制轨迹人数。</li>
 </ol>
 <div class="figure">
-<img src="/2019/03/25/MATLAB-实现轨迹分类（路径分类）/img2.png">
+<img src="/2017/11/04/MATLAB实现轨迹分类（路径、曲线分类）/img2.png">
 
 </div>
 <ol start="2" style="list-style-type: decimal">
 <li>输入你想要绘制轨迹的人数并回车，会弹出一个窗口用于画轨迹</li>
 </ol>
 <div class="figure">
-<img src="/2019/03/25/MATLAB-实现轨迹分类（路径分类）/img3.png">
+<img src="/2017/11/04/MATLAB实现轨迹分类（路径、曲线分类）/img3.png">
 
 </div>
 <div class="figure">
-<img src="/2019/03/25/MATLAB-实现轨迹分类（路径分类）/img4.png">
+<img src="/2017/11/04/MATLAB实现轨迹分类（路径、曲线分类）/img4.png">
 
 </div>
 <ol start="3" style="list-style-type: decimal">
@@ -362,11 +377,11 @@
 <li><p>程序会绘画出用户的轨迹，并在控制台打印输出分类结果。</p></li>
 </ol>
 <div class="figure">
-<img src="/2019/03/25/MATLAB-实现轨迹分类（路径分类）/img5.png">
+<img src="/2017/11/04/MATLAB实现轨迹分类（路径、曲线分类）/img5.png">
 
 </div>
 <div class="figure">
-<img src="/2019/03/25/MATLAB-实现轨迹分类（路径分类）/img6.png">
+<img src="/2017/11/04/MATLAB实现轨迹分类（路径、曲线分类）/img6.png">
 
 </div>
 <p>​ 可以看出，分类效果还是挺不错的！</p>
@@ -378,17 +393,31 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/学习笔记/" rel="tag">#学习笔记</a>
+          
+            <a href="/tags/MATLAB/" rel="tag">#MATLAB</a>
+          
+            <a href="/tags/ML/" rel="tag">#ML</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2019/03/20/SVM实现多分类/" rel="prev">
+                <i class="fa fa-chevron-left"></i> SVM实现多分类
+              </a>
+            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/24/面试准备/" rel="next">
-                面试准备 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/05/19/MATLAB学习笔记/" rel="next">
+                MATLAB学习笔记 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -467,7 +496,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-count">9</span>
               <span class="site-state-item-name">tags</span>
               </a>
           </div>
@@ -515,7 +544,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#matlab-实现轨迹分类路径分类"><span class="nav-text">MATLAB 实现轨迹分类（路径分类）</span></a></li></ol></div>
+              <p class="post-toc-empty">This post does not have a Table Of Contents</p>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
