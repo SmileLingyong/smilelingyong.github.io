@@ -89,7 +89,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/04/12/【目标检测】SPP-Net-Spatial-Pyramid-Pooling-in-Deep-Convolutional-Networks-for-Visual-Recognition/kfh68A8f6d.png">
 <meta property="og:image" content="http://yoursite.com/2018/04/12/【目标检测】SPP-Net-Spatial-Pyramid-Pooling-in-Deep-Convolutional-Networks-for-Visual-Recognition/0Ba6jGDFAL.png">
 <meta property="og:image" content="http://yoursite.com/2018/04/12/【目标检测】SPP-Net-Spatial-Pyramid-Pooling-in-Deep-Convolutional-Networks-for-Visual-Recognition/BGaa4IkiHh.png">
-<meta property="og:updated_time" content="2019-03-25T15:12:10.216Z">
+<meta property="og:updated_time" content="2019-03-27T08:32:20.175Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【转载】【目标检测】SPP-Net (Spatial Pyramid Pooling in Deep Convolutional Networks for Visual Recognition)">
 <meta name="twitter:description" content="code{white-space: pre;}          K. He, X. Zhang, S. Ren, and J. Sun. Spatial pyramid pooling in deep convolutional networks for visual recognition. In ECCV, 2014.">
@@ -338,14 +338,14 @@
 </blockquote>
 <a id="more"></a>
 <p>Kaiming的这篇paper，是在R-CNN的基础上提出了空间金字塔变换层(Spatial Pyramid Pooling)，SPPNet大幅度提高了R-CNN的训练速度和测试速度，同时算法的精度也上升了，后续的Fast R-CNN、Faster R-CNN模型也是以这个思路，下面就来细致学习SPPNet模型。</p>
-<h2 id="introduction">Introduction</h2>
+<h2 id="introduction">1. Introduction</h2>
 <p>SPPNet主要针对R-CNN模型以下两点提出改进：</p>
 <ul>
 <li>CNN网络后面接的FC层需要固定的输入大小，限制网络的输入大小</li>
 <li>候选区域会塞给CNN网络用于提取特征向量的，这会有大量的重复计算，造成的计算冗余</li>
 </ul>
 <hr>
-<h3 id="为什么cnn需要固定大小的输入">为什么CNN需要固定大小的输入?</h3>
+<h3 id="为什么cnn需要固定大小的输入">1.1 为什么CNN需要固定大小的输入?</h3>
 <p>因为一个CNN一般分为两个部分，前面的部分是卷积层，后面的部分是FC层，卷积层不要求固定大小的输入;但是FC层在设计时就固定了神经元的个数，故需要固定长度的输入。这也就是CNN需要固定输入的问题所在。SPPNet的解决方案如下:</p>
 <table>
 <colgroup>
@@ -370,7 +370,7 @@
 
 </div>
 <hr>
-<h3 id="r-cnn模型候选区域在cnn重复计算">R-CNN模型候选区域在CNN重复计算</h3>
+<h3 id="r-cnn模型候选区域在cnn重复计算">2.1 R-CNN模型候选区域在CNN重复计算</h3>
 <table>
 <colgroup>
 <col width="50%">
@@ -394,7 +394,7 @@
 
 </div>
 <hr>
-<h3 id="我们通俗的理解一下r-cnn和sppnet的实现过程"><strong>我们通俗的理解一下R-CNN和SPPNet的实现过程：</strong></h3>
+<h3 id="我们通俗的理解一下r-cnn和sppnet的实现过程"><strong>3.1 我们通俗的理解一下R-CNN和SPPNet的实现过程：</strong></h3>
 <table>
 <colgroup>
 <col width="50%">
@@ -419,7 +419,7 @@
 <li><strong>SPP层怎么可以接收任意大小的输入，输出固定的向量？</strong></li>
 </ul>
 <hr>
-<h2 id="空间金字塔变换层接收任意大小的输入输出固定的向量">空间金字塔变换层接收任意大小的输入，输出固定的向量</h2>
+<h2 id="空间金字塔变换层接收任意大小的输入输出固定的向量">2. 空间金字塔变换层接收任意大小的输入，输出固定的向量</h2>
 <p>先了解一下<code>Bag-of-words</code>以及<code>Spatial Pyramid Matching</code>，可以参考如下两篇博客：</p>
 <p><a href="http://blog.csdn.net/v_JULY_v/article/details/6555899" target="_blank" rel="noopener">第九章三续：SIFT算法的应用—目标识别之Bag-of-words模型</a><br>
 <a href="https://blog.csdn.net/jwh_bupt/article/details/9625469" target="_blank" rel="noopener">Spatial Pyramid Matching 小结</a></p>
@@ -436,14 +436,14 @@
 <p>上图spp layer分成1x1(塔底)，2x2(塔中)，4x4（塔顶）三张子图，对每个子图的每个区域作max pooling(论文使用的)，出来的特征再连接到一起，就是(16+4+1)x256的特征向量。</p>
 <p>无论输入图像大小如何，出来的特征固定是(16+4+1)x256维度。这样就实现了不管图像尺寸如何，SPP层的输出永远是(16+4+1)x256特征向量。</p>
 <hr>
-<h2 id="把候选区域从全图的feature-map映射出特征向量">把候选区域从全图的feature map映射出特征向量</h2>
+<h2 id="把候选区域从全图的feature-map映射出特征向量">3. 把候选区域从全图的feature map映射出特征向量</h2>
 <p>这部分在论文的Appendix A里面简单的介绍了下：</p>
 <div class="figure">
 <img src="/2018/04/12/【目标检测】SPP-Net-Spatial-Pyramid-Pooling-in-Deep-Convolutional-Networks-for-Visual-Recognition/i20f4ja3Ac.png">
 
 </div>
 <p>网上查了一堆资料。这里引用<a href="https://zhuanlan.zhihu.com/p/24780433" target="_blank" rel="noopener">知乎-晓雷机器学习笔记</a>。<a href="http://www.cnblogs.com/objectDetect/p/5947169.html" target="_blank" rel="noopener">machineLearning-blog</a>. 添加一些自己的理解。</p>
-<h3 id="感受野的计算">感受野的计算</h3>
+<h3 id="感受野的计算">3.1 感受野的计算</h3>
 <p>感受野我们在CNN里面讲过<a href="http://blog.csdn.net/u011974639/article/details/75363565#%E5%8D%B7%E7%A7%AF%E7%9A%84%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%8F%82%E6%95%B0" target="_blank" rel="noopener">关于卷积参数计算</a>。</p>
 <p><strong>在CNN中感受野(receptive fields)是指某一层输出结果中一个元素所对应的上一层的区域大小.</strong></p>
 <p>在卷积参数计算过程中，我们给出上一层/下一层/滤波器尺寸、步长和填充大小的关系:</p>
@@ -493,7 +493,7 @@ H_1=(H_2−1)S−2P+F
 <img src="/2018/04/12/【目标检测】SPP-Net-Spatial-Pyramid-Pooling-in-Deep-Convolutional-Networks-for-Visual-Recognition/BB6miiH0L3.png">
 
 </div>
-<h3 id="考虑一下如何计算多层之间的感受野"><strong>考虑一下如何计算多层之间的感受野？</strong></h3>
+<h3 id="考虑一下如何计算多层之间的感受野">3.2 考虑一下如何计算多层之间的感受野？</h3>
 <div class="figure">
 <img src="/2018/04/12/【目标检测】SPP-Net-Spatial-Pyramid-Pooling-in-Deep-Convolutional-Networks-for-Visual-Recognition/dA80KefF3G.png">
 
@@ -521,7 +521,7 @@ strides_i=stride_1⋅stride_2⋅⋅⋅stride_{i−1}
 <img src="/2018/04/12/【目标检测】SPP-Net-Spatial-Pyramid-Pooling-in-Deep-Convolutional-Networks-for-Visual-Recognition/1F2Kd576j2.png">
 
 </div>
-<h3 id="基于感受野的特征映射">基于感受野的特征映射</h3>
+<h3 id="基于感受野的特征映射">3.3 基于感受野的特征映射</h3>
 <p>通常，我们需要知道网络里面任意两个feature map之间的坐标映射关系（<strong>一般是中心点之间的映射</strong>），如下图，我们想得到map 3上的点p3映射回map 2所在的位置p2（橙色框的中心点）</p>
 <div class="figure">
 <img src="/2018/04/12/【目标检测】SPP-Net-Spatial-Pyramid-Pooling-in-Deep-Convolutional-Networks-for-Visual-Recognition/594J18dmD3.png">
@@ -568,12 +568,12 @@ strides_i=stride_1⋅stride_2⋅⋅⋅stride_{i−1}
 <img src="/2018/04/12/【目标检测】SPP-Net-Spatial-Pyramid-Pooling-in-Deep-Convolutional-Networks-for-Visual-Recognition/0Ba6jGDFAL.png">
 
 </div>
-<h3 id="候选区域到feature-map的映射做法详解">候选区域到feature map的映射做法详解</h3>
+<h3 id="候选区域到feature-map的映射做法详解">3.4 候选区域到feature map的映射做法详解</h3>
 <p>SPP-net 是把原始ROI的左上角和右下角 映射到 feature map上的两个对应点。 有了feature map上的两对角点就确定了 对应的 feature map 区域(下图中橙色)。</p>
 <p><img src="/2018/04/12/【目标检测】SPP-Net-Spatial-Pyramid-Pooling-in-Deep-Convolutional-Networks-for-Visual-Recognition/BGaa4IkiHh.png"><br>
 <strong>如何映射？</strong><br>
 左上角的点<span class="math inline">\((x,y)\)</span>映射到 feature map上的<span class="math inline">\((x′,y′)\)</span> : 使得<span class="math inline">\((x′,y′)\)</span> 在原始图上感受野（上图绿色框）的中心点与<span class="math inline">\((x,y)\)</span>尽可能接近。</p>
-<h3 id="对应点之间的映射公式是啥">对应点之间的映射公式是啥？</h3>
+<h3 id="对应点之间的映射公式是啥">3.5 对应点之间的映射公式是啥？</h3>
 <ul>
 <li>就是前面每层都填充 <span class="math inline">\(padding/2\)</span> 得到的简化公式 <span class="math inline">\(p_i=s_i⋅p_{i+1}\)</span></li>
 <li>需要把上面公式进行级联得到 <span class="math inline">\(p_0=S⋅p_{i+1}\)</span> 其中 <span class="math inline">\((S=\prod^i_0s_i)\)</span></li>
@@ -582,9 +582,9 @@ strides_i=stride_1⋅stride_2⋅⋅⋅stride_{i−1}
 <li>左上角取： <span class="math inline">\(x′=⌊x/S⌋+1\)</span> ; <span class="math inline">\(y′=⌊y/S⌋+1\)</span></li>
 <li>右下角取： <span class="math inline">\(x′=⌈x/S⌉−1\)</span> ; <span class="math inline">\(y′=⌈y/S⌉−1\)</span></li>
 </ul>
-<h2 id="总结">总结</h2>
+<h2 id="总结">4. 总结</h2>
 <p>到这里就算是把SPPNet的核心思想讲完了，SPPNet网络后面和R-CNN类似，训练SVM分类器和位置回归等。 <strong>SPPNet在R-CNN的基础上提出了改进，通过候选区域和feature map的映射，配合SPP层的使用，从而达到了CNN层的共享计算，减少了运算时间。后面的Fast R-CNN也是受SPPNet的启发，一次又一次的刷新物体检测的state-of-the-art。</strong></p>
-<h2 id="reference">Reference:</h2>
+<h2 id="reference">5. Reference:</h2>
 <ul>
 <li><a href="http://hellodfan.com/2017/09/30/%E7%89%A9%E4%BD%93%E6%A3%80%E6%B5%8B%E8%AE%BA%E6%96%87-SPPNet/" target="_blank" rel="noopener">http://hellodfan.com/2017/09/30/%E7%89%A9%E4%BD%93%E6%A3%80%E6%B5%8B%E8%AE%BA%E6%96%87-SPPNet/</a></li>
 <li><a href="https://zhuanlan.zhihu.com/p/24780433" class="uri" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/24780433</a></li>
@@ -620,8 +620,8 @@ strides_i=stride_1⋅stride_2⋅⋅⋅stride_{i−1}
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/03/20/SVM实现多分类/" rel="prev">
-                <i class="fa fa-chevron-left"></i> SVM实现多分类
+              <a href="/2018/04/25/Precision、Recall、P-R曲线、ROC、AUC、mAP/" rel="prev">
+                <i class="fa fa-chevron-left"></i> Precision、Recall、P-R曲线、ROC、AUC、mAP
               </a>
             
           </div>
@@ -694,7 +694,7 @@ strides_i=stride_1⋅stride_2⋅⋅⋅stride_{i−1}
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-count">14</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -756,7 +756,7 @@ strides_i=stride_1⋅stride_2⋅⋅⋅stride_{i−1}
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#introduction"><span class="nav-text">Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么cnn需要固定大小的输入"><span class="nav-text">为什么CNN需要固定大小的输入?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#r-cnn模型候选区域在cnn重复计算"><span class="nav-text">R-CNN模型候选区域在CNN重复计算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#我们通俗的理解一下r-cnn和sppnet的实现过程"><span class="nav-text">我们通俗的理解一下R-CNN和SPPNet的实现过程：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#空间金字塔变换层接收任意大小的输入输出固定的向量"><span class="nav-text">空间金字塔变换层接收任意大小的输入，输出固定的向量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#把候选区域从全图的feature-map映射出特征向量"><span class="nav-text">把候选区域从全图的feature map映射出特征向量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#感受野的计算"><span class="nav-text">感受野的计算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#考虑一下如何计算多层之间的感受野"><span class="nav-text">考虑一下如何计算多层之间的感受野？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基于感受野的特征映射"><span class="nav-text">基于感受野的特征映射</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#候选区域到feature-map的映射做法详解"><span class="nav-text">候选区域到feature map的映射做法详解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对应点之间的映射公式是啥"><span class="nav-text">对应点之间的映射公式是啥？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reference"><span class="nav-text">Reference:</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#introduction"><span class="nav-text">1. Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么cnn需要固定大小的输入"><span class="nav-text">1.1 为什么CNN需要固定大小的输入?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#r-cnn模型候选区域在cnn重复计算"><span class="nav-text">2.1 R-CNN模型候选区域在CNN重复计算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#我们通俗的理解一下r-cnn和sppnet的实现过程"><span class="nav-text">3.1 我们通俗的理解一下R-CNN和SPPNet的实现过程：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#空间金字塔变换层接收任意大小的输入输出固定的向量"><span class="nav-text">2. 空间金字塔变换层接收任意大小的输入，输出固定的向量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#把候选区域从全图的feature-map映射出特征向量"><span class="nav-text">3. 把候选区域从全图的feature map映射出特征向量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#感受野的计算"><span class="nav-text">3.1 感受野的计算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#考虑一下如何计算多层之间的感受野"><span class="nav-text">3.2 考虑一下如何计算多层之间的感受野？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基于感受野的特征映射"><span class="nav-text">3.3 基于感受野的特征映射</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#候选区域到feature-map的映射做法详解"><span class="nav-text">3.4 候选区域到feature map的映射做法详解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对应点之间的映射公式是啥"><span class="nav-text">3.5 对应点之间的映射公式是啥？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-text">4. 总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reference"><span class="nav-text">5. Reference:</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>

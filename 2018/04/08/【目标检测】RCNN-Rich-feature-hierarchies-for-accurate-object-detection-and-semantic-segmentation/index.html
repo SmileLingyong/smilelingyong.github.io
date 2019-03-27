@@ -76,14 +76,14 @@
 <meta property="og:description" content="code{white-space: pre;}          Girshick, Ross, et al. “Rich feature hierarchies for accurate object detection and semantic segmentation.” Proceedings of the IEEE conference on compu">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2018/04/08/【目标检测】RCNN-Rich-feature-hierarchies-for-accurate-object-detection-and-semantic-segmentation/rcnn_net.png">
-<meta property="og:image" content="https://img-blog.csdn.net/20160405212106908">
-<meta property="og:image" content="https://img-blog.csdn.net/20160405214721512">
-<meta property="og:image" content="https://img-blog.csdn.net/20160314191626423">
-<meta property="og:image" content="https://img-blog.csdn.net/20160314192242318">
-<meta property="og:image" content="https://img-blog.csdn.net/20160314193846683">
-<meta property="og:image" content="http://hi.csdn.net/attachment/201110/20/0_1319119291xBLz.gif">
+<meta property="og:image" content="http://yoursite.com/2018/04/08/【目标检测】RCNN-Rich-feature-hierarchies-for-accurate-object-detection-and-semantic-segmentation/合并规则">
+<meta property="og:image" content="http://yoursite.com/2018/04/08/【目标检测】RCNN-Rich-feature-hierarchies-for-accurate-object-detection-and-semantic-segmentation/vgg16_net">
+<meta property="og:image" content="http://yoursite.com/2018/04/08/【目标检测】RCNN-Rich-feature-hierarchies-for-accurate-object-detection-and-semantic-segmentation/IOU_1">
+<meta property="og:image" content="http://yoursite.com/2018/04/08/【目标检测】RCNN-Rich-feature-hierarchies-for-accurate-object-detection-and-semantic-segmentation/IOU_2">
+<meta property="og:image" content="http://yoursite.com/2018/04/08/【目标检测】RCNN-Rich-feature-hierarchies-for-accurate-object-detection-and-semantic-segmentation/non-maximum_suppression">
+<meta property="og:image" content="http://yoursite.com/2018/04/08/【目标检测】RCNN-Rich-feature-hierarchies-for-accurate-object-detection-and-semantic-segmentation/NMS.gif">
 <meta property="og:image" content="http://yoursite.com/2018/04/08/【目标检测】RCNN-Rich-feature-hierarchies-for-accurate-object-detection-and-semantic-segmentation/object_proposal_transformations_1.png">
-<meta property="og:updated_time" content="2019-03-25T14:50:18.923Z">
+<meta property="og:updated_time" content="2019-03-27T08:39:37.743Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【目标检测】RCNN (Rich feature hierarchies for accurate object detection and semantic segmentation)">
 <meta name="twitter:description" content="code{white-space: pre;}          Girshick, Ross, et al. “Rich feature hierarchies for accurate object detection and semantic segmentation.” Proceedings of the IEEE conference on compu">
@@ -376,7 +376,7 @@
 <p>第四条，保证合并后形状规则。</p>
 <blockquote>
 <p>例：左图适于合并，右图不适于合并。<br>
-<img src="https://img-blog.csdn.net/20160405212106908" alt="这里写图片描述"></p>
+<img src="/2018/04/08/【目标检测】RCNN-Rich-feature-hierarchies-for-accurate-object-detection-and-semantic-segmentation/合并规则"></p>
 </blockquote>
 <p>上述四条规则只涉及区域的颜色直方图、纹理直方图、面积和位置。合并后的区域特征可以直接由子区域特征计算而来，速度较快。</p>
 <h4 id="多样化与后处理">多样化与后处理</h4>
@@ -389,8 +389,8 @@
 <h4 id="预训练supervised-pre-trainging">预训练（Supervised pre-trainging）</h4>
 <p>先使用ImageNet数据集ILVCR 2012，Alexnet网络，训练一个分类的模型.</p>
 <p><strong>网络结构 (Alexnet)</strong><br>
-基本借鉴Hinton 2012年在Image Net上的分类网络<a href="#fn:2">2</a>，略作简化<a href="#fn:3">3</a>。<br>
-<img src="https://img-blog.csdn.net/20160405214721512" alt="这里写图片描述"><br>
+基本借鉴Hinton 2012年在Image Net上的分类网络<a href="#fn:2">2</a>，略作简化<a href="#fn:3">3</a>。</p>
+<p><img src="/2018/04/08/【目标检测】RCNN-Rich-feature-hierarchies-for-accurate-object-detection-and-semantic-segmentation/vgg16_net"><br>
 此网络提取的特征为4096维，之后送入一个4096-&gt;1000的全连接(fc)层进行分类。<br>
 学习率0.01。</p>
 <p><strong>训练数据 (ILVCR 2012)</strong><br>
@@ -439,13 +439,13 @@
 <h3 id="iou的定义"><strong>2、IOU的定义</strong></h3>
 <p>因为没有搞过物体检测不懂IOU这个概念，所以就简单介绍一下。物体检测需要定位出物体的bounding box，就像下面的图片一样，我们不仅要定位出车辆的bounding box 我们还要识别出bounding box 里面的物体就是车辆。对于bounding box的定位精度，有一个很重要的概念，因为我们算法不可能百分百跟人工标注的数据完全匹配，因此就存在一个定位精度评价公式：IOU。</p>
 <div class="figure">
-<img src="https://img-blog.csdn.net/20160314191626423" alt="img">
-<p class="caption">img</p>
+<img src="/2018/04/08/【目标检测】RCNN-Rich-feature-hierarchies-for-accurate-object-detection-and-semantic-segmentation/IOU_1">
+
 </div>
 <p>IOU定义了两个bounding box的重叠度，如下图所示：</p>
 <div class="figure">
-<img src="https://img-blog.csdn.net/20160314192242318" alt="img">
-<p class="caption">img</p>
+<img src="/2018/04/08/【目标检测】RCNN-Rich-feature-hierarchies-for-accurate-object-detection-and-semantic-segmentation/IOU_2">
+
 </div>
 <p>矩形框A、B的一个重合度IOU计算公式为：<br>
 IOU=(A∩B)/(A∪B)<br>
@@ -454,8 +454,8 @@ IOU=SI/(SA+SB-SI)</p>
 <h3 id="非极大值抑制"><strong>3、非极大值抑制</strong></h3>
 <p>因为一会儿讲RCNN算法，会从一张图片中找出n多个可能是物体的矩形框，然后为每个矩形框为做类别分类概率：</p>
 <div class="figure">
-<img src="https://img-blog.csdn.net/20160314193846683" alt="img">
-<p class="caption">img</p>
+<img src="/2018/04/08/【目标检测】RCNN-Rich-feature-hierarchies-for-accurate-object-detection-and-semantic-segmentation/non-maximum_suppression">
+
 </div>
 <p>就像上面的图片一样，定位一个车辆，最后算法就找出了一堆的方框，我们需要判别哪些矩形框是没用的。非极大值抑制：先假设有6个矩形框，根据分类器类别分类概率做排序，从小到大分别属于车辆的概率分别为A、B、C、D、E、F。<br>
 (1)从最大概率矩形框F开始，分别判断A~E与F的<strong>重叠度IOU是否大于某个设定的阈值</strong>;<br>
@@ -467,8 +467,11 @@ IOU=SI/(SA+SB-SI)</p>
 这里不讨论通用的NMS算法，而是用于在目标检测中用于提取分数最高的窗口的。例如在行人检测中，滑动窗口经提取特征，经分类器分类识别后，每个窗口都会得到一个分数。但是滑动窗口会导致很多窗口与其他窗口存在包含或者大部分交叉的情况。这时就需要用到NMS来选取那些邻域里分数最高（是行人的概率最大），并且抑制那些分数低的窗口。</p>
 <p>2).<strong>canny detection(canny NMS):</strong></p>
 <h4 id="对梯度幅值进行非极大值抑制">对梯度幅值进行非极大值抑制</h4>
-<p>​ 图像梯度幅值矩阵中的元素值越大，说明图像中该点的梯度值越大，但这不不能说明该点就是边缘（这仅仅是属于图像增强的过程）。在Canny算法中，非极大值抑制是进行边缘检测的重要步骤，<strong>通俗意义上是指寻找像素点局部最大值，将非极大值点所对应的灰度值置为0</strong>，这样可以剔除掉一大部分非边缘的点（这是本人的理解）。<br>
-<img src="http://hi.csdn.net/attachment/201110/20/0_1319119291xBLz.gif" alt="img"></p>
+<p>​ 图像梯度幅值矩阵中的元素值越大，说明图像中该点的梯度值越大，但这不不能说明该点就是边缘（这仅仅是属于图像增强的过程）。在Canny算法中，非极大值抑制是进行边缘检测的重要步骤，<strong>通俗意义上是指寻找像素点局部最大值，将非极大值点所对应的灰度值置为0</strong>，这样可以剔除掉一大部分非边缘的点（这是本人的理解）。</p>
+<div class="figure">
+<img src="/2018/04/08/【目标检测】RCNN-Rich-feature-hierarchies-for-accurate-object-detection-and-semantic-segmentation/NMS.gif">
+
+</div>
 <p>图1 非极大值抑制原理</p>
 <p>根据图1 可知，要进行非极大值抑制，就首先要确定像素点C的灰度值在其8值邻域内是否为最大。图1中蓝色的线条方向为C点的梯度方向，这样就可以确定其局部的最大值肯定分布在这条线上，也即出了C点外，梯度方向的交点dTmp1和dTmp2这两个点的值也可能会是局部最大值。因此，判断C点灰度与这两个点灰度大小即可判断C点是否为其邻域内的局部最大灰度点。如果经过判断，C点灰度值小于这两个点中的任一个，那就说明C点不是局部极大值，那么则可以排除C点为边缘。这就是非极大值抑制的工作原理。</p>
 <p>作者认为，在理解的过程中需要注意以下两点：<br>
@@ -492,8 +495,8 @@ IOU=SI/(SA+SB-SI)</p>
 <li>先把bounding box图片裁剪出来，然后用固定的背景颜色填充成正方形图片(背景颜色也是采用bounding box的像素颜色均值),如下图(C)所示;</li>
 </ul>
 <div class="figure">
-<img src="/2018/04/08/【目标检测】RCNN-Rich-feature-hierarchies-for-accurate-object-detection-and-semantic-segmentation/object_proposal_transformations_1.png" alt="img">
-<p class="caption">img</p>
+<img src="/2018/04/08/【目标检测】RCNN-Rich-feature-hierarchies-for-accurate-object-detection-and-semantic-segmentation/object_proposal_transformations_1.png">
+
 </div>
 <p>对于上面的异性、同性缩放，文献还有个padding处理，上面的示意图中第1、3行就是结合了padding=0,第2、4行结果图采用padding=16的结果。经过最后的试验，作者发现采用各向异性缩放、padding=16的精度最高，具体不再啰嗦。. Uijlings, K. van de Sande, T. Gevers, and A. Smeulders. Selective search for object recognition. IJCV, 2013.</p>
 <h2 id="reference">Reference</h2>
@@ -604,7 +607,7 @@ IOU=SI/(SA+SB-SI)</p>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-count">14</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
