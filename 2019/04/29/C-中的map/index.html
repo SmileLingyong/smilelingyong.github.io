@@ -1,0 +1,1004 @@
+<!doctype html>
+<html class="theme-next use-motion ">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/others/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+
+
+  <link href="/vendors/googleapis/css/Lato.css" rel="stylesheet" type="text/css">
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/others/font-awesome/css/font-awesome.min.css?v=4.4.0" />
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.2"/>
+
+
+    <meta name="description" content="向上，向阳！" />
+
+
+
+  <meta name="keywords" content="C,算法,数据结构," />
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=0.4.5.2" />
+
+
+<meta name="description" content="code{white-space: pre;}">
+<meta name="keywords" content="C,算法,数据结构">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++中的map">
+<meta property="og:url" content="http://yoursite.com/2019/04/29/C-中的map/index.html">
+<meta property="og:site_name" content="SmileLingyong">
+<meta property="og:description" content="code{white-space: pre;}">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2019/04/29/C-中的map/map.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/29/C-中的map/associative.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/29/C-中的map/key_type_map_type_value_type.png">
+<meta property="og:updated_time" content="2019-04-29T03:58:15.091Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="C++中的map">
+<meta name="twitter:description" content="code{white-space: pre;}">
+<meta name="twitter:image" content="http://yoursite.com/2019/04/29/C-中的map/map.png">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: '',
+    sidebar: 'always'
+  };
+</script>
+
+
+
+  <title> C++中的map | SmileLingyong </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+
+
+
+  <div id="container" class="container one-column page-post-detail">
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+      
+	  	<span style="font-size:14px;float:right;padding:39px 40px 0 0;">——穷则独善其身，达则兼济天下.</span>
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+
+        	<div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                C++中的map
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            Posted on
+            <time itemprop="dateCreated" datetime="2019-04-29T11:47:04+08:00" content="2019-04-29">
+              2019-04-29 11:47
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; In
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/算法与数据结构/" itemprop="url" rel="index">
+                    <span itemprop="name">算法与数据结构</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+            <span id="/2019/04/29/C-中的map/"class="leancloud_visitors"  data-flag-title="C++中的map">
+            &nbsp; | &nbsp;   
+            views
+            </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <meta name="generator" content="pandoc">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pygments-css@1.0.0/github.min.css" type="text/css">
+</head>
+<body>
+<p><a id="more"></a></p>
+<h2 id="简介">1. 简介</h2>
+<p><code>map</code> 是 STL 的一个关联容器，它提供一对一的hash</p>
+<ul>
+<li>第一个称为关键字(key)，每个关键字只能在map中出现一次；</li>
+<li>第二个称为该关键字的值(value)；</li>
+</ul>
+<p>map以模板(泛型)方式实现，可以存储任意类型的数据，包括使用者自定义的数据类型。Map主要用于资料一对一映射(one-to-one)的情況，<u>map內部的实现自建一颗<strong>红黑树</strong></u>，这颗树具有对数据自动排序的功能。<strong>在map内部所有的数据都是有序的</strong>，后边我们会见识到有序的好处。比如一个班级中，每个学生的学号跟他的姓名就存在著一对一映射的关系。<br>
+<img src="/2019/04/29/C-中的map/map.png"></p>
+<p>标准卡提供8个关联容器</p>
+<div class="figure">
+<img src="/2019/04/29/C-中的map/associative.png">
+
+</div>
+<h2 id="pair类型">2. pair类型</h2>
+<p>在介绍关联容器操作之前，先了解一下 <code>pair</code> 的标准库类型。pair类型是在有文件 <code>utility</code> 中定义的，pair是将2个数据组合成一组数据，当需要这样的需求时就可以使用pair，如STL中的map就是将key和value放在一起来保存。另一个应用是，当一个函数需要返回2个数据的时候，可以选择pair。 <strong>pair的实现是一个结构体</strong>，主要的两个成员变量是<code>first</code> ，<code>second</code> 因为是使用struct不是class，所以可以直接使用pair的成员变量。</p>
+<h3 id="pair类型的定义和初始化">2.1 pair类型的定义和初始化</h3>
+<p>pair类型包含了两个数据值，通常有以下的一些定义和初始化的一些方法：</p>
+<ul>
+<li><code>pair&lt;T1, T2&gt; p;</code> ： 定义了一个空的pair对象p，T1和T2的成员都进行了值初始化</li>
+<li><code>pair&lt;T1, T2&gt; p(v1, v2);</code> ： p是一个成员类型为T1和T2的pair; first和second成员分别用v1和v2进行初始化。</li>
+<li><code>pair&lt;T1, T2&gt; p = {v1, v2}</code> ：等价于p(v1, v2)</li>
+<li><code>make_pair(v1, v2)</code> ： 以v1和v2值创建的一个新的pair对象</li>
+</ul>
+<h3 id="pair对象的一些操作">2.2 pair对象的一些操作</h3>
+<p>除此之外，pair对象还有一些方法，如取出pair对象中的每一个成员的值：</p>
+<table style="width:100%;">
+<colgroup>
+<col width="18%">
+<col width="81%">
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center"><code>p.first</code></th>
+<th>返回p的名为 first 的(公有)数据成员</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><code>p.second</code></td>
+<td>返回p的名为second的(公有)数据成员</td>
+</tr>
+<tr class="even">
+<td align="center"><code>p1 relop p2</code></td>
+<td>关系运算符 (&lt;、&gt;、&lt;= 、&gt;=) 按字典序定义。例如，当 <code>p1.first &lt; p2.first</code> 或 <code>!(p2.first &lt; p1.first) &amp;&amp; p1.second &lt; p2.second</code> 成立时， <code>p1 &lt; p2 为 true</code>。关系运算利用元素的 &lt; 运算符来实现</td>
+</tr>
+<tr class="odd">
+<td align="center">p1 == p2</td>
+<td>当 first 和 second 成员分别相等时，两个pair相等</td>
+</tr>
+<tr class="even">
+<td align="center">p1 != p2</td>
+<td>若不能达到以上要求，则不相等</td>
+</tr>
+</tbody>
+</table>
+<p>例如：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;utility&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    pair&lt;<span class="keyword">int</span>, <span class="built_in">string</span>&gt; p1(<span class="number">0</span>, <span class="string">"Hello"</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d, %s\n"</span>, p1.first, p1.second.c_str());</span><br><span class="line">    pair&lt;<span class="keyword">int</span>, <span class="built_in">string</span>&gt; p2 = make_pair(<span class="number">1</span>, <span class="string">"World"</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d, %s\n"</span>, p2.first, p2.second.c_str());</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="map基本操作">3. map基本操作</h2>
+<h3 id="头文件">3.1 头文件</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></span><br></pre></td></tr></table></figure>
+<h3 id="创建map对象">3.2 创建map对象</h3>
+<p>map是键-值对的组合，即map的元素是pair，其有以下的一些定义的方法：</p>
+<ul>
+<li><code>map&lt;k, v&gt; m;</code> ： 定义了一个名为m的空的map对象</li>
+<li><code>map&lt;k, v&gt; m2(m);</code> ： 创建了m的副本m2</li>
+<li><code>map&lt;k, v&gt; m3(b, e);</code> ： 创建了map对象m3，并且存储迭代器b和e范围内的所有元素的副本</li>
+</ul>
+<p>map的 <strong><code>value_type</code> </strong> 是存储元素的键以及值的pair类型，键为const。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">map</span>&lt;<span class="keyword">int</span>, <span class="keyword">char</span>&gt; m; 						<span class="comment">// 定义了一个名为m的空的map</span></span><br><span class="line"><span class="built_in">map</span>&lt;<span class="keyword">int</span>, <span class="keyword">char</span>&gt; m2(m); 					<span class="comment">// 创建了m的副本m2</span></span><br><span class="line"><span class="built_in">map</span>&lt;<span class="keyword">int</span>, <span class="keyword">char</span>&gt; m3(m.begin(), m.end()); 	<span class="comment">// 创建了map对象m3，并且存储迭代器范围内的所有元素的副本</span></span><br></pre></td></tr></table></figure>
+<h3 id="map元素访问">3.3 map元素访问</h3>
+<blockquote>
+<p><strong>注意：下标[] 和 at() 操作，只使用与非 const 的 map 和 unordered_map</strong></p>
+</blockquote>
+<h4 id="使用下标-访问">3.3.1 使用下标 [ ] 访问</h4>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">map</span>&lt;<span class="keyword">char</span>, <span class="built_in">std</span>::<span class="built_in">string</span>&gt; mymap;</span><br><span class="line"></span><br><span class="line">    mymap[<span class="string">'a'</span>] = <span class="string">"an element"</span>;</span><br><span class="line">    mymap[<span class="string">'b'</span>] = <span class="string">"another element"</span>;</span><br><span class="line">    mymap[<span class="string">'c'</span>] = mymap[<span class="string">'b'</span>];</span><br><span class="line"></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"mymap['a'] is "</span> &lt;&lt; mymap[<span class="string">'a'</span>] &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"mymap['b'] is "</span> &lt;&lt; mymap[<span class="string">'b'</span>] &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"mymap['c'] is "</span> &lt;&lt; mymap[<span class="string">'c'</span>] &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"mymap['d'] is "</span> &lt;&lt; mymap[<span class="string">'d'</span>] &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"mymap now contains "</span> &lt;&lt; mymap.size() &lt;&lt; <span class="string">" elements.\n"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">mymap['a'] is an element</span></span><br><span class="line"><span class="comment">mymap['b'] is another element</span></span><br><span class="line"><span class="comment">mymap['c'] is another element</span></span><br><span class="line"><span class="comment">mymap['d'] is 					// 下标访问不会进行下标检查</span></span><br><span class="line"><span class="comment">mymap now contains 4 elements.</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：下标访问不会做下标检查，如上第4行打印的语句不会报错，但打印结果为空，因为<strong>下标访问会插入不存在的key，对应的value为默认值</strong><br>
+而使用 at() 访问则会做下标检查，若不存在该key会报错</p>
+</blockquote>
+<h4 id="使用-at-方法访问">3.3.2 使用 at() 方法访问</h4>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">map</span>&lt;<span class="built_in">std</span>::<span class="built_in">string</span>, <span class="keyword">int</span>&gt; mymap = &#123;</span><br><span class="line">        &#123;<span class="string">"alpha"</span>, <span class="number">0</span>&#125;, &#123;<span class="string">"beta"</span>, <span class="number">0</span>&#125;, &#123;<span class="string">"gamma"</span>, <span class="number">0</span>&#125;&#125;;</span><br><span class="line"></span><br><span class="line">    mymap.at(<span class="string">"alpha"</span>) = <span class="number">10</span>;</span><br><span class="line">    mymap.at(<span class="string">"beta"</span>) = <span class="number">20</span>;</span><br><span class="line">    mymap.at(<span class="string">"gamma"</span>) = <span class="number">30</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; x : mymap) &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; x.first &lt;&lt; <span class="string">": "</span> &lt;&lt; x.second &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">alpha: 10</span></span><br><span class="line"><span class="comment">beta: 20</span></span><br><span class="line"><span class="comment">gamma: 30</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<h3 id="map中元素的插入">3.4 map中元素的插入</h3>
+<p>在map中元素有两种插入方法：<strong>1. 使用下标 []</strong> <strong>2. 使用 insert() 函数</strong></p>
+<h4 id="使用下标插入">3.4.1 使用下标[]插入</h4>
+<p>使用下标访问<strong>不存在的元素</strong>，将会在map容器中添加一个新的元素；<br>
+使用下标访问<strong>存在的元素</strong>，将会覆盖map容器中的该元素</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">map</span>&lt;<span class="keyword">int</span>, <span class="keyword">char</span>&gt; mymap;</span><br><span class="line">    mymap[<span class="number">0</span>] = <span class="string">'a'</span>;</span><br><span class="line">    mymap[<span class="number">1</span>] = <span class="string">'b'</span>;</span><br><span class="line">    mymap[<span class="number">2</span>] = <span class="string">'c'</span>;</span><br><span class="line">    mymap[<span class="number">0</span>] = <span class="string">'x'</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">map</span>&lt;<span class="keyword">int</span>, <span class="keyword">char</span>&gt;::iterator iter = mymap.begin(); iter != mymap.end(); iter++)</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; iter-&gt;first &lt;&lt; <span class="string">" ==&gt; "</span> &lt;&lt; iter-&gt;second &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="使用insert插入元素">3.4.2 使用insert()插入元素</h4>
+<p>insert函数的插入方法主要有如下：</p>
+<ul>
+<li><strong><code>pair&lt;iterator,bool&gt; insert (const value_type&amp; val);</code></strong><br>
+</li>
+<li>插入单个键值对，并返回插入位置和成功标志，插入位置已经存在值时，插入失败</li>
+<li><strong><code>iterator insert (const_iterator position, const value_type&amp; val);</code></strong></li>
+<li>在指定位置插入，在不同位置插入效率是不一样的，因为涉及到重排</li>
+<li><strong><code>void insert (InputIterator first, InputIterator last);</code></strong></li>
+<li>插入迭代器范围内键值对</li>
+</ul>
+<p>几种插入方法如下面的例子所示：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">map</span>&lt;<span class="keyword">char</span>, <span class="keyword">int</span>&gt; mymap;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// （1）插入单个值</span></span><br><span class="line">    mymap.insert(<span class="built_in">std</span>::pair&lt;<span class="keyword">char</span>, <span class="keyword">int</span>&gt;(<span class="string">'a'</span>, <span class="number">100</span>));</span><br><span class="line">    mymap.insert(<span class="built_in">std</span>::pair&lt;<span class="keyword">char</span>, <span class="keyword">int</span>&gt;(<span class="string">'z'</span>, <span class="number">200</span>));</span><br><span class="line">    mymap.insert(<span class="built_in">std</span>::make_pair(<span class="string">'f'</span>, <span class="number">300</span>));	<span class="comment">// pair方式和make_pair功能是一样的</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 返回插入位置以及是否插入成功</span></span><br><span class="line">    <span class="built_in">std</span>::pair&lt;<span class="built_in">std</span>::<span class="built_in">map</span>&lt;<span class="keyword">char</span>, <span class="keyword">int</span>&gt;::iterator, <span class="keyword">bool</span>&gt; ret;</span><br><span class="line">    ret = mymap.insert(<span class="built_in">std</span>::pair&lt;<span class="keyword">char</span>, <span class="keyword">int</span>&gt;(<span class="string">'z'</span>, <span class="number">500</span>));</span><br><span class="line">    <span class="keyword">if</span> (ret.second == <span class="literal">false</span>) &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"element 'z' already existed"</span>;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">" with a value of "</span> &lt;&lt; ret.first-&gt;second &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// （2）指定位置插入</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">map</span>&lt;<span class="keyword">char</span>, <span class="keyword">int</span>&gt;::iterator it = mymap.begin();</span><br><span class="line">    mymap.insert(it, <span class="built_in">std</span>::pair&lt;<span class="keyword">char</span>, <span class="keyword">int</span>&gt;(<span class="string">'b'</span>, <span class="number">300</span>));  <span class="comment">//效率更高</span></span><br><span class="line">    mymap.insert(it, <span class="built_in">std</span>::pair&lt;<span class="keyword">char</span>, <span class="keyword">int</span>&gt;(<span class="string">'c'</span>, <span class="number">400</span>));  <span class="comment">//效率非最高</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// （3）范围多值插入</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">map</span>&lt;<span class="keyword">char</span>, <span class="keyword">int</span>&gt; anothermap;</span><br><span class="line">    anothermap.insert(mymap.begin(), mymap.find(<span class="string">'c'</span>));</span><br><span class="line"></span><br><span class="line">    <span class="comment">// （4）列表形式插入</span></span><br><span class="line">    anothermap.insert(&#123; &#123; <span class="string">'d'</span>, <span class="number">100</span> &#125;, &#123;<span class="string">'e'</span>, <span class="number">200</span>&#125; &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="erase-删除元素">3.4 erase() 删除元素</h3>
+<p>从map中删除元素的函数是<code>erase()</code>，该函数有如下的三种形式：</p>
+<ul>
+<li><strong><code>size_t erase( const key_type&amp; key );</code> </strong></li>
+<li>根据key来进行删除， 返回删除的元素数量，在map里结果非0即1</li>
+<li><strong><code>iterator erase( iterator pos )</code></strong></li>
+<li>删除迭代器指向位置的键值对，并返回一个指向下一元素的迭代器</li>
+<li><strong><code>iterator erase( const_iterator first, const_iterator last );</code></strong></li>
+<li>删除一定范围内的元素，并返回一个指向下一元素的迭代器</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; mymap;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">20</span>; i++) &#123;</span><br><span class="line">        mymap.insert(make_pair(i, i));</span><br><span class="line">    &#125;</span><br><span class="line">    mymap.erase(<span class="number">0</span>);          	 <span class="comment">// （1）删除key为0的元素</span></span><br><span class="line">    mymap.erase(mymap.begin());  <span class="comment">// （2）删除迭代器指向的位置元素</span></span><br><span class="line">    <span class="built_in">map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;::iterator it;</span><br><span class="line">    <span class="keyword">for</span> (it = mymap.begin(); it != mymap.end(); it++) &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; it-&gt;first &lt;&lt; <span class="string">"==&gt;"</span> &lt;&lt; it-&gt;second &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="countk-查找关键字k出现的次数">3.5 count(k) 查找关键字k出现的次数</h3>
+<ul>
+<li><strong><code>size_type count (const key_type&amp; k) const;</code></strong></li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mymap.count(<span class="number">1</span>);		<span class="comment">// 查找关键字1在容器map中出现的次数，如果不存在则为0</span></span><br></pre></td></tr></table></figure>
+<h3 id="findk-查找元素">3.6 find(k) 查找元素</h3>
+<ul>
+<li><strong><code>iterator find (const key_type&amp; k);</code></strong></li>
+<li><strong><code>const_iterator find (const key_type&amp; k) const;</code></strong></li>
+</ul>
+<p>若存在，返回指向该key的迭代器<br>
+若不存在，则返回迭代器的尾指针，即 mymap.end()，即 -1</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; mp;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">20</span>; i++) &#123;</span><br><span class="line">        mp.insert(make_pair(i, i));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (mp.count(<span class="number">0</span>)) &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"yes!"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"no!"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;::iterator it_find;</span><br><span class="line">    it_find = mp.find(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">if</span> (it_find != mp.end()) &#123;</span><br><span class="line">        it_find-&gt;second = <span class="number">20</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"no!"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;::iterator it;</span><br><span class="line">    <span class="keyword">for</span> (it = mp.begin(); it != mp.end(); it++) &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; it-&gt;first &lt;&lt; <span class="string">" ==&gt; "</span> &lt;&lt; it-&gt;second;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="lower_boundk-返回关键字k的元素的第一个位置是一个迭代器">3.7 lower_bound(k) 返回关键字&gt;=k的元素的第一个位置(是一个迭代器)</h3>
+<ul>
+<li><code>iterator lower_bound (const key_type&amp; k);</code></li>
+<li><code>const_iterator lower_bound (const key_type&amp; k) const;</code></li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c.lower_bound(k)</span><br></pre></td></tr></table></figure>
+<h3 id="upper_boundk-返回关键字k的元素的第一个位置是一个迭代器">3.8 upper_bound(k) 返回关键字&gt;k的元素的第一个位置(是一个迭代器)</h3>
+<ul>
+<li><code>iterator upper_bound (const key_type&amp; k);</code></li>
+<li><code>const_iterator upper_bound (const key_type&amp; k) const;</code></li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c.upper_bound(k)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>注意：lower_bound 和 upper_bound 不适用与无序容器</strong></p>
+</blockquote>
+<h3 id="equal_range-返回一个迭代器pair表示关键字-k的元素的范围若k不存在pair的两个成员均等于c.end">3.9 equal_range() 返回一个迭代器pair，表示关键字 == k的元素的范围。若k不存在，pair的两个成员均等于c.end()</h3>
+<ul>
+<li><code>pair&lt;const_iterator,const_iterator&gt; equal_range (const key_type&amp; k) const;</code></li>
+<li><code>pair&lt;iterator,iterator&gt; equal_range (const key_type&amp; k);</code></li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">map</span>&lt;<span class="keyword">char</span>, <span class="keyword">int</span>&gt; mymap;</span><br><span class="line">    mymap[<span class="string">'a'</span>] = <span class="number">3</span>;</span><br><span class="line">    mymap[<span class="string">'b'</span>] = <span class="number">4</span>;</span><br><span class="line">    mymap[<span class="string">'c'</span>] = <span class="number">5</span>;</span><br><span class="line">    mymap[<span class="string">'d'</span>] = <span class="number">6</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; mymap.lower_bound(<span class="string">'c'</span>)-&gt;first &lt;&lt; <span class="built_in">endl</span>;  <span class="comment">// 返回key &gt;= 'c'第一个元素的迭代器</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; mymap.upper_bound(<span class="string">'c'</span>)-&gt;first &lt;&lt; <span class="built_in">endl</span>;  <span class="comment">// 返回key &gt;  'c'第一个元素的迭代器</span></span><br><span class="line">    </span><br><span class="line">    pair&lt;<span class="built_in">map</span>&lt;<span class="keyword">char</span>, <span class="keyword">int</span>&gt;::iterator, <span class="built_in">map</span>&lt;<span class="keyword">char</span>, <span class="keyword">int</span>&gt;::iterator&gt; ret;</span><br><span class="line">    ret = mymap.equal_range(<span class="string">'c'</span>);</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"lower bound points to: "</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; ret.first-&gt;first &lt;&lt; <span class="string">" =&gt; "</span> &lt;&lt; ret.first-&gt;second &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"upper bound points to: "</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; ret.second-&gt;first &lt;&lt; <span class="string">" =&gt; "</span> &lt;&lt; ret.second-&gt;second &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">c</span></span><br><span class="line"><span class="comment">d</span></span><br><span class="line"><span class="comment">lower bound points to: c =&gt; 5</span></span><br><span class="line"><span class="comment">upper bound points to: d =&gt; 6</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<h3 id="empty-容器是否为空">3.10 empty() 容器是否为空</h3>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mymap.enpty()<span class="comment">;</span></span><br></pre></td></tr></table></figure>
+<h3 id="clear-清空容器">3.11 clear() 清空容器</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mymap.clear();</span><br></pre></td></tr></table></figure>
+<h3 id="size-容器的大小">3.12 size() 容器的大小</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mymap.size();</span><br></pre></td></tr></table></figure>
+<h3 id="max_size-容器可以容纳的最大元素个数">3.13 max_size() 容器可以容纳的最大元素个数</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mymap.max_size();</span><br></pre></td></tr></table></figure>
+<h3 id="swap-交换两个map">3.14 <strong>swap</strong>() 交换两个map</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A.swap(B);</span><br></pre></td></tr></table></figure>
+<h3 id="begin-返回指向map头部的迭代器">3.15 begin() 返回指向map头部的迭代器</h3>
+<h3 id="end-返回指向map末尾的迭代器">3.16 end() 返回指向map末尾的迭代器</h3>
+<h3 id="rbegin-返回一个指向map尾部的逆向迭代器">3.17 rbegin() 返回一个指向map尾部的逆向迭代器</h3>
+<h3 id="rend-返回一个指向map头部的逆向迭代器">3.18 rend() 返回一个指向map头部的逆向迭代器</h3>
+<h3 id="关联容器额外的类型别名">3.19 关联容器额外的类型别名</h3>
+<div class="figure">
+<img src="/2019/04/29/C-中的map/key_type_map_type_value_type.png">
+
+</div>
+<h3 id="key_comp-比较key_type值大小">3.20 key_comp() 比较key_type值大小</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 比较两个关键字在map中位置的先后</span></span><br><span class="line"><span class="function">key_compare <span class="title">key_comp</span><span class="params">()</span> <span class="keyword">const</span></span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">map</span>&lt;<span class="keyword">char</span>,<span class="keyword">int</span>&gt; mymap;</span><br><span class="line"><span class="built_in">map</span>&lt;<span class="keyword">char</span>,<span class="keyword">int</span>&gt;::key_compare mycomp = mymap.key_comp();</span><br><span class="line"></span><br><span class="line">mymap[<span class="string">'a'</span>]=<span class="number">100</span>;</span><br><span class="line">mymap[<span class="string">'b'</span>]=<span class="number">200</span>;</span><br><span class="line">mycomp(<span class="string">'a'</span>, <span class="string">'b'</span>);  <span class="comment">// a排在b前面，因此返回结果为true</span></span><br></pre></td></tr></table></figure>
+<h3 id="value_comp-比较value_type值大小">3.21 value_comp() 比较value_type值大小</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">map</span>&lt;<span class="keyword">char</span>, <span class="keyword">int</span>&gt; mymap;</span><br><span class="line"></span><br><span class="line">    mymap[<span class="string">'x'</span>] = <span class="number">1001</span>;</span><br><span class="line">    mymap[<span class="string">'y'</span>] = <span class="number">2002</span>;</span><br><span class="line">    mymap[<span class="string">'z'</span>] = <span class="number">3003</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"mymap contains:\n"</span>;</span><br><span class="line">    <span class="built_in">std</span>::pair&lt;<span class="keyword">char</span>, <span class="keyword">int</span>&gt; highest = *mymap.rbegin();  <span class="comment">// last element</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">map</span>&lt;<span class="keyword">char</span>, <span class="keyword">int</span>&gt;::iterator it = mymap.begin();</span><br><span class="line">    <span class="keyword">do</span> &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; it-&gt;first &lt;&lt; <span class="string">" =&gt; "</span> &lt;&lt; it-&gt;second &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">    &#125; <span class="keyword">while</span> (mymap.value_comp()(*it++, highest));	<span class="comment">// 注意这里只会比较value_type中的key</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="map遍历">4. map遍历</h2>
+<h3 id="使用迭代器遍历">4.1 使用迭代器遍历</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">map</span>&lt;<span class="built_in">string</span>, <span class="keyword">int</span>&gt; word_count;</span><br><span class="line">    <span class="built_in">string</span> word;</span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">cin</span> &gt;&gt; word &amp;&amp; word != <span class="string">"-1"</span>)		<span class="comment">// 统计每个单词出现的次数</span></span><br><span class="line">        word_count[word]++;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 使用迭代器遍历</span></span><br><span class="line">    <span class="built_in">map</span>&lt;<span class="built_in">string</span>, <span class="keyword">size_t</span>&gt;::iterator iter;</span><br><span class="line">    <span class="keyword">for</span> (iter = word_count.begin(); iter != word_count.end(); iter++) &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; iter-&gt;first &lt;&lt; <span class="string">" occurs "</span> &lt;&lt; iter-&gt;second</span><br><span class="line">             &lt;&lt; ((iter-&gt;second) &gt; <span class="number">1</span> ? <span class="string">" times"</span> : <span class="string">" time"</span>) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 当key是int类型的话，还可以使用下标迭代访问</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="使用下标访问">4.2 使用下标访问</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// easy to understand</span></span><br></pre></td></tr></table></figure>
+<h2 id="reference">5 Reference</h2>
+<ul>
+<li><a href="https://blog.csdn.net/google19890102/article/details/51720305" class="uri" target="_blank" rel="noopener">https://blog.csdn.net/google19890102/article/details/51720305</a></li>
+<li><a href="http://www.cplusplus.com/reference/map/map/" class="uri" target="_blank" rel="noopener">http://www.cplusplus.com/reference/map/map/</a></li>
+<li><a href="https://blog.csdn.net/sevenjoin/article/details/81943864" class="uri" target="_blank" rel="noopener">https://blog.csdn.net/sevenjoin/article/details/81943864</a></li>
+<li><a href="https://blog.csdn.net/wu_lai_314/article/details/8440550" class="uri" target="_blank" rel="noopener">https://blog.csdn.net/wu_lai_314/article/details/8440550</a></li>
+<li>自己写的 MapLearning.cpp</li>
+</ul>
+</body>
+</html>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/C/" rel="tag">#C</a>
+          
+            <a href="/tags/算法/" rel="tag">#算法</a>
+          
+            <a href="/tags/数据结构/" rel="tag">#数据结构</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/29/C-中的set/" rel="prev">
+                <i class="fa fa-chevron-left"></i> C++中的set
+              </a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/13/C-中的vector/" rel="next">
+                C++中的vector <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+          </div>
+        
+      
+
+        
+          
+  
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+      
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table Of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview" sidebar-panel >
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/avatar.jpg" alt="SmileLingyong" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">SmileLingyong</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">向上，向阳！</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-name">categories</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">18</span>
+              <span class="site-state-item-name">tags</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="smilelingyong@gmail.com" target="_blank">
+                  <i class="fa fa-e-mail"></i> E-Mail
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/SmileLingyong" target="_blank">
+                  <i class="fa fa-github"></i> Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://blog.csdn.net/forever__1234" target="_blank">
+                  <i class="fa fa-csdn"></i> CSDN
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-text">1. 简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pair类型"><span class="nav-text">2. pair类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#pair类型的定义和初始化"><span class="nav-text">2.1 pair类型的定义和初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pair对象的一些操作"><span class="nav-text">2.2 pair对象的一些操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#map基本操作"><span class="nav-text">3. map基本操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#头文件"><span class="nav-text">3.1 头文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建map对象"><span class="nav-text">3.2 创建map对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#map元素访问"><span class="nav-text">3.3 map元素访问</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用下标-访问"><span class="nav-text">3.3.1 使用下标 [ ] 访问</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用-at-方法访问"><span class="nav-text">3.3.2 使用 at() 方法访问</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#map中元素的插入"><span class="nav-text">3.4 map中元素的插入</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用下标插入"><span class="nav-text">3.4.1 使用下标[]插入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用insert插入元素"><span class="nav-text">3.4.2 使用insert()插入元素</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#erase-删除元素"><span class="nav-text">3.4 erase() 删除元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#countk-查找关键字k出现的次数"><span class="nav-text">3.5 count(k) 查找关键字k出现的次数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#findk-查找元素"><span class="nav-text">3.6 find(k) 查找元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lower_boundk-返回关键字k的元素的第一个位置是一个迭代器"><span class="nav-text">3.7 lower_bound(k) 返回关键字&gt;=k的元素的第一个位置(是一个迭代器)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#upper_boundk-返回关键字k的元素的第一个位置是一个迭代器"><span class="nav-text">3.8 upper_bound(k) 返回关键字&gt;k的元素的第一个位置(是一个迭代器)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#equal_range-返回一个迭代器pair表示关键字-k的元素的范围若k不存在pair的两个成员均等于c.end"><span class="nav-text">3.9 equal_range() 返回一个迭代器pair，表示关键字 == k的元素的范围。若k不存在，pair的两个成员均等于c.end()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#empty-容器是否为空"><span class="nav-text">3.10 empty() 容器是否为空</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#clear-清空容器"><span class="nav-text">3.11 clear() 清空容器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#size-容器的大小"><span class="nav-text">3.12 size() 容器的大小</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#max_size-容器可以容纳的最大元素个数"><span class="nav-text">3.13 max_size() 容器可以容纳的最大元素个数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#swap-交换两个map"><span class="nav-text">3.14 swap() 交换两个map</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#begin-返回指向map头部的迭代器"><span class="nav-text">3.15 begin() 返回指向map头部的迭代器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#end-返回指向map末尾的迭代器"><span class="nav-text">3.16 end() 返回指向map末尾的迭代器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rbegin-返回一个指向map尾部的逆向迭代器"><span class="nav-text">3.17 rbegin() 返回一个指向map尾部的逆向迭代器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rend-返回一个指向map头部的逆向迭代器"><span class="nav-text">3.18 rend() 返回一个指向map头部的逆向迭代器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关联容器额外的类型别名"><span class="nav-text">3.19 关联容器额外的类型别名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#key_comp-比较key_type值大小"><span class="nav-text">3.20 key_comp() 比较key_type值大小</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#value_comp-比较value_type值大小"><span class="nav-text">3.21 value_comp() 比较value_type值大小</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#map遍历"><span class="nav-text">4. map遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用迭代器遍历"><span class="nav-text">4.1 使用迭代器遍历</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用下标访问"><span class="nav-text">4.2 使用下标访问</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reference"><span class="nav-text">5 Reference</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+	  </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">SmileLingyong</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="#">
+    FreeSky
+  </a>(Reserved)
+
+  
+  <span id="busuanzi_container_site_uv">
+     &nbsp; | &nbsp;  用户量: <span id="busuanzi_value_site_uv"></span>
+  </span>
+  <span id="busuanzi_container_site_pv">
+    &nbsp; | &nbsp;  总访问量: <span id="busuanzi_value_site_pv"></span>
+  </span>
+
+  
+</div>
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/others/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+    
+
+  
+
+
+  
+  
+  <script type="text/javascript" src="/others/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
+  
+
+  <script type="text/javascript" src="/others/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/others/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.2" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.2"></script>
+  <script type="text/javascript" src="/others/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    var $aboutContent = $('#posts-about');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0 && $aboutContent.length === 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+
+      motionIntegrator.bootstrap();
+    });
+  </script>
+
+  
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+  
+     <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("9QoQXWnRR4zwSFuxRv52kUpi-gzGzoHsz", "zlgcRzgHF7AHu8TKLJUwCAjw");</script>
+<script>
+function showTime(Counter) {
+  var query = new AV.Query(Counter);
+  $(".leancloud_visitors").each(function() {
+    var url = $(this).attr("id").trim();
+    query.equalTo("url", url);
+    query.find({
+      success: function(results) {
+        if (results.length == 0) {
+          var content = $(document.getElementById(url)).text() + ': 0';
+          $(document.getElementById(url)).text(content);
+          return;
+        }
+        for (var i = 0; i < results.length; i++) {
+          var object = results[i];
+          var content = $(document.getElementById(url)).text() + ': ' + object.get('time');
+          $(document.getElementById(url)).text(content);
+        }
+      },
+      error: function(object, error) {
+        console.log("Error: " + error.code + " " + error.message);
+      }
+    });
+
+  });
+}
+
+function addCount(Counter) {
+  var Counter = AV.Object.extend("Counter");
+  url = $(".leancloud_visitors").attr('id').trim();
+  title = $(".leancloud_visitors").attr('data-flag-title').trim();
+  var query = new AV.Query(Counter);
+  query.equalTo("url", url);
+  query.find({
+    success: function(results) {
+      if (results.length > 0) {
+        var counter = results[0];
+        counter.fetchWhenSave(true);
+        counter.increment("time");
+        counter.save(null, {
+          success: function(counter) {
+            var content = $(document.getElementById(url)).text() + ': ' + counter.get('time');
+            $(document.getElementById(url)).text(content);
+          },
+          error: function(counter, error) {
+            console.log('Failed to save Visitor num, with error message: ' + error.message);
+          }
+        });
+      } else {
+        var newcounter = new Counter();
+        newcounter.set("title", title);
+        newcounter.set("url", url);
+        newcounter.set("time", 1);
+        newcounter.save(null, {
+          success: function(newcounter) {
+              console.log("newcounter.get('time')="+newcounter.get('time'));
+            var content = $(document.getElementById(url)).text() + ': ' + newcounter.get('time');
+            $(document.getElementById(url)).text(content);
+          },
+          error: function(newcounter, error) {
+            console.log('Failed to create');
+          }
+        });
+      }
+    },
+    error: function(error) {
+      console.log('Error:' + error.code + " " + error.message);
+    }
+  });
+}
+$(function() {
+  var Counter = AV.Object.extend("Counter");
+  if ($('.leancloud_visitors').length == 1) {
+    addCount(Counter);
+  } else if ($('.post-title-link').length > 1) {
+    showTime(Counter);
+  }
+}); 
+</script>
+  
+</body>
+</html>

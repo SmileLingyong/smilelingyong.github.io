@@ -58,7 +58,7 @@
 
 
 
-  <meta name="keywords" content="Machine Learning,SVM," />
+  <meta name="keywords" content="C,算法,数据结构," />
 
 
 
@@ -67,22 +67,20 @@
   <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=0.4.5.2" />
 
 
-<meta name="description" content="code{white-space: pre;}         SVM本身是一个二值分类器。SVM算法最初是为二值分类问题设计的，当处理多类问题时，就需要构造合适的多类分类器。目前，构造SVM多类分类器的方法主要有两类：直接法 和 间接法。">
-<meta name="keywords" content="Machine Learning,SVM">
+<meta name="description" content="code{white-space: pre;}">
+<meta name="keywords" content="C,算法,数据结构">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SVM实现多分类">
-<meta property="og:url" content="http://yoursite.com/2019/03/20/SVM实现多分类/index.html">
+<meta property="og:title" content="C++中的set">
+<meta property="og:url" content="http://yoursite.com/2019/04/29/C-中的set/index.html">
 <meta property="og:site_name" content="SmileLingyong">
-<meta property="og:description" content="code{white-space: pre;}         SVM本身是一个二值分类器。SVM算法最初是为二值分类问题设计的，当处理多类问题时，就需要构造合适的多类分类器。目前，构造SVM多类分类器的方法主要有两类：直接法 和 间接法。">
+<meta property="og:description" content="code{white-space: pre;}">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/2019/03/20/SVM实现多分类/ST-SVMs.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/20/SVM实现多分类/DAG_SVM.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/20/SVM实现多分类/纠错编码SVM.png">
-<meta property="og:updated_time" content="2019-03-25T13:20:43.680Z">
+<meta property="og:image" content="http://yoursite.com/2019/04/29/C-中的set/associative.png">
+<meta property="og:updated_time" content="2019-04-29T04:01:09.641Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SVM实现多分类">
-<meta name="twitter:description" content="code{white-space: pre;}         SVM本身是一个二值分类器。SVM算法最初是为二值分类问题设计的，当处理多类问题时，就需要构造合适的多类分类器。目前，构造SVM多类分类器的方法主要有两类：直接法 和 间接法。">
-<meta name="twitter:image" content="http://yoursite.com/2019/03/20/SVM实现多分类/ST-SVMs.png">
+<meta name="twitter:title" content="C++中的set">
+<meta name="twitter:description" content="code{white-space: pre;}">
+<meta name="twitter:image" content="http://yoursite.com/2019/04/29/C-中的set/associative.png">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -94,7 +92,7 @@
 
 
 
-  <title> SVM实现多分类 | SmileLingyong </title>
+  <title> C++中的set | SmileLingyong </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -220,7 +218,7 @@
             
             
               
-                SVM实现多分类
+                C++中的set
               
             
           </h1>
@@ -229,8 +227,8 @@
         <div class="post-meta">
           <span class="post-time">
             Posted on
-            <time itemprop="dateCreated" datetime="2019-03-20T21:18:09+08:00" content="2019-03-20">
-              2019-03-20 21:18
+            <time itemprop="dateCreated" datetime="2019-04-29T11:59:28+08:00" content="2019-04-29">
+              2019-04-29 11:59
             </time>
           </span>
 
@@ -239,32 +237,20 @@
               &nbsp; | &nbsp; In
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/算法与数据结构/" itemprop="url" rel="index">
+                    <span itemprop="name">算法与数据结构</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/学习笔记/" itemprop="url" rel="index">
                     <span itemprop="name">学习笔记</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/ML/" itemprop="url" rel="index">
-                    <span itemprop="name">ML</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/DL/" itemprop="url" rel="index">
-                    <span itemprop="name">DL</span>
                   </a>
                 </span>
 
@@ -282,7 +268,7 @@
           
 
           
-            <span id="/2019/03/20/SVM实现多分类/"class="leancloud_visitors"  data-flag-title="SVM实现多分类">
+            <span id="/2019/04/29/C-中的set/"class="leancloud_visitors"  data-flag-title="C++中的set">
             &nbsp; | &nbsp;   
             views
             </span>
@@ -307,63 +293,106 @@
   <title></title>
   <style type="text/css">code{white-space: pre;}</style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pygments-css@1.0.0/github.min.css" type="text/css">
-  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
 </head>
 <body>
-<p>SVM本身是一个二值分类器。SVM算法最初是为二值分类问题设计的，当处理多类问题时，就需要构造合适的多类分类器。目前，构造SVM多类分类器的方法主要有两类：<strong>直接法</strong> 和 <strong>间接法</strong>。</p>
-<a id="more"></a>
-<h2 id="直接法">1. 直接法</h2>
-<p>直接在目标函数上进行修改，将多个分类面的参数求解合并到一个最优化问题中，通过求解该最优化问题“一次性”实现多类分类。这种方法看似简单，但其计算复杂度比较高，实现起来比较困难，只适合用于小型问题中。</p>
-<h2 id="间接法">2. 间接法</h2>
-<p>主要是通过组合多个二分类器来实现多分类器的构造，常见的方法有 <code>one-against-one</code> 和 <code>one-against-all</code> 两种。</p>
-<h3 id="一对多法one-versus-rest-简称ovr-svms">2.1 一对多法（one-versus-rest 简称OVR SVMs）</h3>
-<p>训练时依次把某个类别的样本归为一类，其他剩余的样本归为另一类，这样k个类别的样本就构造出了k个SVM。分类时将未知样本分类为具有最大分类函数值的那类。<br>
-<strong>例如：</strong>假如我有四类要划分（也就是4个label），他们是A、B、C、D。</p>
-<p>于是我在抽取训练集的时候，分别抽取<br>
-　　（1）A所对应的向量作为正集，B，C，D所对应的向量作为负集；<br>
-　　（2）B所对应的向量作为正集，A，C，D所对应的向量作为负集；<br>
-　　（3）C所对应的向量作为正集，A，B，D所对应的向量作为负集；<br>
-　　（4）D所对应的向量作为正集，A，B，C所对应的向量作为负集；<br>
-使用这四个训练集分别进行训练，然后的得到四个训练结果文件。</p>
-<p>在测试的时候，把对应的测试向量分别利用这四个训练结果文件进行测试。最后每个测试都有一个结果 <span class="math inline">\(f1(x)，f2(x)，f3(x)，f4(x)\)</span> 于是最终的结果便是这四个值中最大的一个作为分类结果。</p>
-<p><strong>评价：</strong>这种方法有种缺陷，训练数据集不平衡，因而不是很实用。可以在抽取数据集的时候，从完整的负集中再抽取三分之一作为训练负集。</p>
-<h3 id="基于决策树的svmsst-svms层次支持向量机">2.2 基于决策树的SVMs（ST-SVMs）层次支持向量机</h3>
-<p>从“一对多”的方法又衍生出基于决策树的分类：首先将所有类别分为两个类别，再将子类进一步划分为两个次级子类，如此循环下去，直到所有的节点都只包含一个单独的类别为止，此节点也是二叉树树种的叶子。该分类将原有的分类问题同样分解成了一系列的两类分类问题，其中两个子类间的分类函数采用SVM。如下图表示：</p>
+<p><a id="more"></a></p>
+<h1 id="c中的set">C++中的set</h1>
+<h2 id="简介">1. 简介</h2>
+<p><code>set</code> 是 STL的另个一关联容器，其是关键字 <code>key</code> 的简单集合，无重复元素，底层使用<strong>红黑树</strong>实现，内部元素自动排好序，set元素值为 const 类型，不能改变。当想要知道一个值是否存在时，set是最有用的。</p>
+<p>标准库提供8个关联容器：</p>
 <div class="figure">
-<img src="/2019/03/20/SVM实现多分类/ST-SVMs.png">
+<img src="/2019/04/29/C-中的set/associative.png">
 
 </div>
-<h3 id="一对一法one-versus-one-简称ovo-svms">2.3 一对一法（one-versus-one 简称OVO SVMs）</h3>
-<p>其做法是在任意两类样本之间设计一个SVM，因此 <span class="math inline">\(k\)</span> 个类别的样本就需要设计 <span class="math inline">\(k(k-1)/2\)</span> 个SVM。当对一个未知样本进行分类时，最后得票最多的类别即为该未知样本的类别，这种策略称为”投票法“。<code>libsvm</code> 中的多类分类就是根据这个方法实现的。</p>
-<p><strong>例如：</strong>假设有四类A，B，C，D四类。在训练的时候我们选择(A，B)、 (A，C)、(A，D)、(B，C)、(B，D)、(C，D)所对应的向量作为训练集，然后得到六个训练结果，在测试的时候，把对应的向量分别对六个结果进行测试，然后采取投票形式，最后得到一组结果。投票是这样的：</p>
-<blockquote>
-<p>A=B=C=D=0; # 票数初始化<br>
-(A，B)-classifier 如果是A win，则A=A+1;otherwise, B=B+1;<br>
-(A，C)-classifier 如果是A win，则A=A+1;otherwise, C=C+1;<br>
-…<br>
-(C，D)-classifier 如果是A win，则C=C+1;otherwise, D=D+1;<br>
-The decision is the Max(A，B，C，D)</p>
-</blockquote>
-<p><strong>评价：</strong>这种方法虽然好，但是当类别很多的时候，model的个数是 <span class="math inline">\(n*(n-1)/2\)</span> ，代价还是相当大的。</p>
-<h3 id="有向无环图svmsdirected-acyclic-graph-svms">2.4 有向无环图SVMs(Directed Acyclic Graph SVMs)</h3>
-<p>从”一对一“衍生出来的，其在训练阶段和”1-1“投票一样，也要构造出每两类间的分类面，即有 <span class="math inline">\(k(k - 1)/2\)</span> 个分类器。但是在分类阶段，该方法将所用分类器构造成一种两向有向无环图（图1）:包括 <span class="math inline">\(k(k - 1)/2\)</span> 个节点和 <span class="math inline">\(k\)</span> 个”叶“。其中每个节点为一个分类器，并与下一层的两个节点（或者叶）相连。当对一个未知样本进行分类时，首先从顶部的根节点开始，根据根节点的分类结果用下一层中的左节点或者右节点继续分类，知道到达底层某个叶为止，该叶所表示的类别即未知样本的类别。</p>
-<div class="figure">
-<img src="/2019/03/20/SVM实现多分类/DAG_SVM.png">
-
-</div>
-<h3 id="纠错编码-svms">2.5 纠错编码 SVMs</h3>
-<p>Dietterich 提出对类别进行二进制编码将多类分类问题转化为多个两类分类问题。对于 <span class="math inline">\(k\)</span> 类分类问题,给每个类别赋予一个长度为L的二进制编码，形成一个 <span class="math inline">\(k\)</span> 行 <span class="math inline">\(L\)</span> 列的码本（表1）对于其中第 <span class="math inline">\(i (=1,..,L )\)</span> 列，将该位中码字为 ”0” 的所有类别作为一类，其他码字为 “1” 的类别归为另一类，因此每个码位对应一个两类分类问题，<span class="math inline">\(k\)</span> 类分类问题就转化为 <span class="math inline">\(L\)</span> 个两类分类问题。采用具有纠错能力的编码对类别进行编码，并将SVM作为码位分类器，这种多类SVM分类方法被称为纠错编码支持向量机(ECC -SVM)。对于一个未知样本分类时，<span class="math inline">\(L\)</span> 个SVM分类器的分类结果（0或1 ）构成一个编码 <span class="math inline">\(s\)</span> ，计算码本内 <span class="math inline">\(k\)</span> 个编码与 <span class="math inline">\(s\)</span> 汉明距离，距离最小者所代表的类别即该测试样本所属类别。</p>
-<div class="figure">
-<img src="/2019/03/20/SVM实现多分类/纠错编码SVM.png">
-
-</div>
+<h2 id="set基本操作">2. set基本操作</h2>
+<h3 id="头文件">2.1头文件</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;</span></span></span><br></pre></td></tr></table></figure>
+<h3 id="创建set对象">2.2 创建set对象</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt; first;                           <span class="comment">// 定义一个空的set，元素类型为int</span></span><br><span class="line"><span class="keyword">int</span> myints[] = &#123;<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>,<span class="number">40</span>,<span class="number">50</span>&#125;;</span><br><span class="line"><span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt; second (myints, myints+<span class="number">5</span>);       <span class="comment">// 从myints数组起始位置拷贝5个元素至set</span></span><br><span class="line"><span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt; third (second);                  <span class="comment">// 拷贝初始化，third是second的副本</span></span><br><span class="line"><span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt; fourth (second.begin(), second.end());  <span class="comment">// 拷贝迭代器范围内元素</span></span><br><span class="line"><span class="built_in">set</span>&lt;<span class="keyword">int</span>,classcomp&gt; fifth;                 <span class="comment">// class as Compare</span></span><br><span class="line"><span class="keyword">bool</span>(*fn_pt)(<span class="keyword">int</span>,<span class="keyword">int</span>) = fncomp;</span><br><span class="line"><span class="built_in">set</span>&lt;<span class="keyword">int</span>,<span class="keyword">bool</span>(*)(<span class="keyword">int</span>,<span class="keyword">int</span>)&gt; sixth (fn_pt);</span><br></pre></td></tr></table></figure>
+<h3 id="set元素的访问">2.3 set元素的访问</h3>
+<p>set只存储key，并且key唯一，所以不能使用下标[ ]访问，以及at()操作方位，其可以通过迭代器进行访问。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">set</span>&lt;<span class="built_in">string</span>&gt; exclude = &#123;<span class="string">"The"</span>, <span class="string">"But"</span>, <span class="string">"And"</span>, <span class="string">"Or"</span>, <span class="string">"An"</span>, <span class="string">"A"</span>,</span><br><span class="line">                           <span class="string">"the"</span>, <span class="string">"but"</span>, <span class="string">"and"</span>, <span class="string">"or"</span>, <span class="string">"an"</span>, <span class="string">"a"</span>&#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">set</span>&lt;<span class="built_in">string</span>&gt;::iterator iter = exclude.begin(); iter != exclude.end(); iter++) &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; *iter &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="set中常用方法">2.4 set中常用方法</h3>
+<table>
+<colgroup>
+<col width="21%">
+<col width="78%">
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">begin()</th>
+<th align="left">返回set容器的第一个元素</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">end()</td>
+<td align="left">返回set容器的最后一个元素</td>
+</tr>
+<tr class="even">
+<td align="center">rbegin()</td>
+<td align="left">返回一个指向set尾部的逆向迭代器</td>
+</tr>
+<tr class="odd">
+<td align="center">rend()</td>
+<td align="left">返回一个指向set头部的逆向迭代器</td>
+</tr>
+<tr class="even">
+<td align="center">empty()</td>
+<td align="left">判断set容器是否为空</td>
+</tr>
+<tr class="odd">
+<td align="center">size()</td>
+<td align="left">返回set()容器大小</td>
+</tr>
+<tr class="even">
+<td align="center">max_size()</td>
+<td align="left">返回set容器可能包含的元素最大个数</td>
+</tr>
+<tr class="odd">
+<td align="center">insert()</td>
+<td align="left">插入元素</td>
+</tr>
+<tr class="even">
+<td align="center">erase()</td>
+<td align="left">删除元素</td>
+</tr>
+<tr class="odd">
+<td align="center">swap()</td>
+<td align="left">交换两个set容器：first.swap(second);</td>
+</tr>
+<tr class="even">
+<td align="center">clear()</td>
+<td align="left">清空set容器</td>
+</tr>
+<tr class="odd">
+<td align="center">find(key)</td>
+<td align="left">返回待查找值key的迭代器，若不存在，返回 .end()迭代器</td>
+</tr>
+<tr class="even">
+<td align="center">count(key)</td>
+<td align="left">返回关键字key出现的次数</td>
+</tr>
+<tr class="odd">
+<td align="center">lower_bound(key)</td>
+<td align="left">返回第一个 &gt;= key的迭代器</td>
+</tr>
+<tr class="even">
+<td align="center">upper_bound(key)</td>
+<td align="left">返回第一个 &gt; key的迭代器</td>
+</tr>
+<tr class="odd">
+<td align="center">equal_range(key)</td>
+<td align="left">返回一个迭代器<code>pair&lt;iterator, iterator&gt;</code>，表示关键字 == key的元素范围。若key不存在，pair的两个迭代器均等于 .end()</td>
+</tr>
+</tbody>
+</table>
+<p>具体每个函数的使用细节可以参考 <code>map</code> 的方法，都是类似的。</p>
 <h2 id="reference">3. Reference</h2>
-<p>[1] 刘志刚,李德仁,秦前清,史文中.支持向量机在多类分类问题中的推广[J].计算机工程与应用,2004(07):10-13+65.<br>
-[2] 王正海,方臣,何凤萍,祖玉川,王磊,王娟.基于决策树多分类支持向量机岩性波谱分类[J].中山大学学报(自然科学版),2014,53(06):93-97+105.<br>
-[3] Multi-Class Support Vector Machine<br>
-[4] <a href="https://www.cnblogs.com/CheeseZH/p/5265959.html" class="uri" target="_blank" rel="noopener">https://www.cnblogs.com/CheeseZH/p/5265959.html</a><br>
-[5] <a href="https://blog.csdn.net/xfChen2/article/details/79621396" class="uri" target="_blank" rel="noopener">https://blog.csdn.net/xfChen2/article/details/79621396</a><br>
-[6] <a href="https://blog.csdn.net/rainylove1/article/details/32101113" class="uri" target="_blank" rel="noopener">https://blog.csdn.net/rainylove1/article/details/32101113</a></p>
+<ul>
+<li><a href="https://blog.csdn.net/yas12345678/article/details/52601454" class="uri" target="_blank" rel="noopener">https://blog.csdn.net/yas12345678/article/details/52601454</a></li>
+<li><a href="http://www.cplusplus.com/reference/set/set/" class="uri" target="_blank" rel="noopener">http://www.cplusplus.com/reference/set/set/</a></li>
+</ul>
 </body>
 </html>
 </span>
@@ -374,9 +403,11 @@ The decision is the Max(A，B，C，D)</p>
       
         <div class="post-tags">
           
-            <a href="/tags/Machine-Learning/" rel="tag">#Machine Learning</a>
+            <a href="/tags/C/" rel="tag">#C</a>
           
-            <a href="/tags/SVM/" rel="tag">#SVM</a>
+            <a href="/tags/算法/" rel="tag">#算法</a>
+          
+            <a href="/tags/数据结构/" rel="tag">#数据结构</a>
           
         </div>
       
@@ -385,16 +416,12 @@ The decision is the Max(A，B，C，D)</p>
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/03/22/开心的一天，终于有自己的博客啦/" rel="prev">
-                <i class="fa fa-chevron-left"></i> 开心的一天，终于有自己的博客啦!
-              </a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/25/Precision、Recall、P-R曲线、ROC、AUC、mAP/" rel="next">
-                Precision、Recall、P-R曲线、ROC、AUC、mAP <i class="fa fa-chevron-right"></i>
+              <a href="/2019/04/29/C-中的map/" rel="next">
+                C++中的map <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -521,7 +548,7 @@ The decision is the Max(A，B，C，D)</p>
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#直接法"><span class="nav-text">1. 直接法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#间接法"><span class="nav-text">2. 间接法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一对多法one-versus-rest-简称ovr-svms"><span class="nav-text">2.1 一对多法（one-versus-rest 简称OVR SVMs）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基于决策树的svmsst-svms层次支持向量机"><span class="nav-text">2.2 基于决策树的SVMs（ST-SVMs）层次支持向量机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一对一法one-versus-one-简称ovo-svms"><span class="nav-text">2.3 一对一法（one-versus-one 简称OVO SVMs）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#有向无环图svmsdirected-acyclic-graph-svms"><span class="nav-text">2.4 有向无环图SVMs(Directed Acyclic Graph SVMs)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#纠错编码-svms"><span class="nav-text">2.5 纠错编码 SVMs</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reference"><span class="nav-text">3. Reference</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#c中的set"><span class="nav-text">C++中的set</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-text">1. 简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#set基本操作"><span class="nav-text">2. set基本操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#头文件"><span class="nav-text">2.1头文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建set对象"><span class="nav-text">2.2 创建set对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#set元素的访问"><span class="nav-text">2.3 set元素的访问</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#set中常用方法"><span class="nav-text">2.4 set中常用方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reference"><span class="nav-text">3. Reference</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
