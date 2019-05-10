@@ -1,0 +1,1701 @@
+<!doctype html>
+<html class="theme-next use-motion ">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/others/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+
+
+  <link href="/vendors/googleapis/css/Lato.css" rel="stylesheet" type="text/css">
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/others/font-awesome/css/font-awesome.min.css?v=4.4.0" />
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.2"/>
+
+
+    <meta name="description" content="向上，向阳！" />
+
+
+
+  <meta name="keywords" content="Machine Learning,Deeping Learning,job," />
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=0.4.5.2" />
+
+
+<meta name="description" content="code{white-space: pre;}      ML-机器学习基础 (说明：以上内容都来自 imhuay/Algorithm_Interview_Notes-Chinese， 自己只是为了方便补充学习才放到blog中复习，如有侵权则立即删除，再次感谢博主的分享，很详细，谢谢！)">
+<meta name="keywords" content="Machine Learning,Deeping Learning,job">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面试准备">
+<meta property="og:url" content="http://yoursite.com/2019/05/06/面试准备/index.html">
+<meta property="og:site_name" content="SmileLingyong">
+<meta property="og:description" content="code{white-space: pre;}      ML-机器学习基础 (说明：以上内容都来自 imhuay/Algorithm_Interview_Notes-Chinese， 自己只是为了方便补充学习才放到blog中复习，如有侵权则立即删除，再次感谢博主的分享，很详细，谢谢！)">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2019/05/06/面试准备/TIM截图20180817204652.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/06/面试准备/TIM截图20180817192259.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/06/面试准备/公式_20180817211749.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/06/面试准备/公式_20180817210758.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/06/面试准备/公式_20180817210106.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/06/面试准备/公式_20180817211903.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/06/面试准备/TIM截图20180817214034.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/06/面试准备/公式_20180610213145.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/06/面试准备/公式_20180610213218.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/06/面试准备/公式_20180904113355.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/06/面试准备/公式_20180610213349.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/06/面试准备/公式_20180610213428.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/06/面试准备/TIM截图20180608171710.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/06/面试准备/TIM截图20180608172312.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/06/面试准备/TIM截图20180611152559.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/06/面试准备/公式_20180831165546.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/06/面试准备/公式_20180831165516.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/06/面试准备/公式_20180903223427.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/06/面试准备/公式_20180903224323.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/06/面试准备/TIM截图20180903222433.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/06/面试准备/公式_20180903220828.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/06/面试准备/公式_20180903224557.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/06/面试准备/TIM截图20180903224842.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/06/面试准备/公式_20180610213451.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/06/面试准备/TIM截图20180608212808.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/06/面试准备/公式_20180610214123.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/06/面试准备/公式_20180610214846.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/06/面试准备/TIM截图20180608195851.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/06/面试准备/公式_20180610215150.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/06/面试准备/公式_20180610215222.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/06/面试准备/TIM截图20180608204913.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/06/面试准备/公式_20180610215308.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/06/面试准备/公式_20180817220004.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/06/面试准备/公式_20180817223923.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/06/面试准备/公式_20180817230314.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/06/面试准备/公式_20180620160408.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/06/面试准备/公式_20180620160538.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/06/面试准备/confusion_matrix.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/06/面试准备/TIM截图20180620171915.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/06/面试准备/TIM截图20180620171300.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/06/面试准备/TIM截图20180620190555.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/06/面试准备/TIM截图20180620191137.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/06/面试准备/公式_20180620204006.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/06/面试准备/公式_20180620205055.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/06/面试准备/公式_20180620213601.png">
+<meta property="og:updated_time" content="2019-05-06T02:55:07.208Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="面试准备">
+<meta name="twitter:description" content="code{white-space: pre;}      ML-机器学习基础 (说明：以上内容都来自 imhuay/Algorithm_Interview_Notes-Chinese， 自己只是为了方便补充学习才放到blog中复习，如有侵权则立即删除，再次感谢博主的分享，很详细，谢谢！)">
+<meta name="twitter:image" content="http://yoursite.com/2019/05/06/面试准备/TIM截图20180817204652.png">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: '',
+    sidebar: 'always'
+  };
+</script>
+
+
+
+  <title> 面试准备 | SmileLingyong </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+
+
+
+  <div id="container" class="container one-column page-post-detail">
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+      
+	  	<span style="font-size:14px;float:right;padding:39px 40px 0 0;">——穷则独善其身，达则兼济天下.</span>
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+
+        	<div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                面试准备
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            Posted on
+            <time itemprop="dateCreated" datetime="2019-05-06T10:55:07+08:00" content="2019-05-06">
+              2019-05-06 10:55
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; In
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/ML/" itemprop="url" rel="index">
+                    <span itemprop="name">ML</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/DL/" itemprop="url" rel="index">
+                    <span itemprop="name">DL</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+            <span id="/2019/05/06/面试准备/"class="leancloud_visitors"  data-flag-title="面试准备">
+            &nbsp; | &nbsp;   
+            views
+            </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <meta name="generator" content="pandoc">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pygments-css@1.0.0/github.min.css" type="text/css">
+</head>
+<body>
+<h1 id="ml-机器学习基础">ML-机器学习基础</h1>
+<p>(说明：以上内容都来自 <a href="https://github.com/imhuay/Algorithm_Interview_Notes-Chinese" target="_blank" rel="noopener">imhuay/Algorithm_Interview_Notes-Chinese</a>， 自己只是为了方便补充学习才放到blog中复习，如有侵权则立即删除，再次感谢博主的分享，很详细，谢谢！)</p>
+<a id="more"></a>
+<h2 id="偏差与方差">1.偏差与方差</h2>
+<blockquote>
+<p>《机器学习》 2.5 偏差与方差 - 周志华</p>
+</blockquote>
+<ul>
+<li><strong>偏差</strong>与<strong>方差</strong>分别是用于衡量一个模型<strong>泛化误差</strong>的两个方面；</li>
+<li>模型的<strong>偏差</strong>，指的是模型预测的<strong>期望值</strong>与<strong>真实值</strong>之间的差；</li>
+<li>模型的<strong>方差</strong>，指的是模型预测的<strong>期望值</strong>与<strong>预测值</strong>之间的差平方和；</li>
+<li>在<strong>监督学习</strong>中，模型的<strong>泛化误差</strong>可<strong>分解</strong>为偏差、方差与噪声之和。<br>
+
+<div align="center">
+<img src="/2019/05/06/面试准备/TIM截图20180817204652.png" height>
+</div></li>
+<li><strong>偏差</strong>用于描述模型的<strong>拟合能力</strong>；<br><br>
+<strong>方差</strong>用于描述模型的<strong>稳定性</strong>。<br>
+
+<div align="center">
+<img src="/2019/05/06/面试准备/TIM截图20180817192259.png" height>
+</div></li>
+</ul>
+<h3 id="导致偏差和方差的原因">1.1 导致偏差和方差的原因</h3>
+<ul>
+<li><strong>偏差</strong>通常是由于我们对学习算法做了<strong>错误的假设</strong>，或者模型的复杂度不够；</li>
+<li>比如真实模型是一个二次函数，而我们假设模型为一次函数，这就会导致偏差的增大（欠拟合）；</li>
+<li><strong>由偏差引起的误差</strong>通常在<strong>训练误差</strong>上就能体现，或者说训练误差主要是由偏差造成的</li>
+<li><strong>方差</strong>通常是由于<strong>模型的复杂度相对于训练集过高</strong>导致的；</li>
+<li>比如真实模型是一个简单的二次函数，而我们假设模型是一个高次函数，这就会导致方差的增大（过拟合）；</li>
+<li><strong>由方差引起的误差</strong>通常体现在测试误差相对训练误差的<strong>增量</strong>上。</li>
+</ul>
+<h3 id="深度学习中的偏差与方差">1.2 深度学习中的偏差与方差</h3>
+<ul>
+<li><p>神经网络的拟合能力非常强，因此它的<strong>训练误差</strong>（偏差）通常较小；</p></li>
+<li><p>但是过强的拟合能力会导致较大的方差，使模型的测试误差（<strong>泛化误差</strong>）增大；</p></li>
+<li><p>因此深度学习的核心工作之一就是研究如何降低模型的泛化误差，这类方法统称为<strong>正则化方法</strong>。</p></li>
+</ul>
+<h3 id="偏差方差-与-boostingbagging">1.3 偏差/方差 与 Boosting/Bagging</h3>
+<blockquote>
+<p>./集成学习专题/<a href="./C-专题-集成学习#boostingbagging-与-偏差方差-的关系">Boosting/Bagging 与 偏差/方差 的关系</a></p>
+</blockquote>
+<h3 id="偏差与方差的计算公式">1.4 偏差与方差的计算公式</h3>
+<ul>
+<li>记在<strong>训练集 D</strong> 上学得的模型为<br>
+
+<div align="center">
+<a href="http://www.codecogs.com/eqnedit.php?latex=f(\boldsymbol{x};D)" target="_blank" rel="noopener"><img src="/2019/05/06/面试准备/公式_20180817211749.png" height></a>
+</div></li>
+</ul>
+模型的<strong>期望预测</strong>为<br>
+
+<div align="center">
+<a href="http://www.codecogs.com/eqnedit.php?latex=\large&space;\hat{f}(\boldsymbol{x})=\mathbb{E}_D[f(\boldsymbol{x};D)]" target="_blank" rel="noopener"><img src="/2019/05/06/面试准备/公式_20180817210758.png" height></a>
+</div>
+<ul>
+<li><strong>偏差</strong>（Bias）<br>
+
+<div align="center">
+<a href="http://www.codecogs.com/eqnedit.php?latex=\large&space;bias^2(\boldsymbol{x})=(\hat{f}(\boldsymbol{x})-y)^2" target="_blank" rel="noopener"><img src="/2019/05/06/面试准备/公式_20180817210106.png" height></a>
+</div></li>
+</ul>
+<blockquote>
+<p><strong>偏差</strong>度量了学习算法的期望预测与真实结果的偏离程度，即刻画了学习算法本身的拟合能力；</p>
+</blockquote>
+<ul>
+<li><strong>方差</strong>（Variance）<br>
+
+<div align="center">
+<a href="http://www.codecogs.com/eqnedit.php?latex=\large&space;var(\boldsymbol{x})=\mathbb{E}_D\left&space;[&space;\left&space;(&space;f(\boldsymbol{x};D)-\hat{f}(\boldsymbol{x})&space;\right&space;)^2&space;\right&space;]" target="_blank" rel="noopener"><img src="/2019/05/06/面试准备/公式_20180817211903.png" height></a>
+</div></li>
+</ul>
+<blockquote>
+<p><strong>方差</strong>度量了同样大小的<strong>训练集的变动</strong>所导致的学习性能的变化，即刻画了数据扰动所造成的影响（模型的稳定性）；<br>
+<!-- - **噪声**
+<div align="center"><a href="http://www.codecogs.com/eqnedit.php?latex=\large&space;var(\boldsymbol{x})=\mathbb{E}_D\left&space;[&space;\left&space;(&space;f(\boldsymbol{x};D)-\hat{f}(\boldsymbol{x})&space;\right&space;)^2&space;\right&space;]"><img src="面试准备/公式_20180817212111.png" height="" /></a></div> --></p>
+</blockquote>
+<ul>
+<li><p><strong>噪声</strong>则表达了在当前任务上任何学习算法所能达到的期望泛化误差的下界，即刻画了学习问题本身的难度。</p></li>
+<li><p>“<strong>偏差-方差分解</strong>”表明模型的泛化能力是由算法的能力、数据的充分性、任务本身的难度共同决定的。</p></li>
+</ul>
+<h3 id="偏差与方差的权衡过拟合与模型复杂度的权衡">1.5 偏差与方差的权衡（过拟合与模型复杂度的权衡）</h3>
+<ul>
+<li><p>给定学习任务，</p></li>
+<li>当训练不足时，模型的<strong>拟合能力不够</strong>（数据的扰动不足以使模型产生显著的变化），此时<strong>偏差</strong>主导模型的泛化误差；</li>
+<li>随着训练的进行，模型的<strong>拟合能力增强</strong>（模型能够学习数据发生的扰动），此时<strong>方差</strong>逐渐主导模型的泛化误差；</li>
+<li><p>当训练充足后，模型的<strong>拟合能力过强</strong>（数据的轻微扰动都会导致模型产生显著的变化），此时即发生<strong>过拟合</strong>（训练数据自身的、非全局的特征也被模型学习了）</p></li>
+<li>偏差和方差的关系和<strong>模型容量</strong>（模型复杂度）、<strong>欠拟合</strong>和<strong>过拟合</strong>的概念紧密相联<br>
+
+<div align="center">
+<img src="/2019/05/06/面试准备/TIM截图20180817214034.png" height>
+</div></li>
+<li>当模型的容量增大（x 轴）时， 偏差（用点表示）随之减小，而方差（虚线）随之增大</li>
+<li><p>沿着 x 轴存在<strong>最佳容量</strong>，<strong>小于最佳容量会呈现欠拟合</strong>，<strong>大于最佳容量会导致过拟合</strong>。</p></li>
+</ul>
+<blockquote>
+<p>《深度学习》 5.4.4 权衡偏差和方差以最小化均方误差</p>
+</blockquote>
+<p><strong>Reference</strong></p>
+<ul>
+<li><a href="http://scott.fortmann-roe.com/docs/BiasVariance.html" target="_blank" rel="noopener">Understanding the Bias-Variance Tradeoff</a></li>
+<li><a href="https://www.zhihu.com/question/27068705" target="_blank" rel="noopener">机器学习中的Bias(偏差)，Error(误差)，和Variance(方差)有什么区别和联系？</a> - 知乎</li>
+</ul>
+<h2 id="过拟合与欠拟合">2. 过拟合与欠拟合</h2>
+<blockquote>
+<p>《深度学习》 5.2 容量、过拟合和欠拟合</p>
+</blockquote>
+<ul>
+<li><strong>欠拟合</strong>指模型不能在<strong>训练集</strong>上获得足够低的<strong>训练误差</strong>；</li>
+<li><strong>过拟合</strong>指模型的<strong>训练误差</strong>与<strong>测试误差</strong>（泛化误差）之间差距过大；</li>
+<li>反映在<strong>评价指标</strong>上，就是模型在训练集上表现良好，但是在测试集和新数据上表现一般（<strong>泛化能力差</strong>）；</li>
+</ul>
+<h3 id="降低过拟合风险的方法">2.1 降低过拟合风险的方法</h3>
+<blockquote>
+<p>所有为了<strong>减少测试误差</strong>的策略统称为<strong>正则化方法</strong>，这些方法可能会以增大训练误差为代价。</p>
+</blockquote>
+<ul>
+<li><strong>数据增强</strong></li>
+<li>图像：平移、旋转、缩放</li>
+<li>利用<strong>生成对抗网络</strong>（GAN）生成新数据</li>
+<li>NLP：利用机器翻译生成新数据</li>
+<li><strong>降低模型复杂度</strong></li>
+<li>神经网络：减少网络层、神经元个数</li>
+<li>决策树：降低树的深度、剪枝</li>
+<li><strong>权值约束</strong>（添加正则化项）</li>
+<li>L1 正则化</li>
+<li>L2 正则化</li>
+<li><strong>集成学习</strong></li>
+<li>神经网络：Dropout</li>
+<li>决策树：随机森林、GBDT</li>
+<li><strong>提前终止</strong></li>
+</ul>
+<h3 id="降低欠拟合风险的方法">2.2 降低欠拟合风险的方法</h3>
+<ul>
+<li><strong>加入新的特征</strong></li>
+<li>交叉特征、多项式特征、…</li>
+<li>深度学习：因子分解机、Deep-Crossing、自编码器</li>
+<li><strong>增加模型复杂度</strong></li>
+<li>线性模型：添加高次项</li>
+<li>神经网络：增加网络层数、神经元个数</li>
+<li><strong>减小正则化项的系数</strong></li>
+<li>添加正则化项是为了限制模型的学习能力，减小正则化项的系数则可以放宽这个限制</li>
+<li>模型通常更倾向于更大的权重，更大的权重可以使模型更好的拟合数据</li>
+</ul>
+<hr>
+<h2 id="常见范数及其作用">3. 常见范数及其作用</h2>
+<blockquote>
+<p>《深度学习》 2.5 范数（介绍）</p>
+</blockquote>
+<p><code>L0</code>: 向量中非零元素的个数</p>
+<p><code>L1</code>: 向量中所有元素的绝对值之和</p>
+<p><a href="http://www.codecogs.com/eqnedit.php?latex=\left&amp;space;%7C&amp;space;x&amp;space;\right&amp;space;%7C_1=\sum_i%7B\left&amp;space;%7C&amp;space;x_i&amp;space;\right&amp;space;%7C%7D" target="_blank" rel="noopener"><img src="/2019/05/06/面试准备/公式_20180610213145.png"></a></p>
+<p><code>L2</code>: 向量中所有元素平方和的开放</p>
+<p><a href="http://www.codecogs.com/eqnedit.php?latex=\left&amp;space;%7C&amp;space;x&amp;space;\right&amp;space;%7C_2=\sqrt%7B\sum_i%7B\left&amp;space;%7C&amp;space;x_i&amp;space;\right&amp;space;%7C%5E2%7D%7D" target="_blank" rel="noopener"><img src="/2019/05/06/面试准备/公式_20180610213218.png"></a></p>
+<p>其中 L1 和 L2 范数分别是 Lp (p&gt;=1) 范数的特例：</p>
+<p><a href="http://www.codecogs.com/eqnedit.php?latex=\left&amp;space;%7C&amp;space;x&amp;space;\right&amp;space;%7C_p=(\sum_i%7B\left&amp;space;%7C&amp;space;x_i&amp;space;\right&amp;space;%7C%5E2%7D)%5E%7B\frac%7B1%7D%7Bp%7D%7D" target="_blank" rel="noopener"><img src="/2019/05/06/面试准备/公式_20180904113355.png"></a></p>
+<p><code>L∞</code>: 向量中最大元素的绝对值，也称最大范数</p>
+<p><a href="http://www.codecogs.com/eqnedit.php?latex=\left&amp;space;%7C&amp;space;x&amp;space;\right&amp;space;%7C_\infty=\max_i\left&amp;space;%7C&amp;space;x&amp;space;\right&amp;space;%7C" target="_blank" rel="noopener"><img src="/2019/05/06/面试准备/公式_20180610213349.png"></a></p>
+<p><code>Frobenius 范数</code>：相当于作用于矩阵的 L2 范数</p>
+<p><a href="http://www.codecogs.com/eqnedit.php?latex=\left&amp;space;%7C&amp;space;A&amp;space;\right&amp;space;%7C_F=\sqrt%7B\sum_%7Bi,j%7DA_%7Bi,j%7D%5E2%7D" target="_blank" rel="noopener"><img src="/2019/05/06/面试准备/公式_20180610213428.png"></a></p>
+<p><strong>范数的应用</strong>：正则化——权重衰减/参数范数惩罚</p>
+<p><strong>权重衰减的目的</strong></p>
+<p>限制模型的学习能力，通过限制参数 θ 的规模（主要是权重 w 的规模，偏置 b 不参与惩罚），使模型偏好于权值较小的目标函数，防止过拟合。</p>
+<blockquote>
+<p>《深度学习》 7.1 参数范数惩罚</p>
+</blockquote>
+<h2 id="l1l2-范数正则化">4. L1/L2 范数正则化</h2>
+<blockquote>
+<p>《深度学习》 7.1.1 L2 参数正则化 &amp; 7.1.2 - L1 参数正则化</p>
+<p><a href="https://blog.csdn.net/jinping_shi/article/details/52433975" target="_blank" rel="noopener">机器学习中正则化项L1和L2的直观理解</a> - CSDN博客</p>
+</blockquote>
+<h3 id="l1l2-范数的作用异同">4.1 L1/L2 范数的作用、异同</h3>
+<p><strong>相同点</strong></p>
+<ul>
+<li>通过限制参数的规模，使模型偏好于<strong>权值较小</strong>的目标函数，防止过拟合。</li>
+</ul>
+<p><strong>不同点</strong></p>
+<ul>
+<li><strong>L1 正则化</strong>可以产生更<strong>稀疏</strong>的权值矩阵，可以用于特征选择，同时一定程度上防止过拟合；<strong>L2 正则化</strong>主要用于防止模型过拟合</li>
+<li><strong>L1 正则化</strong>适用于特征之间有关联的情况；<strong>L2 正则化</strong>适用于特征之间没有关联的情况。</li>
+</ul>
+<h3 id="为什么-l1-和-l2-正则化可以防止过拟合">4.2 为什么 L1 和 L2 正则化可以防止过拟合？</h3>
+<ul>
+<li>L1 &amp; L2 正则化会使模型偏好于更小的权值。</li>
+<li>更小的权值意味着<strong>更低的模型复杂度</strong>；添加 L1 &amp; L2 正则化相当于为模型添加了某种<strong>先验</strong>，限制了参数的分布，从而降低了模型的复杂度。</li>
+<li>模型的复杂度降低，意味着模型对于噪声与异常点的抗干扰性的能力增强，从而提高模型的泛化能力。——直观来说，就是对训练数据的拟合刚刚好，不会过分拟合训练数据（比如异常点，噪声）——<strong>奥卡姆剃刀原理</strong></li>
+</ul>
+<h3 id="为什么-l1-正则化可以产生稀疏权值而-l2-不会">4.3 为什么 L1 正则化可以产生稀疏权值，而 L2 不会？</h3>
+<blockquote>
+<p>主要看这篇<a href="https://blog.csdn.net/omade/article/details/17719311" target="_blank" rel="noopener">博客</a>中的链接即可</p>
+</blockquote>
+<ul>
+<li><p>对目标函数添加范数正则化，训练时相当于在范数的约束下求目标函数 <code>J</code> 的最小值</p></li>
+<li><p>带有<strong>L1 范数</strong>（左）和<strong>L2 范数</strong>（右）约束的二维图示</p></li>
+</ul>
+<p><img src="/2019/05/06/面试准备/TIM截图20180608171710.png"><br>
+<img src="/2019/05/06/面试准备/TIM截图20180608172312.png"></p>
+<ul>
+<li>图中 <code>J</code> 与 <code>L1</code> 首次相交的点即是最优解。<code>L1</code> 在和每个坐标轴相交的地方都会有“<strong>顶点</strong>”出现，多维的情况下，这些顶点会更多；在顶点的位置就会产生稀疏的解。而 <code>J</code> 与这些“顶点”相交的机会远大于其他点，因此 <code>L1</code> 正则化会产生稀疏的解。</li>
+<li><code>L2</code> 不会产生“<strong>顶点</strong>”，因此 <code>J</code> 与 <code>L2</code> 相交的点具有稀疏性的概率就会变得非常小。</li>
+</ul>
+<h2 id="激活函数">5. 激活函数</h2>
+<h2 id="dropout">Dropout</h2>
+<blockquote>
+<p>《深度学习》 7.12 Dropout</p>
+</blockquote>
+<p>Dropout是指在训练神经网络过程中，对于神经网络单元，按照一定的概率将其暂时从网络中丢弃。注意是暂时，对于随机梯度下降来说，由于是随机丢弃，故而每一个mini-batch都在训练不同的网络。这样就相当于训练了许多不同的神经网络取了平均的作用，不同的网络可能产生不同的过拟合，一些互为“反向”的拟合相互抵消就可以达到整体上减少过拟合。另一方面，使用Dropout可以减少神经元之间复杂的共适应关系，因为dropout程序导致两个神经元不一定每次都在一个dropout网络中出现。这样权值的更新不再依赖于有固定关系的隐含节点的共同作用，阻止了某些特征仅仅在其它特定特征下才有效果的情况 。迫使网络去学习更加鲁棒的特征 ，提升网络的泛化能力，防止过拟合。</p>
+<h3 id="dropout-策略">Dropout 策略</h3>
+<ul>
+<li><p>简单来说，Dropout 通过<strong>参数共享</strong>提供了一种廉价的 Bagging 集成近似—— Dropout 策略相当于集成了包括所有从基础网络除去部分单元后形成的子网络。</p></li>
+<li><p>通常，<strong>隐藏层</strong>的采样概率为 <code>0.5</code>，<strong>输入</strong>的采样概率为 <code>0.8</code>；超参数也可以采样，但其采样概率一般为 <code>1</code></p></li>
+</ul>
+<div align="center">
+<img src="/2019/05/06/面试准备/TIM截图20180611152559.png" height>
+</div>
+<p><strong>权重比例推断规则</strong></p>
+<ul>
+<li>权重比例推断规则的目的是确保在测试时一个单元的期望总输入与在训练时该单元的期望总输入大致相同。</li>
+<li>实践时，如果使用 <code>0.5</code> 的采样概率，<strong>权重比例规则</strong>相当于在训练结束后<strong>将权重乘 <code>0.5</code></strong>，然后像平常一样使用模型；等价的，另一种方法是<strong>在训练时</strong>将单元的状态乘 2。</li>
+</ul>
+<h2 id="bagging-集成方法">Bagging 集成方法</h2>
+<ul>
+<li><strong>集成方法</strong>的主要想法是分别训练不同的模型，然后让所有模型<strong>表决</strong>最终的输出。</li>
+</ul>
+<p>集成方法奏效的原因是不同的模型<strong>通常不会</strong>在测试集上产生相同的误差。</p>
+<p>集成模型能至少与它的任一成员表现得一样好。<strong>如果成员的误差是独立的</strong>，集成将显著提升模型的性能。</p>
+<ul>
+<li><strong>Bagging</strong> 是一种集成策略——具体来说，Bagging 涉及构造 k 个<strong>不同的数据集</strong>。</li>
+</ul>
+<p>每个数据集从原始数据集中<strong>重复采样</strong>构成，和原始数据集具有<strong>相同数量</strong>的样例——这意味着，每个数据集以高概率缺少一些来自原始数据集的例子，还包含若干重复的例子</p>
+<blockquote>
+<p>更具体的，如果采样所得的训练集与原始数据集大小相同，那所得数据集中大概有原始数据集 <code>2/3</code> 的实例</p>
+</blockquote>
+<p><strong>集成方法与神经网络</strong>：</p>
+<ul>
+<li>神经网络能找到足够多的不同的解，意味着他们可以从模型平均中受益——即使所有模型都在同一数据集上训练。</li>
+</ul>
+<p>神经网络中<strong>随机初始化</strong>的差异、<strong>批训练数据</strong>的随机选择、<strong>超参数</strong>的差异等<strong>非确定性</strong>实现往往足以使得集成中的不同成员具有<strong>部分独立的误差</strong>。</p>
+<h3 id="dropout-与-bagging-的不同">Dropout 与 Bagging 的不同</h3>
+<ul>
+<li>在 Bagging 的情况下，所有模型都是独立的；而在 Dropout 的情况下，所有模型<strong>共享参数</strong>，其中每个模型继承父神经网络参数的不同子集。</li>
+<li>在 Bagging 的情况下，每一个模型都会在其相应训练集上训练到收敛。而在 Dropout 的情况下，通常大部分模型都没有显式地被训练；取而代之的是，在单个步骤中我们训练一小部分的子网络，参数共享会使得剩余的子网络也能有好的参数设定。</li>
+</ul>
+<h2 id="batch-normalization批标准化">Batch Normalization（批标准化）</h2>
+<ul>
+<li>BN 是一种<strong>正则化</strong>方法（减少泛化误差），主要作用有：</li>
+<li><strong>加速网络的训练</strong>（缓解梯度消失，支持更大的学习率）</li>
+<li><strong>防止过拟合</strong></li>
+<li>降低了<strong>参数初始化</strong>的要求。</li>
+</ul>
+<h3 id="动机">动机</h3>
+<ul>
+<li><strong>训练的本质是学习数据分布</strong>。如果训练数据与测试数据的分布不同会<strong>降低</strong>模型的<strong>泛化能力</strong>。因此，应该在开始训练前对所有输入数据做归一化处理。</li>
+<li>而在神经网络中，因为<strong>每个隐层</strong>的参数不同，会使下一层的输入发生变化，从而导致每一批数据的分布也发生改变；<strong>致使</strong>网络在每次迭代中都需要拟合不同的数据分布，增大了网络的训练难度与<strong>过拟合</strong>的风险。</li>
+</ul>
+<h3 id="基本原理">基本原理</h3>
+<ul>
+<li><p>BN 方法会针对<strong>每一批数据</strong>，在<strong>网络的每一层输入</strong>之前增加<strong>归一化</strong>处理，使输入的均值为 <code>0</code>，标准差为 <code>1</code>。<strong>目的</strong>是将数据限制在统一的分布下。</p></li>
+<li>具体来说，针对每层的第 <code>k</code> 个神经元，计算<strong>这一批数据</strong>在第 <code>k</code> 个神经元的均值与标准差，然后将归一化后的值作为该神经元的激活值。<br>
+
+<div align="center">
+<a href="http://www.codecogs.com/eqnedit.php?latex=\fn_jvn&space;\large&space;\hat{x}_k\leftarrow&space;\frac{x_k-\mathrm{E}[x_k]&space;}{\sqrt{\mathrm{Var}[x_k]}}" target="_blank" rel="noopener"><img src="/2019/05/06/面试准备/公式_20180831165546.png" height></a>
+</div></li>
+<li><p>BN 可以看作在各层之间加入了一个新的计算层，<strong>对数据分布进行额外的约束</strong>，从而增强模型的泛化能力；</p></li>
+<li><p>但同时 BN 也降低了模型的拟合能力，破坏了之前学到的<strong>特征分布</strong>；</p></li>
+<li>为了<strong>恢复数据的原始分布</strong>，BN 引入了一个<strong>重构变换</strong>来还原最优的输入数据分布<br>
+
+<div align="center">
+<a href="http://www.codecogs.com/eqnedit.php?latex=\fn_jvn&space;\large&space;y_k\leftarrow&space;\gamma&space;\hat{x}_k&plus;\beta" target="_blank" rel="noopener"><img src="/2019/05/06/面试准备/公式_20180831165516.png" height></a>
+</div></li>
+</ul>
+<p>其中 <code>γ</code> 和 <code>β</code> 为可训练参数。</p>
+<p><strong>小结</strong></p>
+<ul>
+<li>以上过程可归纳为一个 <strong><code>BN(x)</code> 函数</strong>：</li>
+</ul>
+<div align="center">
+<a href="http://www.codecogs.com/eqnedit.php?latex=\large&space;\boldsymbol{y_i}=\mathrm{BN}(\boldsymbol{x_i})" target="_blank" rel="noopener"><img src="/2019/05/06/面试准备/公式_20180903223427.png" height></a>
+</div>
+<p>其中</p>
+<div align="center">
+<a href="http://www.codecogs.com/eqnedit.php?latex=\large&space;\begin{aligned}&space;\mathrm{BN}(\boldsymbol{x_i})&=\gamma\boldsymbol{\hat{x}_i}&plus;\beta\\&space;&=\gamma\frac{\boldsymbol{x_i}-\boldsymbol{\mathrm{E}[x_i]}}{\sqrt{\boldsymbol{\mathrm{Var}[x_i]}&plus;\epsilon}}&plus;\beta&space;\end{aligned}" target="_blank" rel="noopener"><img src="/2019/05/06/面试准备/公式_20180903224323.png" height></a>
+</div>
+<ul>
+<li><strong>完整算法</strong>：<br>
+
+<div align="center">
+<img src="/2019/05/06/面试准备/TIM截图20180903222433.png" height>
+</div></li>
+</ul>
+<h3 id="bn-在训练和测试时分别是怎么做的">BN 在训练和测试时分别是怎么做的？</h3>
+<ul>
+<li><p><strong>训练时</strong>每次会传入一批数据，做法如前述；</p></li>
+<li><p>当<strong>测试</strong>或<strong>预测时</strong>，每次可能只会传入<strong>单个数据</strong>，此时模型会使用<strong>全局统计量</strong>代替批统计量；</p></li>
+<li><p>训练每个 batch 时，都会得到一组<code>（均值，方差）</code>；</p></li>
+<li><p>所谓全局统计量，就是对这些均值和方差求其对应的数学期望；</p></li>
+<li><p>具体计算公式为：</p>
+<div align="center">
+<a href="http://www.codecogs.com/eqnedit.php?latex=\fn_jvn&space;\large&space;y_k\leftarrow&space;\gamma&space;\hat{x}_k&plus;\beta" target="_blank" rel="noopener"><img src="/2019/05/06/面试准备/公式_20180903220828.png" height></a>
+</div></li>
+</ul>
+<blockquote>
+<p>其中 <code>μ_i</code> 和 <code>σ_i</code> 分别表示第 i 轮 batch 保存的均值和标准差；<code>m</code> 为 batch_size，系数 <code>m/(m-1)</code> 用于计算<strong>无偏方差估计</strong></p>
+<blockquote>
+<p>原文称该方法为<strong>移动平均</strong>（moving averages）</p>
+</blockquote>
+</blockquote>
+<ul>
+<li>此时，<code>BN(x)</code> 调整为：</li>
+</ul>
+<div align="center">
+<a href="http://www.codecogs.com/eqnedit.php?latex=\large&space;\begin{aligned}&space;\mathrm{BN}(\boldsymbol{x_i})&=\gamma\frac{\boldsymbol{x_i}-\boldsymbol{\mathrm{E}[x_i]}}{\sqrt{\boldsymbol{\mathrm{Var}[x_i]}&plus;\epsilon}}&plus;\beta\\&space;&=\frac{\gamma}{\sqrt{\boldsymbol{\mathrm{Var}[x_i]}&plus;\epsilon}}\boldsymbol{x_i}&plus;\left&space;(&space;\beta-\frac{\gamma\boldsymbol{\mathrm{E}[x_i]}}{\sqrt{\boldsymbol{\mathrm{Var}[x_i]}&plus;\epsilon}}&space;\right&space;)&space;\end{aligned}" target="_blank" rel="noopener"><img src="/2019/05/06/面试准备/公式_20180903224557.png" height></a>
+</div>
+<ul>
+<li><strong>完整算法</strong>：<br>
+
+<div align="center">
+<img src="/2019/05/06/面试准备/TIM截图20180903224842.png" height>
+</div></li>
+</ul>
+<h4 id="为什么训练时不采用移动平均">为什么训练时不采用移动平均？</h4>
+<blockquote>
+<p>群里一位同学的面试题</p>
+</blockquote>
+<ul>
+<li><p>使用 BN 的目的就是为了保证每批数据的分布稳定，使用全局统计量反而违背了这个初衷；</p></li>
+<li><p>BN 的作者认为在训练时采用移动平均可能会与梯度优化存在冲突；</p></li>
+</ul>
+<blockquote>
+<p>【<strong>原文</strong>】“It is natural to ask whether we could simply <strong>use the moving averages</strong> µ, σ to perform the normalization <strong>during training</strong>, since this would remove the dependence of the normalized activations on the other example in the minibatch. This, however, has been observed to lead to the model blowing up. As argued in [6], such use of moving averages would cause the gradient optimization and the normalization to counteract each other. For example, the gradient step may increase a bias or scale the convolutional weights, in spite of the fact that the normalization would cancel the effect of these changes on the loss. This would result in unbounded growth of model parameters without actually improving the loss. It is thus crucial to use the minibatch moments, and to backpropagate through them.”</p>
+<blockquote>
+<p>[1702.03275][Batch Renormalization](<a href="https://arxiv.org/abs/1702.03275" class="uri" target="_blank" rel="noopener">https://arxiv.org/abs/1702.03275</a>)</p>
+</blockquote>
+</blockquote>
+<h3 id="相关阅读">相关阅读</h3>
+<ul>
+<li><a href="https://www.cnblogs.com/guoyaohua/p/8724433.html" target="_blank" rel="noopener">深入理解Batch Normalization批标准化 - 郭耀华</a> - 博客园</li>
+<li><a href="http://ai.51cto.com/art/201705/540230.htm" target="_blank" rel="noopener">深度学习中批归一化的陷阱</a> - 51CTO</li>
+</ul>
+<hr>
+<h1 id="激活函数-1">激活函数</h1>
+<h2 id="激活函数的作用为什么要使用非线性激活函数">激活函数的作用——为什么要使用非线性激活函数？</h2>
+<ul>
+<li>使用<strong>激活函数</strong>的目的是为了向网络中加入<strong>非线性因素</strong>；加强网络的表示能力，解决<strong>线性模型</strong>无法解决的问题</li>
+</ul>
+<blockquote>
+<p><a href="https://www.zhihu.com/question/22334626" target="_blank" rel="noopener">神经网络激励函数的作用是什么？有没有形象的解释？</a> - 知乎</p>
+</blockquote>
+<p><strong>为什么加入非线性因素能够加强网络的表示能力？——神经网络的万能近似定理</strong></p>
+<ul>
+<li><p>神经网络的万能近似定理认为主要神经网络具有至少一个非线性隐藏层，那么只要给予网络足够数量的隐藏单元，它就可以以任意的精度来近似任何<strong>从一个有限维空间到另一个有限维空间</strong>的函数。</p></li>
+<li><p>如果不使用非线性激活函数，那么每一层输出都是上层输入的<strong>线性组合</strong>；</p></li>
+</ul>
+<p>此时无论网络有多少层，其整体也将是线性的，这会导致失去万能近似的性质</p>
+<blockquote>
+<p>《深度学习》 6.4.1 万能近似性质和深度；</p>
+</blockquote>
+<ul>
+<li>但仅<strong>部分层是纯线性</strong>是可以接受的，这有助于<strong>减少网络中的参数</strong>。</li>
+</ul>
+<blockquote>
+<p>《深度学习》 6.3.3 其他隐藏单元</p>
+</blockquote>
+<h2 id="常见的激活函数">常见的激活函数</h2>
+<blockquote>
+<p>《深度学习》 6.3 隐藏单元</p>
+</blockquote>
+<h3 id="整流线性单元-relu">整流线性单元 <code>ReLU</code></h3>
+<ul>
+<li>ReLU 通常是激活函数较好的默认选择</li>
+</ul>
+<div align="center">
+<a href="http://www.codecogs.com/eqnedit.php?latex=g(z)=\max(0,z)" target="_blank" rel="noopener"><img src="/2019/05/06/面试准备/公式_20180610213451.png" height></a>
+</div>
+<div align="center">
+<img src="/2019/05/06/面试准备/TIM截图20180608212808.png" height>
+</div>
+<h4 id="relu-的拓展"><code>ReLU</code> 的拓展</h4>
+<ul>
+<li><code>ReLU</code> 及其扩展都基于以下公式：</li>
+</ul>
+<div align="center">
+<a href="http://www.codecogs.com/eqnedit.php?latex=g(z;\alpha)&space;=\max(0,z)&plus;\alpha\min(0,z)" target="_blank" rel="noopener"><img src="/2019/05/06/面试准备/公式_20180610214123.png" height></a>
+</div>
+<p>当 <code>α=0</code> 时，即标准的线性整流单元</p>
+<ul>
+<li><strong>绝对值整流</strong>（absolute value rectification）</li>
+</ul>
+<p>固定 <code>α = -1</code>，此时整流函数即<strong>绝对值函数</strong> <code>g(z)=|z|</code></p>
+<ul>
+<li><strong>渗漏整流线性单元</strong>（Leaky ReLU, Maas et al., 2013）</li>
+</ul>
+<p>固定 <code>α</code> 为一个小值，比如 0.01</p>
+<ul>
+<li><strong>参数化整流线性单元</strong>（parametric ReLU, PReLU, He et al., 2015）</li>
+</ul>
+<p>将 <code>α</code> 作为一个可学习的参数</p>
+<ul>
+<li><strong><code>maxout</code> 单元</strong> (Goodfellow et al., 2013a)</li>
+</ul>
+<p><code>maxout</code> 单元 进一步扩展了 <code>ReLU</code>，它是一个可学习的 <code>k</code> 段函数</p>
+<p><strong>Keras 简单实现</strong></p>
+<p><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># input shape:  [n, input_dim]</span></span><br><span class="line"><span class="comment"># output shape: [n, output_dim]</span></span><br><span class="line"><span class="attr">W</span> = init(shape=[k, input_dim, output_dim])</span><br><span class="line"><span class="attr">b</span> = zeros(shape=[k, output_dim])</span><br><span class="line"><span class="attr">output</span> = K.max(K.dot(x, W) + b, axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>参数数量是普通全连接层的 k 倍</p>
+<blockquote>
+<p><a href="https://blog.csdn.net/hjimce/article/details/50414467" target="_blank" rel="noopener">深度学习（二十三）Maxout网络学习</a> - CSDN博客</p>
+</blockquote>
+</blockquote>
+<h3 id="sigmoid-与-tanh"><code>sigmoid</code> 与 <code>tanh</code></h3>
+<ul>
+<li><p><code>sigmoid(z)</code>，常记作 <code>σ(z)</code>；</p></li>
+<li><p><code>tanh(z)</code> 的图像与 <code>sigmoid(z)</code> 大致相同，区别是<strong>值域</strong>为 <code>(-1, 1)</code></p></li>
+</ul>
+<div align="center">
+<a href="http://www.codecogs.com/eqnedit.php?latex=\sigma(z)=\frac{1}{1&plus;\exp(-z)}" target="_blank" rel="noopener"><img src="/2019/05/06/面试准备/公式_20180610214846.png" height></a>
+</div>
+<div align="center">
+<img src="/2019/05/06/面试准备/TIM截图20180608195851.png" height>
+</div>
+<h3 id="其他激活函数">其他激活函数</h3>
+<blockquote>
+<p>很多未发布的非线性激活函数也能表现的很好，但没有比流行的激活函数表现的更好。比如使用 <code>cos</code> 也能在 MNIST 任务上得到小于 1% 的误差。通常新的隐藏单元类型只有在被明确证明能够提供显著改进时才会被发布。</p>
+</blockquote>
+<ul>
+<li><strong>线性激活函数</strong>：</li>
+</ul>
+<p>如果神经网络的每一层都由线性变换组成，那么网络作为一个整体也将是线性的，这会导致失去万能近似的性质。但是，仅<strong>部分层是纯线性</strong>是可以接受的，这可以帮助<strong>减少网络中的参数</strong>。</p>
+<ul>
+<li><strong>softmax</strong>：</li>
+</ul>
+<p>softmax 单元常作为网络的输出层，它很自然地表示了具有 k 个可能值的离散型随机变量的概率分布。</p>
+<ul>
+<li><strong>径向基函数（radial basis function, RBF）</strong>：</li>
+</ul>
+<div align="center">
+<a href="http://www.codecogs.com/eqnedit.php?latex=h_i=\exp(-\frac{1}{\sigma_i^2}\left&space;\|&space;W_{:,i}-x&space;\right&space;\|^2)" target="_blank" rel="noopener"><img src="/2019/05/06/面试准备/公式_20180610215150.png" height></a>
+</div>
+<p>在神经网络中很少使用 RBF 作为激活函数，因为它对大部分 x 都饱和到 0，所以很难优化。</p>
+<ul>
+<li><strong>softplus</strong>：</li>
+</ul>
+<p><code>softplus</code> 是 <code>ReLU</code> 的平滑版本。</p>
+<div align="center">
+<a href="http://www.codecogs.com/eqnedit.php?latex=g(z)=\zeta(z)=\log(1&plus;\exp(z))" target="_blank" rel="noopener"><img src="/2019/05/06/面试准备/公式_20180610215222.png" height></a>
+</div>
+<div align="center">
+<img src="/2019/05/06/面试准备/TIM截图20180608204913.png" height>
+</div>
+<p>通常不鼓励使用 softplus 函数，大家可能希望它具有优于整流线性单元的性质，但根据经验来看，它并没有。</p>
+<blockquote>
+<p>(Glorot et al., 2011a) 比较了这两者，发现 ReLU 的结果更好。</p>
+</blockquote>
+<ul>
+<li><strong>硬双曲正切函数（hard tanh）</strong>：</li>
+</ul>
+<div align="center">
+<a href="http://www.codecogs.com/eqnedit.php?latex=g(a)=\max(-1,\min(1,a))" target="_blank" rel="noopener"><img src="/2019/05/06/面试准备/公式_20180610215308.png" height></a>
+</div>
+<p>它的形状和 tanh 以及整流线性单元类似，但是不同于后者，它是有界的。</p>
+<h2 id="relu-相比-sigmoid-的优势-3"><code>ReLU</code> 相比 <code>sigmoid</code> 的优势 (3)</h2>
+<ol style="list-style-type: decimal">
+<li><strong>避免梯度消失</strong>***</li>
+</ol>
+<ul>
+<li><code>sigmoid</code>函数在输入取绝对值非常大的正值或负值时会出现<strong>饱和</strong>现象——在图像上表现为变得很平，此时函数会对输入的微小变化不敏感——从而造成梯度消失；</li>
+<li><code>ReLU</code> 的导数始终是一个常数——负半区为 0，正半区为 1——所以不会发生梯度消失现象</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li><strong>减缓过拟合</strong>**</li>
+</ol>
+<ul>
+<li><code>ReLU</code> 在负半区的输出为 0。一旦神经元的激活值进入负半区，那么该激活值就不会产生梯度/不会被训练，造成了网络的稀疏性——<strong>稀疏激活</strong></li>
+<li>这有助于减少参数的相互依赖，缓解过拟合问题的发生</li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li><strong>加速计算</strong>*</li>
+</ol>
+<ul>
+<li><code>ReLU</code> 的求导不涉及浮点运算，所以速度更快</li>
+</ul>
+<blockquote>
+<p>总结自知乎两个答案 <a href="https://www.zhihu.com/question/52020211/answer/152378276" target="_blank" rel="noopener">Ans1</a> &amp; <a href="https://www.zhihu.com/question/29021768/answer/43488153" target="_blank" rel="noopener">Ans2</a></p>
+</blockquote>
+<p><strong>为什么 ReLU 不是全程可微/可导也能用于基于梯度的学习？</strong></p>
+<ul>
+<li>虽然从数学的角度看 ReLU 在 0 点不可导，因为它的左导数和右导数不相等；</li>
+<li>但是在实现时通常会返回左导数或右导数的其中一个，而不是报告一个导数不存在的错误。从而避免了这个问题</li>
+</ul>
+<h2 id="生成模型与判别模型">生成模型与判别模型</h2>
+<blockquote>
+<p>《统计学习方法》 1.7 生成模型与判别模型</p>
+</blockquote>
+<ul>
+<li>监督学习的任务是学习一个模型，对给定的输入预测相应的输出</li>
+<li>这个模型的一般形式为一个<strong>决策函数</strong>或一个<strong>条件概率分布</strong>（后验概率）：<br>
+
+<div align="center">
+<a href="http://www.codecogs.com/eqnedit.php?latex=\fn_phv&space;\large&space;Y=f(X)\quad&space;\text{or}\quad&space;P(Y|X)" target="_blank" rel="noopener"><img src="/2019/05/06/面试准备/公式_20180817220004.png" height></a>
+</div></li>
+<li><strong>决策函数</strong>：输入 X 返回 Y；其中 Y 与一个<strong>阈值</strong>比较，然后根据比较结果判定 X 的类别</li>
+<li><strong>条件概率分布</strong>：输入 X 返回 <strong>X 属于每个类别的概率</strong>；将其中概率最大的作为 X 所属的类别</li>
+<li>监督学习模型可分为<strong>生成模型</strong>与<strong>判别模型</strong></li>
+<li><strong>判别模型</strong>直接学习决策函数或者条件概率分布
+<ul>
+<li>直观来说，<strong>判别模型</strong>学习的是类别之间的最优分隔面，反映的是不同类数据之间的差异</li>
+</ul></li>
+<li><strong>生成模型</strong>学习的是联合概率分布<code>P(X,Y)</code>，然后根据条件概率公式计算 <code>P(Y|X)</code><br>
+
+<div align="center">
+<a href="http://www.codecogs.com/eqnedit.php?latex=\fn_phv&space;\large&space;P(Y|X)=\frac{P(X,Y)}{P(X)}" target="_blank" rel="noopener"><img src="/2019/05/06/面试准备/公式_20180817223923.png" height></a>
+</div></li>
+</ul>
+<p><strong>两者之间的联系</strong></p>
+<ul>
+<li><p>由生成模型可以得到判别模型，但由判别模型得不到生成模型。</p></li>
+<li><p>当存在“<strong>隐变量</strong>”时，只能使用<strong>生成模型</strong></p></li>
+</ul>
+<blockquote>
+<p>隐变量：当我们找不到引起某一现象的原因时，就把这个在起作用，但无法确定的因素，叫“隐变量”</p>
+</blockquote>
+<p><strong>优缺点</strong></p>
+<ul>
+<li><strong>判别模型</strong></li>
+<li>优点
+<ul>
+<li>直接面对预测，往往学习的准确率更高</li>
+<li>由于直接学习 <code>P(Y|X)</code> 或 <code>f(X)</code>，可以对数据进行各种程度的抽象，定义特征并使用特征，以简化学习过程</li>
+</ul></li>
+<li>缺点
+<ul>
+<li>不能反映训练数据本身的特性</li>
+</ul></li>
+<li><strong>生成模型</strong></li>
+<li>优点
+<ul>
+<li>可以还原出联合概率分布 <code>P(X,Y)</code>，判别方法不能</li>
+<li>学习收敛速度更快——即当样本容量增加时，学到的模型可以更快地收敛到真实模型</li>
+<li>当存在“隐变量”时，只能使用生成模型</li>
+</ul></li>
+<li>缺点
+<ul>
+<li>学习和计算过程比较复杂</li>
+</ul></li>
+</ul>
+<p><strong>常见模型</strong></p>
+<ul>
+<li>判别模型</li>
+<li>K 近邻、感知机（神经网络）、决策树、逻辑斯蒂回归、<strong>最大熵模型</strong>、SVM、提升方法、<strong>条件随机场</strong></li>
+<li>生成模型</li>
+<li>朴素贝叶斯、隐马尔可夫模型、混合高斯模型、贝叶斯网络、马尔可夫随机场</li>
+</ul>
+<p><strong>Reference</strong></p>
+<ul>
+<li><a href="https://blog.csdn.net/u012101561/article/details/52814571" target="_blank" rel="noopener">机器学习—生成模型与判别模型</a> - CSDN博客</li>
+</ul>
+<h2 id="先验概率与后验概率">先验概率与后验概率</h2>
+<blockquote>
+<p><a href="https://blog.csdn.net/suranxu007/article/details/50326873" target="_blank" rel="noopener">先验概率，后验概率，似然概率，条件概率，贝叶斯，最大似然</a> - CSDN博客</p>
+</blockquote>
+<p><strong>条件概率</strong>（似然概率）</p>
+<ul>
+<li>一个事件发生后另一个事件发生的概率。</li>
+<li>一般的形式为 <code>P(X|Y)</code>，表示 y 发生的条件下 x 发生的概率。</li>
+<li>有时为了区分一般意义上的<strong>条件概率</strong>，也称<strong>似然概率</strong></li>
+</ul>
+<p><strong>先验概率</strong></p>
+<ul>
+<li>事件发生前的预判概率</li>
+<li>可以是基于历史数据的统计，可以由背景常识得出，也可以是人的主观观点给出。</li>
+<li>一般都是<strong>单独事件</strong>发生的概率，如 <code>P(A)</code>、<code>P(B)</code>。</li>
+</ul>
+<p><strong>后验概率</strong></p>
+<ul>
+<li>基于先验概率求得的<strong>反向条件概率</strong>，形式上与条件概率相同（若 <code>P(X|Y)</code> 为正向，则 <code>P(Y|X)</code> 为反向）</li>
+</ul>
+<strong>贝叶斯公式</strong><br>
+
+<div align="center">
+<a href="http://www.codecogs.com/eqnedit.php?latex=\fn_phv&space;\large&space;P(Y|X)=\frac{P(X|Y)*P(Y)}{P(X)}" target="_blank" rel="noopener"><img src="/2019/05/06/面试准备/公式_20180817230314.png" height></a>
+</div>
+<h1 id="专题-机器学习实践">专题-机器学习实践</h1>
+<h2 id="reference">Reference</h2>
+<ul>
+<li><a href="https://github.com/Kivy-CN/Stanford-CS-229-CN" target="_blank" rel="noopener">CS229 课程讲义（中文）</a> - Kivy-CN - GitHub</li>
+</ul>
+<h2 id="index">Index</h2>
+<!-- TOC -->
+<ul>
+<li><a href="#超参数选择">超参数选择</a>
+<ul>
+<li><a href="#grid-search">Grid Search</a></li>
+<li><a href="#random-search">Random Search</a></li>
+<li><a href="#相关库未使用">相关库（未使用）</a></li>
+</ul></li>
+<li><a href="#几种参数估计的区别于联系-mlemap贝叶斯-todo">几种参数估计的区别于联系: MLE、MAP、贝叶斯 TODO</a></li>
+<li><a href="#余弦相似度cos距离与欧氏距离的区别和联系">余弦相似度（Cos距离）与欧氏距离的区别和联系</a></li>
+<li><a href="#监督学习和无监督学习">监督学习和无监督学习</a></li>
+<li><a href="#熵求投掷均匀正六面体骰子的熵">熵，求投掷均匀正六面体骰子的熵</a></li>
+<li><a href="#混淆矩阵模型度量指标准确率精确率召回率f1-值等">混淆矩阵、模型度量指标：准确率、精确率、召回率、F1 值等</a></li>
+<li><a href="#如何处理数据中的缺失值">如何处理数据中的缺失值</a></li>
+<li><a href="#介绍一个完整的机器学习项目流程">介绍一个完整的机器学习项目流程</a></li>
+<li><a href="#数据清洗与特征处理">数据清洗与特征处理</a></li>
+<li><a href="#关联规则挖掘的-3-个度量指标支持度置信度提升度">关联规则挖掘的 3 个度量指标：支持度、置信度、提升度</a></li>
+</ul>
+<!-- /TOC -->
+<h2 id="超参数选择">超参数选择</h2>
+<h3 id="grid-search">Grid Search</h3>
+<ul>
+<li>网格搜索</li>
+<li>在高维空间中对一定区域进行遍历</li>
+</ul>
+<h3 id="random-search">Random Search</h3>
+<ul>
+<li>在高维空间中随机选择若干超参数</li>
+</ul>
+<h3 id="相关库未使用">相关库（未使用）</h3>
+<ul>
+<li><a href="http://hyperopt.github.io/hyperopt/" target="_blank" rel="noopener">Hyperopt</a></li>
+<li>用于超参数优化的 Python 库，其内部使用 Parzen 估计器的树来预测哪组超参数可能会得到好的结果。</li>
+<li>GitHub - <a href="https://github.com/hyperopt/hyperopt" class="uri" target="_blank" rel="noopener">https://github.com/hyperopt/hyperopt</a></li>
+<li><a href="http://maxpumperla.com/hyperas/" target="_blank" rel="noopener">Hyperas</a></li>
+<li>将 Hyperopt 与 Keras 模型集成在一起的库</li>
+<li>GitHub - <a href="https://github.com/maxpumperla/hyperas" class="uri" target="_blank" rel="noopener">https://github.com/maxpumperla/hyperas</a></li>
+</ul>
+<h2 id="几种参数估计的区别于联系-mlemap贝叶斯-todo">几种参数估计的区别于联系: MLE、MAP、贝叶斯 TODO</h2>
+<h2 id="余弦相似度cos距离与欧氏距离的区别和联系">余弦相似度（Cos距离）与欧氏距离的区别和联系</h2>
+<blockquote>
+<p>geekcircle/machine-learning-interview-qa/<a href="https://github.com/geekcircle/machine-learning-interview-qa/blob/master/questions/4.md" target="_blank" rel="noopener">4.md</a></p>
+</blockquote>
+<ul>
+<li>欧式距离和余弦相似度都能度量 2 个向量之间的相似度</li>
+<li>放到向量空间中看，欧式距离衡量两点之间的<strong>直线距离</strong>，而余弦相似度计算的是两个向量之间的<strong>夹角</strong></li>
+<li><strong>没有归一化时</strong>，欧式距离的范围是 [0, +∞]，而余弦相似度的范围是 [-1, 1]；余弦距离是计算<strong>相似程度</strong>，而欧氏距离计算的是<strong>相同程度</strong>（对应值的相同程度）</li>
+<li><strong>归一化的情况下</strong>，可以将空间想象成一个超球面（三维），欧氏距离就是球面上两点的直线距离，而向量余弦值等价于两点的球面距离，本质是一样。</li>
+</ul>
+<blockquote>
+<p><a href="https://www.zhihu.com/question/19640394" target="_blank" rel="noopener">欧氏距离和余弦相似度的区别是什么？</a> - 知乎</p>
+</blockquote>
+<h2 id="监督学习和无监督学习">监督学习和无监督学习</h2>
+<blockquote>
+<p>geekcircle/machine-learning-interview-qa/<a href="https://github.com/geekcircle/machine-learning-interview-qa/blob/master/questions/6.md" target="_blank" rel="noopener">6.md</a></p>
+</blockquote>
+<h2 id="熵求投掷均匀正六面体骰子的熵">熵，求投掷均匀正六面体骰子的熵</h2>
+<blockquote>
+<p>geekcircle/machine-learning-interview-qa/<a href="https://github.com/geekcircle/machine-learning-interview-qa/blob/master/questions/7.md" target="_blank" rel="noopener">7.md</a></p>
+</blockquote>
+<p>什么是熵？<br>
+&gt; 深度学习/理论知识/<a href="../A-深度学习/《深度学习》整理#信息熵kl-散度相对熵与交叉熵">信息熵、KL 散度（相对熵）与交叉熵**</a></p>
+<p><strong>求投掷均匀正六面体骰子的熵</strong></p>
+<ul>
+<li><p>问题描述：向空中投掷硬币，落地后有两种可能的状态，一个是正面朝上，另一个是反面朝上，每个状态出现的概率为1/2。如投掷均匀的正六面体的骰子，则可能会出现的状态有6个，每一个状态出现的概率均为1/6。试通过计算来比较状态的不确定性与硬币状态的不确定性的大小。</p></li>
+<li><p>答：</p></li>
+</ul>
+硬币：<br>
+
+<div align="center">
+<a href="http://www.codecogs.com/eqnedit.php?latex=-\sum^{n}_{i=1}P(X_i)\log&space;P(X_i)&space;=&space;-2*\frac{1}{2}*\log&space;P(\frac{1}{2})\approx&space;1&space;\text{bit}" target="_blank" rel="noopener"><img src="/2019/05/06/面试准备/公式_20180620160408.png" height></a>
+</div>
+<p>​</p>
+六面体：<br>
+
+<div align="center">
+<a href="http://www.codecogs.com/eqnedit.php?latex=-\sum^{n}_{i=1}P(X_i)\log&space;P(X_i)&space;=&space;-6*\frac{1}{6}*\log&space;P(\frac{1}{6})\approx&space;2.6&space;\text{bit}" target="_blank" rel="noopener"><img src="/2019/05/06/面试准备/公式_20180620160538.png" height></a>
+</div>
+<p>​</p>
+<h2 id="混淆矩阵模型度量指标准确率精确率召回率f1-值等">混淆矩阵、模型度量指标：准确率、精确率、召回率、F1 值等</h2>
+<p><strong>混淆矩阵</strong></p>
+<ul>
+<li>True Positive(TP)：将正类预测为正类的数量.</li>
+<li>True Negative(TN)：将负类预测为负类的数量.</li>
+<li>False Positive(FP)：将负类预测为正类数 → 误报 (Type I error).</li>
+<li>False Negative(FN)：将正类预测为负类数 → 漏报 (Type II error).</li>
+</ul>
+<div align="center">
+<img src="/2019/05/06/面试准备/confusion_matrix.png" height>
+</div>
+<strong>准确率</strong>（accuracy）<br>
+
+<div align="center">
+<img src="/2019/05/06/面试准备/TIM截图20180620171915.png" height>
+</div>
+<strong>精确率</strong>（precision）<br>
+
+<div align="center">
+<img src="/2019/05/06/面试准备/TIM截图20180620171300.png" height>
+</div>
+<blockquote>
+<p>准确率与精确率的区别：<br>
+&gt; 在正负样本不平衡的情况下，<strong>准确率</strong>这个评价指标有很大的缺陷。比如在互联网广告里面，点击的数量是很少的，一般只有千分之几，如果用acc，即使全部预测成负类（不点击）acc 也有 99% 以上，没有意义。</p>
+</blockquote>
+<strong>召回率</strong>（recall, sensitivity, true positive rate）<br>
+
+<div align="center">
+<img src="/2019/05/06/面试准备/TIM截图20180620190555.png" height>
+</div>
+<strong>F1值</strong>——精确率和召回率的调和均值<br>
+
+<div align="center">
+<img src="/2019/05/06/面试准备/TIM截图20180620191137.png" height>
+</div>
+<blockquote>
+<p>只有当精确率和召回率都很高时，F1值才会高</p>
+</blockquote>
+<h2 id="如何处理数据中的缺失值">如何处理数据中的缺失值</h2>
+<blockquote>
+<p>geekcircle/machine-learning-interview-qa/<a href="https://github.com/geekcircle/machine-learning-interview-qa/blob/master/questions/1.md" target="_blank" rel="noopener">1.md</a></p>
+</blockquote>
+<p>可以分为以下 2 种情况：</p>
+<ol style="list-style-type: decimal">
+<li><strong>缺失值较多</strong>
+<ul>
+<li>直接舍弃该列特征，否则可能会带来较大的噪声，从而对结果造成不良影响。</li>
+</ul></li>
+<li><strong>缺失值较少</strong>
+<ul>
+<li>当缺失值较少（&lt;10%）时，可以考虑对缺失值进行填充，以下是几种常用的填充策略：</li>
+</ul>
+<ol style="list-style-type: decimal">
+<li><p>用一个<strong>异常值</strong>填充（比如 0），将缺失值作为一个特征处理</p>
+<p><code>data.fillna(0)</code></p></li>
+<li><p>用<strong>均值</strong>|<strong>条件均值</strong>填充<br>
+&gt; 如果数据是不平衡的，那么应该使用条件均值填充<br>
+&gt;<br>
+&gt; 所谓<strong>条件均值</strong>，指的是与缺失值所属标签相同的所有数据的均值</p>
+<p><code>data.fillna(data.mean())</code></p></li>
+<li><p>用相邻数据填充</p>
+<figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 用前一个数据填充</span><br><span class="line">data.fillna(<span class="function"><span class="keyword">method</span>='<span class="title">pad</span>')</span></span><br><span class="line"><span class="function"># 用后一个数据填充</span></span><br><span class="line"><span class="function"><span class="title">data</span>.<span class="title">fillna</span><span class="params">(<span class="keyword">method</span>=<span class="string">'bfill'</span>)</span></span></span><br></pre></td></tr></table></figure></li>
+<li><p>插值</p>
+<p><code>data.interpolate()</code></p></li>
+<li><p>拟合<br>
+&gt; 简单来说，就是将缺失值也作为一个预测问题来处理：将数据分为正常数据和缺失数据，对有值的数据采用随机森林等方法拟合，然后对有缺失值的数据进行预测，用预测的值来填充。</p></li>
+</ol></li>
+</ol>
+<h2 id="介绍一个完整的机器学习项目流程">介绍一个完整的机器学习项目流程</h2>
+<blockquote>
+<p>geekcircle/machine-learning-interview-qa/<a href="https://github.com/geekcircle/machine-learning-interview-qa/blob/master/questions/2.md" target="_blank" rel="noopener">2.md</a></p>
+</blockquote>
+<ol style="list-style-type: decimal">
+<li><p><strong>数学抽象</strong></p>
+<p>明确问题是进行机器学习的第一步。机器学习的训练过程通常都是一件非常耗时的事情，胡乱尝试时间成本是非常高的。</p>
+<p>这里的抽象成数学问题，指的是根据数据明确任务目标，是分类、还是回归，或者是聚类。</p></li>
+<li><p><strong>数据获取</strong></p>
+<p>数据决定了机器学习结果的上限，而算法只是尽可能逼近这个上限。</p>
+<p>数据要有代表性，否则必然会过拟合。</p>
+<p>对于分类问题，数据偏斜不能过于严重（平衡），不同类别的数据数量不要有数个数量级的差距。</p>
+<p>对数据的量级要有一个评估，多少个样本，多少个特征，据此估算出内存需求。如果放不下就得考虑改进算法或者使用一些降维技巧，或者采用分布式计算。</p></li>
+<li><p><strong>预处理与特征选择</strong></p>
+<p>良好的数据要能够提取出良好的特征才能真正发挥效力。</p>
+<p>预处理/数据清洗是很关键的步骤，往往能够使得算法的效果和性能得到显著提高。归一化、离散化、因子化、缺失值处理、去除共线性等，数据挖掘过程中很多时间就花在它们上面。这些工作简单可复制，收益稳定可预期，是机器学习的基础必备步骤。</p>
+<p>筛选出显著特征、摒弃非显著特征，需要机器学习工程师反复理解业务。这对很多结果有决定性的影响。特征选择好了，非常简单的算法也能得出良好、稳定的结果。这需要运用特征有效性分析的相关技术，如相关系数、卡方检验、平均互信息、条件熵、后验概率、逻辑回归权重等方法。</p></li>
+<li><p><strong>模型训练与调优</strong></p>
+<p>直到这一步才用到我们上面说的算法进行训练。</p>
+<p>现在很多算法都能够封装成黑盒使用。但是真正考验水平的是调整这些算法的（超）参数，使得结果变得更加优良。这需要我们对算法的原理有深入的理解。理解越深入，就越能发现问题的症结，提出良好的调优方案。</p></li>
+<li><p><strong>模型诊断</strong></p>
+<p>如何确定模型调优的方向与思路呢？这就需要对模型进行诊断的技术。</p>
+<p>过拟合、欠拟合 判断是模型诊断中至关重要的一步。常见的方法如交叉验证，绘制学习曲线等。过拟合的基本调优思路是增加数据量，降低模型复杂度。欠拟合的基本调优思路是提高特征数量和质量，增加模型复杂度。</p>
+<p>误差分析也是机器学习至关重要的步骤。通过观察误差样本，全面分析误差产生误差的原因:是参数的问题还是算法选择的问题，是特征的问题还是数据本身的问题……</p>
+<p>诊断后的模型需要进行调优，调优后的新模型需要重新进行诊断，这是一个反复迭代不断逼近的过程，需要不断地尝试， 进而达到最优状态。</p></li>
+<li><p><strong>模型融合/集成</strong></p>
+<p>一般来说，模型融合后都能使得效果有一定提升。而且效果很好。</p>
+<p>工程上，主要提升算法准确度的方法是分别在模型的前端（特征清洗和预处理，不同的采样模式）与后端（模型融合）上下功夫。因为他们比较标准可复制，效果比较稳定。而直接调参的工作不会很多，毕竟大量数据训练起来太慢了，而且效果难以保证。</p></li>
+<li><p><strong>上线运行</strong></p>
+<p>这一部分内容主要跟工程实现的相关性更大。工程上是结果导向，模型在线上运行的效果直接决定模型的成败。不单纯包括其准确程度、误差等情况，还包括其运行的速度(时间复杂度)、资源消耗程度（空间复杂度）、稳定性是否可接受。</p>
+<p>这些工作流程主要是工程实践上总结出的一些经验。并不是每个项目都包含完整的一个流程。这里的部分只是一个指导性的说明，只有多实践，多积累项目经验，才会有自己更深刻的认识。</p></li>
+</ol>
+<h2 id="数据清洗与特征处理">数据清洗与特征处理</h2>
+<blockquote>
+<p>geekcircle/machine-learning-interview-qa/<a href="https://github.com/geekcircle/machine-learning-interview-qa/blob/master/questions/8.md" target="_blank" rel="noopener">8.md</a></p>
+</blockquote>
+<!-- 
+
+<div align="center"><img src="面试准备/数据清洗与特征处理.jpg" height="" /></div> -->
+<blockquote>
+<p><a href="https://tech.meituan.com/machinelearning-data-feature-process.html" target="_blank" rel="noopener">机器学习中的数据清洗与特征处理综述</a> - 美团点评技术</p>
+</blockquote>
+<h2 id="关联规则挖掘的-3-个度量指标支持度置信度提升度">关联规则挖掘的 3 个度量指标：支持度、置信度、提升度</h2>
+<p><strong>支持度</strong>（Support）</p>
+<ul>
+<li>X → Y 的支持度表示项集 {X,Y} 在总项集中出现的概率</li>
+</ul>
+<div align="center">
+<a href="http://www.codecogs.com/eqnedit.php?latex=Support(X\rightarrow&space;Y)=\frac{P(X\cup&space;Y)}{P(I)}=\frac{\text{num}(X\cup&space;Y)}{\text{num}(I)}" target="_blank" rel="noopener"><img src="/2019/05/06/面试准备/公式_20180620204006.png" height></a>
+</div>
+<ul>
+<li>其中，I 表示总事务集，<code>num()</code>表示事务集中特定项集出现的次数，<code>P(X)=num(X)/num(I)</code></li>
+</ul>
+<p><strong>置信度</strong>（Confidence）</p>
+<ul>
+<li>X → Y 的置信度表示在先决条件 X 发生的情况下，由规则 X → Y 推出 Y 的概率。</li>
+</ul>
+<div align="center">
+<a href="http://www.codecogs.com/eqnedit.php?latex=Confidence(X\rightarrow&space;Y)=P(Y|X)=\frac{P(X\cup&space;Y)}{P(X)}=\frac{\text{num}(X\cup&space;Y)}{\text{num}(X)}" target="_blank" rel="noopener"><img src="/2019/05/06/面试准备/公式_20180620205055.png" height></a>
+</div>
+<p><strong>提升度</strong>（Lift）</p>
+<ul>
+<li>X → Y 的提升度表示含有X的条件下，同时含有Y的概率，与Y总体发生的概率之比。</li>
+</ul>
+<div align="center">
+<a href="http://www.codecogs.com/eqnedit.php?latex={\displaystyle&space;{\begin{aligned}&space;Lift(X\rightarrow&space;Y)&=\frac{P(Y|X)}{P(Y)}=\frac{Confidence(X\rightarrow&space;Y)}{\text{num}(Y)/\text{num}(I)}\\&space;&=\frac{P(X\cup&space;Y)}{P(X)P(Y)}=\frac{\text{num}(X\cup&space;Y)\text{num}(I)}{\text{num}(X)\text{num}(Y)}&space;\end{aligned}}}" target="_blank" rel="noopener"><img src="/2019/05/06/面试准备/公式_20180620213601.png" height></a>
+</div>
+<h2 id="规则的有效性">规则的有效性：</h2>
+<ul>
+<li>满足最小支持度和最小置信度的规则，叫做“强关联规则”<br>
+&gt; 最小支持度和最小置信度是人工设置的阈值</li>
+<li><code>Lift(X→Y) &gt; 1</code> 的 X→Y 是有效的强关联规则</li>
+<li><code>Lift(X→Y) &lt;=1</code> 的 X→Y 是有效的强关联规则</li>
+<li>特别地，<code>Lift(X→Y) = 1</code> 时，X 与 Y 相互独立。</li>
+</ul>
+<h2 id="判断规则的有效性"><strong>判断规则的有效性</strong></h2>
+<p>问题：已知有1000名顾客买年货，分为甲乙两组，每组各500人，其中甲组有500人买了茶叶，同时又有450人买了咖啡；乙组有450人买了咖啡，如表所示，请问“茶叶→咖啡”是一条有效的关联规则吗？</p>
+<table>
+<thead>
+<tr class="header">
+<th>组次</th>
+<th>买茶叶的人数</th>
+<th>买咖啡的人数</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>甲组（500人）</td>
+<td>500</td>
+<td>450</td>
+</tr>
+<tr class="even">
+<td>乙组（500人）</td>
+<td>0</td>
+<td>450</td>
+</tr>
+</tbody>
+</table>
+<p>答：</p>
+<ul>
+<li>“茶叶→咖啡”的支持度：Support(X→Y) = 450 / 1000 = 45%</li>
+<li>“茶叶→咖啡”的置信度：Confidence(X→Y) = 450 / 500 = 90%</li>
+<li>“茶叶→咖啡”的提升度：Lift(X→Y) = 90% / 90% = 1</li>
+</ul>
+<p>由于提升度 <code>Lift(X→Y) = 1</code>，表示 X 与 Y 相互独立。也就是说，是否购买咖啡，与是否购买茶叶无关联。规则“茶叶→咖啡”不成立，或者说几乎没有关联，虽然它的置信度高达90%，但它不是一条有效的关联规则。</p>
+</body>
+</html>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Machine-Learning/" rel="tag">#Machine Learning</a>
+          
+            <a href="/tags/Deeping-Learning/" rel="tag">#Deeping Learning</a>
+          
+            <a href="/tags/job/" rel="tag">#job</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/08/加油！一定能找到好工作！/" rel="prev">
+                <i class="fa fa-chevron-left"></i> 加油！一定能找到好工作！
+              </a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/29/C-中的set/" rel="next">
+                C++中的set <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+          </div>
+        
+      
+
+        
+          
+  
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+      
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table Of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview" sidebar-panel >
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/avatar.jpg" alt="SmileLingyong" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">SmileLingyong</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">向上，向阳！</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-name">categories</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">18</span>
+              <span class="site-state-item-name">tags</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="smilelingyong@gmail.com" target="_blank">
+                  <i class="fa fa-e-mail"></i> E-Mail
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/SmileLingyong" target="_blank">
+                  <i class="fa fa-github"></i> Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://blog.csdn.net/forever__1234" target="_blank">
+                  <i class="fa fa-csdn"></i> CSDN
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ml-机器学习基础"><span class="nav-text">ML-机器学习基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#偏差与方差"><span class="nav-text">1.偏差与方差</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#导致偏差和方差的原因"><span class="nav-text">1.1 导致偏差和方差的原因</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#深度学习中的偏差与方差"><span class="nav-text">1.2 深度学习中的偏差与方差</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#偏差方差-与-boostingbagging"><span class="nav-text">1.3 偏差/方差 与 Boosting/Bagging</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#偏差与方差的计算公式"><span class="nav-text">1.4 偏差与方差的计算公式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#偏差与方差的权衡过拟合与模型复杂度的权衡"><span class="nav-text">1.5 偏差与方差的权衡（过拟合与模型复杂度的权衡）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#过拟合与欠拟合"><span class="nav-text">2. 过拟合与欠拟合</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#降低过拟合风险的方法"><span class="nav-text">2.1 降低过拟合风险的方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#降低欠拟合风险的方法"><span class="nav-text">2.2 降低欠拟合风险的方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见范数及其作用"><span class="nav-text">3. 常见范数及其作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#l1l2-范数正则化"><span class="nav-text">4. L1/L2 范数正则化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#l1l2-范数的作用异同"><span class="nav-text">4.1 L1/L2 范数的作用、异同</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么-l1-和-l2-正则化可以防止过拟合"><span class="nav-text">4.2 为什么 L1 和 L2 正则化可以防止过拟合？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么-l1-正则化可以产生稀疏权值而-l2-不会"><span class="nav-text">4.3 为什么 L1 正则化可以产生稀疏权值，而 L2 不会？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#激活函数"><span class="nav-text">5. 激活函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dropout"><span class="nav-text">Dropout</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#dropout-策略"><span class="nav-text">Dropout 策略</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bagging-集成方法"><span class="nav-text">Bagging 集成方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#dropout-与-bagging-的不同"><span class="nav-text">Dropout 与 Bagging 的不同</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#batch-normalization批标准化"><span class="nav-text">Batch Normalization（批标准化）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#动机"><span class="nav-text">动机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本原理"><span class="nav-text">基本原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bn-在训练和测试时分别是怎么做的"><span class="nav-text">BN 在训练和测试时分别是怎么做的？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么训练时不采用移动平均"><span class="nav-text">为什么训练时不采用移动平均？</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关阅读"><span class="nav-text">相关阅读</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#激活函数-1"><span class="nav-text">激活函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#激活函数的作用为什么要使用非线性激活函数"><span class="nav-text">激活函数的作用——为什么要使用非线性激活函数？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见的激活函数"><span class="nav-text">常见的激活函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#整流线性单元-relu"><span class="nav-text">整流线性单元 ReLU</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#relu-的拓展"><span class="nav-text">ReLU 的拓展</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sigmoid-与-tanh"><span class="nav-text">sigmoid 与 tanh</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他激活函数"><span class="nav-text">其他激活函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#relu-相比-sigmoid-的优势-3"><span class="nav-text">ReLU 相比 sigmoid 的优势 (3)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生成模型与判别模型"><span class="nav-text">生成模型与判别模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#先验概率与后验概率"><span class="nav-text">先验概率与后验概率</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#专题-机器学习实践"><span class="nav-text">专题-机器学习实践</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#reference"><span class="nav-text">Reference</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#index"><span class="nav-text">Index</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#超参数选择"><span class="nav-text">超参数选择</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#grid-search"><span class="nav-text">Grid Search</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#random-search"><span class="nav-text">Random Search</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关库未使用"><span class="nav-text">相关库（未使用）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#几种参数估计的区别于联系-mlemap贝叶斯-todo"><span class="nav-text">几种参数估计的区别于联系: MLE、MAP、贝叶斯 TODO</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#余弦相似度cos距离与欧氏距离的区别和联系"><span class="nav-text">余弦相似度（Cos距离）与欧氏距离的区别和联系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#监督学习和无监督学习"><span class="nav-text">监督学习和无监督学习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#熵求投掷均匀正六面体骰子的熵"><span class="nav-text">熵，求投掷均匀正六面体骰子的熵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#混淆矩阵模型度量指标准确率精确率召回率f1-值等"><span class="nav-text">混淆矩阵、模型度量指标：准确率、精确率、召回率、F1 值等</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何处理数据中的缺失值"><span class="nav-text">如何处理数据中的缺失值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#介绍一个完整的机器学习项目流程"><span class="nav-text">介绍一个完整的机器学习项目流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据清洗与特征处理"><span class="nav-text">数据清洗与特征处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关联规则挖掘的-3-个度量指标支持度置信度提升度"><span class="nav-text">关联规则挖掘的 3 个度量指标：支持度、置信度、提升度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#规则的有效性"><span class="nav-text">规则的有效性：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#判断规则的有效性"><span class="nav-text">判断规则的有效性</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+	  </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">SmileLingyong</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="#">
+    FreeSky
+  </a>(Reserved)
+
+  
+  <span id="busuanzi_container_site_uv">
+     &nbsp; | &nbsp;  用户量: <span id="busuanzi_value_site_uv"></span>
+  </span>
+  <span id="busuanzi_container_site_pv">
+    &nbsp; | &nbsp;  总访问量: <span id="busuanzi_value_site_pv"></span>
+  </span>
+
+  
+</div>
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/others/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+    
+
+  
+
+
+  
+  
+  <script type="text/javascript" src="/others/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
+  
+
+  <script type="text/javascript" src="/others/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/others/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.2" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.2"></script>
+  <script type="text/javascript" src="/others/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    var $aboutContent = $('#posts-about');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0 && $aboutContent.length === 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+
+      motionIntegrator.bootstrap();
+    });
+  </script>
+
+  
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+  
+     <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("9QoQXWnRR4zwSFuxRv52kUpi-gzGzoHsz", "zlgcRzgHF7AHu8TKLJUwCAjw");</script>
+<script>
+function showTime(Counter) {
+  var query = new AV.Query(Counter);
+  $(".leancloud_visitors").each(function() {
+    var url = $(this).attr("id").trim();
+    query.equalTo("url", url);
+    query.find({
+      success: function(results) {
+        if (results.length == 0) {
+          var content = $(document.getElementById(url)).text() + ': 0';
+          $(document.getElementById(url)).text(content);
+          return;
+        }
+        for (var i = 0; i < results.length; i++) {
+          var object = results[i];
+          var content = $(document.getElementById(url)).text() + ': ' + object.get('time');
+          $(document.getElementById(url)).text(content);
+        }
+      },
+      error: function(object, error) {
+        console.log("Error: " + error.code + " " + error.message);
+      }
+    });
+
+  });
+}
+
+function addCount(Counter) {
+  var Counter = AV.Object.extend("Counter");
+  url = $(".leancloud_visitors").attr('id').trim();
+  title = $(".leancloud_visitors").attr('data-flag-title').trim();
+  var query = new AV.Query(Counter);
+  query.equalTo("url", url);
+  query.find({
+    success: function(results) {
+      if (results.length > 0) {
+        var counter = results[0];
+        counter.fetchWhenSave(true);
+        counter.increment("time");
+        counter.save(null, {
+          success: function(counter) {
+            var content = $(document.getElementById(url)).text() + ': ' + counter.get('time');
+            $(document.getElementById(url)).text(content);
+          },
+          error: function(counter, error) {
+            console.log('Failed to save Visitor num, with error message: ' + error.message);
+          }
+        });
+      } else {
+        var newcounter = new Counter();
+        newcounter.set("title", title);
+        newcounter.set("url", url);
+        newcounter.set("time", 1);
+        newcounter.save(null, {
+          success: function(newcounter) {
+              console.log("newcounter.get('time')="+newcounter.get('time'));
+            var content = $(document.getElementById(url)).text() + ': ' + newcounter.get('time');
+            $(document.getElementById(url)).text(content);
+          },
+          error: function(newcounter, error) {
+            console.log('Failed to create');
+          }
+        });
+      }
+    },
+    error: function(error) {
+      console.log('Error:' + error.code + " " + error.message);
+    }
+  });
+}
+$(function() {
+  var Counter = AV.Object.extend("Counter");
+  if ($('.leancloud_visitors').length == 1) {
+    addCount(Counter);
+  } else if ($('.post-title-link').length > 1) {
+    showTime(Counter);
+  }
+}); 
+</script>
+  
+</body>
+</html>
