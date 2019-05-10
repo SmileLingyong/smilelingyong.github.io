@@ -279,10 +279,7 @@ a:hover {
   border-bottom-color: #3d9ad2;
 }
 ul {
-  list-style: circle;
-}
-li {
-  list-style: square;
+  list-style: none;
 }
 blockquote {
   margin: 0;

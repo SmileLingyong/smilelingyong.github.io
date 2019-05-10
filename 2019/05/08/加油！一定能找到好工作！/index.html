@@ -82,10 +82,11 @@
 <meta property="og:image" content="http://yoursite.com/2019/05/08/加油！一定能找到好工作！/ReLU_01.png">
 <meta property="og:image" content="http://yoursite.com/2019/05/08/加油！一定能找到好工作！/ReLU_02.png">
 <meta property="og:image" content="http://yoursite.com/2019/05/08/加油！一定能找到好工作！/Leaky_ReLU_01.png">
-<meta property="og:image" content="http://yoursite.com/2019/05/08/加油！一定能找到好工作！/BN_croped.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/08/加油！一定能找到好工作！/BN.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/08/加油！一定能找到好工作！/BN_02.png">
 <meta property="og:image" content="http://yoursite.com/2019/05/08/加油！一定能找到好工作！/caffe_conv_02.jpg">
 <meta property="og:image" content="http://yoursite.com/2019/05/08/加油！一定能找到好工作！/caffe_conv_01.png">
-<meta property="og:updated_time" content="2019-05-10T05:32:14.172Z">
+<meta property="og:updated_time" content="2019-05-10T10:33:14.162Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="加油！一定能找到好工作！">
 <meta name="twitter:description" content="code{white-space: pre;}">
@@ -306,6 +307,125 @@
 </head>
 <body>
 <a id="more"></a>
+<h2 id="模型评估">模型评估</h2>
+<h4 id="模型评估常用方法">模型评估常用方法</h4>
+<p>一般情况来说，单一评分标准无法完全评估一个机器学习模型。只用good和bad偏离真实场景去评估某个模型，都是一种欠妥的评估方式。下面介绍常用的分类模型和回归模型评估方法。</p>
+<p><strong>（1）分类模型常用评估方法：</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">指标</th>
+<th>描述</th>
+<th>Scikit-learn函数</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Precision</td>
+<td>精准度</td>
+<td>from sklearn.metrics import precision_score</td>
+</tr>
+<tr class="even">
+<td align="left">Recall</td>
+<td>召回率</td>
+<td>from sklearn.metrics import recall_score</td>
+</tr>
+<tr class="odd">
+<td align="left">F1</td>
+<td>F1值</td>
+<td>from sklearn.metrics import f1_score</td>
+</tr>
+<tr class="even">
+<td align="left">Confusion Matrix</td>
+<td>混淆矩阵</td>
+<td>from sklearn.metrics import confusion_matrix</td>
+</tr>
+<tr class="odd">
+<td align="left">ROC</td>
+<td>ROC曲线</td>
+<td>from sklearn.metrics import roc</td>
+</tr>
+<tr class="even">
+<td align="left">AUC</td>
+<td>ROC曲线下的面积</td>
+<td>from sklearn.metrics import auc</td>
+</tr>
+<tr class="odd">
+<td align="left">precision</td>
+<td>查准率</td>
+<td></td>
+</tr>
+<tr class="even">
+<td align="left">recall</td>
+<td>查全率</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td align="left">P-R曲线</td>
+<td>查准率为纵轴，查全率为横轴，作图</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>（2）回归模型常用评估方法：</strong></p>
+<table>
+<colgroup>
+<col width="30%">
+<col width="9%">
+<col width="61%">
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">指标</th>
+<th align="left">描述</th>
+<th align="left">Scikit-learn函数</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Mean Square Error (MSE, RMSE)</td>
+<td align="left">均方误差</td>
+<td align="left">from sklearn.metrics import mean_squared_error</td>
+</tr>
+<tr class="even">
+<td align="left">Absolute Error (MAE, RAE)</td>
+<td align="left">绝对误差</td>
+<td align="left">from sklearn.metrics import mean_absolute_error, median_absolute_error</td>
+</tr>
+<tr class="odd">
+<td align="left">R-Squared</td>
+<td align="left">R平方值</td>
+<td align="left">from sklearn.metrics import r2_score</td>
+</tr>
+</tbody>
+</table>
+<h4 id="机器学习中的biaserror和variance有什么区别和联系">机器学习中的Bias，Error和Variance有什么区别和联系</h4>
+<p>Bias(偏差)，Error(误差)，和Variance(方差)</p>
+<p><strong>对于Bias：</strong></p>
+<ul>
+<li>Bias衡量模型<strong>拟合训练数据的能力</strong> (训练数据不一定是整个 training dataset，而是只用于训练它的那一部分数据，例如：mini-batch)</li>
+<li>Bias 越小，拟合能力越高 (可能产生overfitting)；反之，拟合能力越低 (可能产生underfitting)</li>
+</ul>
+<p><strong>对于Variance：</strong></p>
+<ul>
+<li>Variance 衡量<strong>模型的泛化的能力</strong></li>
+<li>Variance 越小，模型的泛化的能力越高；反之，模型的泛化的能力越低。</li>
+</ul>
+<blockquote>
+<p>训练误差大，测试误差小 → Bias大</p>
+<p>训练误差小，测试误差大→ Variance大 → 降VC维</p>
+<p>训练误差大，测试误差大→ 升VC维</p>
+</blockquote>
+<h4 id="经验误差与泛化误差">经验误差与泛化误差</h4>
+<p><strong>误差</strong>（error）：一般地，我们把学习器的实际预测输出与样本的真是输出之间的差异称为“误差”</p>
+<p><strong>经验误差</strong>（empirical error）：也叫训练误差（training error）。模型在训练集上的误差。</p>
+<p><strong>泛化误差</strong>（generalization error）：模型在新样本集（测试集）上的误差称为“泛化误差”。</p>
+<h4 id="过拟合与欠拟合">过拟合与欠拟合</h4>
+<ul>
+<li><strong>欠拟合</strong>指模型不能在<strong>训练集</strong>上获得足够低的<strong>训练误差</strong>；</li>
+<li><strong>过拟合</strong>指模型的<strong>训练误差</strong>与<strong>测试误差</strong>（泛化误差）之间差距过大；</li>
+<li>反映在<strong>评价指标</strong>上，就是模型在训练集上表现良好，但是在测试集和新数据上表现一般（<strong>泛化能力差</strong>）；</li>
+</ul>
 <h2 id="激活函数">激活函数</h2>
 <h4 id="为什么需要激活函数">为什么需要激活函数？</h4>
 <ul>
@@ -319,6 +439,12 @@
 <ul>
 <li>如果不使用非线性激活函数，那么每一层输出都是上层输入的<strong>线性组合</strong>；此时无论网络有多少层，其整体也将是线性的，就做不到用非线性来逼近任意函数，导致失去万能近似的性质</li>
 <li>使用非线性激活函数 ，可以增强网络的表示能力，使它可以学习从输入到输出之间复杂的非线性的映射。而且，仅<strong>部分层是纯线性</strong>是可以接受的，这有助于<strong>减少网络中的参数</strong>。</li>
+</ul>
+<h4 id="什么时候可以用线性激活函数">什么时候可以用线性激活函数</h4>
+<ul>
+<li>输出层，大多使用线性激活函数</li>
+<li>在隐含层可能会使用一些线性激活函数</li>
+<li>一般用到的线性激活函数很少</li>
 </ul>
 <h4 id="常见的激活函数">常见的激活函数</h4>
 <ul>
@@ -362,6 +488,12 @@ y&#39; = y * (1 - y)
 <li><strong>梯度消失</strong>： <span class="math inline">\(Tanh\)</span> 函数也会有梯度消失的问题，因此在饱和时也会「杀死」梯度。</li>
 <li><strong>计算成本高昂</strong>：<span class="math inline">\(exp()\)</span> 函数与其他非线性激活函数相比，计算成本高昂</li>
 </ul>
+<h4 id="为什么tanh收敛速度比sigmoid快">为什么Tanh收敛速度比Sigmoid快</h4>
+<ul>
+<li><span class="math inline">\(tanh^{&#39;}(x)=1-tanh(x)^{2}\in (0,1)\)</span></li>
+<li><span class="math inline">\(s^{&#39;}(x)=s(x)*(1-s(x))\in (0,\frac{1}{4}]\)</span></li>
+</ul>
+<p>由上面两个公式可知 <span class="math inline">\(Tanh\)</span> 梯度消失的问题比 <span class="math inline">\(Sigmoid\)</span> 轻，所以 <span class="math inline">\(Tanh\)</span> 收敛速度比 <span class="math inline">\(Sigmoid\)</span> 快。</p>
 <hr>
 <ul>
 <li><span class="math inline">\(Relu\)</span> 函数</li>
@@ -401,27 +533,100 @@ f(x) = max(0.1x, x)
 f(x) = max(ax, x)
 \]</span></p>
 <p>其中 <span class="math inline">\(\alpha\)</span> 是一个可以学习的参数，因为你可以对它进行反向传播。这使神经元能够选择负区域最好的梯度，有了这种能力，它们可以变成 ReLU 或 Leaky ReLU。</p>
+<h4 id="怎样理解-relu-0-时是非线性激活函数">怎样理解 ReLU（&lt; 0 时）是非线性激活函数</h4>
+<p>从 <span class="math inline">\(ReLU\)</span> 的图像可以看出具有一下特点：</p>
+<ul>
+<li>单侧抑制</li>
+<li>相对宽阔的兴奋边界</li>
+<li>稀疏激活性</li>
+</ul>
+<p><span class="math inline">\(ReLU\)</span> 函数从图像上看，是一个分段线性函数，把所有的负值都变为 0，而正值不变，这样就成为单侧抑制。因为有了这单侧抑制，才使得神经网络中的神经元也具有了稀疏激活性。</p>
 <hr>
 <h2 id="bn层作用以及如何使用bn层">BN层作用，以及如何使用BN层</h2>
 <p><strong><a href="https://www.cnblogs.com/guoyaohua/p/8724433.html" target="_blank" rel="noopener">BN</a></strong> (Batch Normalization批标准化) 是一种<strong>正则化</strong>方法（减少泛化误差），主要作用有：</p>
 <ul>
-<li><strong>加速网络的训练</strong>（缓解梯度消失，支持更大的学习率）</li>
-<li><strong>防止过拟合</strong></li>
-<li>降低了<strong>参数初始化</strong>的要求</li>
+<li>加速网络的训练</li>
+<li>缓解梯度消失</li>
+<li>防止过拟合</li>
+<li>增强模型的泛化能力</li>
+<li>支持更大的学习率</li>
+<li>降低了参数初始化的要求</li>
 </ul>
 <h4 id="动机">动机</h4>
 <ul>
 <li><strong>训练的本质是学习数据分布</strong>。如果训练数据与测试数据的分布不同会<strong>降低</strong>模型的<strong>泛化能力</strong>。因此，应该在开始训练前对所有输入数据做归一化处理。</li>
 <li>而在神经网络中，因为<strong>每个隐层</strong>的参数不同，会使下一层的输入发生变化，从而导致每一批数据的分布也发生改变；<strong>致使</strong>网络在每次迭代中都需要拟合不同的数据分布，增大了网络的训练难度与<strong>过拟合</strong>的风险。</li>
 </ul>
+<h4 id="基本原理">基本原理</h4>
+<p><strong>（1）训练阶段</strong></p>
+<ul>
+<li>BN 方法会针对<strong>每一批数据</strong>，在<strong>网络的每一层输入</strong>之前增加<strong>归一化</strong>处理，使输入的均值为 <code>0</code>，标准差为 <code>1</code>。<strong>目的</strong>是将数据限制在统一的分布下。</li>
+<li>具体来说，针对每层的第 <code>k</code> 个神经元，计算<strong>这一批数据</strong>在第 <code>k</code> 个神经元的均值与标准差，然后将归一化后的值作为该神经元的激活值。</li>
+</ul>
+<p><span class="math display">\[
+\boldsymbol{\hat{x}_{k}} = \frac{\boldsymbol{x_{k}}-\mathrm{E}\left[\boldsymbol{x_{k}}\right]}{\sqrt{\operatorname{Var}\left[\boldsymbol{x_{k}}\right]}}
+\]</span></p>
+<ul>
+<li>BN 可以看作在各层之间加入了一个新的计算层，<strong>对数据分布进行额外的约束</strong>，从而增强模型的泛化能力；</li>
+<li>但同时 BN 也降低了模型的拟合能力，破坏了之前学到的<strong>特征分布</strong>；</li>
+<li>为了<strong>恢复数据的原始分布</strong>，BN 引入了一个<strong>重构变换</strong>来还原最优的输入数据分布，其中 <code>γ</code> 和 <code>β</code> 是我们要训练学习的参数。</li>
+</ul>
+<p><span class="math display">\[
+\boldsymbol{y_{k}} \leftarrow \gamma \boldsymbol{\hat{x}_{k}}+\beta
+\]</span></p>
+<p><strong>小结：</strong></p>
+<ul>
+<li>以上过程可归纳为一个 <strong><code>BN(x)</code> 函数</strong>：</li>
+</ul>
+<p><span class="math display">\[
+\large\begin{aligned}
+\large\boldsymbol{y_i}=
+\mathrm{BN}(\boldsymbol{x_i})
+&amp;=\gamma\boldsymbol{\hat{x}_i} + \beta \\
+&amp;=\gamma\frac{\boldsymbol{x_i}-\boldsymbol{\mathrm{E}[x_i]}}{\sqrt{\boldsymbol{\mathrm{Var}[x_i]}+\epsilon}}+\beta\end{aligned}
+\]</span></p>
+<ul>
+<li>完整算法：</li>
+</ul>
 <div class="figure">
-<img src="/2019/05/08/加油！一定能找到好工作！/BN_croped.png">
+<img src="/2019/05/08/加油！一定能找到好工作！/BN.png">
 
 </div>
+<p><strong>（2）测试阶段</strong></p>
+<p>测试的时候，每次可能只会传入<strong>单个数据</strong>，此时的均值和标准差，模型会使用<strong>全局统计量</strong>代替<strong>批统计量</strong>；即使用训练时所有batch得到的一组组的均值和方差，计算其数学期望做为全局统计量。<br>
+<span class="math display">\[
+\begin{array}{c}{\mathrm{E}[x] \leftarrow \mathrm{E}\left[\mu_{i}\right]} \\ {\operatorname{Var}[x] \leftarrow \frac{m}{m-1} \mathrm{E}\left[\sigma_{i}^{2}\right]}\end{array}
+\]</span></p>
+<blockquote>
+<p>其中 <span class="math inline">\(μ_i\)</span> 和 <span class="math inline">\(σ_i\)</span> 分别表示第 <span class="math inline">\(i\)</span> 轮 batch 保存的均值和标准差；<span class="math inline">\(m\)</span> 为 batch_size，系数 <span class="math inline">\(\frac{m}{m-1}\)</span> 用于计算<strong>无偏方差估计</strong> （原文称该方法为<strong>移动平均</strong>（moving averages））</p>
+</blockquote>
+<p>然后再将按照训练的流程，将输入数据，减去全局统计量均值和标准差，再进行重构变换得到新的数据最为神经元的激活值。</p>
+<ul>
+<li>此时，<code>BN(x)</code> 调整为：</li>
+</ul>
+<p><span class="math display">\[
+\large\begin{aligned}\mathrm{BN}(\boldsymbol{x_i})&amp;=\gamma\frac{\boldsymbol{x_i}-\boldsymbol{\mathrm{E}[x_i]}}{\sqrt{\boldsymbol{\mathrm{Var}[x_i]} + \epsilon}} + \beta\\&amp;=\frac{\gamma}{\sqrt{\boldsymbol{\mathrm{Var}[x_i]} + \epsilon}}\boldsymbol{x_i} + \left(\beta-\frac{\gamma\boldsymbol{\mathrm{E}[x_i]}}{\sqrt{\boldsymbol{\mathrm{Var}[x_i]} + \epsilon}}\right)\end{aligned}
+\]</span></p>
+<p>这样写的目的是为了减少计算量，推理阶段公式中的两个分式是固定值，可以预先计算好，这样推理阶段就可以直接使用。</p>
+<ul>
+<li><strong>完整算法：</strong></li>
+</ul>
+<div class="figure">
+<img src="/2019/05/08/加油！一定能找到好工作！/BN_02.png">
+
+</div>
+<ul>
+<li><strong>Reference:</strong> <a href="https://www.cnblogs.com/guoyaohua/p/8724433.html" target="_blank" rel="noopener">理解</a> <a href="https://zhuanlan.zhihu.com/p/34879333" target="_blank" rel="noopener">实战</a> <a href="https://www.zhihu.com/question/38102762" target="_blank" rel="noopener">知乎</a></li>
+</ul>
+<h4 id="为什么训练时不采用移动平均">为什么训练时不采用移动平均？</h4>
+<ul>
+<li>用 BN 的目的就是为了保证每批数据的分布稳定，使用训练时使用全局统计量反而违背了这个初衷；</li>
+<li>BN 的作者认为在训练时采用移动平均可能会与梯度优化存在冲突；</li>
+</ul>
 <hr>
 <h2 id="caffe">Caffe</h2>
 <h4 id="caffe卷积层的实现">Caffe卷积层的实现</h4>
-<p>Caffe的卷积层实现，先对数据进行 <code>im2col</code> 操作，再进行内积运算（inner product)。这样做，比原始的卷积操作速度更快。</p>
+<p>Caffe的卷积层实现，使用 <code>im2col</code> 操作，将数据以及卷积核分别转换成新的矩阵，然后将两对矩阵进行内积运算（inner product)。这样做，比原始的卷积操作速度更快。</p>
 <div class="figure">
 <img src="/2019/05/08/加油！一定能找到好工作！/caffe_conv_02.jpg">
 
@@ -454,12 +659,16 @@ f(x) = max(ax, x)
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2019/05/10/面试准备/" rel="prev">
+                <i class="fa fa-chevron-left"></i> 面试准备
+              </a>
+            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/06/面试准备/" rel="next">
-                面试准备 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/04/29/C-中的set/" rel="next">
+                C++中的set <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -586,7 +795,7 @@ f(x) = max(ax, x)
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#激活函数"><span class="nav-text">激活函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么需要激活函数"><span class="nav-text">为什么需要激活函数？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么要使用非线性激活函数"><span class="nav-text">为什么要使用非线性激活函数？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常见的激活函数"><span class="nav-text">常见的激活函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bn层作用以及如何使用bn层"><span class="nav-text">BN层作用，以及如何使用BN层</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#动机"><span class="nav-text">动机</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#caffe"><span class="nav-text">Caffe</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#caffe卷积层的实现"><span class="nav-text">Caffe卷积层的实现</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#模型评估"><span class="nav-text">模型评估</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#模型评估常用方法"><span class="nav-text">模型评估常用方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#机器学习中的biaserror和variance有什么区别和联系"><span class="nav-text">机器学习中的Bias，Error和Variance有什么区别和联系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#经验误差与泛化误差"><span class="nav-text">经验误差与泛化误差</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#过拟合与欠拟合"><span class="nav-text">过拟合与欠拟合</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#激活函数"><span class="nav-text">激活函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么需要激活函数"><span class="nav-text">为什么需要激活函数？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么要使用非线性激活函数"><span class="nav-text">为什么要使用非线性激活函数？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#什么时候可以用线性激活函数"><span class="nav-text">什么时候可以用线性激活函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常见的激活函数"><span class="nav-text">常见的激活函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么tanh收敛速度比sigmoid快"><span class="nav-text">为什么Tanh收敛速度比Sigmoid快</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#怎样理解-relu-0-时是非线性激活函数"><span class="nav-text">怎样理解 ReLU（&lt; 0 时）是非线性激活函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bn层作用以及如何使用bn层"><span class="nav-text">BN层作用，以及如何使用BN层</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#动机"><span class="nav-text">动机</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基本原理"><span class="nav-text">基本原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么训练时不采用移动平均"><span class="nav-text">为什么训练时不采用移动平均？</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#caffe"><span class="nav-text">Caffe</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#caffe卷积层的实现"><span class="nav-text">Caffe卷积层的实现</span></a></li></ol></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
