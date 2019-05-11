@@ -84,9 +84,11 @@
 <meta property="og:image" content="http://yoursite.com/2019/05/08/加油！一定能找到好工作！/Leaky_ReLU_01.png">
 <meta property="og:image" content="http://yoursite.com/2019/05/08/加油！一定能找到好工作！/BN.png">
 <meta property="og:image" content="http://yoursite.com/2019/05/08/加油！一定能找到好工作！/BN_02.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/08/加油！一定能找到好工作！/GN.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/08/加油！一定能找到好工作！/BN_croped.png">
 <meta property="og:image" content="http://yoursite.com/2019/05/08/加油！一定能找到好工作！/caffe_conv_02.jpg">
 <meta property="og:image" content="http://yoursite.com/2019/05/08/加油！一定能找到好工作！/caffe_conv_01.png">
-<meta property="og:updated_time" content="2019-05-10T10:34:50.786Z">
+<meta property="og:updated_time" content="2019-05-10T14:50:01.544Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="加油！一定能找到好工作！">
 <meta name="twitter:description" content="code{white-space: pre;}">
@@ -400,15 +402,23 @@
 </tbody>
 </table>
 <h4 id="机器学习中的biaserror和variance有什么区别和联系">机器学习中的Bias，Error和Variance有什么区别和联系</h4>
-<p>Bias(偏差)，Error(误差)，和Variance(方差)</p>
+<ul>
+<li><strong>Bias(偏差)</strong>与<strong>Variance(方差)</strong>分别是用于衡量一个模型<strong>泛化误差</strong>的两个方面</li>
+<li><strong>Bias(偏差)：</strong> 是指<strong>训练集</strong>中模型预测的<strong>期望值</strong>与<strong>真实值</strong>之间的差，即衡<strong>模型拟合训练数据的能力</strong>。Bias 越小，拟合能力越高 (可能产生overfitting)；反之，拟合能力越低 (可能产生underfitting)</li>
+<li><strong>Variance(方差)：</strong> 指的是模型预测的<strong>期望值</strong>与<strong>预测值</strong>之间的差平方和，用来描述模型的稳定性。</li>
+<li>在<strong>监督学习</strong>中，模型的<strong>泛化误差</strong>可<strong>分解</strong>为偏差、方差与噪声之和。</li>
+</ul>
+<p><span class="math display">\[
+Err(x) = Bias^2 + Variance + Irreducible\ Error
+\]</span></p>
 <p><strong>对于Bias：</strong></p>
 <ul>
-<li>Bias衡量模型<strong>拟合训练数据的能力</strong> (训练数据不一定是整个 training dataset，而是只用于训练它的那一部分数据，例如：mini-batch)</li>
+<li>Bias衡量模型<strong>拟合训练数据的能力</strong></li>
 <li>Bias 越小，拟合能力越高 (可能产生overfitting)；反之，拟合能力越低 (可能产生underfitting)</li>
 </ul>
 <p><strong>对于Variance：</strong></p>
 <ul>
-<li>Variance 衡量<strong>模型的泛化的能力</strong></li>
+<li>Variance 是指模型预测的<strong>期望值</strong>与<strong>预测值</strong>之间的差平方和；用于衡量<strong>模型的稳定性</strong></li>
 <li>Variance 越小，模型的泛化的能力越高；反之，模型的泛化的能力越低。</li>
 </ul>
 <blockquote>
@@ -542,7 +552,8 @@ f(x) = max(ax, x)
 </ul>
 <p><span class="math inline">\(ReLU\)</span> 函数从图像上看，是一个分段线性函数，把所有的负值都变为 0，而正值不变，这样就成为单侧抑制。因为有了这单侧抑制，才使得神经网络中的神经元也具有了稀疏激活性。</p>
 <hr>
-<h2 id="bn层作用以及如何使用bn层">BN层作用，以及如何使用BN层</h2>
+<h2 id="batch-normalization批标准化">Batch Normalization(批标准化)</h2>
+<h4 id="bn层作用以及如何使用bn层">BN层作用，以及如何使用BN层</h4>
 <p><strong><a href="https://www.cnblogs.com/guoyaohua/p/8724433.html" target="_blank" rel="noopener">BN</a></strong> (Batch Normalization批标准化) 是一种<strong>正则化</strong>方法（减少泛化误差），主要作用有：</p>
 <ul>
 <li>加速网络的训练</li>
@@ -616,13 +627,35 @@ f(x) = max(ax, x)
 
 </div>
 <ul>
-<li><strong>Reference:</strong> <a href="https://www.cnblogs.com/guoyaohua/p/8724433.html" target="_blank" rel="noopener">理解</a> <a href="https://zhuanlan.zhihu.com/p/34879333" target="_blank" rel="noopener">实战</a> <a href="https://www.zhihu.com/question/38102762" target="_blank" rel="noopener">知乎</a></li>
+<li><strong>Reference:</strong> <a href="https://www.cnblogs.com/guoyaohua/p/8724433.html" target="_blank" rel="noopener">理解</a> <a href="https://blog.csdn.net/qq_25737169/article/details/79048516" target="_blank" rel="noopener">源码解读</a> <a href="https://zhuanlan.zhihu.com/p/34879333" target="_blank" rel="noopener">实战</a> <a href="https://www.zhihu.com/question/38102762" target="_blank" rel="noopener">知乎</a></li>
 </ul>
 <h4 id="为什么训练时不采用移动平均">为什么训练时不采用移动平均？</h4>
 <ul>
 <li>用 BN 的目的就是为了保证每批数据的分布稳定，使用训练时使用全局统计量反而违背了这个初衷；</li>
 <li>BN 的作者认为在训练时采用移动平均可能会与梯度优化存在冲突；</li>
 </ul>
+<h4 id="bnlningn的异同">BN、LN、IN、GN的异同</h4>
+<div class="figure">
+<img src="/2019/05/08/加油！一定能找到好工作！/GN.png">
+
+</div>
+<div class="figure">
+<img src="/2019/05/08/加油！一定能找到好工作！/BN_croped.png">
+
+</div>
+<p>深度网络中的数据维度一般为：[N, C, H, W] 或者[N, H, W, C]格式，分别对应上图两种排列方式。</p>
+<p>其中：</p>
+<ul>
+<li>N ：batch_size</li>
+<li>W ：feature map 的宽</li>
+<li>H ：feature map 的高</li>
+<li>C ：feature map 的通道数</li>
+</ul>
+<p><strong><code>BN</code>：</strong> 在batch的维度上进行norm，归一化维度为 <strong>[N, H, W]</strong>，BN对batch size有依赖，当batch size较大时，有不错的效果。而 LN、IN、GN 能够摆脱这种依赖，其中GN效果最好。</p>
+<p><strong><code>LN</code>：</strong> 避开了batch维度，归一化的维度为 <strong>[C，H，W]</strong></p>
+<p><strong><code>IN</code>：</strong> 归一化维度为 <strong>[H, W]</strong></p>
+<p><strong><code>GN</code>：</strong> GN 介于 LN 和 IN 之间，其首先将channel分为许多组（group），对每一组做归一化，即先将feature的维度由[N, C, H, W] reshape为 [N*G，C//G , H, W]，归一化的维度为 <strong>[C//G , H, W]</strong> 。GN相当于特征的group归一化，其对batch_size更鲁棒</p>
+<p>事实上，GN 的极端情况就是 LN 和 IN，分别对应G等于1和G等于C</p>
 <hr>
 <h2 id="caffe">Caffe</h2>
 <h4 id="caffe卷积层的实现">Caffe卷积层的实现</h4>
@@ -658,10 +691,6 @@ f(x) = max(ax, x)
       
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/05/10/面试准备/" rel="prev">
-                <i class="fa fa-chevron-left"></i> 面试准备
-              </a>
             
           </div>
 
@@ -733,7 +762,7 @@ f(x) = max(ax, x)
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -795,7 +824,7 @@ f(x) = max(ax, x)
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#模型评估"><span class="nav-text">模型评估</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#模型评估常用方法"><span class="nav-text">模型评估常用方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#机器学习中的biaserror和variance有什么区别和联系"><span class="nav-text">机器学习中的Bias，Error和Variance有什么区别和联系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#经验误差与泛化误差"><span class="nav-text">经验误差与泛化误差</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#过拟合与欠拟合"><span class="nav-text">过拟合与欠拟合</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#激活函数"><span class="nav-text">激活函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么需要激活函数"><span class="nav-text">为什么需要激活函数？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么要使用非线性激活函数"><span class="nav-text">为什么要使用非线性激活函数？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#什么时候可以用线性激活函数"><span class="nav-text">什么时候可以用线性激活函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常见的激活函数"><span class="nav-text">常见的激活函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么tanh收敛速度比sigmoid快"><span class="nav-text">为什么Tanh收敛速度比Sigmoid快</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#怎样理解-relu-0-时是非线性激活函数"><span class="nav-text">怎样理解 ReLU（&lt; 0 时）是非线性激活函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bn层作用以及如何使用bn层"><span class="nav-text">BN层作用，以及如何使用BN层</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#动机"><span class="nav-text">动机</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基本原理"><span class="nav-text">基本原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么训练时不采用移动平均"><span class="nav-text">为什么训练时不采用移动平均？</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#caffe"><span class="nav-text">Caffe</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#caffe卷积层的实现"><span class="nav-text">Caffe卷积层的实现</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#模型评估"><span class="nav-text">模型评估</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#模型评估常用方法"><span class="nav-text">模型评估常用方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#机器学习中的biaserror和variance有什么区别和联系"><span class="nav-text">机器学习中的Bias，Error和Variance有什么区别和联系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#经验误差与泛化误差"><span class="nav-text">经验误差与泛化误差</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#过拟合与欠拟合"><span class="nav-text">过拟合与欠拟合</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#激活函数"><span class="nav-text">激活函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么需要激活函数"><span class="nav-text">为什么需要激活函数？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么要使用非线性激活函数"><span class="nav-text">为什么要使用非线性激活函数？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#什么时候可以用线性激活函数"><span class="nav-text">什么时候可以用线性激活函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常见的激活函数"><span class="nav-text">常见的激活函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么tanh收敛速度比sigmoid快"><span class="nav-text">为什么Tanh收敛速度比Sigmoid快</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#怎样理解-relu-0-时是非线性激活函数"><span class="nav-text">怎样理解 ReLU（&lt; 0 时）是非线性激活函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#batch-normalization批标准化"><span class="nav-text">Batch Normalization(批标准化)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#bn层作用以及如何使用bn层"><span class="nav-text">BN层作用，以及如何使用BN层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#动机"><span class="nav-text">动机</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基本原理"><span class="nav-text">基本原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么训练时不采用移动平均"><span class="nav-text">为什么训练时不采用移动平均？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bnlningn的异同"><span class="nav-text">BN、LN、IN、GN的异同</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#caffe"><span class="nav-text">Caffe</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#caffe卷积层的实现"><span class="nav-text">Caffe卷积层的实现</span></a></li></ol></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
