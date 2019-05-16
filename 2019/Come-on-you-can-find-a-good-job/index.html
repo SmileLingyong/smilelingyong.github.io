@@ -1,0 +1,1529 @@
+<!doctype html>
+<html class="theme-next use-motion ">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/others/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+
+
+  <link href="/vendors/googleapis/css/Lato.css" rel="stylesheet" type="text/css">
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/others/font-awesome/css/font-awesome.min.css?v=4.4.0" />
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.2"/>
+
+
+    <meta name="description" content="向上，向阳！" />
+
+
+
+  <meta name="keywords" content="Machine Learning,Deeping Learning,job," />
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=0.4.5.2" />
+
+
+<meta name="description" content="code{white-space: pre;}">
+<meta name="keywords" content="Machine Learning,Deeping Learning,job">
+<meta property="og:type" content="article">
+<meta property="og:title" content="加油！一定能找到好工作！">
+<meta property="og:url" content="http://yoursite.com/2019/Come-on-you-can-find-a-good-job/index.html">
+<meta property="og:site_name" content="SmileLingyong">
+<meta property="og:description" content="code{white-space: pre;}">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2019/Come-on-you-can-find-a-good-job/TIM截图20180817192259.png">
+<meta property="og:image" content="http://yoursite.com/2019/Come-on-you-can-find-a-good-job/TIM截图20180817214034.png">
+<meta property="og:image" content="http://yoursite.com/2019/Come-on-you-can-find-a-good-job/2.16.4.1.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/Come-on-you-can-find-a-good-job/2.16.4.2.png">
+<meta property="og:image" content="http://yoursite.com/2019/Come-on-you-can-find-a-good-job/2.16.4.3.png">
+<meta property="og:image" content="http://yoursite.com/2019/Come-on-you-can-find-a-good-job/k-折交叉验证.png">
+<meta property="og:image" content="http://yoursite.com/2019/Come-on-you-can-find-a-good-job/precision_recall.png">
+<meta property="og:image" content="http://yoursite.com/2019/Come-on-you-can-find-a-good-job/mAP.png">
+<meta property="og:image" content="http://yoursite.com/2019/Come-on-you-can-find-a-good-job/result.png">
+<meta property="og:image" content="http://yoursite.com/2019/Come-on-you-can-find-a-good-job/sigmod_01.png">
+<meta property="og:image" content="http://yoursite.com/2019/Come-on-you-can-find-a-good-job/sigmod_02.png">
+<meta property="og:image" content="http://yoursite.com/2019/Come-on-you-can-find-a-good-job/tanh_01.png">
+<meta property="og:image" content="http://yoursite.com/2019/Come-on-you-can-find-a-good-job/tanh_02.png">
+<meta property="og:image" content="http://yoursite.com/2019/Come-on-you-can-find-a-good-job/ReLU_01.png">
+<meta property="og:image" content="http://yoursite.com/2019/Come-on-you-can-find-a-good-job/ReLU_02.png">
+<meta property="og:image" content="http://yoursite.com/2019/Come-on-you-can-find-a-good-job/Leaky_ReLU_01.png">
+<meta property="og:image" content="http://yoursite.com/2019/Come-on-you-can-find-a-good-job/BN.png">
+<meta property="og:image" content="http://yoursite.com/2019/Come-on-you-can-find-a-good-job/BN_02.png">
+<meta property="og:image" content="http://yoursite.com/2019/Come-on-you-can-find-a-good-job/GN.png">
+<meta property="og:image" content="http://yoursite.com/2019/Come-on-you-can-find-a-good-job/BN_croped.png">
+<meta property="og:image" content="http://yoursite.com/2019/Come-on-you-can-find-a-good-job/caffe_conv_02.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/Come-on-you-can-find-a-good-job/caffe_conv_01.png">
+<meta property="og:updated_time" content="2019-05-16T03:29:40.090Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="加油！一定能找到好工作！">
+<meta name="twitter:description" content="code{white-space: pre;}">
+<meta name="twitter:image" content="http://yoursite.com/2019/Come-on-you-can-find-a-good-job/TIM截图20180817192259.png">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: '',
+    sidebar: 'always'
+  };
+</script>
+
+
+
+  <title> 加油！一定能找到好工作！ | SmileLingyong </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+
+
+
+  <div id="container" class="container one-column page-post-detail">
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+      
+	  	<span style="font-size:14px;float:right;padding:39px 40px 0 0;">——穷则独善其身，达则兼济天下.</span>
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+
+        	<div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                加油！一定能找到好工作！
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            Posted on
+            <time itemprop="dateCreated" datetime="2019-05-08T23:18:23+08:00" content="2019-05-08">
+              2019-05-08 23:18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; In
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/ML/" itemprop="url" rel="index">
+                    <span itemprop="name">ML</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/DL/" itemprop="url" rel="index">
+                    <span itemprop="name">DL</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+            <span id="/2019/Come-on-you-can-find-a-good-job/"class="leancloud_visitors"  data-flag-title="加油！一定能找到好工作！">
+            &nbsp; | &nbsp;   
+            views
+            </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <meta name="generator" content="pandoc">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pygments-css@1.0.0/github.min.css" type="text/css">
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+</head>
+<body>
+<a id="more"></a>
+<h2 id="模型评估">模型评估</h2>
+<h4 id="模型评估常用方法">模型评估常用方法</h4>
+<p>一般情况来说，单一评分标准无法完全评估一个机器学习模型。只用good和bad偏离真实场景去评估某个模型，都是一种欠妥的评估方式。下面介绍常用的分类模型和回归模型评估方法。</p>
+<p><strong>分类模型常用评估方法：</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">指标</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Accuracy</td>
+<td align="center">准确率</td>
+</tr>
+<tr class="even">
+<td align="center">Precision</td>
+<td align="center">精准度/查准率</td>
+</tr>
+<tr class="odd">
+<td align="center">Recall</td>
+<td align="center">召回率/查全率</td>
+</tr>
+<tr class="even">
+<td align="center">P-R曲线</td>
+<td align="center">查准率为纵轴，查全率为横轴，作图</td>
+</tr>
+<tr class="odd">
+<td align="center">F1</td>
+<td align="center">F1值</td>
+</tr>
+<tr class="even">
+<td align="center">Confusion Matrix</td>
+<td align="center">混淆矩阵</td>
+</tr>
+<tr class="odd">
+<td align="center">ROC</td>
+<td align="center">ROC曲线</td>
+</tr>
+<tr class="even">
+<td align="center">AUC</td>
+<td align="center">ROC曲线下的面积</td>
+</tr>
+</tbody>
+</table>
+<p>F1 是基于查准率与查全率的调和平均(harmonic mean)定义的： <span class="math inline">\(\frac{1}{F 1}=\frac{1}{2} \cdot\left(\frac{1}{P}+\frac{1}{R}\right)\)</span><br>
+<span class="math display">\[
+F 1=\frac{2 \times P \times R}{P+R}
+ = =\frac{2 \times TP }{样例总数 + TP - TN}
+\]</span><br>
+用于综合考虑查准率、查全率的性能度量。</p>
+<p><strong>回归模型常用评估方法：</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">指标</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Mean Square Error (MSE, RMSE)</td>
+<td align="center">平均方差</td>
+</tr>
+<tr class="even">
+<td align="center">Absolute Error (MAE, RAE)</td>
+<td align="center">绝对误差</td>
+</tr>
+<tr class="odd">
+<td align="center">R-Squared</td>
+<td align="center">R平方值</td>
+</tr>
+</tbody>
+</table>
+<h4 id="机器学习中的bias和variance有什么区别和联系">机器学习中的Bias和Variance有什么区别和联系</h4>
+<p><strong>Bias(偏差)</strong>与<strong>Variance(方差)</strong>分别是用于衡量一个模型<strong>泛化误差</strong>的两个方面<br>
+- <strong>Bias(偏差)：</strong> 指的是模型预测的<strong>期望值</strong>与<strong>真实值</strong>之间的差（描述模型的<strong>拟合能力</strong>）<br>
+- <strong>Variance(方差)：</strong> 指的是模型预测的<strong>期望值</strong>与<strong>预测值</strong>之间的差的平方和（描述模型的<strong>稳定性</strong>）</p>
+<ul>
+<li>在<strong>监督学习</strong>中，模型的<strong>泛化误差</strong>可<strong>分解</strong>为偏差、方差与噪声之和。</li>
+</ul>
+<p><span class="math display">\[
+Err(x) = Bias^2 + Variance + Irreducible\ Error
+\]</span></p>
+<ul>
+<li><strong>噪声：</strong>表达了在当前任务上任何学习算法所能达到的期望泛化误差的下界，即刻画了学习问题本身的难度</li>
+</ul>
+<p><img src="/2019/Come-on-you-can-find-a-good-job/TIM截图20180817192259.png" height></p>
+<h4 id="经验误差与泛化误差">经验误差与泛化误差</h4>
+<ul>
+<li><strong>经验误差</strong>（empirical error）：也叫训练误差（training error），模型在训练集上的误差。</li>
+<li><strong>泛化误差</strong>（generalization error）：模型在新样本集（测试集）上的误差。</li>
+</ul>
+<h4 id="深度学习中的偏差与方差">深度学习中的偏差与方差</h4>
+<ul>
+<li>神经网络的拟合能力非常强，因此它的<strong>训练误差</strong>（偏差）通常较小；</li>
+<li>但是过强的拟合能力会导致较大的方差，使模型的测试误差（<strong>泛化误差</strong>）增大；</li>
+<li>因此深度学习的核心工作之一就是研究如何降低模型的泛化误差，这类方法统称为<strong>正则化方法</strong>。</li>
+</ul>
+<h4 id="偏差与方差的计算公式">偏差与方差的计算公式</h4>
+<ul>
+<li><p>记在<strong>训练集 D</strong> 上学得的模型为<br>
+<span class="math display">\[
+  f(\boldsymbol{x} ; D)
+  \]</span><br>
+模型的<strong>期望预测</strong>为<br>
+<span class="math display">\[
+  \hat{f}(\boldsymbol{x})=\mathbb{E}_{D}[f(\boldsymbol{x} ; D)]
+  \]</span></p></li>
+<li><p><strong>偏差</strong>（Bias）<br>
+<span class="math display">\[
+  \operatorname{bias}^{2}(\boldsymbol{x})=(\hat{f}(\boldsymbol{x})-y)^{2}
+  \]</span></p></li>
+</ul>
+<blockquote>
+<p><strong>偏差</strong>度量了学习算法的期望预测与真实结果的偏离程度，即刻画了学习算法本身的拟合能力；</p>
+</blockquote>
+<ul>
+<li><strong>方差</strong>（Variance）<br>
+<span class="math display">\[
+  \operatorname{var}(\boldsymbol{x})=\mathbb{E}_{D}\left[(f(\boldsymbol{x} ; D)-\hat{f}(\boldsymbol{x}))^{2}\right]
+  \]</span></li>
+</ul>
+<blockquote>
+<p><strong>方差</strong>度量了同样大小的<strong>训练集的变动</strong>所导致的学习性能的变化，即刻画了数据扰动所造成的影响（模型的稳定性）；</p>
+</blockquote>
+<ul>
+<li><strong>噪声</strong><br>
+<span class="math display">\[
+  \varepsilon^{2}=\mathbb{E}_{D}\left[\left(y_{D}-y\right)^{2}\right]
+  \]</span></li>
+</ul>
+<blockquote>
+<p><strong>噪声</strong>则表达了在当前任务上任何学习算法所能达到的期望泛化误差的下界，即刻画了学习问题本身的难度。</p>
+</blockquote>
+<ul>
+<li>“<strong>偏差-方差分解</strong>”表明模型的泛化能力是由算法的能力、数据的充分性、任务本身的难度共同决定的</li>
+</ul>
+<h4 id="偏差与方差的权衡过拟合与模型复杂度的权衡">偏差与方差的权衡（过拟合与模型复杂度的权衡）</h4>
+<ul>
+<li>给定学习任务，</li>
+<li>当训练不足时，模型的<strong>拟合能力不够</strong>（数据的扰动不足以使模型产生显著的变化），此时<strong>偏差</strong>主导模型的泛化误差；</li>
+<li>随着训练的进行，模型的<strong>拟合能力增强</strong>（模型能够学习数据发生的扰动），此时<strong>方差</strong>逐渐主导模型的泛化误差；</li>
+<li>当训练充足后，模型的<strong>拟合能力过强</strong>（数据的轻微扰动都会导致模型产生显著的变化），此时即发生<strong>过拟合</strong>（训练数据自身的、非全局的特征也被模型学习了）</li>
+<li>偏差和方差的关系和<strong>模型容量</strong>（模型复杂度）、<strong>欠拟合</strong>和<strong>过拟合</strong>的概念紧密相联<br>
+<img src="/2019/Come-on-you-can-find-a-good-job/TIM截图20180817214034.png" height></li>
+<li>当模型的容量增大（x 轴）时， 偏差（用点表示）随之减小，而方差（虚线）随之增大</li>
+<li>沿着 x 轴存在<strong>最佳容量</strong>，<strong>小于最佳容量会呈现欠拟合</strong>，<strong>大于最佳容量会导致过拟合</strong>。</li>
+</ul>
+<h4 id="欠拟合与过拟合">欠拟合与过拟合</h4>
+<ul>
+<li><strong>欠拟合</strong>指模型不能在<strong>训练集</strong>上获得足够低的<strong>训练误差</strong></li>
+<li><strong>过拟合</strong>指模型的<strong>训练误差</strong>与<strong>测试误差</strong>（泛化误差）之间差距过大</li>
+<li>反映在<strong>评价指标</strong>上，就是模型在训练集上表现良好，但是在测试集和新数据上表现一般（<strong>泛化能力差</strong>）</li>
+</ul>
+<hr>
+<h4 id="根据不同的坐标方式图解欠拟合与过拟合">根据不同的坐标方式，图解欠拟合与过拟合</h4>
+<ol style="list-style-type: decimal">
+<li><strong>横轴为训练样本数量，纵轴为误差</strong></li>
+</ol>
+<div class="figure">
+<img src="/2019/Come-on-you-can-find-a-good-job/2.16.4.1.jpg">
+
+</div>
+<ul>
+<li>模型欠拟合：在训练集以及测试集上同时具有较高的误差，此时模型的偏差较大；</li>
+<li>模型过拟合：在训练集上具有较低的误差，在测试集上具有较高的误差，此时模型的方差较大。</li>
+<li>模型正常：在训练集以及测试集上，同时具有相对较低的偏差以及方差。</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li><strong>横轴为模型复杂程度，纵轴为误差</strong></li>
+</ol>
+<div class="figure">
+<img src="/2019/Come-on-you-can-find-a-good-job/2.16.4.2.png">
+
+</div>
+<p>​ 红线为测试集上的Error, 蓝线为训练集上的Error</p>
+<ul>
+<li>模型欠拟合：模型在点A处，在训练集以及测试集上同时具有较高的误差，此时模型的偏差较大。</li>
+<li>模型过拟合：模型在点C处，在训练集上具有较低的误差，在测试集上具有较高的误差，此时模型的方差较大。</li>
+<li>模型正常：模型复杂程度控制在点B处为最优。</li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li><strong>横轴为正则项系数，纵轴为误差</strong></li>
+</ol>
+<div class="figure">
+<img src="/2019/Come-on-you-can-find-a-good-job/2.16.4.3.png">
+
+</div>
+<p>​ 红线为测试集上的Error,蓝线为训练集上的Error</p>
+<ul>
+<li>模型欠拟合：模型在点C处，在训练集以及测试集上同时具有较高的误差，此时模型的偏差较大。</li>
+<li>模型过拟合：模型在点A处，在训练集上具有较低的误差，在测试集上具有较高的误差，此时模型的方差较大。</li>
+<li>模型正常：模型复杂程度控制在点B处为最优。</li>
+</ul>
+<h4 id="降低过拟合的方法">降低过拟合的方法</h4>
+<ul>
+<li><strong>数据增强</strong></li>
+<li>图像：平移、旋转、缩放</li>
+<li>利用<strong>生成对抗网络</strong>（GAN）生成新数据</li>
+<li>NLP：利用机器翻译生成新数据</li>
+<li><strong>增加正则化项</strong>（权值约束）</li>
+<li>L1 正则化</li>
+<li>L2 正则化</li>
+<li><strong>增大正则化项系数</strong></li>
+<li><strong>降低模型复杂度</strong></li>
+<li>神经网络：减少网络层、神经元个数</li>
+<li>决策树：降低树的深度、剪枝</li>
+<li><strong>采用Dropout方法</strong></li>
+<li>Dropout方法，通俗的讲就是在训练的时候让神经元以一定的概率不工作</li>
+<li><strong>提前终止 early stopping</strong></li>
+<li><strong>集成学习</strong></li>
+<li>神经网络：Dropout</li>
+<li>决策树：随机森林、GBDT</li>
+</ul>
+<h4 id="降低欠拟合的方法">降低欠拟合的方法</h4>
+<ul>
+<li><strong>加入新的特征</strong></li>
+<li>交叉特征、多项式特征、…</li>
+<li>深度学习：因子分解机、Deep-Crossing、自编码器</li>
+<li><strong>增加模型复杂度</strong></li>
+<li>线性模型：添加高次项</li>
+<li>神经网络：增加网络层数、神经元个数</li>
+<li><strong>减小正则化项的系数</strong></li>
+<li>添加正则化项是为了限制模型的学习能力，减小正则化项的系数则可以放宽这个限制</li>
+<li>模型通常更倾向于更大的权重，更大的权重可以使模型更好的拟合数据</li>
+</ul>
+<h4 id="交叉验证的主要作用">交叉验证的主要作用</h4>
+<p>为了得到更为稳健可靠的模型，使用验证集对模型的泛化误差进行评估，得到模型泛化误差的近似值。当有多个模型可以选择时，我们通常选择“泛化误差”最小的模型。</p>
+<p>常用的交叉验证方法：<strong>留一交叉验证</strong>、<strong>k折交叉验证</strong></p>
+<h4 id="k-折交叉验证"><span class="math inline">\(k\)</span> 折交叉验证</h4>
+<p><strong><span class="math inline">\(k\)</span> 折交叉验证：</strong>将含有 <span class="math inline">\(N\)</span> 个样本的数据集，分成 <span class="math inline">\(k\)</span> 份，每份含有 <span class="math inline">\(N/k\)</span> 个样本。选择其中1份作为测试集，另外 <span class="math inline">\(k-1\)</span> 份作为训练集。这样就可以获得 <span class="math inline">\(K\)</span> 组训练/测试集，从而可以进行 <span class="math inline">\(k\)</span> 次训练和测试，最终返回这 <span class="math inline">\(k\)</span> 个测试结果的均值，做为模型最终的泛化误差。一般 <span class="math inline">\(2 \leq k \leq 10\)</span> ，<span class="math inline">\(k\)</span> 最常用的取值是 10，此时称为<strong>10折交叉验证</strong>：</p>
+<div class="figure">
+<img src="/2019/Come-on-you-can-find-a-good-job/k-折交叉验证.png">
+
+</div>
+<p><strong>10次10折交叉验证：</strong> 则是如上重复做了10次，每次的10折交叉验证随机使用不同的划分。</p>
+<blockquote>
+<p>训练集和测试集必须从完整的数据集中均匀取样。均匀取样的目的是希望减少训练集、测试集与原数据集之间的偏差。当样本数量足够多时，通过随机取样，便可以实现均匀取样的效果。</p>
+</blockquote>
+<h4 id="precision和recall">Precision和Recall</h4>
+<p>对于二分类问题，可将样例 根据其真实类别与学习器预测类别的组合划分为：</p>
+<ul>
+<li><strong>TP</strong> (True Positive)： 预测为真，实际为真</li>
+<li><strong>FP</strong> (False Positive)： 预测为真，实际为假</li>
+<li><strong>TN </strong>(True Negative)： 预测为假，实际为假</li>
+<li><strong>FN</strong> (False Negative)：预测为假，实际为真</li>
+</ul>
+<p>令 TP、FP、TN、FN分别表示其对应的样例数，则显然有 <strong>TP + FP + TN + FN = 样例总数</strong>分类结果的 <strong>“混淆矩阵”</strong> 如下：</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center"></th>
+<th align="center">实际为真 T</th>
+<th align="center">实际为假 F</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>预测为正例 P</strong></td>
+<td align="center"><strong>TP</strong> (预测为1，实际为1)</td>
+<td align="center"><strong>FP</strong> (预测为1，实际为0)</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>预测为负例 N</strong></td>
+<td align="center"><strong>FN</strong> (预测为0，实际为1)</td>
+<td align="center"><strong>TN</strong> (预测为0，实际为0)</td>
+</tr>
+</tbody>
+</table>
+<div class="figure">
+<img src="/2019/Come-on-you-can-find-a-good-job/precision_recall.png">
+
+</div>
+<p><span class="math display">\[
+（查准率）Precision = \frac{TP}{TP  + FP} \\ \\ \\
+{\color{Purple}{（预测的好瓜中有多少是真的好瓜）}}
+\]</span></p>
+<p><span class="math display">\[
+（查全率）Recall  = \frac{TP}{TP + FN} \\ \\
+{\color{Purple}{（所有真正的好瓜中有多少被真的挑出来了）}}
+\]</span></p>
+<h4 id="p-r曲线">P-R曲线</h4>
+<p>一般来说，查准率高时，查全率往往偏低，而查全率高时，查准率往往偏低。通常只有在一些简单任务中，才可能使得查全率和查准率都很高。在很多情况，我们可以根据学习器的预测结果，得到对应预测的 confidence scores 得分(有多大的概率是正例)，按照得分对样例进行排序，排在前面的是学习器认为”最可能“是正例的样本，排在最后的则是学习器认为“最不可能”是正例的样本。每次选择当前第 <span class="math inline">\(i\)</span> 个样例的得分作为阈值 <span class="math inline">\((1 \leq i \leq 样例个数)\)</span>，计算当前预测的前 <span class="math inline">\(i\)</span> 为正例的查全率和查准率。然后以<strong>查全率为横坐标</strong>，<strong>查准率为纵坐标</strong>作图，就得到了我们的查准率-查全率曲线: <strong>P-R曲线</strong></p>
+<h4 id="roc与auc">ROC与AUC</h4>
+<p><strong>ROC</strong> 全称是“受试者工作特征”（Receiver Operating Characteristic）。ROC 曲线的面积就是 <strong>AUC</strong>（Area Under the Curve）。AUC用于衡量“二分类问题”机器学习算法性能（泛化能力）。</p>
+<blockquote>
+<p>思想：和计算 P-R 曲线方法基本一致，只是这里计算的是 真正率(True Positive rate) 和 假正率(False Positive rate)，以 FPR 为横轴，TPR 为纵轴，绘制的曲线就是 ROC 曲线，ROC 曲线下的面积，即为 AUC</p>
+</blockquote>
+<p><span class="math display">\[
+（真正率）TPR = \frac{TP}{TP + FN}
+\]</span></p>
+<p><span class="math display">\[
+（假正率）FPR = \frac{FP}{FP + TN}
+\]</span></p>
+<h4 id="map">mAP</h4>
+<p>接下来说说 <strong>AP</strong> 的计算，此处参考的是 <code>PASCAL  VOC  CHALLENGE</code> 的计算方法。首先设定一组阈值，[0, 0.1, 0.2, …, 1]。然后对于 Recall 大于每一个阈值（比如 Recall &gt; 0.3），我们都会得到一个对应的最大 Precision。这样，我们就计算出了11个 Precision。AP 即为这11个 Precision 的平均值。这种方法英文叫做 <code>11-point interpolated average precision</code><br>
+相应的 Precision-Recall 曲线（这条曲线是单调递减的）如下：</p>
+<div class="figure">
+<img src="/2019/Come-on-you-can-find-a-good-job/mAP.png">
+
+</div>
+<p><strong>AP</strong> 衡量的是学出来的模型在每个类别上的好坏，<strong>mAP</strong> 衡量的是学出的模型在所有类别上的好坏，得到 AP 后 mAP 的计算就变得很简单了，就是取所有 AP 的平均值。</p>
+<div class="figure">
+<img src="/2019/Come-on-you-can-find-a-good-job/result.png">
+
+</div>
+<h2 id="激活函数">激活函数</h2>
+<h4 id="为什么需要激活函数">为什么需要激活函数？</h4>
+<ul>
+<li>激活函数对模型学习、理解非常复杂的、和非线性的函数具有重要作用</li>
+<li>使用<strong>激活函数</strong>的目的是为了向网络中加入<strong>非线性因素</strong> 。从而加强网络的表示能力，解决<strong>线性模型</strong>无法解决的问题</li>
+</ul>
+<h4 id="为什么要使用非线性激活函数">为什么要使用非线性激活函数？</h4>
+<blockquote>
+<p><strong>神经网络的万能近似定理</strong>认为，神经网络具有至少一个非线性隐藏层，那么只要给予网络足够数量的隐藏单元，它就可以以任意的精度来近似拟合任何<strong>从一个有限维空间到另一个有限维空间</strong>的函数。</p>
+</blockquote>
+<ul>
+<li>如果不使用非线性激活函数，那么每一层输出都是上层输入的<strong>线性组合</strong>；此时无论网络有多少层，其整体也将是线性的，就做不到用非线性来逼近任意函数，导致失去万能近似的性质</li>
+<li>使用非线性激活函数 ，可以增强网络的表示能力，使它可以学习从输入到输出之间复杂的非线性的映射。而且，仅<strong>部分层是纯线性</strong>是可以接受的，这有助于<strong>减少网络中的参数</strong>。</li>
+</ul>
+<h4 id="什么时候可以用线性激活函数">什么时候可以用线性激活函数</h4>
+<ul>
+<li>输出层，大多使用线性激活函数</li>
+<li>在隐含层可能会使用一些线性激活函数</li>
+<li>一般用到的线性激活函数很少</li>
+</ul>
+<h4 id="常见的激活函数">常见的激活函数</h4>
+<ul>
+<li><span class="math inline">\(Sigmoid\)</span></li>
+</ul>
+<p><span class="math inline">\(Sigmod\)</span> 又叫作 <strong><span class="math inline">\(Logistic\)</span> 激活函数</strong>，它将实数值压缩进 0 到 1 的区间内，还可以在预测概率的输出层中使用。该函数将大的负数转换成 0，将大的正数转换成 1. 数学公式为：<br>
+<span class="math display">\[
+y = \sigma(x) = \frac{1}{1 + e^{-x}}   \\
+y&#39; = y * (1 - y)
+\]</span><br>
+下图展示了 Sigmoid 函数及其导数：</p>
+<div class="figure">
+<img src="/2019/Come-on-you-can-find-a-good-job/sigmod_01.png" alt="Sigmoid激活函数">
+<p class="caption">Sigmoid激活函数</p>
+</div>
+<div class="figure">
+<img src="/2019/Come-on-you-can-find-a-good-job/sigmod_02.png" alt="Sigmoid激活函数导数">
+<p class="caption">Sigmoid激活函数导数</p>
+</div>
+<ul>
+<li><span class="math inline">\(Sigmoid\)</span> 函数的三个主要缺陷：</li>
+<li><strong>梯度消失</strong>：Sigmoid 函数在输入取绝对值非常大的正值或负值时会出现 <strong>饱和</strong> 现象，在图像上表现为变得很平缓，此时函数会对输入的微小变化不敏感，即此时的梯度趋近于0，造成梯度消失，网络权重更新缓慢或不更新。</li>
+<li><strong>不以零为中心</strong>：Sigmoid 输出不以零为中心的</li>
+<li><strong>计算成本高昂</strong>：<span class="math inline">\(exp()\)</span> 函数与其他非线性激活函数相比，计算成本高昂</li>
+</ul>
+<hr>
+<ul>
+<li><span class="math inline">\(Tanh\)</span> 函数</li>
+</ul>
+<p><span class="math display">\[
+\tanh (x)=2 \sigma(2 x)-1=\frac{\mathrm{e}^{x}-\mathrm{e}^{-x}}{\mathrm{e}^{x}+\mathrm{e}^{-x}} \\
+\tanh ^{\prime}(x)=1-\tanh ^{2}(x)
+\]</span></p>
+<p><span class="math inline">\(Tanh\)</span> 函数又叫作<strong>双曲正切激活函数</strong>。与 <span class="math inline">\(Sigmoid\)</span> 函数类似，区别是值域为 <span class="math inline">\((-1, 1)\)</span> ，且 <span class="math inline">\(Tanh\)</span> 函数的输出以零为中心，因为区间在 <span class="math inline">\(-1\)</span> 到 <span class="math inline">\(1\)</span> 之间。</p>
+<div class="figure">
+<img src="/2019/Come-on-you-can-find-a-good-job/tanh_01.png" alt="Tanh函数">
+<p class="caption">Tanh函数</p>
+</div>
+<div class="figure">
+<img src="/2019/Come-on-you-can-find-a-good-job/tanh_02.png" alt="Tanh函数导数">
+<p class="caption">Tanh函数导数</p>
+</div>
+<ul>
+<li>缺点：</li>
+<li><strong>梯度消失</strong>： <span class="math inline">\(Tanh\)</span> 函数也会有梯度消失的问题，因此在饱和时也会「杀死」梯度。</li>
+<li><strong>计算成本高昂</strong>：<span class="math inline">\(exp()\)</span> 函数与其他非线性激活函数相比，计算成本高昂</li>
+</ul>
+<h4 id="为什么tanh收敛速度比sigmoid快">为什么Tanh收敛速度比Sigmoid快</h4>
+<ul>
+<li><span class="math inline">\(tanh^{&#39;}(x)=1-tanh(x)^{2}\in (0,1)\)</span></li>
+<li><span class="math inline">\(s^{&#39;}(x)=s(x)*(1-s(x))\in (0,\frac{1}{4}]\)</span></li>
+</ul>
+<p>由上面两个公式可知 <span class="math inline">\(Tanh\)</span> 梯度消失的问题比 <span class="math inline">\(Sigmoid\)</span> 轻，所以 <span class="math inline">\(Tanh\)</span> 收敛速度比 <span class="math inline">\(Sigmoid\)</span> 快。</p>
+<hr>
+<ul>
+<li><span class="math inline">\(Relu\)</span> 函数</li>
+</ul>
+<p><span class="math inline">\(ReLU\)</span> 是从底部开始半修正的一种函数，数学公式为：<br>
+<span class="math display">\[
+f(x) = max(0, x)
+\]</span><br>
+<img src="/2019/Come-on-you-can-find-a-good-job/ReLU_01.png"><br>
+<img src="/2019/Come-on-you-can-find-a-good-job/ReLU_02.png"></p>
+<ul>
+<li>优点：</li>
+<li><strong>加速网络训练：</strong>当输入 x &lt; 0 时，输出为 0，当 x &gt; 0 时，输出为 x。该激活函数使网络更快速地收敛。</li>
+<li><strong>避免梯度消失</strong>： <span class="math inline">\(ReLU\)</span> 的导数始终是一个常数，负半区为 0，正半区为 1，所以不会发生梯度消失现象。而 <span class="math inline">\(Sigmoid\)</span> 函数在输入取绝对值非常大的正值或负值时会出现<strong>饱和</strong>现象.</li>
+<li><strong>减缓过拟合</strong>：<span class="math inline">\(ReLU\)</span> 在负半区的输出为 0。一旦神经元的激活值进入负半区，那么该激活值就不会产生梯度/不会被训练，造成了网络的稀疏性——<strong>稀疏激活</strong> 。这有助于减少参数的相互依赖，缓解过拟合问题的发生</li>
+<li><strong>加速计算</strong>：<span class="math inline">\(ReLU\)</span> 的求导不涉及浮点运算，所以速度更快</li>
+<li>缺点：</li>
+<li><strong>不以零为中心</strong>：和 <span class="math inline">\(Sigmoid\)</span> 激活函数类似，<span class="math inline">\(ReLU\)</span> 函数的输出不以零为中心。</li>
+<li>当 x = 0 时，该点的梯度未定义，但是这个问题在实现中得到了解决，通过采用左侧或右侧的梯度的方式 。</li>
+</ul>
+<hr>
+<ul>
+<li><span class="math inline">\(Leaky\ ReLU\)</span></li>
+</ul>
+<p>该函数试图缓解 <code>dead ReLU</code> 问题。数学公式为：<br>
+<span class="math display">\[
+f(x) = max(0.1x, x)
+\]</span><br>
+<img src="/2019/Come-on-you-can-find-a-good-job/Leaky_ReLU_01.png"></p>
+<p><span class="math inline">\(Leaky\ ReLU\)</span> 的概念是：当 x &lt; 0 时，它得到 0.1 的正梯度。该函数一定程度上缓解了 <code>dead ReLU</code> 问题，但是使用该函数的结果并不连贯。尽管它具备 <span class="math inline">\(ReLU\)</span> 激活函数的所有特征，如计算高效、快速收敛、在正区域内不会饱和。</p>
+<p><span class="math inline">\(Leaky\ ReLU\)</span> 可以得到更多扩展。不让 x 乘常数项，而是让 x 乘超参数，这看起来比 <span class="math inline">\(Leaky\ ReLU\)</span> 效果要好。该扩展就是 <span class="math inline">\(Parametric\ ReLU\)</span>。</p>
+<hr>
+<ul>
+<li><span class="math inline">\(Parametric\ ReLU\)</span></li>
+</ul>
+<p><span class="math display">\[
+f(x) = max(ax, x)
+\]</span></p>
+<p>其中 <span class="math inline">\(\alpha\)</span> 是一个可以学习的参数，因为你可以对它进行反向传播。这使神经元能够选择负区域最好的梯度，有了这种能力，它们可以变成 ReLU 或 Leaky ReLU。</p>
+<h4 id="怎样理解-relu-0-时是非线性激活函数">怎样理解 ReLU（&lt; 0 时）是非线性激活函数</h4>
+<p>从 <span class="math inline">\(ReLU\)</span> 的图像可以看出具有一下特点：</p>
+<ul>
+<li>单侧抑制</li>
+<li>相对宽阔的兴奋边界</li>
+<li>稀疏激活性</li>
+</ul>
+<p><span class="math inline">\(ReLU\)</span> 函数从图像上看，是一个分段线性函数，把所有的负值都变为 0，而正值不变，这样就成为单侧抑制。因为有了这单侧抑制，才使得神经网络中的神经元也具有了稀疏激活性。</p>
+<hr>
+<h2 id="batch-normalization批标准化">Batch Normalization(批标准化)</h2>
+<h4 id="bn层作用以及如何使用bn层">BN层作用，以及如何使用BN层</h4>
+<p><strong><a href="https://www.cnblogs.com/guoyaohua/p/8724433.html" target="_blank" rel="noopener">BN</a></strong> (Batch Normalization批标准化) 是一种<strong>正则化</strong>方法（减少泛化误差），主要作用有：</p>
+<ul>
+<li>加速网络的训练</li>
+<li>缓解梯度消失</li>
+<li>防止过拟合</li>
+<li>增强模型的泛化能力</li>
+<li>支持更大的学习率</li>
+<li>降低了参数初始化的要求</li>
+</ul>
+<h4 id="动机">动机</h4>
+<ul>
+<li><strong>训练的本质是学习数据分布</strong>。如果训练数据与测试数据的分布不同会<strong>降低</strong>模型的<strong>泛化能力</strong>。因此，应该在开始训练前对所有输入数据做归一化处理。</li>
+<li>而在神经网络中，因为<strong>每个隐层</strong>的参数不同，会使下一层的输入发生变化，从而导致每一批数据的分布也发生改变；<strong>致使</strong>网络在每次迭代中都需要拟合不同的数据分布，增大了网络的训练难度与<strong>过拟合</strong>的风险。</li>
+</ul>
+<h4 id="基本原理">基本原理</h4>
+<p><strong>（1）训练阶段</strong></p>
+<ul>
+<li>BN 方法会针对<strong>每一批数据</strong>，在<strong>网络的每一层输入</strong>之前增加<strong>归一化</strong>处理，使输入的均值为 <code>0</code>，标准差为 <code>1</code>。<strong>目的</strong>是将数据限制在统一的分布下。</li>
+<li>具体来说，针对每层的第 <code>k</code> 个神经元，计算<strong>这一批数据</strong>在第 <code>k</code> 个神经元的均值与标准差，然后将归一化后的值作为该神经元的激活值。</li>
+</ul>
+<p><span class="math display">\[
+\boldsymbol{\hat{x}_{k}} = \frac{\boldsymbol{x_{k}}-\mathrm{E}\left[\boldsymbol{x_{k}}\right]}{\sqrt{\operatorname{Var}\left[\boldsymbol{x_{k}}\right]}}
+\]</span></p>
+<ul>
+<li>BN 可以看作在各层之间加入了一个新的计算层，<strong>对数据分布进行额外的约束</strong>，从而增强模型的泛化能力；</li>
+<li>但同时 BN 也降低了模型的拟合能力，破坏了之前学到的<strong>特征分布</strong>；</li>
+<li>为了<strong>恢复数据的原始分布</strong>，BN 引入了一个<strong>重构变换</strong>来还原最优的输入数据分布，其中 <code>γ</code> 和 <code>β</code> 是我们要训练学习的参数。</li>
+</ul>
+<p><span class="math display">\[
+\boldsymbol{y_{k}} \leftarrow \gamma \boldsymbol{\hat{x}_{k}}+\beta
+\]</span></p>
+<p><strong>小结：</strong></p>
+<ul>
+<li>以上过程可归纳为一个 <strong><code>BN(x)</code> 函数</strong>：</li>
+</ul>
+<p><span class="math display">\[
+\large\begin{aligned}
+\large\boldsymbol{y_i}=
+\mathrm{BN}(\boldsymbol{x_i})
+&amp;=\gamma\boldsymbol{\hat{x}_i} + \beta \\
+&amp;=\gamma\frac{\boldsymbol{x_i}-\boldsymbol{\mathrm{E}[x_i]}}{\sqrt{\boldsymbol{\mathrm{Var}[x_i]}+\epsilon}}+\beta\end{aligned}
+\]</span></p>
+<ul>
+<li>完整算法：</li>
+</ul>
+<div class="figure">
+<img src="/2019/Come-on-you-can-find-a-good-job/BN.png">
+
+</div>
+<p><strong>（2）测试阶段</strong></p>
+<p>测试的时候，每次可能只会传入<strong>单个数据</strong>，此时的均值和标准差，模型会使用<strong>全局统计量</strong>代替<strong>批统计量</strong>；即使用训练时所有batch得到的一组组的均值和方差，计算其数学期望做为全局统计量。<br>
+<span class="math display">\[
+\begin{array}{c}{\mathrm{E}[x] \leftarrow \mathrm{E}\left[\mu_{i}\right]} \\ {\operatorname{Var}[x] \leftarrow \frac{m}{m-1} \mathrm{E}\left[\sigma_{i}^{2}\right]}\end{array}
+\]</span></p>
+<blockquote>
+<p>其中 <span class="math inline">\(μ_i\)</span> 和 <span class="math inline">\(σ_i\)</span> 分别表示第 <span class="math inline">\(i\)</span> 轮 batch 保存的均值和标准差；<span class="math inline">\(m\)</span> 为 batch_size，系数 <span class="math inline">\(\frac{m}{m-1}\)</span> 用于计算<strong>无偏方差估计</strong> （原文称该方法为<strong>移动平均</strong>（moving averages））</p>
+</blockquote>
+<p>然后再将按照训练的流程，将输入数据，减去全局统计量均值和标准差，再进行重构变换得到新的数据最为神经元的激活值。</p>
+<ul>
+<li>此时，<code>BN(x)</code> 调整为：</li>
+</ul>
+<p><span class="math display">\[
+\large\begin{aligned}\mathrm{BN}(\boldsymbol{x_i})&amp;=\gamma\frac{\boldsymbol{x_i}-\boldsymbol{\mathrm{E}[x_i]}}{\sqrt{\boldsymbol{\mathrm{Var}[x_i]} + \epsilon}} + \beta\\&amp;=\frac{\gamma}{\sqrt{\boldsymbol{\mathrm{Var}[x_i]} + \epsilon}}\boldsymbol{x_i} + \left(\beta-\frac{\gamma\boldsymbol{\mathrm{E}[x_i]}}{\sqrt{\boldsymbol{\mathrm{Var}[x_i]} + \epsilon}}\right)\end{aligned}
+\]</span></p>
+<p>这样写的目的是为了减少计算量，推理阶段公式中的两个分式是固定值，可以预先计算好，这样推理阶段就可以直接使用。</p>
+<ul>
+<li><strong>完整算法：</strong></li>
+</ul>
+<div class="figure">
+<img src="/2019/Come-on-you-can-find-a-good-job/BN_02.png">
+
+</div>
+<ul>
+<li><strong>Reference:</strong> <a href="https://www.cnblogs.com/guoyaohua/p/8724433.html" target="_blank" rel="noopener">理解</a> <a href="https://blog.csdn.net/qq_25737169/article/details/79048516" target="_blank" rel="noopener">源码解读</a> <a href="https://zhuanlan.zhihu.com/p/34879333" target="_blank" rel="noopener">实战</a> <a href="https://www.zhihu.com/question/38102762" target="_blank" rel="noopener">知乎</a></li>
+</ul>
+<h4 id="为什么训练时不采用移动平均">为什么训练时不采用移动平均？</h4>
+<ul>
+<li>用 BN 的目的就是为了保证每批数据的分布稳定，使用训练时使用全局统计量反而违背了这个初衷；</li>
+<li>BN 的作者认为在训练时采用移动平均可能会与梯度优化存在冲突；</li>
+</ul>
+<h4 id="bnlningn的异同">BN、LN、IN、GN的异同</h4>
+<div class="figure">
+<img src="/2019/Come-on-you-can-find-a-good-job/GN.png">
+
+</div>
+<div class="figure">
+<img src="/2019/Come-on-you-can-find-a-good-job/BN_croped.png">
+
+</div>
+<p>深度网络中的数据维度一般为：[N, C, H, W] 或者[N, H, W, C]格式，分别对应上图两种排列方式。</p>
+<p>其中：</p>
+<ul>
+<li>N ：batch_size</li>
+<li>W ：feature map 的宽</li>
+<li>H ：feature map 的高</li>
+<li>C ：feature map 的通道数</li>
+</ul>
+<p><strong><code>BN</code>：</strong> 在batch的维度上进行norm，归一化维度为 <strong>[N, H, W]</strong>，BN对batch size有依赖，当batch size较大时，有不错的效果。而 LN、IN、GN 能够摆脱这种依赖，其中GN效果最好。</p>
+<p><strong><code>LN</code>：</strong> 避开了batch维度，归一化的维度为 <strong>[C，H，W]</strong></p>
+<p><strong><code>IN</code>：</strong> 归一化维度为 <strong>[H, W]</strong></p>
+<p><strong><code>GN</code>：</strong> GN 介于 LN 和 IN 之间，其首先将channel分为许多组（group），对每一组做归一化，即先将feature的维度由[N, C, H, W] reshape为 [N*G，C//G , H, W]，归一化的维度为 <strong>[C//G , H, W]</strong> 。GN相当于特征的group归一化，其对batch_size更鲁棒</p>
+<p>事实上，GN 的极端情况就是 LN 和 IN，分别对应G等于1和G等于C</p>
+<hr>
+<h2 id="caffe">Caffe</h2>
+<h4 id="caffe卷积层的实现">Caffe卷积层的实现</h4>
+<p>Caffe的卷积层实现，使用 <code>im2col</code> 操作，将数据以及卷积核分别转换成新的矩阵，然后将两对矩阵进行内积运算（inner product)。这样做，比原始的卷积操作速度更快。</p>
+<div class="figure">
+<img src="/2019/Come-on-you-can-find-a-good-job/caffe_conv_02.jpg">
+
+</div>
+<p>其中 <code>im2col</code> : 将一个大矩阵，重叠地划分为多个子矩阵，对每个子矩阵序列化成向量，最后得到另外一个矩阵。</p>
+<div class="figure">
+<img src="/2019/Come-on-you-can-find-a-good-job/caffe_conv_01.png">
+
+</div>
+<hr>
+<h4 id="梯度下降与正规方程的比较">梯度下降与正规方程的比较</h4>
+<table>
+<colgroup>
+<col width="34%">
+<col width="65%">
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">梯度下降(Gradient Descent)</th>
+<th align="center">正规方程(Normal Equation)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">需要选择学习率 <span class="math inline">\(\alpha\)</span></td>
+<td align="center">不需要</td>
+</tr>
+<tr class="even">
+<td align="center">需要多次迭代</td>
+<td align="center">一次运算得出</td>
+</tr>
+<tr class="odd">
+<td align="center">当特征数量 n 大时，也能较好适用</td>
+<td align="center">需要计算 <span class="math inline">\((X^{T}X)^{-1}\)</span><br>如果特征数量 n 较大则运算代价大，因为矩阵逆的计算时间复杂度为 <span class="math inline">\(O(n^3)\)</span> ，通常来说当n小于10000时还是可以接受的</td>
+</tr>
+<tr class="even">
+<td align="center">适用于各种类型的模型</td>
+<td align="center">只适用于线性模型，不适合逻辑回归等其他模型</td>
+</tr>
+</tbody>
+</table>
+<h2 id="面试题目">面试题目</h2>
+<h4 id="广义逆阵"><a href="https://zh.wikipedia.org/wiki/%E5%B9%BF%E4%B9%89%E9%80%86%E9%98%B5" target="_blank" rel="noopener">广义逆阵</a></h4>
+<p>关于矩阵的广义逆，下列表述不正确的是：</p>
+<ul>
+<li><strong>提出广义逆阵的原因</strong></li>
+</ul>
+<p>考虑以下的线性方程<br>
+<span class="math display">\[
+Ax = y
+\]</span><br>
+其中 <span class="math inline">\(A\)</span> 为 <span class="math inline">\(n \times m\)</span> 的矩阵，而 <span class="math inline">\(y \in \mathcal{R}(A), A\)</span> 的列空间。若矩阵 <span class="math inline">\(A\)</span> 为 <span class="math inline">\(A\)</span> 为可逆矩阵，则 <span class="math inline">\(x = A^{-1}y\)</span> 即为方程式的解。而若矩阵 <span class="math inline">\(A\)</span> 为可逆矩阵，则有：<br>
+<span class="math display">\[
+AA^{-1}A = A
+\]</span><br>
+假设矩阵 <span class="math inline">\(A\)</span> 不是可逆或是 <span class="math inline">\(n \neq m\)</span> ，需要一个合适的 <span class="math inline">\(m \times n\)</span> 矩阵 <span class="math inline">\(G\)</span> 使得下式成立：<br>
+<span class="math display">\[
+AGy = y
+\]</span><br>
+因为 <span class="math inline">\(Gy\)</span> 为线性系统 <span class="math inline">\(Ax = y\)</span> 的解。而同样的， <span class="math inline">\(m \times n\)</span> 的阶的矩阵 <span class="math inline">\(G\)</span> 也会使下式成立：<br>
+<span class="math display">\[
+AGA = A
+\]</span><br>
+因此可以用以下的方式定义<strong>广义逆阵</strong>：假设一个 <span class="math inline">\(n \times m\)</span> 的矩阵 <span class="math inline">\(A\)</span> ，<span class="math inline">\(m \times n\)</span> 的矩阵 <span class="math inline">\(G\)</span> 若可以使下式成立，矩阵 <span class="math inline">\(G\)</span> 即为 <span class="math inline">\(A\)</span> 的广义逆阵。<br>
+<span class="math display">\[
+AGA = A
+\]</span></p>
+<ul>
+<li><strong>产生广义逆阵</strong></li>
+</ul>
+<p>以下是一种产生广义逆阵的方式[3]：</p>
+<ol style="list-style-type: decimal">
+<li>若 <span class="math inline">\(A=BC\)</span> 为其秩分解，则 <span class="math inline">\(G=C_{r}^{-}B_{l}^{-}\)</span> 为 <span class="math inline">\(A\)</span> 的广义逆阵，其中 <span class="math inline">\(C_{r}^{-}\)</span> 为 <span class="math inline">\(C\)</span> 的右逆矩阵，而 <span class="math inline">\(B_{l}^{-}\)</span> 为 <span class="math inline">\(B\)</span> 的左逆矩阵。</li>
+<li>若 <span class="math inline">\(A=P{\begin{bmatrix}I_{r}&amp;0\\0&amp;0\end{bmatrix}}Q\)</span> ，其中 <span class="math inline">\(P\)</span> 及 <span class="math inline">\(Q\)</span> 为可逆矩阵，则 <span class="math inline">\(G=Q^{-1}{\begin{bmatrix}I_{r}&amp;U\\W&amp;V\end{bmatrix}}P^{-1}\)</span> 是 <span class="math inline">\(A\)</span> 的广义逆阵，其中 <span class="math inline">\(U,V\)</span> 及 <span class="math inline">\(W\)</span> 均为任意矩阵。</li>
+<li>令 <span class="math inline">\(A\)</span> 为秩为 <span class="math inline">\(r\)</span> 的矩阵，在不失一般性的情形下，令 <span class="math inline">\(A={\begin{bmatrix}B&amp;C\\D&amp;E\end{bmatrix}}\)</span> ，其中 <span class="math inline">\(B_{r\times r}\)</span> 为 <span class="math inline">\(A\)</span> 的可逆子矩阵，则 <span class="math inline">\(G={\begin{bmatrix}B^{-1}&amp;0\\0&amp;0\end{bmatrix}}\)</span> 为 <span class="math inline">\(A\)</span> 的广义逆阵。</li>
+</ol>
+<ul>
+<li><strong>广义逆阵的种类</strong></li>
+</ul>
+<p>彭若斯条件可以用来定义不同的广义逆阵：针对 <span class="math inline">\(A \in \mathbb{R}^{n \times m} 及 A^{\mathrm{g}} \in \mathbb{R}^{m \times n}\)</span> ，<br>
+<span class="math display">\[
+\begin{array}{l}{\text { 1.) } A A^{\mathrm{g}} A=A} \\ {\text { 2.) } A^{\mathrm{g}} A A^{\mathrm{g}}=A^{\mathrm{g}}} \\ {\text { 3.) }\left(A A^{\mathrm{g}}\right)^{\mathrm{T}}=A A^{\mathrm{g}}} \\ {\text { 4.) }\left(A^{\mathrm{g}} A\right)^{\mathrm{T}}=A^{\mathrm{g}} A}\end{array}
+\]</span><br>
+若 <span class="math inline">\(A^{\mathrm{g}}\)</span> 满足条件(1.)，即为 <span class="math inline">\(A\)</span> 的广义逆阵，若满足条件 (1.) 和 (2.)，则为 <span class="math inline">\(A\)</span> 的广义反身逆阵。若四个条件都满足，则为 <span class="math inline">\(A\)</span> 的<a href="https://zh.wikipedia.org/wiki/%E6%91%A9%E5%B0%94%EF%BC%8D%E5%BD%AD%E8%8B%A5%E6%96%AF%E5%B9%BF%E4%B9%89%E9%80%86" target="_blank" rel="noopener">摩尔－彭若斯广义逆</a>。</p>
+<h2 id="待整理">待整理</h2>
+<h4 id="仿射变换和透视变化区别">仿射变换和透视变化区别</h4>
+<h4 id="透视变换矩阵的形状">透视变换矩阵的形状；</h4>
+<h4 id="梯度消失和梯度爆炸的原因和解决方法">梯度消失和梯度爆炸的原因和解决方法</h4>
+<h4 id="svm寻参问题">SVM寻参问题</h4>
+<h4 id="svm核函数解释">SVM核函数解释</h4>
+<h4 id="softmax-公式以及反向传播">Softmax 公式，以及反向传播</h4>
+<h4 id="交叉熵公式以及方向传播">交叉熵公式，以及方向传播</h4>
+<h4 id="简述-yolo-和-ssd">简述 YOLO 和 SSD</h4>
+<h4 id="yolov2"><a href="https://zhuanlan.zhihu.com/p/25167153" target="_blank" rel="noopener">YOLOv2</a></h4>
+<h4 id="batch_size-和-learning-rate的关系怎么平衡和调整二者">batch_size 和 learning rate的关系（怎么平衡和调整二者）</h4>
+<h4 id="inception-v1-v4的演变">Inception v1-v4的演变</h4>
+<h4 id="简述-cnn-的演变">简述 CNN 的演变</h4>
+<h4 id="roi-pooling-和-roi-align">ROI Pooling 和 ROI Align</h4>
+<h4 id="优化算法区别以及各自的优势">优化算法，区别以及各自的优势</h4>
+<h4 id="cnn为什么有效-1-2">CNN为什么有效 <a href="https://lguduy.github.io/2017/07/02/CNN%E4%B8%BA%E4%BB%80%E4%B9%88work/" target="_blank" rel="noopener">1</a> <a href="https://www.zhihu.com/question/39022858" target="_blank" rel="noopener">2</a></h4>
+<h4 id="cnn再图像上表现好的原因">CNN再图像上表现好的原因</h4>
+<h4 id="对迁移学习的理解为什么能work">对迁移学习的理解，为什么能work</h4>
+<h4 id="实现一个卷积操作"><a href="https://blog.csdn.net/huachao1001/article/details/79120521" target="_blank" rel="noopener">实现一个卷积操作</a></h4>
+<h4 id="模型精简加速">模型精简加速</h4>
+<h4 id="图像处理中的常用算子"><a href="https://blog.csdn.net/yyywww666/article/details/78117595" target="_blank" rel="noopener">图像处理中的常用算子</a></h4>
+<h4 id="卷积与反卷积">卷积与反卷积</h4>
+<h4 id="lstm-与-rnn-模型">LSTM 与 RNN 模型</h4>
+<h4 id="lstm的结构其相对于rnn的好处">LSTM的结构，其相对于RNN的好处</h4>
+<h4 id="bn原理与实战"><a href="https://zhuanlan.zhihu.com/p/34879333" target="_blank" rel="noopener">BN原理与实战</a></h4>
+<hr>
+<h2 id="面经集合">面经集合</h2>
+<ul>
+<li><a href="https://blog.csdn.net/francislucien2017/article/details/87936928" target="_blank" rel="noopener">2019春 计算机视觉方向实习面试总结 （商汤 / 搜狗 / 纽劢 / 普华永道）</a></li>
+<li><a href="https://www.jianshu.com/p/58855c6971e5" target="_blank" rel="noopener">2019秋招CV算法面经</a></li>
+<li><a href="https://mp.weixin.qq.com/s?__biz=MjM5ODU3OTIyOA==&amp;mid=2650667647&amp;idx=1&amp;sn=142c2aa04e2af0f700a0c8bce08c1de0&amp;chksm=bec1c70c89b64e1a8e6fb091da6c74c152469469d2e28ee3301078602e8032eba8df75fc0b81&amp;scene=21#wechat_redirect" target="_blank" rel="noopener">机器学习工程师面试!!!</a></li>
+<li><a href="https://mp.weixin.qq.com/s?__biz=MjM5ODU3OTIyOA==&amp;mid=2650667685&amp;idx=1&amp;sn=b7e119cd87dd36361202aac99b73d8a9&amp;chksm=bec1c7d689b64ec0bbac4edec8b7102f38c751b21bd3789970527c13ccbb48c3403c74913180&amp;scene=21#wechat_redirect" target="_blank" rel="noopener">深度学习面试你必须知道这些答案</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/32981626" target="_blank" rel="noopener">大佬面试总结：图像处理/CV/ML/DL到HR面</a></li>
+<li><a href="https://mp.weixin.qq.com/s?__biz=MjM5ODU3OTIyOA==&amp;mid=2650668193&amp;idx=1&amp;sn=2efc45adea26c8ebd6efc5e14509180c&amp;chksm=bec1c1d289b648c43537fa297504f2cddf1568586da02becca515671fb095d7e591c33594c66&amp;scene=21#wechat_redirect" target="_blank" rel="noopener">深度学习面试题目</a></li>
+<li><a href="https://mp.weixin.qq.com/s?__biz=MjM5ODU3OTIyOA==&amp;mid=2650666049&amp;idx=1&amp;sn=94d9aca0a894418f4c66e9b5363e0498&amp;chksm=bec1c93289b640240af8f55c301a63897d0c52d3ea7b96da969ff160c17b2d52c4a04204634b&amp;scene=21#wechat_redirect" target="_blank" rel="noopener">面试官如何判断面试者的机器学习水平？</a></li>
+<li><a href="https://blog.csdn.net/yyywww666/article/details/78117595" target="_blank" rel="noopener">2017百度计算机视觉题目</a></li>
+</ul>
+<hr>
+<h2 id="c问题">C++问题</h2>
+<ul>
+<li>C++虚函数机制</li>
+<li>C++中static作用</li>
+<li>C++ 中的 new / delete 和 C 里的 malloc / free 的区别；</li>
+<li><a href="https://www.cnblogs.com/clover-toeic/p/3853132.html" target="_blank" rel="noopener">结构体对齐</a></li>
+</ul>
+<h2 id="python问题">Python问题</h2>
+<ul>
+<li>Python的多线程和多进程，Python伪多线程，那什么时候应该用它？（有空闲等待的情况）讲一下Java线程池（举了Android多线程的例子）</li>
+<li>Python tuple和list的区别（只读和读写，什么时候用只读的容器？）</li>
+<li>tensorflow while_loop和python for循环的区别，什么情况下for更优？</li>
+</ul>
+<hr>
+<h2 id="面试算法题目">面试算法题目</h2>
+<ul>
+<li><p>给定一个词典，和两个单词A, B. 每次只能改变一个字母，求A在词典中变换为B所需的最小次数</p></li>
+<li><p>数组形式的<code>a[i][j][k]</code> 改用指针形式来访问</p></li>
+<li><p>有序数组，旋转后查找一个数</p></li>
+<li><p>判断一个数是不是2的指数次方的值</p></li>
+</ul>
+<p><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">如果是<span class="number">2</span>的倍数，那么该数的二进制位只有<span class="number">1</span>位为<span class="number">1</span>，所以只需要使用 n =  n &amp; (n - <span class="number">1</span>) 即可，其可以掉最右边的一个<span class="number">1</span>，若此时，n为<span class="number">0</span>，则符合，否则，不符合。</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><p>最长公共子串 (商汤)</p></li>
+<li><p>找到一个数组中唯一一个出现奇数次数的数（商汤）</p></li>
+<li><p>给两个有序数组，求第3大的数（头条）</p></li>
+</ul>
+<hr>
+<h2 id="概率智力题">概率智力题</h2>
+<ul>
+<li>两个人拿金币，一次只能拿一个或者两个，最后拿光的人赢，怎样才能保证赢？</li>
+<li>最大子矩阵和</li>
+<li>有n瓶水，有一瓶有毒，用几只老鼠可以找出</li>
+</ul>
+</body>
+</html>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Machine-Learning/" rel="tag">#Machine Learning</a>
+          
+            <a href="/tags/Deeping-Learning/" rel="tag">#Deeping Learning</a>
+          
+            <a href="/tags/job/" rel="tag">#job</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/cjvq2xdda000061agxqqejpcj/" rel="next">
+                C++中的set <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+          </div>
+        
+      
+
+        
+          
+  
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+      
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table Of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview" sidebar-panel >
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/avatar.jpg" alt="SmileLingyong" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">SmileLingyong</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">向上，向阳！</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-name">categories</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">18</span>
+              <span class="site-state-item-name">tags</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="smilelingyong@gmail.com" target="_blank">
+                  <i class="fa fa-e-mail"></i> E-Mail
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/SmileLingyong" target="_blank">
+                  <i class="fa fa-github"></i> Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://blog.csdn.net/forever__1234" target="_blank">
+                  <i class="fa fa-csdn"></i> CSDN
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#模型评估"><span class="nav-text">模型评估</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#模型评估常用方法"><span class="nav-text">模型评估常用方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#机器学习中的bias和variance有什么区别和联系"><span class="nav-text">机器学习中的Bias和Variance有什么区别和联系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#经验误差与泛化误差"><span class="nav-text">经验误差与泛化误差</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#深度学习中的偏差与方差"><span class="nav-text">深度学习中的偏差与方差</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#偏差与方差的计算公式"><span class="nav-text">偏差与方差的计算公式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#偏差与方差的权衡过拟合与模型复杂度的权衡"><span class="nav-text">偏差与方差的权衡（过拟合与模型复杂度的权衡）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#欠拟合与过拟合"><span class="nav-text">欠拟合与过拟合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#根据不同的坐标方式图解欠拟合与过拟合"><span class="nav-text">根据不同的坐标方式，图解欠拟合与过拟合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#降低过拟合的方法"><span class="nav-text">降低过拟合的方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#降低欠拟合的方法"><span class="nav-text">降低欠拟合的方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#交叉验证的主要作用"><span class="nav-text">交叉验证的主要作用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#k-折交叉验证"><span class="nav-text">\(k\) 折交叉验证</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#precision和recall"><span class="nav-text">Precision和Recall</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#p-r曲线"><span class="nav-text">P-R曲线</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#roc与auc"><span class="nav-text">ROC与AUC</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#map"><span class="nav-text">mAP</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#激活函数"><span class="nav-text">激活函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么需要激活函数"><span class="nav-text">为什么需要激活函数？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么要使用非线性激活函数"><span class="nav-text">为什么要使用非线性激活函数？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#什么时候可以用线性激活函数"><span class="nav-text">什么时候可以用线性激活函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常见的激活函数"><span class="nav-text">常见的激活函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么tanh收敛速度比sigmoid快"><span class="nav-text">为什么Tanh收敛速度比Sigmoid快</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#怎样理解-relu-0-时是非线性激活函数"><span class="nav-text">怎样理解 ReLU（&lt; 0 时）是非线性激活函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#batch-normalization批标准化"><span class="nav-text">Batch Normalization(批标准化)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#bn层作用以及如何使用bn层"><span class="nav-text">BN层作用，以及如何使用BN层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#动机"><span class="nav-text">动机</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基本原理"><span class="nav-text">基本原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么训练时不采用移动平均"><span class="nav-text">为什么训练时不采用移动平均？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bnlningn的异同"><span class="nav-text">BN、LN、IN、GN的异同</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#caffe"><span class="nav-text">Caffe</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#caffe卷积层的实现"><span class="nav-text">Caffe卷积层的实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#梯度下降与正规方程的比较"><span class="nav-text">梯度下降与正规方程的比较</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面试题目"><span class="nav-text">面试题目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#广义逆阵"><span class="nav-text">广义逆阵</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#待整理"><span class="nav-text">待整理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#仿射变换和透视变化区别"><span class="nav-text">仿射变换和透视变化区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#透视变换矩阵的形状"><span class="nav-text">透视变换矩阵的形状；</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#梯度消失和梯度爆炸的原因和解决方法"><span class="nav-text">梯度消失和梯度爆炸的原因和解决方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#svm寻参问题"><span class="nav-text">SVM寻参问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#svm核函数解释"><span class="nav-text">SVM核函数解释</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#softmax-公式以及反向传播"><span class="nav-text">Softmax 公式，以及反向传播</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#交叉熵公式以及方向传播"><span class="nav-text">交叉熵公式，以及方向传播</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#简述-yolo-和-ssd"><span class="nav-text">简述 YOLO 和 SSD</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#yolov2"><span class="nav-text">YOLOv2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#batch_size-和-learning-rate的关系怎么平衡和调整二者"><span class="nav-text">batch_size 和 learning rate的关系（怎么平衡和调整二者）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#inception-v1-v4的演变"><span class="nav-text">Inception v1-v4的演变</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#简述-cnn-的演变"><span class="nav-text">简述 CNN 的演变</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#roi-pooling-和-roi-align"><span class="nav-text">ROI Pooling 和 ROI Align</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#优化算法区别以及各自的优势"><span class="nav-text">优化算法，区别以及各自的优势</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cnn为什么有效-1-2"><span class="nav-text">CNN为什么有效 1 2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cnn再图像上表现好的原因"><span class="nav-text">CNN再图像上表现好的原因</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对迁移学习的理解为什么能work"><span class="nav-text">对迁移学习的理解，为什么能work</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实现一个卷积操作"><span class="nav-text">实现一个卷积操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模型精简加速"><span class="nav-text">模型精简加速</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#图像处理中的常用算子"><span class="nav-text">图像处理中的常用算子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#卷积与反卷积"><span class="nav-text">卷积与反卷积</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lstm-与-rnn-模型"><span class="nav-text">LSTM 与 RNN 模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lstm的结构其相对于rnn的好处"><span class="nav-text">LSTM的结构，其相对于RNN的好处</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bn原理与实战"><span class="nav-text">BN原理与实战</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面经集合"><span class="nav-text">面经集合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#c问题"><span class="nav-text">C++问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python问题"><span class="nav-text">Python问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面试算法题目"><span class="nav-text">面试算法题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#概率智力题"><span class="nav-text">概率智力题</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+	  </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">SmileLingyong</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="#">
+    FreeSky
+  </a>(Reserved)
+
+  
+  <span id="busuanzi_container_site_uv">
+     &nbsp; | &nbsp;  用户量: <span id="busuanzi_value_site_uv"></span>
+  </span>
+  <span id="busuanzi_container_site_pv">
+    &nbsp; | &nbsp;  总访问量: <span id="busuanzi_value_site_pv"></span>
+  </span>
+
+  
+</div>
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/others/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+    
+
+  
+
+
+  
+  
+  <script type="text/javascript" src="/others/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
+  
+
+  <script type="text/javascript" src="/others/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/others/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.2" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.2"></script>
+  <script type="text/javascript" src="/others/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    var $aboutContent = $('#posts-about');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0 && $aboutContent.length === 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+
+      motionIntegrator.bootstrap();
+    });
+  </script>
+
+  
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+  
+     <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("9QoQXWnRR4zwSFuxRv52kUpi-gzGzoHsz", "zlgcRzgHF7AHu8TKLJUwCAjw");</script>
+<script>
+function showTime(Counter) {
+  var query = new AV.Query(Counter);
+  $(".leancloud_visitors").each(function() {
+    var url = $(this).attr("id").trim();
+    query.equalTo("url", url);
+    query.find({
+      success: function(results) {
+        if (results.length == 0) {
+          var content = $(document.getElementById(url)).text() + ': 0';
+          $(document.getElementById(url)).text(content);
+          return;
+        }
+        for (var i = 0; i < results.length; i++) {
+          var object = results[i];
+          var content = $(document.getElementById(url)).text() + ': ' + object.get('time');
+          $(document.getElementById(url)).text(content);
+        }
+      },
+      error: function(object, error) {
+        console.log("Error: " + error.code + " " + error.message);
+      }
+    });
+
+  });
+}
+
+function addCount(Counter) {
+  var Counter = AV.Object.extend("Counter");
+  url = $(".leancloud_visitors").attr('id').trim();
+  title = $(".leancloud_visitors").attr('data-flag-title').trim();
+  var query = new AV.Query(Counter);
+  query.equalTo("url", url);
+  query.find({
+    success: function(results) {
+      if (results.length > 0) {
+        var counter = results[0];
+        counter.fetchWhenSave(true);
+        counter.increment("time");
+        counter.save(null, {
+          success: function(counter) {
+            var content = $(document.getElementById(url)).text() + ': ' + counter.get('time');
+            $(document.getElementById(url)).text(content);
+          },
+          error: function(counter, error) {
+            console.log('Failed to save Visitor num, with error message: ' + error.message);
+          }
+        });
+      } else {
+        var newcounter = new Counter();
+        newcounter.set("title", title);
+        newcounter.set("url", url);
+        newcounter.set("time", 1);
+        newcounter.save(null, {
+          success: function(newcounter) {
+              console.log("newcounter.get('time')="+newcounter.get('time'));
+            var content = $(document.getElementById(url)).text() + ': ' + newcounter.get('time');
+            $(document.getElementById(url)).text(content);
+          },
+          error: function(newcounter, error) {
+            console.log('Failed to create');
+          }
+        });
+      }
+    },
+    error: function(error) {
+      console.log('Error:' + error.code + " " + error.message);
+    }
+  });
+}
+$(function() {
+  var Counter = AV.Object.extend("Counter");
+  if ($('.leancloud_visitors').length == 1) {
+    addCount(Counter);
+  } else if ($('.post-title-link').length > 1) {
+    showTime(Counter);
+  }
+}); 
+</script>
+  
+</body>
+</html>

@@ -1,0 +1,1120 @@
+<!doctype html>
+<html class="theme-next use-motion ">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/others/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+
+
+  <link href="/vendors/googleapis/css/Lato.css" rel="stylesheet" type="text/css">
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/others/font-awesome/css/font-awesome.min.css?v=4.4.0" />
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.2"/>
+
+
+    <meta name="description" content="向上，向阳！" />
+
+
+
+  <meta name="keywords" content="Machine Learning,Deeping Learning,学习笔记,RCNN,Paper," />
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=0.4.5.2" />
+
+
+<meta name="description" content="code{white-space: pre;}          K. He, X. Zhang, S. Ren, and J. Sun. Spatial pyramid pooling in deep convolutional networks for visual recognition. In ECCV, 2014.">
+<meta name="keywords" content="Machine Learning,Deeping Learning,学习笔记,RCNN,Paper">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【转载】【目标检测】SPP-Net (Spatial Pyramid Pooling in Deep Convolutional Networks for Visual Recognition)">
+<meta property="og:url" content="http://yoursite.com/2018/cjvq2xdvj002761agu4maxjot/index.html">
+<meta property="og:site_name" content="SmileLingyong">
+<meta property="og:description" content="code{white-space: pre;}          K. He, X. Zhang, S. Ren, and J. Sun. Spatial pyramid pooling in deep convolutional networks for visual recognition. In ECCV, 2014.">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2018/04/12/【目标检测】SPP-Net-Spatial-Pyramid-Pooling-in-Deep-Convolutional-Networks-for-Visual-Recognition/SPP-Net.png">
+<meta property="og:image" content="http://yoursite.com/2018/04/12/【目标检测】SPP-Net-Spatial-Pyramid-Pooling-in-Deep-Convolutional-Networks-for-Visual-Recognition/RCNN_SPPNet.png">
+<meta property="og:image" content="http://yoursite.com/2018/04/12/【目标检测】SPP-Net-Spatial-Pyramid-Pooling-in-Deep-Convolutional-Networks-for-Visual-Recognition/Bag_of_words_SpatialPyramidMatching.png">
+<meta property="og:image" content="http://yoursite.com/2018/04/12/【目标检测】SPP-Net-Spatial-Pyramid-Pooling-in-Deep-Convolutional-Networks-for-Visual-Recognition/Spatial_Pyramid_Matching.png">
+<meta property="og:image" content="http://yoursite.com/2018/04/12/【目标检测】SPP-Net-Spatial-Pyramid-Pooling-in-Deep-Convolutional-Networks-for-Visual-Recognition/i20f4ja3Ac.png">
+<meta property="og:image" content="http://yoursite.com/2018/04/12/【目标检测】SPP-Net-Spatial-Pyramid-Pooling-in-Deep-Convolutional-Networks-for-Visual-Recognition/BB6miiH0L3.png">
+<meta property="og:image" content="http://yoursite.com/2018/04/12/【目标检测】SPP-Net-Spatial-Pyramid-Pooling-in-Deep-Convolutional-Networks-for-Visual-Recognition/dA80KefF3G.png">
+<meta property="og:image" content="http://yoursite.com/2018/04/12/【目标检测】SPP-Net-Spatial-Pyramid-Pooling-in-Deep-Convolutional-Networks-for-Visual-Recognition/27m7JalAki.png">
+<meta property="og:image" content="http://yoursite.com/2018/04/12/【目标检测】SPP-Net-Spatial-Pyramid-Pooling-in-Deep-Convolutional-Networks-for-Visual-Recognition/1F2Kd576j2.png">
+<meta property="og:image" content="http://yoursite.com/2018/04/12/【目标检测】SPP-Net-Spatial-Pyramid-Pooling-in-Deep-Convolutional-Networks-for-Visual-Recognition/594J18dmD3.png">
+<meta property="og:image" content="http://yoursite.com/2018/04/12/【目标检测】SPP-Net-Spatial-Pyramid-Pooling-in-Deep-Convolutional-Networks-for-Visual-Recognition/iL5CcCKllc.png">
+<meta property="og:image" content="http://yoursite.com/2018/04/12/【目标检测】SPP-Net-Spatial-Pyramid-Pooling-in-Deep-Convolutional-Networks-for-Visual-Recognition/kfh68A8f6d.png">
+<meta property="og:image" content="http://yoursite.com/2018/04/12/【目标检测】SPP-Net-Spatial-Pyramid-Pooling-in-Deep-Convolutional-Networks-for-Visual-Recognition/0Ba6jGDFAL.png">
+<meta property="og:image" content="http://yoursite.com/2018/04/12/【目标检测】SPP-Net-Spatial-Pyramid-Pooling-in-Deep-Convolutional-Networks-for-Visual-Recognition/BGaa4IkiHh.png">
+<meta property="og:updated_time" content="2019-03-27T08:32:20.175Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【转载】【目标检测】SPP-Net (Spatial Pyramid Pooling in Deep Convolutional Networks for Visual Recognition)">
+<meta name="twitter:description" content="code{white-space: pre;}          K. He, X. Zhang, S. Ren, and J. Sun. Spatial pyramid pooling in deep convolutional networks for visual recognition. In ECCV, 2014.">
+<meta name="twitter:image" content="http://yoursite.com/2018/04/12/【目标检测】SPP-Net-Spatial-Pyramid-Pooling-in-Deep-Convolutional-Networks-for-Visual-Recognition/SPP-Net.png">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: '',
+    sidebar: 'always'
+  };
+</script>
+
+
+
+  <title> 【转载】【目标检测】SPP-Net (Spatial Pyramid Pooling in Deep Convolutional Networks for Visual Recognition) | SmileLingyong </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+
+
+
+  <div id="container" class="container one-column page-post-detail">
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+      
+	  	<span style="font-size:14px;float:right;padding:39px 40px 0 0;">——穷则独善其身，达则兼济天下.</span>
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+
+        	<div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                【转载】【目标检测】SPP-Net (Spatial Pyramid Pooling in Deep Convolutional Networks for Visual Recognition)
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            Posted on
+            <time itemprop="dateCreated" datetime="2018-04-12T19:24:59+08:00" content="2018-04-12">
+              2018-04-12 19:24
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; In
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/ML/" itemprop="url" rel="index">
+                    <span itemprop="name">ML</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/DL/" itemprop="url" rel="index">
+                    <span itemprop="name">DL</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/RCNN/" itemprop="url" rel="index">
+                    <span itemprop="name">RCNN</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Paper/" itemprop="url" rel="index">
+                    <span itemprop="name">Paper</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+            <span id="/2018/cjvq2xdvj002761agu4maxjot/"class="leancloud_visitors"  data-flag-title="【转载】【目标检测】SPP-Net (Spatial Pyramid Pooling in Deep Convolutional Networks for Visual Recognition)">
+            &nbsp; | &nbsp;   
+            views
+            </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <meta name="generator" content="pandoc">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pygments-css@1.0.0/github.min.css" type="text/css">
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+</head>
+<body>
+<blockquote>
+<p>K. He, X. Zhang, S. Ren, and J. Sun. Spatial pyramid pooling in deep convolutional networks for visual recognition. In ECCV, 2014.</p>
+</blockquote>
+<a id="more"></a>
+<p>Kaiming的这篇paper，是在R-CNN的基础上提出了空间金字塔变换层(Spatial Pyramid Pooling)，SPPNet大幅度提高了R-CNN的训练速度和测试速度，同时算法的精度也上升了，后续的Fast R-CNN、Faster R-CNN模型也是以这个思路，下面就来细致学习SPPNet模型。</p>
+<h2 id="introduction">1. Introduction</h2>
+<p>SPPNet主要针对R-CNN模型以下两点提出改进：</p>
+<ul>
+<li>CNN网络后面接的FC层需要固定的输入大小，限制网络的输入大小</li>
+<li>候选区域会塞给CNN网络用于提取特征向量的，这会有大量的重复计算，造成的计算冗余</li>
+</ul>
+<hr>
+<h3 id="为什么cnn需要固定大小的输入">1.1 为什么CNN需要固定大小的输入?</h3>
+<p>因为一个CNN一般分为两个部分，前面的部分是卷积层，后面的部分是FC层，卷积层不要求固定大小的输入;但是FC层在设计时就固定了神经元的个数，故需要固定长度的输入。这也就是CNN需要固定输入的问题所在。SPPNet的解决方案如下:</p>
+<table>
+<colgroup>
+<col width="50%">
+<col width="50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>R-CNN模型</th>
+<th>SPPNet模型</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>将侯选区域送到CNN里面提取特征向量时，因为CNN的输入图像需要固定大小，而候选区域的长宽都是不固定的，<strong>故需要对候选区域做填充到固定大小，当我们对侯选区域做cropping或者warping操作，可能会让图片不完整包含物体，一些我们不想见到的几何失真，这都会造成识别精度损失。</strong></td>
+<td>SPPNet的解决办法是<strong>使用“空间金字塔变换层”将接收任意大小的图像输入，输出固定长度的输出向量</strong>，这样就能让SPPNet可接受任意大小的输入图片，不需要对图像做crop/wrap操作。</td>
+</tr>
+</tbody>
+</table>
+<div class="figure">
+<img src="/2018/04/12/【目标检测】SPP-Net-Spatial-Pyramid-Pooling-in-Deep-Convolutional-Networks-for-Visual-Recognition/SPP-Net.png">
+
+</div>
+<hr>
+<h3 id="r-cnn模型候选区域在cnn重复计算">2.1 R-CNN模型候选区域在CNN重复计算</h3>
+<table>
+<colgroup>
+<col width="50%">
+<col width="50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>R-CNN模型</th>
+<th>SPPNet模型</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>在R-CNN中，每个候选区域都要塞到CNN内提取特征向量，一张图片有2000个候选区域，<strong>也就是一张图片需要经过2000次CNN的前向传播，这2000重复计算过程会有大量的计算冗余，耗费大量的时间。</strong></td>
+<td><strong>SPPNet提出了一种从候选区域到全图的特征映射(feature map)之间的对应关系，通过此种映射关系可以直接获取到候选区域的特征向量</strong>，不需要重复使用CNN提取特征，从而大幅度缩短训练时间。</td>
+</tr>
+</tbody>
+</table>
+<div class="figure">
+<img src="/2018/04/12/【目标检测】SPP-Net-Spatial-Pyramid-Pooling-in-Deep-Convolutional-Networks-for-Visual-Recognition/RCNN_SPPNet.png">
+
+</div>
+<hr>
+<h3 id="我们通俗的理解一下r-cnn和sppnet的实现过程"><strong>3.1 我们通俗的理解一下R-CNN和SPPNet的实现过程：</strong></h3>
+<table>
+<colgroup>
+<col width="50%">
+<col width="50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>R-CNN模型</th>
+<th align="left">SPPNet模型</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>R-CNN是让每个候选区域经过crop/wrap等操作变换成固定大小的图像<br><br>固定大小的图像塞给CNN <br>CNN输出获得固定大小的feature map<br>feature map传给后面的层做训练回归分类操作。<br><br>这里每个候选区域是需要单独过一下CNN，2000个候选区域过2000次CNN，耗费时间啊</td>
+<td align="left">SPPNet把全图塞给CNN得到全图的feature map<br>让候选区域与feature map直接映射，得到候选区域的映射特征向量(这是映射来的，不需要过CNN).<br><br>映射过来的特征向量大小不固定，所以这些特征向量塞给SPP层(空间金字塔变换层)，SPP层接收任何大小的输入，输出固定大小的特征向量，再塞给FC层<br><br>经过映射+SPP转换，简化了计算，速度/精确度也上去了</td>
+</tr>
+</tbody>
+</table>
+<p>看完上面的介绍，可以定位这篇论文的两个难点了:</p>
+<ul>
+<li><strong>SPPNet怎么就能把候选区域从全图的feature map 直接整出来特征向量了？</strong></li>
+<li><strong>SPP层怎么可以接收任意大小的输入，输出固定的向量？</strong></li>
+</ul>
+<hr>
+<h2 id="空间金字塔变换层接收任意大小的输入输出固定的向量">2. 空间金字塔变换层接收任意大小的输入，输出固定的向量</h2>
+<p>先了解一下<code>Bag-of-words</code>以及<code>Spatial Pyramid Matching</code>，可以参考如下两篇博客：</p>
+<p><a href="http://blog.csdn.net/v_JULY_v/article/details/6555899" target="_blank" rel="noopener">第九章三续：SIFT算法的应用—目标识别之Bag-of-words模型</a><br>
+<a href="https://blog.csdn.net/jwh_bupt/article/details/9625469" target="_blank" rel="noopener">Spatial Pyramid Matching 小结</a></p>
+<p>空间金字塔变换层(Spatial Pyramid Pooling,SPP)可以对图片提取特征，例如下图就是1x1，2x2，4x4大小的bin块，将一张图片以三种方式切割并提取特征，这样我们可以得到一共1+4+16=21种特征，这就是以不同的大小的bin块来提取特征的过程就是空间金字塔变换。</p>
+<div class="figure">
+<img src="/2018/04/12/【目标检测】SPP-Net-Spatial-Pyramid-Pooling-in-Deep-Convolutional-Networks-for-Visual-Recognition/Bag_of_words_SpatialPyramidMatching.png">
+
+</div>
+<p>不同大小侯选区域在feature map上的映射塞给SPP层上：</p>
+<div class="figure">
+<img src="/2018/04/12/【目标检测】SPP-Net-Spatial-Pyramid-Pooling-in-Deep-Convolutional-Networks-for-Visual-Recognition/Spatial_Pyramid_Matching.png">
+
+</div>
+<p>上图spp layer分成1x1(塔底)，2x2(塔中)，4x4（塔顶）三张子图，对每个子图的每个区域作max pooling(论文使用的)，出来的特征再连接到一起，就是(16+4+1)x256的特征向量。</p>
+<p>无论输入图像大小如何，出来的特征固定是(16+4+1)x256维度。这样就实现了不管图像尺寸如何，SPP层的输出永远是(16+4+1)x256特征向量。</p>
+<hr>
+<h2 id="把候选区域从全图的feature-map映射出特征向量">3. 把候选区域从全图的feature map映射出特征向量</h2>
+<p>这部分在论文的Appendix A里面简单的介绍了下：</p>
+<div class="figure">
+<img src="/2018/04/12/【目标检测】SPP-Net-Spatial-Pyramid-Pooling-in-Deep-Convolutional-Networks-for-Visual-Recognition/i20f4ja3Ac.png">
+
+</div>
+<p>网上查了一堆资料。这里引用<a href="https://zhuanlan.zhihu.com/p/24780433" target="_blank" rel="noopener">知乎-晓雷机器学习笔记</a>。<a href="http://www.cnblogs.com/objectDetect/p/5947169.html" target="_blank" rel="noopener">machineLearning-blog</a>. 添加一些自己的理解。</p>
+<h3 id="感受野的计算">3.1 感受野的计算</h3>
+<p>感受野我们在CNN里面讲过<a href="http://blog.csdn.net/u011974639/article/details/75363565#%E5%8D%B7%E7%A7%AF%E7%9A%84%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%8F%82%E6%95%B0" target="_blank" rel="noopener">关于卷积参数计算</a>。</p>
+<p><strong>在CNN中感受野(receptive fields)是指某一层输出结果中一个元素所对应的上一层的区域大小.</strong></p>
+<p>在卷积参数计算过程中，我们给出上一层/下一层/滤波器尺寸、步长和填充大小的关系:</p>
+<table>
+<thead>
+<tr class="header">
+<th>类型</th>
+<th>大小</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>输入尺寸</td>
+<td><span class="math inline">\(W1×H1\)</span></td>
+</tr>
+<tr class="even">
+<td>卷积核</td>
+<td><span class="math inline">\(F×F\)</span></td>
+</tr>
+<tr class="odd">
+<td>输出尺寸</td>
+<td><span class="math inline">\(W2×H2\)</span></td>
+</tr>
+<tr class="even">
+<td>步长</td>
+<td>stride：<span class="math inline">\(S\)</span></td>
+</tr>
+<tr class="odd">
+<td>填充大小</td>
+<td>padding:<span class="math inline">\(P\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>关系式如下：<br>
+<span class="math display">\[
+W_2=\frac{W_1−F+2P}{S} + 1, \\
+H_2=\frac{H_1−F+2P}{S} + 1
+\]</span><br>
+这是上一层到下一层的推导，<strong>如果现在反过来，给你下一层的大小，问你上一层的感受野多大，该怎么计算？</strong></p>
+<p>我们把上面公式变个形式:<br>
+<span class="math display">\[
+W_1=(W_2−1)S−2P+F \\
+H_1=(H_2−1)S−2P+F
+\]</span><br>
+直观的感受一下从后向前计算感受野的过程</p>
+<div class="figure">
+<img src="/2018/04/12/【目标检测】SPP-Net-Spatial-Pyramid-Pooling-in-Deep-Convolutional-Networks-for-Visual-Recognition/BB6miiH0L3.png">
+
+</div>
+<h3 id="考虑一下如何计算多层之间的感受野">3.2 考虑一下如何计算多层之间的感受野？</h3>
+<div class="figure">
+<img src="/2018/04/12/【目标检测】SPP-Net-Spatial-Pyramid-Pooling-in-Deep-Convolutional-Networks-for-Visual-Recognition/dA80KefF3G.png">
+
+</div>
+<p>感受野计算时有下面的几个情况需要说明：</p>
+<ul>
+<li>第一层卷积层的输出特征图像素的感受野的大小等于滤波器的大小</li>
+<li>深层卷积层的感受野大小和它之前<strong>所有层的滤波器大小和步长有关系</strong></li>
+<li>计算感受野大小时，<strong>忽略了图像边缘的影响</strong>，即<strong>不考虑padding的大小</strong></li>
+</ul>
+<p>这里的每一个卷积层还有一个strides的概念，这个strides是之前所有层stride的乘积:<br>
+<span class="math display">\[
+strides_i=stride_1⋅stride_2⋅⋅⋅stride_{i−1}
+\]</span><br>
+关于感受野大小的计算采用<code>down to top</code>的方式: 即先计算最深层在前一层上的感受野，然后逐渐传递到第一层，使用的公式可以表示如下：</p>
+<p>例如我们计算<code>AlexNet</code>的第四层到第一层的感受野:</p>
+<div class="figure">
+<img src="/2018/04/12/【目标检测】SPP-Net-Spatial-Pyramid-Pooling-in-Deep-Convolutional-Networks-for-Visual-Recognition/27m7JalAki.png">
+
+</div>
+<p>下面是一个程序计算了AlexNet、VGG16、ZF-5的输入输出尺寸的变化和感受野变化过程，代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"></span><br><span class="line">net_struct = &#123;<span class="string">'alexnet'</span>: &#123;<span class="string">'net'</span>:[[<span class="number">11</span>,<span class="number">4</span>,<span class="number">0</span>],[<span class="number">3</span>,<span class="number">2</span>,<span class="number">0</span>],[<span class="number">5</span>,<span class="number">1</span>,<span class="number">2</span>],[<span class="number">3</span>,<span class="number">2</span>,<span class="number">0</span>],[<span class="number">3</span>,<span class="number">1</span>,<span class="number">1</span>],[<span class="number">3</span>,<span class="number">1</span>,<span class="number">1</span>],[<span class="number">3</span>,<span class="number">1</span>,<span class="number">1</span>],[<span class="number">3</span>,<span class="number">2</span>,<span class="number">0</span>]],</span><br><span class="line">                   <span class="string">'name'</span>:[<span class="string">'conv1'</span>,<span class="string">'pool1'</span>,<span class="string">'conv2'</span>,<span class="string">'pool2'</span>,<span class="string">'conv3'</span>,<span class="string">'conv4'</span>,<span class="string">'conv5'</span>,<span class="string">'pool5'</span>]&#125;,</span><br><span class="line">       <span class="string">'vgg16'</span>: &#123;<span class="string">'net'</span>:[[<span class="number">3</span>,<span class="number">1</span>,<span class="number">1</span>],[<span class="number">3</span>,<span class="number">1</span>,<span class="number">1</span>],[<span class="number">2</span>,<span class="number">2</span>,<span class="number">0</span>],[<span class="number">3</span>,<span class="number">1</span>,<span class="number">1</span>],[<span class="number">3</span>,<span class="number">1</span>,<span class="number">1</span>],[<span class="number">2</span>,<span class="number">2</span>,<span class="number">0</span>],[<span class="number">3</span>,<span class="number">1</span>,<span class="number">1</span>],[<span class="number">3</span>,<span class="number">1</span>,<span class="number">1</span>],[<span class="number">3</span>,<span class="number">1</span>,<span class="number">1</span>],</span><br><span class="line">                        [<span class="number">2</span>,<span class="number">2</span>,<span class="number">0</span>],[<span class="number">3</span>,<span class="number">1</span>,<span class="number">1</span>],[<span class="number">3</span>,<span class="number">1</span>,<span class="number">1</span>],[<span class="number">3</span>,<span class="number">1</span>,<span class="number">1</span>],[<span class="number">2</span>,<span class="number">2</span>,<span class="number">0</span>],[<span class="number">3</span>,<span class="number">1</span>,<span class="number">1</span>],[<span class="number">3</span>,<span class="number">1</span>,<span class="number">1</span>],[<span class="number">3</span>,<span class="number">1</span>,<span class="number">1</span>],[<span class="number">2</span>,<span class="number">2</span>,<span class="number">0</span>]],</span><br><span class="line">                 <span class="string">'name'</span>:[<span class="string">'conv1_1'</span>,<span class="string">'conv1_2'</span>,<span class="string">'pool1'</span>,<span class="string">'conv2_1'</span>,<span class="string">'conv2_2'</span>,<span class="string">'pool2'</span>,<span class="string">'conv3_1'</span>,<span class="string">'conv3_2'</span>,</span><br><span class="line">                         <span class="string">'conv3_3'</span>, <span class="string">'pool3'</span>,<span class="string">'conv4_1'</span>,<span class="string">'conv4_2'</span>,<span class="string">'conv4_3'</span>,<span class="string">'pool4'</span>,<span class="string">'conv5_1'</span>,<span class="string">'conv5_2'</span>,<span class="string">'conv5_3'</span>,<span class="string">'pool5'</span>]&#125;,</span><br><span class="line">       <span class="string">'zf-5'</span>:&#123;<span class="string">'net'</span>: [[<span class="number">7</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>],[<span class="number">5</span>,<span class="number">2</span>,<span class="number">2</span>],[<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>],[<span class="number">3</span>,<span class="number">1</span>,<span class="number">1</span>],[<span class="number">3</span>,<span class="number">1</span>,<span class="number">1</span>],[<span class="number">3</span>,<span class="number">1</span>,<span class="number">1</span>]],</span><br><span class="line">               <span class="string">'name'</span>: [<span class="string">'conv1'</span>,<span class="string">'pool1'</span>,<span class="string">'conv2'</span>,<span class="string">'pool2'</span>,<span class="string">'conv3'</span>,<span class="string">'conv4'</span>,<span class="string">'conv5'</span>]&#125;&#125;</span><br><span class="line"></span><br><span class="line">imsize = <span class="number">224</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">outFromIn</span><span class="params">(isz, net, layernum)</span>:</span></span><br><span class="line">    totstride = <span class="number">1</span></span><br><span class="line">    insize = isz</span><br><span class="line">    <span class="keyword">for</span> layer <span class="keyword">in</span> range(layernum):</span><br><span class="line">        fsize, stride, pad = net[layer]</span><br><span class="line">        outsize = (insize - fsize + <span class="number">2</span>*pad) / stride + <span class="number">1</span></span><br><span class="line">        insize = outsize</span><br><span class="line">        totstride = totstride * stride</span><br><span class="line">    <span class="keyword">return</span> outsize, totstride</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">inFromOut</span><span class="params">(net, layernum)</span>:</span></span><br><span class="line">    RF = <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> layer <span class="keyword">in</span> reversed(range(layernum)):</span><br><span class="line">        fsize, stride, pad = net[layer]</span><br><span class="line">        RF = ((RF <span class="number">-1</span>)* stride) + fsize</span><br><span class="line">    <span class="keyword">return</span> RF</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    <span class="keyword">print</span> <span class="string">"layer output sizes given image = %dx%d"</span> % (imsize, imsize)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> net <span class="keyword">in</span> net_struct.keys():</span><br><span class="line">        <span class="keyword">print</span> <span class="string">'************net structrue name is %s**************'</span>% net</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(net_struct[net][<span class="string">'net'</span>])):</span><br><span class="line">            p = outFromIn(imsize,net_struct[net][<span class="string">'net'</span>], i+<span class="number">1</span>)</span><br><span class="line">            rf = inFromOut(net_struct[net][<span class="string">'net'</span>], i+<span class="number">1</span>)</span><br><span class="line">            <span class="keyword">print</span> <span class="string">"Layer Name = %s, Output size = %3d, Stride = % 3d, RF size = %3d"</span> % (net_struct[net][<span class="string">'name'</span>][i], p[<span class="number">0</span>], p[<span class="number">1</span>], rf)</span><br></pre></td></tr></table></figure>
+<p>执行结果如下：</p>
+<div class="figure">
+<img src="/2018/04/12/【目标检测】SPP-Net-Spatial-Pyramid-Pooling-in-Deep-Convolutional-Networks-for-Visual-Recognition/1F2Kd576j2.png">
+
+</div>
+<h3 id="基于感受野的特征映射">3.3 基于感受野的特征映射</h3>
+<p>通常，我们需要知道网络里面任意两个feature map之间的坐标映射关系（<strong>一般是中心点之间的映射</strong>），如下图，我们想得到map 3上的点p3映射回map 2所在的位置p2（橙色框的中心点）</p>
+<div class="figure">
+<img src="/2018/04/12/【目标检测】SPP-Net-Spatial-Pyramid-Pooling-in-Deep-Convolutional-Networks-for-Visual-Recognition/594J18dmD3.png">
+
+</div>
+<p>计算公式：</p>
+<ul>
+<li>对于 <span class="math inline">\(Conv/Pool layer: p_i=s_i⋅p_{i+1}+((k_i−1)/2−padding)\)</span></li>
+<li>对于<span class="math inline">\(Neuron layer(ReLU/Sigmoid/..) : p_i=p_{i+1}\)</span></li>
+</ul>
+<p>上面是计算任意一个layer输入输出的坐标映射关系，如果是计算任意feature map之间的关系，只需要用简单的组合就可以得到，下图是一个简单的例子:</p>
+<div class="figure">
+<img src="/2018/04/12/【目标检测】SPP-Net-Spatial-Pyramid-Pooling-in-Deep-Convolutional-Networks-for-Visual-Recognition/iL5CcCKllc.png">
+
+</div>
+<p>下图是Kaiming He 在ICCV15上的汇报用的PPT，讲解如何求解<code>Receptive Field</code>:</p>
+<div class="figure">
+<img src="/2018/04/12/【目标检测】SPP-Net-Spatial-Pyramid-Pooling-in-Deep-Convolutional-Networks-for-Visual-Recognition/kfh68A8f6d.png">
+
+</div>
+<ul>
+<li><p><strong>A simple solution：</strong><br>
+何凯明在SPP-net中采用的方法。巧妙的化简一下公式<br>
+<span class="math display">\[
+  p_i=s_i⋅p_{i+1}+((k_i−1)/2−padding)
+  \]</span><br>
+令每一层的padding都为<br>
+<span class="math display">\[
+  padding=⌊k_i/2⌋ \ \ \  ⇒ \ \ \ p_i=s_i⋅p_{i+1}+((k_i−1)/2−⌊k_i / 2⌋)
+  \]</span></p></li>
+<li><p>当 <span class="math inline">\(k_i\)</span> 为奇数时：<br>
+<span class="math display">\[
+(k_i−1)/2−⌊k_i/2⌋)=0 \ \ \  ⇒ \ \ \  p_i=s_i ⋅ p_{i+1}
+\]</span></p></li>
+<li><p>当 <span class="math inline">\(k_i\)</span> 为偶数时：<br>
+<span class="math display">\[
+((k_i−1)/2−⌊k_i/2⌋)=−0.5 \ \ \ \  ⇒ \ \ \  p_i=s_i⋅p_{i+1}−0.5
+\]</span></p></li>
+<li><p>而 <span class="math inline">\(p_i\)</span> 是坐标值，不取小数，基本上认为 <span class="math inline">\(p_i=s_i⋅p_{i+1}\)</span> 。感受野中心点的坐标<span class="math inline">\(p_i\)</span>只跟前一层 <span class="math inline">\(p_{i+1}\)</span>有关。</p></li>
+<li><p><strong>A general solution:</strong><br>
+其实就是把公式 <span class="math inline">\(p_i=s_i⋅p_{i+1}+((k_i−1)/2−padding)\)</span> 级联消去整合一下</p></li>
+</ul>
+<div class="figure">
+<img src="/2018/04/12/【目标检测】SPP-Net-Spatial-Pyramid-Pooling-in-Deep-Convolutional-Networks-for-Visual-Recognition/0Ba6jGDFAL.png">
+
+</div>
+<h3 id="候选区域到feature-map的映射做法详解">3.4 候选区域到feature map的映射做法详解</h3>
+<p>SPP-net 是把原始ROI的左上角和右下角 映射到 feature map上的两个对应点。 有了feature map上的两对角点就确定了 对应的 feature map 区域(下图中橙色)。</p>
+<p><img src="/2018/04/12/【目标检测】SPP-Net-Spatial-Pyramid-Pooling-in-Deep-Convolutional-Networks-for-Visual-Recognition/BGaa4IkiHh.png"><br>
+<strong>如何映射？</strong><br>
+左上角的点<span class="math inline">\((x,y)\)</span>映射到 feature map上的<span class="math inline">\((x′,y′)\)</span> : 使得<span class="math inline">\((x′,y′)\)</span> 在原始图上感受野（上图绿色框）的中心点与<span class="math inline">\((x,y)\)</span>尽可能接近。</p>
+<h3 id="对应点之间的映射公式是啥">3.5 对应点之间的映射公式是啥？</h3>
+<ul>
+<li>就是前面每层都填充 <span class="math inline">\(padding/2\)</span> 得到的简化公式 <span class="math inline">\(p_i=s_i⋅p_{i+1}\)</span></li>
+<li>需要把上面公式进行级联得到 <span class="math inline">\(p_0=S⋅p_{i+1}\)</span> 其中 <span class="math inline">\((S=\prod^i_0s_i)\)</span></li>
+<li>对于feature map 上的<span class="math inline">\((x′,y′)\)</span> 它在原始图的对应点为 <span class="math inline">\((x,y)=(Sx′,Sy′)\)</span></li>
+<li>论文中的最后做法：把原始图片中的ROI映射为 feature map中的映射区域（上图橙色区域）</li>
+<li>左上角取： <span class="math inline">\(x′=⌊x/S⌋+1\)</span> ; <span class="math inline">\(y′=⌊y/S⌋+1\)</span></li>
+<li>右下角取： <span class="math inline">\(x′=⌈x/S⌉−1\)</span> ; <span class="math inline">\(y′=⌈y/S⌉−1\)</span></li>
+</ul>
+<h2 id="总结">4. 总结</h2>
+<p>到这里就算是把SPPNet的核心思想讲完了，SPPNet网络后面和R-CNN类似，训练SVM分类器和位置回归等。 <strong>SPPNet在R-CNN的基础上提出了改进，通过候选区域和feature map的映射，配合SPP层的使用，从而达到了CNN层的共享计算，减少了运算时间。后面的Fast R-CNN也是受SPPNet的启发，一次又一次的刷新物体检测的state-of-the-art。</strong></p>
+<h2 id="reference">5. Reference:</h2>
+<ul>
+<li><a href="http://hellodfan.com/2017/09/30/%E7%89%A9%E4%BD%93%E6%A3%80%E6%B5%8B%E8%AE%BA%E6%96%87-SPPNet/" target="_blank" rel="noopener">http://hellodfan.com/2017/09/30/%E7%89%A9%E4%BD%93%E6%A3%80%E6%B5%8B%E8%AE%BA%E6%96%87-SPPNet/</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/24780433" class="uri" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/24780433</a></li>
+<li><a href="https://blog.csdn.net/u011534057/article/details/51219959###" class="uri" target="_blank" rel="noopener">https://blog.csdn.net/u011534057/article/details/51219959###</a></li>
+<li><a href="https://blog.csdn.net/v1_vivian/article/details/73275259" class="uri" target="_blank" rel="noopener">https://blog.csdn.net/v1_vivian/article/details/73275259</a></li>
+<li><a href="http://www.cnblogs.com/venus024/p/5717766.html" class="uri" target="_blank" rel="noopener">http://www.cnblogs.com/venus024/p/5717766.html</a></li>
+<li><a href="http://www.cnblogs.com/objectDetect/p/5947169.html" class="uri" target="_blank" rel="noopener">http://www.cnblogs.com/objectDetect/p/5947169.html</a></li>
+</ul>
+</body>
+</html>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Machine-Learning/" rel="tag">#Machine Learning</a>
+          
+            <a href="/tags/Deeping-Learning/" rel="tag">#Deeping Learning</a>
+          
+            <a href="/tags/学习笔记/" rel="tag">#学习笔记</a>
+          
+            <a href="/tags/RCNN/" rel="tag">#RCNN</a>
+          
+            <a href="/tags/Paper/" rel="tag">#Paper</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/cjvq2xdv6002361agthexqr3z/" rel="prev">
+                <i class="fa fa-chevron-left"></i> Precision、Recall、P-R曲线、ROC、AUC、mAP
+              </a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/cjvq2xdyj004361agrdmbihip/" rel="next">
+                【目标检测】RCNN (Rich feature hierarchies for accurate object detection and semantic segmentation) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+          </div>
+        
+      
+
+        
+          
+  
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+      
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table Of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview" sidebar-panel >
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/avatar.jpg" alt="SmileLingyong" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">SmileLingyong</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">向上，向阳！</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-name">categories</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">18</span>
+              <span class="site-state-item-name">tags</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="smilelingyong@gmail.com" target="_blank">
+                  <i class="fa fa-e-mail"></i> E-Mail
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/SmileLingyong" target="_blank">
+                  <i class="fa fa-github"></i> Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://blog.csdn.net/forever__1234" target="_blank">
+                  <i class="fa fa-csdn"></i> CSDN
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#introduction"><span class="nav-text">1. Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么cnn需要固定大小的输入"><span class="nav-text">1.1 为什么CNN需要固定大小的输入?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#r-cnn模型候选区域在cnn重复计算"><span class="nav-text">2.1 R-CNN模型候选区域在CNN重复计算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#我们通俗的理解一下r-cnn和sppnet的实现过程"><span class="nav-text">3.1 我们通俗的理解一下R-CNN和SPPNet的实现过程：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#空间金字塔变换层接收任意大小的输入输出固定的向量"><span class="nav-text">2. 空间金字塔变换层接收任意大小的输入，输出固定的向量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#把候选区域从全图的feature-map映射出特征向量"><span class="nav-text">3. 把候选区域从全图的feature map映射出特征向量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#感受野的计算"><span class="nav-text">3.1 感受野的计算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#考虑一下如何计算多层之间的感受野"><span class="nav-text">3.2 考虑一下如何计算多层之间的感受野？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基于感受野的特征映射"><span class="nav-text">3.3 基于感受野的特征映射</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#候选区域到feature-map的映射做法详解"><span class="nav-text">3.4 候选区域到feature map的映射做法详解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对应点之间的映射公式是啥"><span class="nav-text">3.5 对应点之间的映射公式是啥？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-text">4. 总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reference"><span class="nav-text">5. Reference:</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+	  </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">SmileLingyong</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="#">
+    FreeSky
+  </a>(Reserved)
+
+  
+  <span id="busuanzi_container_site_uv">
+     &nbsp; | &nbsp;  用户量: <span id="busuanzi_value_site_uv"></span>
+  </span>
+  <span id="busuanzi_container_site_pv">
+    &nbsp; | &nbsp;  总访问量: <span id="busuanzi_value_site_pv"></span>
+  </span>
+
+  
+</div>
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/others/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+    
+
+  
+
+
+  
+  
+  <script type="text/javascript" src="/others/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
+  
+
+  <script type="text/javascript" src="/others/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/others/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.2" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.2"></script>
+  <script type="text/javascript" src="/others/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    var $aboutContent = $('#posts-about');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0 && $aboutContent.length === 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+
+      motionIntegrator.bootstrap();
+    });
+  </script>
+
+  
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+  
+     <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("9QoQXWnRR4zwSFuxRv52kUpi-gzGzoHsz", "zlgcRzgHF7AHu8TKLJUwCAjw");</script>
+<script>
+function showTime(Counter) {
+  var query = new AV.Query(Counter);
+  $(".leancloud_visitors").each(function() {
+    var url = $(this).attr("id").trim();
+    query.equalTo("url", url);
+    query.find({
+      success: function(results) {
+        if (results.length == 0) {
+          var content = $(document.getElementById(url)).text() + ': 0';
+          $(document.getElementById(url)).text(content);
+          return;
+        }
+        for (var i = 0; i < results.length; i++) {
+          var object = results[i];
+          var content = $(document.getElementById(url)).text() + ': ' + object.get('time');
+          $(document.getElementById(url)).text(content);
+        }
+      },
+      error: function(object, error) {
+        console.log("Error: " + error.code + " " + error.message);
+      }
+    });
+
+  });
+}
+
+function addCount(Counter) {
+  var Counter = AV.Object.extend("Counter");
+  url = $(".leancloud_visitors").attr('id').trim();
+  title = $(".leancloud_visitors").attr('data-flag-title').trim();
+  var query = new AV.Query(Counter);
+  query.equalTo("url", url);
+  query.find({
+    success: function(results) {
+      if (results.length > 0) {
+        var counter = results[0];
+        counter.fetchWhenSave(true);
+        counter.increment("time");
+        counter.save(null, {
+          success: function(counter) {
+            var content = $(document.getElementById(url)).text() + ': ' + counter.get('time');
+            $(document.getElementById(url)).text(content);
+          },
+          error: function(counter, error) {
+            console.log('Failed to save Visitor num, with error message: ' + error.message);
+          }
+        });
+      } else {
+        var newcounter = new Counter();
+        newcounter.set("title", title);
+        newcounter.set("url", url);
+        newcounter.set("time", 1);
+        newcounter.save(null, {
+          success: function(newcounter) {
+              console.log("newcounter.get('time')="+newcounter.get('time'));
+            var content = $(document.getElementById(url)).text() + ': ' + newcounter.get('time');
+            $(document.getElementById(url)).text(content);
+          },
+          error: function(newcounter, error) {
+            console.log('Failed to create');
+          }
+        });
+      }
+    },
+    error: function(error) {
+      console.log('Error:' + error.code + " " + error.message);
+    }
+  });
+}
+$(function() {
+  var Counter = AV.Object.extend("Counter");
+  if ($('.leancloud_visitors').length == 1) {
+    addCount(Counter);
+  } else if ($('.post-title-link').length > 1) {
+    showTime(Counter);
+  }
+}); 
+</script>
+  
+</body>
+</html>

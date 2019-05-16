@@ -1,0 +1,1000 @@
+<!doctype html>
+<html class="theme-next use-motion ">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/others/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+
+
+  <link href="/vendors/googleapis/css/Lato.css" rel="stylesheet" type="text/css">
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/others/font-awesome/css/font-awesome.min.css?v=4.4.0" />
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.2"/>
+
+
+    <meta name="description" content="向上，向阳！" />
+
+
+
+  <meta name="keywords" content="C,算法,数据结构,动态规划,背包," />
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=0.4.5.2" />
+
+
+<meta name="description" content="code{white-space: pre;}          在 bilibili 看到一个博主讲的比较好的动态规划内容，自己对应整理了一下学习笔记，以便巩固学习">
+<meta name="keywords" content="C,算法,数据结构,动态规划,背包">
+<meta property="og:type" content="article">
+<meta property="og:title" content="动态规划">
+<meta property="og:url" content="http://yoursite.com/2019/cjvq2xdw3003b61agvsvhh12t/index.html">
+<meta property="og:site_name" content="SmileLingyong">
+<meta property="og:description" content="code{white-space: pre;}          在 bilibili 看到一个博主讲的比较好的动态规划内容，自己对应整理了一下学习笔记，以便巩固学习">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2019/04/09/动态规划/Fibonacci.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/09/动态规划/最大和.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/09/动态规划/prev.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/09/动态规划/OPT(2).png">
+<meta property="og:image" content="http://yoursite.com/2019/04/09/动态规划/OPT(4).png">
+<meta property="og:image" content="http://yoursite.com/2019/04/09/动态规划/OPT(8).png">
+<meta property="og:image" content="http://yoursite.com/2019/04/09/动态规划/T2从上往下分析.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/09/动态规划/T2递归方程.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/09/动态规划/T3从上往下分析.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/09/动态规划/T3递归出口1.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/09/动态规划/T3递归出口2.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/09/动态规划/T3递归出口3.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/09/动态规划/T3递归公式.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/09/动态规划/DP二维数组.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/09/动态规划/DP二维数组2.png">
+<meta property="og:updated_time" content="2019-04-09T09:20:42.696Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="动态规划">
+<meta name="twitter:description" content="code{white-space: pre;}          在 bilibili 看到一个博主讲的比较好的动态规划内容，自己对应整理了一下学习笔记，以便巩固学习">
+<meta name="twitter:image" content="http://yoursite.com/2019/04/09/动态规划/Fibonacci.png">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: '',
+    sidebar: 'always'
+  };
+</script>
+
+
+
+  <title> 动态规划 | SmileLingyong </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+
+
+
+  <div id="container" class="container one-column page-post-detail">
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+      
+	  	<span style="font-size:14px;float:right;padding:39px 40px 0 0;">——穷则独善其身，达则兼济天下.</span>
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+
+        	<div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                动态规划
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            Posted on
+            <time itemprop="dateCreated" datetime="2019-04-09T16:17:15+08:00" content="2019-04-09">
+              2019-04-09 16:17
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; In
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/算法与数据结构/" itemprop="url" rel="index">
+                    <span itemprop="name">算法与数据结构</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+            <span id="/2019/cjvq2xdw3003b61agvsvhh12t/"class="leancloud_visitors"  data-flag-title="动态规划">
+            &nbsp; | &nbsp;   
+            views
+            </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <meta name="generator" content="pandoc">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pygments-css@1.0.0/github.min.css" type="text/css">
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+</head>
+<body>
+<blockquote>
+<p>在 <code>bilibili</code> 看到一个博主讲的比较好的动态规划内容，自己对应整理了一下学习笔记，以便巩固学习 <a id="more"></a></p>
+</blockquote>
+<h2 id="题目一fibonacci">题目一：Fibonacci</h2>
+<div class="figure">
+<img src="/2019/04/09/动态规划/Fibonacci.png">
+
+</div>
+<blockquote>
+<p><strong>代码简单实现</strong></p>
+</blockquote>
+<p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Creation         :       2018.11.18 17:03</span></span><br><span class="line"><span class="comment"> * Last Reversion   :       2018.11.18 17:08</span></span><br><span class="line"><span class="comment"> * Author           :       Lingyong Smile &#123;smilelingyong@163.com&#125;</span></span><br><span class="line"><span class="comment"> * File Type        :       cpp</span></span><br><span class="line"><span class="comment"> * -----------------------------------------------------------------</span></span><br><span class="line"><span class="comment"> * Fibonacci</span></span><br><span class="line"><span class="comment"> *      Everyone knows the Fibonacci sequence. Now you need to enter an integer n.</span></span><br><span class="line"><span class="comment"> *      Please output the nth item of the Fibonacci sequence (starting at 0 and 0th item is 0).</span></span><br><span class="line"><span class="comment"> *      0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, ...</span></span><br><span class="line"><span class="comment"> * -----------------------------------------------------------------</span></span><br><span class="line"><span class="comment"> * Crop right @ 2018 Lingyong Smile &#123;smilelingyong@163.com&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 递归方式</span></span><br><span class="line"><span class="comment"> */</span> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">FibonacciRecursive</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (n == <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> FibonacciRecursive(n - <span class="number">2</span>) + FibonacciRecursive(n - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 非递归：动态规划</span></span><br><span class="line"><span class="comment"> */</span> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Fibonacci</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> a = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> b = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> c;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        c = a + b;</span><br><span class="line">        a = b;</span><br><span class="line">        b = c;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> c;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"Please input a int number:"</span>;</span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">cin</span> &gt;&gt; n) &#123;</span><br><span class="line">        <span class="comment">// Test Fibonacci function</span></span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"Fibonacci("</span> &lt;&lt; n &lt;&lt; <span class="string">") is : "</span> &lt;&lt; Fibonacci(n) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Test Fibonacci Recursive function</span></span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"FibonacciRecursive("</span> &lt;&lt; n &lt;&lt; <span class="string">") is : "</span> &lt;&lt; FibonacciRecursive(n) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"Please input a int number:"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// system("pause");</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="题目二最多能赚几块钱">题目二：最多能赚几块钱？</h2>
+<p>横轴代表时间，灰色的长方条代表从某一时刻开始的任务，长方条上的数字代表完成这个任务能够赚几块钱，比如最上面的第1个任务，表示从1点开始，4点结束，完成这个任务可以获得5元钱。其中有一个限制，开始了某一任务后，只有做完这个任务才能做下一个，比如开始做了任务7，则不能做任务4、5、6、8，因为有时间冲突。现在有一个员工，如何才能赚最多的钱，最多能赚几块钱？</p>
+<div class="figure">
+<img src="/2019/04/09/动态规划/最大和.png">
+
+</div>
+<blockquote>
+<p><strong>从上往下分析，得出递推公式（选不选）</strong></p>
+</blockquote>
+<p>其中 <span class="math inline">\(OPT(i)\)</span> 表示，当我要考虑前 <span class="math inline">\(i\)</span> 个任务时，它的最优解是什么，即最多能赚几块钱？<br>
+例如：当考虑前8个任务时 <span class="math inline">\(OPT(8)\)</span>，对于任务8有两种状态，选和不选。</p>
+<ul>
+<li>选第8个任务，首先可以赚4块钱，再加上 <span class="math inline">\(OPT(5)\)</span> ，即加上前面5个任务的最优解，最多能赚几块钱。（因为选了任务8则和任务6和7有时间冲突）</li>
+<li>不选第8个任务，则就是前面7个任务的最优解 <span class="math inline">\(OPT(7)\)</span></li>
+</ul>
+<p>然后选这两个状态结果最大的，作为前8个任务的最优解 <span class="math inline">\(OPT(8)\)</span> ，即得到如下递归公式：<br>
+<span class="math display">\[
+  OPT(8) =  max
+  \left\{
+  \begin{eqnarray}
+   &amp;&amp; 4+ OPT(5)   \ \ \ \  &amp;, 选任务8 \\
+   &amp;&amp; OPT(7)          \ \ \ \  &amp;,不选任务8
+  \end{eqnarray}\right.
+\]</span><br>
+整理一下<strong>递推公式</strong>：<br>
+<span class="math display">\[
+  OPT(i) =  max
+  \left\{
+  \begin{eqnarray}
+   &amp;&amp; v_i+ OPT(prev(i))   \ \ \ \  &amp;, 选任务i \\
+   &amp;&amp; OPT(i-1)          \ \ \ \  &amp;,不选任务i
+  \end{eqnarray}\right.
+\]</span><br>
+其中 <span class="math inline">\(v_i\)</span> 表示第 <span class="math inline">\(i\)</span> 个任务的奖励工资，<span class="math inline">\(prev(i)\)</span> 表示如果要做第 <span class="math inline">\(i\)</span> 个任务，则它前面顶多还能做前几个。例如：<span class="math inline">\(prev(8) = 5\)</span> 表示如果要做第8个任务，则前面顶多还能做前5个，即加上考虑前5个任务的最优解 <span class="math inline">\(OPT(prev(8))\)</span>。</p>
+<div class="figure">
+<img src="/2019/04/09/动态规划/prev.png">
+
+</div>
+<p>首先计算 <span class="math inline">\(prev\)</span> 数组，比如 <span class="math inline">\(i = 1\)</span> 时，<span class="math inline">\(prev(1) = 0\)</span> 表示如果做任务1，则前面能做的为0个，以此类推。我们最终要算的是前面8个任务的最优解，即 <span class="math inline">\(OPT(8)\)</span> ，根据递归式可以得到如上状结构，可以发现：(1)首先这是一个找最优解问题。(2)大问题的最优解依赖于子问题的最优解。(3)大问题分解成子问题，子问题间有<strong>重复子问题</strong>。 这样的问题就可以使用动态规划思想来做。从上往下分析问题，从下往上求解问题。从 <span class="math inline">\(OPT(1)\)</span> 开始分析计算并保存对应结果。<br>
+<span class="math inline">\(OPT(1) = v_1 = 5\)</span><br>
+<span class="math inline">\(OPT(2)\)</span> 分析：如果不选任务2，则是 <span class="math inline">\(OPT(1) = 5\)</span> ；如果选任务2，则是 <span class="math inline">\(OPT(prev(2)) + 任务2价值 = 0 + 1\)</span> 。最后选这两个状态的最大值作为前个任务2的最优解，所以 <span class="math inline">\(OPT(2) = 5\)</span>。表示如果只有前面两个任务的时候，最多能挣5块钱。<br>
+<img src="/2019/04/09/动态规划/OPT(2).png"></p>
+<p><span class="math inline">\(OPT(4)\)</span> 分析：如果不选任务4，则是 <span class="math inline">\(OPT(3) = 8\)</span> ；如果选任务4，则是 <span class="math inline">\(OPT(prev(4)) + 任务4价值= OPT(1) + v_4 = 5 + 4 = 9\)</span> 。最后选这两个状态的最大值作为前4个任务的最优解，所以 <span class="math inline">\(OPT(4) = 9\)</span>。表示如果只有前面4个任务的时候，最多能挣9块钱。<br>
+<img src="/2019/04/09/动态规划/OPT(4).png"><br>
+后面以此类推，直到分析完前8个任务。<br>
+<img src="/2019/04/09/动态规划/OPT(8).png"></p>
+<blockquote>
+<p><strong>代码简单实现</strong></p>
+</blockquote>
+<p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Creation         :       2019.04.05 14:50</span></span><br><span class="line"><span class="comment"> * Last Reversion   :       2019.03.05 15:22</span></span><br><span class="line"><span class="comment"> * Author           :       Lingyong Smile &#123;smilelingyong@163.com&#125;</span></span><br><span class="line"><span class="comment"> * File Type        :       cpp</span></span><br><span class="line"><span class="comment"> * -----------------------------------------------------------------</span></span><br><span class="line"><span class="comment"> * 最多能赚几块钱(动态规划) 结合笔记题目查看</span></span><br><span class="line"><span class="comment"> * -----------------------------------------------------------------</span></span><br><span class="line"><span class="comment"> * Crop right @ 2019 Lingyong Smile &#123;smilelingyong@163.com&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> max(a, b) (((a) &gt; (b)) ? (a) : (b))</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> min(a, b) (((a) &lt; (b)) ? (a) : (b))</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> v[<span class="number">9</span>] = &#123;<span class="number">0</span>, <span class="number">5</span>, <span class="number">1</span>, <span class="number">8</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">4</span>&#125;;     <span class="comment">// 注意这里前面多补了一个0，是为了方便和笔记对应</span></span><br><span class="line"><span class="keyword">int</span> prev[<span class="number">9</span>] = &#123;<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>&#125;;  <span class="comment">// 这里的prev数组是自己预先算好了的</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 递归形式</span></span><br><span class="line"><span class="comment"> */</span> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">OPTRecursive</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">5</span>;</span><br><span class="line">    <span class="keyword">return</span> max(OPTRecursive(n - <span class="number">1</span>) , v[n] + OPTRecursive(prev[n]));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 非递归形式：（动态规划）</span></span><br><span class="line"><span class="comment"> */</span> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">OPT</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">5</span>;</span><br><span class="line">    <span class="keyword">int</span> *OPT = (<span class="keyword">int</span>*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">int</span>) * (n + <span class="number">1</span>));     <span class="comment">// 这里多开辟了一个int空间大小，是为了和公式下标对应</span></span><br><span class="line">    OPT[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">    OPT[<span class="number">1</span>] = <span class="number">5</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        OPT[i] = max(OPT[i<span class="number">-1</span>], v[i] + OPT[prev[i]]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> res = OPT[n];</span><br><span class="line">    <span class="built_in">free</span>(OPT);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Please input a int number (1~8):\n"</span>);</span><br><span class="line">    <span class="keyword">while</span> (~<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n) &amp;&amp; n &gt;= <span class="number">1</span> &amp;&amp; n &lt;= <span class="number">8</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, OPT(n));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="题目三最大和">题目三：最大和</h2>
+<p>在如下一堆数字中选出一些数字，如何让数字之和最大？<br>
+限定条件：选出的数字不能是相邻的。</p>
+<blockquote>
+<p><strong>从上往下分析，得出递归公式（选不选）</strong></p>
+</blockquote>
+<div class="figure">
+<img src="/2019/04/09/动态规划/T2从上往下分析.png">
+
+</div>
+<p><span class="math inline">\(OPT(6)\)</span> ：表示到下标为6 这个位置的最佳方案（最优解）是什么？<br>
+从上往下开始分析：对于 <span class="math inline">\(OPT(6)\)</span> 我们有两种状态，选3，和不选3。即有如上递归式。</p>
+<ul>
+<li>选 <span class="math inline">\(arr[6]\)</span>，此时的最佳方案是 <span class="math inline">\(OPT(4) + arr[6]\)</span> 。这里不能选 <span class="math inline">\(arr[5]\)</span> ，因为 <span class="math inline">\(arr[5]\)</span> 与 <span class="math inline">\(arr[6]\)</span> 是相邻的。</li>
+<li>不选 <span class="math inline">\(arr[6]\)</span>，此时最佳方案是 <span class="math inline">\(OPT(5)\)</span></li>
+</ul>
+<p>然后选这两个状态结果最大的，作为到下标为6这个位置的最优解 <span class="math inline">\(OPT(6)\)</span><br>
+<img src="/2019/04/09/动态规划/T2递归方程.png"><br>
+进而，我们可以得到这样的递归方程：<br>
+<span class="math display">\[
+OPT(i) =  max
+  \left\{
+  \begin{eqnarray}
+   &amp;&amp; OPT(i-2) + arr[i]   \ \ \ \  &amp;, 选arr[i] \\
+   &amp;&amp; OPT(i-1)          \ \ \ \  &amp;,不选arr[i]
+  \end{eqnarray}\right.
+\]</span></p>
+<blockquote>
+<p><strong>分析递归出口</strong></p>
+</blockquote>
+<p><span class="math display">\[
+OPT(0) = arr[0] \\
+  OPT(1) = max(arr[0], arr[1])
+\]</span></p>
+<blockquote>
+<p><strong>代码简单实现</strong></p>
+</blockquote>
+<p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Creation         :       2019.04.06 11:10</span></span><br><span class="line"><span class="comment"> * Last Reversion   :       2019.04.06 11:23</span></span><br><span class="line"><span class="comment"> * Author           :       Lingyong Smile &#123;smilelingyong@163.com&#125;</span></span><br><span class="line"><span class="comment"> * File Type        :       cpp</span></span><br><span class="line"><span class="comment"> * -----------------------------------------------------------------</span></span><br><span class="line"><span class="comment"> * 题目描述：</span></span><br><span class="line"><span class="comment"> *    在如下一堆数字中选出一些数字，如何让数字之和最大？</span></span><br><span class="line"><span class="comment"> * 限定条件：选出的数字不能是相邻的。</span></span><br><span class="line"><span class="comment"> * arr[7] = &#123;1, 2, 4, 1, 7, 8, 3&#125;</span></span><br><span class="line"><span class="comment"> * -----------------------------------------------------------------</span></span><br><span class="line"><span class="comment"> * Crop right @ 2019 Lingyong Smile &#123;smilelingyong@163.com&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> max(a, b) (((a) &gt; (b)) ? (a) : (b))</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> min(a, b) (((a) &lt; (b)) ? (a) : (b))</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> arr[<span class="number">7</span>] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">1</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">3</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 递归形式，不好存在很多重叠子问题</span></span><br><span class="line"><span class="comment"> */</span> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">OPTRec</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> arr[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (n == <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> max(arr[<span class="number">0</span>], arr[<span class="number">1</span>]);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> max(OPTRec(n - <span class="number">2</span>) + arr[n], OPTRec(n - <span class="number">1</span>));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 非递归形式：动态规划</span></span><br><span class="line"><span class="comment"> */</span> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">OPT</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> arr[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (n == <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> max(arr[<span class="number">0</span>], arr[<span class="number">1</span>]);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> *OPT = (<span class="keyword">int</span>*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">int</span>) * (n + <span class="number">1</span>));     <span class="comment">// 注意这里开辟的数组大小，n为下标，从0开始</span></span><br><span class="line">    OPT[<span class="number">0</span>] = arr[<span class="number">0</span>];</span><br><span class="line">    OPT[<span class="number">1</span>] = max(arr[<span class="number">0</span>], arr[<span class="number">1</span>]);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        OPT[i] = max(OPT[i<span class="number">-2</span>] + arr[i], OPT[i<span class="number">-1</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> res = OPT[n];</span><br><span class="line">    <span class="built_in">free</span>(OPT);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Please input a int number (0~7):\n"</span>);</span><br><span class="line">    <span class="keyword">while</span> (~<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n) &amp;&amp; n &gt;= <span class="number">0</span> &amp;&amp; n &lt;= <span class="number">7</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, OPT(n));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="题目四是否存在和为指定值">题目四：是否存在和为指定值</h2>
+<p>在如下一堆数字中选出一些数字求和，使其等于数字 <span class="math inline">\(S\)</span>。如果存在这样的方案则返回 <span class="math inline">\(true\)</span>，否则返回 <span class="math inline">\(false\)</span>。</p>
+<blockquote>
+<p><strong>从上往下分析，得出递归公式（选不选）</strong></p>
+</blockquote>
+<p><img src="/2019/04/09/动态规划/T3从上往下分析.png"><br>
+分析：我们定义 <span class="math inline">\(Subset\)</span> 表示子集，<span class="math inline">\(Subset(arr[5], 9)\)</span> 表示对前面5个数字取数求和为9，应该怎么分配。从上往下分析，当 <span class="math inline">\(i = 5\)</span> 时，我们有两种状态：</p>
+<ul>
+<li>选 <span class="math inline">\(arr[5]\)</span> ，此时方案为 <span class="math inline">\(Subset(arr[4], 7)\)</span> ，选了 <span class="math inline">\(arr[5]\)</span> 之后，只需要前面4个数字取数之和为7就可以。</li>
+<li>不选 <span class="math inline">\(arr[5]\)</span> ，此时方案为 <span class="math inline">\(Subset(arr[4], 9)\)</span> ，前面4个数字取数之和为9。</li>
+</ul>
+<p>最后只要这两种方案有一个为 <span class="math inline">\(true\)</span>，则满足要求，所以中间用 <span class="math inline">\(or\)</span></p>
+<blockquote>
+<p><strong>分析递归出口</strong></p>
+</blockquote>
+<div class="figure">
+<img src="/2019/04/09/动态规划/T3递归出口1.png">
+
+</div>
+<ul>
+<li><span class="math inline">\(S == 0\)</span> 时， 比如 <span class="math inline">\(Subset(arr[2], 0)\)</span> ，表示，2后面的数字已经存方案可以使得取数求和等于 <span class="math inline">\(S\)</span> ，即这个时候已满足要求，返回 <span class="math inline">\(true\)</span></li>
+<li><span class="math inline">\(i == 0, S \ != 0\)</span> 时，即表示处理到第一个数字，只有当 <span class="math inline">\(arr[i] == S\)</span> 才会返回 <span class="math inline">\(true\)</span> ，否则返回 <span class="math inline">\(false\)</span> 。比如，当我们给的数组只有一个元素是，只有当 <span class="math inline">\(arr[0] == S\)</span> 时才为 <span class="math inline">\(true\)</span></li>
+</ul>
+<div class="figure">
+<img src="/2019/04/09/动态规划/T3递归出口2.png">
+
+</div>
+<ul>
+<li><span class="math inline">\(arr[i] &gt; S\)</span> 时，这时候我们肯定不能选 <span class="math inline">\(arr[i]\)</span> ，即此时返回 <span class="math inline">\(Subset(arr[i-1], S)\)</span></li>
+</ul>
+<p><img src="/2019/04/09/动态规划/T3递归出口3.png"><br>
+整理一下递归公式如下：<br>
+<img src="/2019/04/09/动态规划/T3递归公式.png"></p>
+<blockquote>
+<p><strong>动态规划解法</strong></p>
+</blockquote>
+<p>即非递归方式，我们需要借助二维数组，保存我们的中间过程（中间的这些重叠子问题）。如下设计我们的二维数组：</p>
+<p><img src="/2019/04/09/动态规划/DP二维数组.png"><br>
+其中，最左边列是 <span class="math inline">\(arr[ ]\)</span> 数组，右边是设计一个二维数组，行坐标表示下标 <span class="math inline">\(i\)</span> ，纵坐标表示 <span class="math inline">\(S\)</span> ，比如图中的绿色方框表示 <span class="math inline">\(Subset(arr[2], 3)\)</span> 此时，由于 <span class="math inline">\(a[2] = 4 &gt; S = 3\)</span> ，所以只能不选 <span class="math inline">\(arr[2]\)</span> ，即得到当前方案 <span class="math inline">\(Subset(arr[1], 3)\)</span> 。明白含义之后，我们来定义我们的出口条件：</p>
+<ul>
+<li>当 <span class="math inline">\(i = 0\)</span> 时，只有 <span class="math inline">\(arr[0] = S\)</span> 时返回 <span class="math inline">\(True\)</span> ，其余都为 <span class="math inline">\(False\)</span> 。即我们写好了 <span class="math inline">\(i = 0\)</span> 这一行的出口条件</li>
+<li>当 <span class="math inline">\(S = 0\)</span> 时，说明已经找到了取数方案，直接返回 <span class="math inline">\(True\)</span> 。即我们写好了 <span class="math inline">\(S = 0\)</span> 这一列的出口条件。</li>
+</ul>
+<p>然后按照从左往右的顺序，把每一行填好，最后返回最后一个结果即可。</p>
+<p><img src="/2019/04/09/动态规划/DP二维数组2.png"><br>
+对于 <span class="math inline">\(subset[0, 0]\)</span> 我们规定为 <span class="math inline">\(False\)</span></p>
+<blockquote>
+<p><strong>代码简单实现</strong></p>
+</blockquote>
+<p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Creation         :       2019.04.06 11:30</span></span><br><span class="line"><span class="comment"> * Last Reversion   :       2019.04.06 15:39:</span></span><br><span class="line"><span class="comment"> * Author           :       Lingyong Smile &#123;smilelingyong@163.com&#125;</span></span><br><span class="line"><span class="comment"> * File Type        :       cpp</span></span><br><span class="line"><span class="comment"> * -----------------------------------------------------------------</span></span><br><span class="line"><span class="comment"> * 题目描述：</span></span><br><span class="line"><span class="comment"> *    在如下一堆数字中选出一些数字求和，能够等于数字n。如果存在这样的方案则</span></span><br><span class="line"><span class="comment"> * 返回true，否则返回false。</span></span><br><span class="line"><span class="comment"> * int arr[] = &#123;3, 34, 4, 12, 5, 2&#125;;</span></span><br><span class="line"><span class="comment"> * 测试用例：</span></span><br><span class="line"><span class="comment"> 输入：</span></span><br><span class="line"><span class="comment">9</span></span><br><span class="line"><span class="comment">10</span></span><br><span class="line"><span class="comment">11</span></span><br><span class="line"><span class="comment">12</span></span><br><span class="line"><span class="comment">13</span></span><br><span class="line"><span class="comment"> 输出：</span></span><br><span class="line"><span class="comment">1</span></span><br><span class="line"><span class="comment">1</span></span><br><span class="line"><span class="comment">1</span></span><br><span class="line"><span class="comment">1</span></span><br><span class="line"><span class="comment">0</span></span><br><span class="line"><span class="comment"> * -----------------------------------------------------------------</span></span><br><span class="line"><span class="comment"> * Crop right @ 2019 Lingyong Smile &#123;smilelingyong@163.com&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N_SIZE 100</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> M_SIZE 100</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> arr[] = &#123;<span class="number">3</span>, <span class="number">34</span>, <span class="number">4</span>, <span class="number">12</span>, <span class="number">5</span>, <span class="number">2</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> subset[N_SIZE][M_SIZE];</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 递归形式</span></span><br><span class="line"><span class="comment"> */</span> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">RecSubset</span><span class="params">(<span class="keyword">int</span> arr[], <span class="keyword">int</span> i, <span class="keyword">int</span> S)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (i == <span class="number">0</span>)                 <span class="comment">// 这里的两个出口和调换了一下顺序（与笔记想笔记），因为比如当数组只有一个元素arr[] = &#123;4&#125;, S = 5，此时因该返回False才对。</span></span><br><span class="line">        <span class="keyword">return</span> (arr[<span class="number">0</span>] == S);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(S == <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span> </span><br><span class="line">        <span class="keyword">return</span> RecSubset(arr, i<span class="number">-1</span>, S-arr[i]) || RecSubset(arr, i<span class="number">-1</span>, S);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 非递归形式：动态规划</span></span><br><span class="line"><span class="comment"> */</span> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">DPSubset</span><span class="params">(<span class="keyword">int</span> arr[], <span class="keyword">int</span> len, <span class="keyword">int</span> S)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;     <span class="comment">// 将S == 0 列都初始化为True</span></span><br><span class="line">        subset[i][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> s = <span class="number">0</span>; s &lt;= S; s++) &#123;      <span class="comment">// 将 i == 0 行，除了arr[0]列初始化为True，其余都初始化为False</span></span><br><span class="line">        subset[<span class="number">0</span>][s] = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    subset[<span class="number">0</span>][arr[<span class="number">0</span>]] = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; len; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> s = <span class="number">1</span>; s &lt;= S; s++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (arr[i] &gt; s)</span><br><span class="line">                subset[i][s] = subset[i<span class="number">-1</span>][s];</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                subset[i][s] = (subset[i<span class="number">-1</span>][s-arr[i]] || subset[i<span class="number">-1</span>][s]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> subset[len<span class="number">-1</span>][S];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (RecSubset(arr, <span class="number">5</span>, <span class="number">13</span>))</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"True\n"</span>);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"False\n"</span>);</span><br><span class="line">    <span class="keyword">if</span> (DPSubset(arr, <span class="number">6</span>, <span class="number">13</span>))</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"True\n"</span>);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"False\n"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="todo">Todo</h2>
+<ul>
+<li>[ ] 01背包</li>
+<li>[ ] 完全背包</li>
+<li>[ ] 多重背包</li>
+</ul>
+<h2 id="reference">Reference</h2>
+<ul>
+<li><a href="https://www.bilibili.com/video/av16544031/?spm_id_from=333.788.videocard.0" class="uri" target="_blank" rel="noopener">https://www.bilibili.com/video/av16544031/?spm_id_from=333.788.videocard.0</a></li>
+</ul>
+</body>
+</html>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/C/" rel="tag">#C</a>
+          
+            <a href="/tags/算法/" rel="tag">#算法</a>
+          
+            <a href="/tags/数据结构/" rel="tag">#数据结构</a>
+          
+            <a href="/tags/动态规划/" rel="tag">#动态规划</a>
+          
+            <a href="/tags/背包/" rel="tag">#背包</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/cjvq2xdxh003x61agn7anyu42/" rel="prev">
+                <i class="fa fa-chevron-left"></i> C++中的string
+              </a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/cjvq2xdx2003m61ag56u9jvaw/" rel="next">
+                博客搭建hexo+github <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+          </div>
+        
+      
+
+        
+          
+  
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+      
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table Of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview" sidebar-panel >
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/avatar.jpg" alt="SmileLingyong" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">SmileLingyong</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">向上，向阳！</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-name">categories</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">18</span>
+              <span class="site-state-item-name">tags</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="smilelingyong@gmail.com" target="_blank">
+                  <i class="fa fa-e-mail"></i> E-Mail
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/SmileLingyong" target="_blank">
+                  <i class="fa fa-github"></i> Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://blog.csdn.net/forever__1234" target="_blank">
+                  <i class="fa fa-csdn"></i> CSDN
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目一fibonacci"><span class="nav-text">题目一：Fibonacci</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题目二最多能赚几块钱"><span class="nav-text">题目二：最多能赚几块钱？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题目三最大和"><span class="nav-text">题目三：最大和</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题目四是否存在和为指定值"><span class="nav-text">题目四：是否存在和为指定值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#todo"><span class="nav-text">Todo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reference"><span class="nav-text">Reference</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+	  </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">SmileLingyong</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="#">
+    FreeSky
+  </a>(Reserved)
+
+  
+  <span id="busuanzi_container_site_uv">
+     &nbsp; | &nbsp;  用户量: <span id="busuanzi_value_site_uv"></span>
+  </span>
+  <span id="busuanzi_container_site_pv">
+    &nbsp; | &nbsp;  总访问量: <span id="busuanzi_value_site_pv"></span>
+  </span>
+
+  
+</div>
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/others/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+    
+
+  
+
+
+  
+  
+  <script type="text/javascript" src="/others/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
+  
+
+  <script type="text/javascript" src="/others/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/others/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.2" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.2"></script>
+  <script type="text/javascript" src="/others/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    var $aboutContent = $('#posts-about');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0 && $aboutContent.length === 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+
+      motionIntegrator.bootstrap();
+    });
+  </script>
+
+  
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+  
+     <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("9QoQXWnRR4zwSFuxRv52kUpi-gzGzoHsz", "zlgcRzgHF7AHu8TKLJUwCAjw");</script>
+<script>
+function showTime(Counter) {
+  var query = new AV.Query(Counter);
+  $(".leancloud_visitors").each(function() {
+    var url = $(this).attr("id").trim();
+    query.equalTo("url", url);
+    query.find({
+      success: function(results) {
+        if (results.length == 0) {
+          var content = $(document.getElementById(url)).text() + ': 0';
+          $(document.getElementById(url)).text(content);
+          return;
+        }
+        for (var i = 0; i < results.length; i++) {
+          var object = results[i];
+          var content = $(document.getElementById(url)).text() + ': ' + object.get('time');
+          $(document.getElementById(url)).text(content);
+        }
+      },
+      error: function(object, error) {
+        console.log("Error: " + error.code + " " + error.message);
+      }
+    });
+
+  });
+}
+
+function addCount(Counter) {
+  var Counter = AV.Object.extend("Counter");
+  url = $(".leancloud_visitors").attr('id').trim();
+  title = $(".leancloud_visitors").attr('data-flag-title').trim();
+  var query = new AV.Query(Counter);
+  query.equalTo("url", url);
+  query.find({
+    success: function(results) {
+      if (results.length > 0) {
+        var counter = results[0];
+        counter.fetchWhenSave(true);
+        counter.increment("time");
+        counter.save(null, {
+          success: function(counter) {
+            var content = $(document.getElementById(url)).text() + ': ' + counter.get('time');
+            $(document.getElementById(url)).text(content);
+          },
+          error: function(counter, error) {
+            console.log('Failed to save Visitor num, with error message: ' + error.message);
+          }
+        });
+      } else {
+        var newcounter = new Counter();
+        newcounter.set("title", title);
+        newcounter.set("url", url);
+        newcounter.set("time", 1);
+        newcounter.save(null, {
+          success: function(newcounter) {
+              console.log("newcounter.get('time')="+newcounter.get('time'));
+            var content = $(document.getElementById(url)).text() + ': ' + newcounter.get('time');
+            $(document.getElementById(url)).text(content);
+          },
+          error: function(newcounter, error) {
+            console.log('Failed to create');
+          }
+        });
+      }
+    },
+    error: function(error) {
+      console.log('Error:' + error.code + " " + error.message);
+    }
+  });
+}
+$(function() {
+  var Counter = AV.Object.extend("Counter");
+  if ($('.leancloud_visitors').length == 1) {
+    addCount(Counter);
+  } else if ($('.post-title-link').length > 1) {
+    showTime(Counter);
+  }
+}); 
+</script>
+  
+</body>
+</html>
