@@ -2085,9 +2085,3 @@ body {
     top: 0 !important;
   }
 }
-.posts-expand .post-body ul li {
-  list-style: disc;
-}
-.posts-expand .post-body ul li ul li {
-  list-style: circle;
-}

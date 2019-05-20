@@ -98,7 +98,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/05/08/Try-your-best!You-will-find-the-job/BN_croped.png">
 <meta property="og:image" content="http://yoursite.com/2019/05/08/Try-your-best!You-will-find-the-job/caffe_conv_02.jpg">
 <meta property="og:image" content="http://yoursite.com/2019/05/08/Try-your-best!You-will-find-the-job/caffe_conv_01.png">
-<meta property="og:updated_time" content="2019-05-20T02:10:50.182Z">
+<meta property="og:updated_time" content="2019-05-20T02:19:57.213Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="加油！一定能找到好工作！">
 <meta name="twitter:description" content="code{white-space: pre;}">
@@ -796,14 +796,14 @@ L(Y, f(X)) =
 <strong>（2）绝对值损失函数（L1 Loss、LAE）</strong></p>
 <p>L1范数损失函数，也称作<strong>最小绝对值偏差</strong>( least absolute deviations, <strong>LAD</strong>)，<strong>最小绝对值误差</strong>(least absolute errors, <strong>LAE</strong>)。目的是将估计值 <span class="math inline">\(f(X)\)</span> 和 目标值 <span class="math inline">\(Y\)</span> 的绝对差值的总和 <span class="math inline">\(L\)</span> 最小化：<br>
 <span class="math display">\[
-L(Y, f(X)) = |Y-f(X)|  \\ \color{green}（此时的 \ X \ 是只有一个样本的输入）
+L(Y, f(X)) = |Y-f(X)|  \\ \color{green}{（此时的 \ X \ 是只有一个样本的输入）}
 \]</span><br>
 在实际应用中，<span class="math inline">\(X\)</span> 样本个数为 <span class="math inline">\(m\)</span> ，通常会使用 <strong>平均最小绝对值误差 (MAE)</strong> 做为 L1 Loss 形式 ：<br>
 <span class="math display">\[
-L(Y, f(X)) = \frac{1}{m}\sum_{i=1}^m|Y-f(X)|   \\ \color{green}（此时的 \ X \ 有 \ m \ 个样本的输入）
+L(Y, f(X)) = \frac{1}{m}\sum_{i=1}^m|Y-f(X)|   \\ \color{green}{（此时的 \ X \ 有 \ m \ 个样本的输入）}
 \]</span><br>
 <strong>（3）平方损失函数 (L2 Loss、LSE、最小二乘法OLS)</strong></p>
-<p>基于均方误差最小化(平方损失函数)来进行模型求解的方法称为: <span class="math inline">\(\mathbf{\color{green}最小二乘法}\)</span>. 在线性回归中，最小二乘法就是试图找到一条直线，使得所有样本到直线上的欧氏距离之和最小. (其假设样本和噪声都<strong>服从<span class="math inline">\(\mathbf{\color{blue}高斯分布}\)</span></strong>，然后通过极大似然估计(MLE)可以推导出最小二乘式子)<br>
+<p>基于均方误差最小化(平方损失函数)来进行模型求解的方法称为: <span class="math inline">\(\mathbf{\color{green}{最小二乘法}}\)</span>. 在线性回归中，最小二乘法就是试图找到一条直线，使得所有样本到直线上的欧氏距离之和最小. (其假设样本和噪声都<strong>服从<span class="math inline">\(\mathbf{\color{blue}{高斯分布}}\)</span></strong>，然后通过极大似然估计(MLE)可以推导出最小二乘式子)<br>
 即 <strong>OLS</strong> 是<strong>基于距离的</strong>，而这个距离就是我们用的最多的欧几里得距离。为什么它会选择使用欧式距离作为误差度量呢？ (即Mean squared error， MSE)，主要有以下几个原因：</p>
 <blockquote>
 <ol style="list-style-type: decimal">
@@ -831,7 +831,7 @@ MSE = \frac{1}{m}\sum_{i = 1}^{m}(Y - f(X))^2
 <span class="math display">\[
 L(Y,P(Y|X))=-logP(Y|X).
 \]</span><br>
-常见的<u>逻辑回归使用的就是对数损失函数</u>，而不是平方损失。逻辑回归它假设样本服从 <strong><span class="math inline">\(\mathbf{\color{blue}伯努利分布（0-1分布）}\)</span></strong>，进而求得满足该分布的似然函数，接着取对数求极值等。而逻辑回归并没有求似然函数的极值，而是把极大化当做是一种思想，进而推导出它的经验风险函数为：最小化负的似然函数，从损失函数的角度看， 就是 <span class="math inline">\(log\)</span> 损失函数。</p>
+常见的<u>逻辑回归使用的就是对数损失函数</u>，而不是平方损失。逻辑回归它假设样本服从 <strong><span class="math inline">\(\mathbf{\color{blue}{伯努利分布（0-1分布）}}\)</span></strong>，进而求得满足该分布的似然函数，接着取对数求极值等。而逻辑回归并没有求似然函数的极值，而是把极大化当做是一种思想，进而推导出它的经验风险函数为：最小化负的似然函数，从损失函数的角度看， 就是 <span class="math inline">\(log\)</span> 损失函数。</p>
 <p>损失函数 <span class="math inline">\(L(Y, P(Y|X))\)</span> 表达的是样本 <span class="math inline">\(X\)</span> 在分类 <span class="math inline">\(Y\)</span> 的情况下，使概率 <span class="math inline">\(P(Y|X)\)</span> 达到最大值（换言之，<strong>就是利用已知的样本分布，找到最有可能（即最大概率）导致这种分布的参数值；或者说什么样的参数才能使我们观测到目前这组数据的概率最大</strong>）因为 <span class="math inline">\(log\)</span> 函数是单调递增的，所以 <span class="math inline">\(logP(Y|X)\)</span> 也会达到最大值，因此在前面加上负号之后，最大化 <span class="math inline">\(P(Y|X)\)</span> 就等价于最小化 <span class="math inline">\(L\)</span> 了。</p>
 <p><strong>逻辑回归</strong> 的 <span class="math inline">\(P(Y=y|x)\)</span> 表达式如下（为了将类别标签 <span class="math inline">\(y\)</span> 统一为1和0，下面将表达式分开表示）：<br>
 <span class="math display">\[
@@ -1395,7 +1395,7 @@ AGA = A
 <hr>
 <h2 id="面经集合">面经集合</h2>
 <ul>
-<li><p><a href="https://blog.csdn.net/liuxiao214/article/details/83043170" target="_blank" rel="noopener">超级多的面试相关题目，基本自己要都会才行！</a></p></li>
+<li><a href="https://blog.csdn.net/liuxiao214/article/details/83043170" target="_blank" rel="noopener">超级多的面试相关题目，基本自己要都会才行！</a></li>
 <li><a href="https://mp.weixin.qq.com/s?__biz=MzUxNjcxMjQxNg==&amp;mid=2247489308&amp;idx=3&amp;sn=2ab79b30a0617acd27b4d0d008048a72&amp;chksm=f9a26593ced5ec85cde15405b917a4ad649bd3e17e1b6986220d9f0c3fb5440924e9f0ffdf9a&amp;mpshare=1&amp;scene=1&amp;srcid=&amp;pass_ticket=GNqW1dUZqNOlXRVxSJ2ZJyI8kYIhyz3BdG1xJe%2FAyL46O%2FfHd%2BkyZhc51dt3UTV1#rd" target="_blank" rel="noopener">跟自己很相关的一个面经,已经剪切到印象笔记之中</a></li>
 <li><a href="https://blog.csdn.net/francislucien2017/article/details/87936928" target="_blank" rel="noopener">2019春 计算机视觉方向实习面试总结 （商汤 / 搜狗 / 纽劢 / 普华永道）</a></li>
 <li><a href="https://www.jianshu.com/p/58855c6971e5" target="_blank" rel="noopener">2019秋招CV算法面经</a></li>
@@ -1408,7 +1408,7 @@ AGA = A
 <li><a href="https://www.nowcoder.com/discuss/112562" target="_blank" rel="noopener">腾讯 MIG / 网易互娱 / 今日头条 从春招到秋招的面经</a></li>
 <li><a href="https://www.nowcoder.com/discuss/128148" target="_blank" rel="noopener">计算机视觉岗位面经</a></li>
 <li><a href="https://www.nowcoder.com/discuss/36815" target="_blank" rel="noopener">机器学习岗面试</a></li>
-<li><p><a href="https://www.nowcoder.com/discuss/3453" target="_blank" rel="noopener">机器学习-相似性度量</a></p></li>
+<li><a href="https://www.nowcoder.com/discuss/3453" target="_blank" rel="noopener">机器学习-相似性度量</a></li>
 </ul>
 <hr>
 <h2 id="c问题">C++问题</h2>
