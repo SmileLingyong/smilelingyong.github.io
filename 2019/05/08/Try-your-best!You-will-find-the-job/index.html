@@ -98,7 +98,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/05/08/Try-your-best!You-will-find-the-job/BN_croped.png">
 <meta property="og:image" content="http://yoursite.com/2019/05/08/Try-your-best!You-will-find-the-job/caffe_conv_02.jpg">
 <meta property="og:image" content="http://yoursite.com/2019/05/08/Try-your-best!You-will-find-the-job/caffe_conv_01.png">
-<meta property="og:updated_time" content="2019-05-20T02:28:41.288Z">
+<meta property="og:updated_time" content="2019-05-20T02:36:37.929Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="加油！一定能找到好工作！">
 <meta name="twitter:description" content="code{white-space: pre;}">
@@ -680,24 +680,10 @@ y&#39; = y * (1 - y)
 <p class="caption">Sigmoid激活函数导数</p>
 </div>
 <ul>
-<ul>
-<li></li><li>
-<span class="math inline">\(Sigmoid\)</span> 函数的三个主要缺陷：
-</li>
-</ul>
-<ul>
-<ul>
-<li></li><li>
-<strong>梯度消失</strong>：Sigmoid 函数在输入取绝对值非常大的正值或负值时会出现 <strong>饱和</strong> 现象，在图像上表现为变得很平缓，此时函数会对输入的微小变化不敏感，即此时的梯度趋近于0，造成梯度消失，网络权重更新缓慢或不更新。
-</li>
-<li></li><li>
-<strong>计算成本高昂</strong>：<span class="math inline">\(exp()\)</span> 函数与其他非线性激活函数相比，计算成本高昂
-</li>
-<li></li><li>
-<strong>不以零为中心</strong>：Sigmoid 输出不以零为中心的
-</li>
-</ul>
-</ul>
+<li><span class="math inline">\(Sigmoid\)</span> 函数的三个主要缺陷：</li>
+<li><strong>梯度消失</strong>：Sigmoid 函数在输入取绝对值非常大的正值或负值时会出现 <strong>饱和</strong> 现象，在图像上表现为变得很平缓，此时函数会对输入的微小变化不敏感，即此时的梯度趋近于0，造成梯度消失，网络权重更新缓慢或不更新。</li>
+<li><strong>计算成本高昂</strong>：<span class="math inline">\(exp()\)</span> 函数与其他非线性激活函数相比，计算成本高昂</li>
+<li><strong>不以零为中心</strong>：Sigmoid 输出不以零为中心的</li>
 </ul>
 <hr>
 <ul>

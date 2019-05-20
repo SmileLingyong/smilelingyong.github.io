@@ -966,9 +966,9 @@ body {
 }
 .sidebar-inner {
   position: relative;
-  padding: 60px 10px;
+  padding: 0 10px 10px;
   color: #999;
-  text-align: center;
+  list-style: none;
 }
 .site-author-image {
   display: block;
