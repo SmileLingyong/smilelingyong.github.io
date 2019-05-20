@@ -82,7 +82,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/04/25/Precision-Recall-R-Pcurve-ROC-AUC-mAP/5.png">
 <meta property="og:image" content="http://yoursite.com/2018/04/25/Precision-Recall-R-Pcurve-ROC-AUC-mAP/mAP.png">
 <meta property="og:image" content="http://yoursite.com/2018/04/25/Precision-Recall-R-Pcurve-ROC-AUC-mAP/result.png">
-<meta property="og:updated_time" content="2019-05-16T04:11:06.007Z">
+<meta property="og:updated_time" content="2019-05-19T01:53:03.068Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Precision、Recall、P-R曲线、ROC、AUC、mAP">
 <meta name="twitter:description" content="code{white-space: pre;}">
@@ -243,8 +243,8 @@
               &nbsp; | &nbsp; In
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/ML/" itemprop="url" rel="index">
-                    <span itemprop="name">ML</span>
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
                   </a>
                 </span>
 
@@ -255,8 +255,8 @@
 
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">学习笔记</span>
+                  <a href="/categories/ML/" itemprop="url" rel="index">
+                    <span itemprop="name">ML</span>
                   </a>
                 </span>
 
@@ -409,8 +409,8 @@
 （假正率）FPR = \frac{FP}{FP + TN}
 \]</span></p>
 <h2 id="map">4. mAP</h2>
-<p>接下来说说 <strong>AP</strong> 的计算，此处参考的是 <code>PASCAL  VOC  CHALLENGE</code> 的计算方法。首先设定一组阈值，[0, 0.1, 0.2, …, 1]。然后对于 Recall 大于每一个阈值（比如 Recall &gt; 0.3），我们都会得到一个对应的最大 Precision。这样，我们就计算出了11个 Precision。AP 即为这11个 Precision 的平均值。这种方法英文叫做 <code>11-point interpolated average precision</code><br>
-相应的 Precision-Recall 曲线（这条曲线是单调递减的）如下：</p>
+<p>接下来说说 <strong>AP</strong> 的计算，此处参考的是 <code>PASCAL  VOC  CHALLENGE</code> 的计算方法。首先按照 R-P曲线 计算方式计算 Precision 和 Recall。然后设定一组阈值，[0, 0.1, 0.2, …, 1]，计算 Recall 大于第 <span class="math inline">\(i\)</span> 个阈值的R-P集合中，对应的 Precision 的最大值。这样，我们就计算出了11个 Precision。<strong>mAP</strong> 即为这11个 Precision 的平均值。这种方法英文叫做 <code>11-point interpolated average precision</code><br>
+相应的Precision-Recall曲线（这条曲线是单调递减的）如下：</p>
 <div class="figure">
 <img src="/2018/04/25/Precision-Recall-R-Pcurve-ROC-AUC-mAP/mAP.png">
 
