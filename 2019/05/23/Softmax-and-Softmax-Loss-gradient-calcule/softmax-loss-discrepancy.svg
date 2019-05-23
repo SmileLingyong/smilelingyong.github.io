@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     xmlns:gadfly="http://www.gadflyjl.org/ns"
+     version="1.2"
+     width="152.4mm" height="76.2mm" viewBox="0 0 152.4 76.2"
+     stroke="none"
+     fill="#000000"
+     stroke-width="0.3"
+     font-size="3.88"
+>
+<g class="plotroot yscalable" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-1">
+  <g font-size="3.88" font-family="'PT Sans','Helvetica Neue','Helvetica',sans-serif" fill="#564A55" stroke="none" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-2">
+    <text x="80.43" y="68.2" text-anchor="middle">z[y]</text>
+  </g>
+  <g class="guide xlabels" font-size="2.82" font-family="'PT Sans Caption','Helvetica Neue','Helvetica',sans-serif" fill="#6C606B" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-3">
+    <text x="30.7" y="62.59" text-anchor="middle">-10<tspan style="dominant-baseline:inherit" dy="-0.6em" font-size="83.333333%">37</tspan></text>
+    <text x="40.33" y="62.59" text-anchor="middle">-10<tspan style="dominant-baseline:inherit" dy="-0.6em" font-size="83.333333%">22</tspan></text>
+    <text x="53.16" y="62.59" text-anchor="middle">-10<tspan style="dominant-baseline:inherit" dy="-0.6em" font-size="83.333333%">2</tspan></text>
+    <text x="62.79" y="62.59" text-anchor="middle">-10<tspan style="dominant-baseline:inherit" dy="-0.6em" font-size="83.333333%">-13</tspan></text>
+    <text x="75.62" y="62.59" text-anchor="middle">-10<tspan style="dominant-baseline:inherit" dy="-0.6em" font-size="83.333333%">-33</tspan></text>
+    <text x="85.25" y="62.59" text-anchor="middle">10<tspan style="dominant-baseline:inherit" dy="-0.6em" font-size="83.333333%">-33</tspan></text>
+    <text x="98.08" y="62.59" text-anchor="middle">10<tspan style="dominant-baseline:inherit" dy="-0.6em" font-size="83.333333%">-13</tspan></text>
+    <text x="107.7" y="62.59" text-anchor="middle">10<tspan style="dominant-baseline:inherit" dy="-0.6em" font-size="83.333333%">2</tspan></text>
+    <text x="120.54" y="62.59" text-anchor="middle">10<tspan style="dominant-baseline:inherit" dy="-0.6em" font-size="83.333333%">22</tspan></text>
+    <text x="130.16" y="62.59" text-anchor="middle">10<tspan style="dominant-baseline:inherit" dy="-0.6em" font-size="83.333333%">37</tspan></text>
+  </g>
+  <g class="guide colorkey" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-4">
+    <g fill="#4C404B" font-size="2.82" font-family="'PT Sans','Helvetica Neue','Helvetica',sans-serif" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-5">
+      <text x="135.58" y="31.29" dy="0.35em" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-6" class="color_together">together</text>
+      <text x="135.58" y="34.92" dy="0.35em" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-7" class="color_separated">separated</text>
+    </g>
+    <g stroke="none" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-8">
+      <rect x="132.77" y="30.38" width="1.81" height="1.81" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-9" class="color_together" fill="#00BFFF"/>
+      <rect x="132.77" y="34.01" width="1.81" height="1.81" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-10" class="color_separated" fill="#D4CA3A"/>
+    </g>
+    <g fill="#362A35" font-size="3.88" font-family="'PT Sans','Helvetica Neue','Helvetica',sans-serif" stroke="none" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-11">
+      <text x="132.77" y="27.47" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-12">label</text>
+    </g>
+  </g>
+  <g clip-path="url(#fig-01fa9d7c97b14af5b16f9cf74534931d-element-14)" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-13">
+    <g pointer-events="visible" opacity="1" fill="none" stroke="none" class="guide background" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-15">
+      <rect x="29.1" y="5" width="102.67" height="52.58" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-16"/>
+    </g>
+    <g class="guide ygridlines xfixed" stroke-dasharray="0.5,0.5" stroke-width="0.2" stroke="#D0D0E0" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-17">
+      <path fill="none" d="M29.1,55.58 L 131.77 55.58" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-18"/>
+      <path fill="none" d="M29.1,45.86 L 131.77 45.86" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-19"/>
+      <path fill="none" d="M29.1,36.15 L 131.77 36.15" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-20"/>
+      <path fill="none" d="M29.1,26.43 L 131.77 26.43" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-21"/>
+      <path fill="none" d="M29.1,16.72 L 131.77 16.72" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-22"/>
+      <path fill="none" d="M29.1,7 L 131.77 7" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-23"/>
+    </g>
+    <g class="guide xgridlines yfixed" stroke-dasharray="0.5,0.5" stroke-width="0.2" stroke="#D0D0E0" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-24">
+      <path fill="none" d="M30.7,5 L 30.7 57.58" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-25"/>
+      <path fill="none" d="M40.33,5 L 40.33 57.58" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-26"/>
+      <path fill="none" d="M53.16,5 L 53.16 57.58" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-27"/>
+      <path fill="none" d="M62.79,5 L 62.79 57.58" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-28"/>
+      <path fill="none" d="M75.62,5 L 75.62 57.58" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-29"/>
+      <path fill="none" d="M85.25,5 L 85.25 57.58" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-30"/>
+      <path fill="none" d="M98.08,5 L 98.08 57.58" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-31"/>
+      <path fill="none" d="M107.7,5 L 107.7 57.58" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-32"/>
+      <path fill="none" d="M120.54,5 L 120.54 57.58" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-33"/>
+      <path fill="none" d="M130.16,5 L 130.16 57.58" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-34"/>
+    </g>
+    <g class="plotpanel" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-35">
+      <g stroke-width="0.3" fill="none" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-36">
+        <path fill="none" d="M56.37,13.67 L 59.58 19.5 62.79 19.5 65.99 19.5 69.2 19.5 72.41 19.5 75.62 19.5 78.83 19.5 82.04 19.5 85.25 19.5 88.45 19.5 91.66 19.5 94.87 19.5 98.08 19.5 101.29 19.49 104.5 12.64" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-37" class="geometry color_separated" stroke="#D4CA3A"/>
+        <path fill="none" d="M30.7,55.58 L 33.91 55.58 37.12 55.58 40.33 55.58 43.54 55.58 46.74 55.58 49.95 55.58 53.16 55.58 56.37 25.96 59.58 27.43 62.79 27.45 65.99 27.45 69.2 27.45 72.41 27.45 75.62 27.45 78.83 27.45 82.04 27.45 85.25 27.45 88.45 27.45 91.66 27.45 94.87 27.45 98.08 27.45 101.29 27.46 104.5 25.29" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-38" class="geometry color_together" stroke="#00BFFF"/>
+      </g>
+      <g class="geometry" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-39">
+        <g stroke-width="0.3" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-40">
+          <circle cx="30.7" cy="55.58" r="0.9" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-41" class="color_together" stroke="#FFFFFF" fill="#00BFFF"/>
+          <circle cx="33.91" cy="55.58" r="0.9" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-42" class="color_together" stroke="#FFFFFF" fill="#00BFFF"/>
+          <circle cx="37.12" cy="55.58" r="0.9" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-43" class="color_together" stroke="#FFFFFF" fill="#00BFFF"/>
+          <circle cx="40.33" cy="55.58" r="0.9" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-44" class="color_together" stroke="#FFFFFF" fill="#00BFFF"/>
+          <circle cx="43.54" cy="55.58" r="0.9" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-45" class="color_together" stroke="#FFFFFF" fill="#00BFFF"/>
+          <circle cx="46.74" cy="55.58" r="0.9" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-46" class="color_together" stroke="#FFFFFF" fill="#00BFFF"/>
+          <circle cx="49.95" cy="55.58" r="0.9" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-47" class="color_together" stroke="#FFFFFF" fill="#00BFFF"/>
+          <circle cx="53.16" cy="55.58" r="0.9" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-48" class="color_together" stroke="#FFFFFF" fill="#00BFFF"/>
+          <circle cx="56.37" cy="25.96" r="0.9" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-49" class="color_together" stroke="#FFFFFF" fill="#00BFFF"/>
+          <circle cx="59.58" cy="27.43" r="0.9" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-50" class="color_together" stroke="#FFFFFF" fill="#00BFFF"/>
+          <circle cx="62.79" cy="27.45" r="0.9" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-51" class="color_together" stroke="#FFFFFF" fill="#00BFFF"/>
+          <circle cx="65.99" cy="27.45" r="0.9" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-52" class="color_together" stroke="#FFFFFF" fill="#00BFFF"/>
+          <circle cx="69.2" cy="27.45" r="0.9" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-53" class="color_together" stroke="#FFFFFF" fill="#00BFFF"/>
+          <circle cx="72.41" cy="27.45" r="0.9" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-54" class="color_together" stroke="#FFFFFF" fill="#00BFFF"/>
+          <circle cx="75.62" cy="27.45" r="0.9" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-55" class="color_together" stroke="#FFFFFF" fill="#00BFFF"/>
+          <circle cx="78.83" cy="27.45" r="0.9" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-56" class="color_together" stroke="#FFFFFF" fill="#00BFFF"/>
+          <circle cx="82.04" cy="27.45" r="0.9" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-57" class="color_together" stroke="#FFFFFF" fill="#00BFFF"/>
+          <circle cx="85.25" cy="27.45" r="0.9" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-58" class="color_together" stroke="#FFFFFF" fill="#00BFFF"/>
+          <circle cx="88.45" cy="27.45" r="0.9" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-59" class="color_together" stroke="#FFFFFF" fill="#00BFFF"/>
+          <circle cx="91.66" cy="27.45" r="0.9" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-60" class="color_together" stroke="#FFFFFF" fill="#00BFFF"/>
+          <circle cx="94.87" cy="27.45" r="0.9" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-61" class="color_together" stroke="#FFFFFF" fill="#00BFFF"/>
+          <circle cx="98.08" cy="27.45" r="0.9" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-62" class="color_together" stroke="#FFFFFF" fill="#00BFFF"/>
+          <circle cx="101.29" cy="27.46" r="0.9" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-63" class="color_together" stroke="#FFFFFF" fill="#00BFFF"/>
+          <circle cx="104.5" cy="25.29" r="0.9" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-64" class="color_together" stroke="#FFFFFF" fill="#00BFFF"/>
+          <circle cx="107.7" cy="NaN" r="0.9" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-65" class="color_together" stroke="#FFFFFF" fill="#00BFFF"/>
+          <circle cx="110.91" cy="NaN" r="0.9" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-66" class="color_together" stroke="#FFFFFF" fill="#00BFFF"/>
+          <circle cx="114.12" cy="NaN" r="0.9" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-67" class="color_together" stroke="#FFFFFF" fill="#00BFFF"/>
+          <circle cx="117.33" cy="NaN" r="0.9" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-68" class="color_together" stroke="#FFFFFF" fill="#00BFFF"/>
+          <circle cx="120.54" cy="NaN" r="0.9" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-69" class="color_together" stroke="#FFFFFF" fill="#00BFFF"/>
+          <circle cx="123.75" cy="NaN" r="0.9" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-70" class="color_together" stroke="#FFFFFF" fill="#00BFFF"/>
+          <circle cx="126.95" cy="NaN" r="0.9" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-71" class="color_together" stroke="#FFFFFF" fill="#00BFFF"/>
+          <circle cx="130.16" cy="NaN" r="0.9" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-72" class="color_together" stroke="#FFFFFF" fill="#00BFFF"/>
+          <circle cx="30.7" cy="NaN" r="0.9" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-73" class="color_separated" stroke="#FFFFFF" fill="#D4CA3A"/>
+          <circle cx="33.91" cy="NaN" r="0.9" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-74" class="color_separated" stroke="#FFFFFF" fill="#D4CA3A"/>
+          <circle cx="37.12" cy="NaN" r="0.9" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-75" class="color_separated" stroke="#FFFFFF" fill="#D4CA3A"/>
+          <circle cx="40.33" cy="NaN" r="0.9" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-76" class="color_separated" stroke="#FFFFFF" fill="#D4CA3A"/>
+          <circle cx="43.54" cy="NaN" r="0.9" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-77" class="color_separated" stroke="#FFFFFF" fill="#D4CA3A"/>
+          <circle cx="46.74" cy="NaN" r="0.9" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-78" class="color_separated" stroke="#FFFFFF" fill="#D4CA3A"/>
+          <circle cx="49.95" cy="NaN" r="0.9" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-79" class="color_separated" stroke="#FFFFFF" fill="#D4CA3A"/>
+          <circle cx="53.16" cy="NaN" r="0.9" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-80" class="color_separated" stroke="#FFFFFF" fill="#D4CA3A"/>
+          <circle cx="56.37" cy="13.67" r="0.9" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-81" class="color_separated" stroke="#FFFFFF" fill="#D4CA3A"/>
+          <circle cx="59.58" cy="19.5" r="0.9" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-82" class="color_separated" stroke="#FFFFFF" fill="#D4CA3A"/>
+          <circle cx="62.79" cy="19.5" r="0.9" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-83" class="color_separated" stroke="#FFFFFF" fill="#D4CA3A"/>
+          <circle cx="65.99" cy="19.5" r="0.9" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-84" class="color_separated" stroke="#FFFFFF" fill="#D4CA3A"/>
+          <circle cx="69.2" cy="19.5" r="0.9" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-85" class="color_separated" stroke="#FFFFFF" fill="#D4CA3A"/>
+          <circle cx="72.41" cy="19.5" r="0.9" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-86" class="color_separated" stroke="#FFFFFF" fill="#D4CA3A"/>
+          <circle cx="75.62" cy="19.5" r="0.9" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-87" class="color_separated" stroke="#FFFFFF" fill="#D4CA3A"/>
+          <circle cx="78.83" cy="19.5" r="0.9" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-88" class="color_separated" stroke="#FFFFFF" fill="#D4CA3A"/>
+          <circle cx="82.04" cy="19.5" r="0.9" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-89" class="color_separated" stroke="#FFFFFF" fill="#D4CA3A"/>
+          <circle cx="85.25" cy="19.5" r="0.9" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-90" class="color_separated" stroke="#FFFFFF" fill="#D4CA3A"/>
+          <circle cx="88.45" cy="19.5" r="0.9" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-91" class="color_separated" stroke="#FFFFFF" fill="#D4CA3A"/>
+          <circle cx="91.66" cy="19.5" r="0.9" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-92" class="color_separated" stroke="#FFFFFF" fill="#D4CA3A"/>
+          <circle cx="94.87" cy="19.5" r="0.9" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-93" class="color_separated" stroke="#FFFFFF" fill="#D4CA3A"/>
+          <circle cx="98.08" cy="19.5" r="0.9" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-94" class="color_separated" stroke="#FFFFFF" fill="#D4CA3A"/>
+          <circle cx="101.29" cy="19.49" r="0.9" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-95" class="color_separated" stroke="#FFFFFF" fill="#D4CA3A"/>
+          <circle cx="104.5" cy="12.64" r="0.9" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-96" class="color_separated" stroke="#FFFFFF" fill="#D4CA3A"/>
+          <circle cx="107.7" cy="NaN" r="0.9" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-97" class="color_separated" stroke="#FFFFFF" fill="#D4CA3A"/>
+          <circle cx="110.91" cy="NaN" r="0.9" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-98" class="color_separated" stroke="#FFFFFF" fill="#D4CA3A"/>
+          <circle cx="114.12" cy="NaN" r="0.9" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-99" class="color_separated" stroke="#FFFFFF" fill="#D4CA3A"/>
+          <circle cx="117.33" cy="NaN" r="0.9" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-100" class="color_separated" stroke="#FFFFFF" fill="#D4CA3A"/>
+          <circle cx="120.54" cy="NaN" r="0.9" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-101" class="color_separated" stroke="#FFFFFF" fill="#D4CA3A"/>
+          <circle cx="123.75" cy="NaN" r="0.9" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-102" class="color_separated" stroke="#FFFFFF" fill="#D4CA3A"/>
+          <circle cx="126.95" cy="NaN" r="0.9" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-103" class="color_separated" stroke="#FFFFFF" fill="#D4CA3A"/>
+          <circle cx="130.16" cy="NaN" r="0.9" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-104" class="color_separated" stroke="#FFFFFF" fill="#D4CA3A"/>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g class="guide ylabels" font-size="2.82" font-family="'PT Sans Caption','Helvetica Neue','Helvetica',sans-serif" fill="#6C606B" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-105">
+    <text x="28.1" y="55.58" text-anchor="end" dy="0.35em" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-106">0</text>
+    <text x="28.1" y="45.86" text-anchor="end" dy="0.35em" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-107">5.0×10⁻⁹</text>
+    <text x="28.1" y="36.15" text-anchor="end" dy="0.35em" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-108">1.0×10⁻⁸</text>
+    <text x="28.1" y="26.43" text-anchor="end" dy="0.35em" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-109">1.5×10⁻⁸</text>
+    <text x="28.1" y="16.72" text-anchor="end" dy="0.35em" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-110">2.0×10⁻⁸</text>
+    <text x="28.1" y="7" text-anchor="end" dy="0.35em" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-111">2.5×10⁻⁸</text>
+  </g>
+  <g font-size="3.88" font-family="'PT Sans','Helvetica Neue','Helvetica',sans-serif" fill="#564A55" stroke="none" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-112">
+    <text x="8.81" y="29.29" text-anchor="middle" dy="0.35em" transform="rotate(-90, 8.81, 31.29)" id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-113">discrepancy</text>
+  </g>
+</g>
+<defs>
+<clipPath id="fig-01fa9d7c97b14af5b16f9cf74534931d-element-14">
+  <path d="M29.1,5 L 131.77 5 131.77 57.58 29.1 57.58" />
+</clipPath
+></defs>
+</svg>
