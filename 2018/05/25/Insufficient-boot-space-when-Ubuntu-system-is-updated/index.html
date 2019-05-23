@@ -71,17 +71,17 @@
 <meta name="keywords" content="Tools,Linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Ubuntu系统更新时boot空间不足问题">
-<meta property="og:url" content="http://yoursite.com/2018/05/25/cjw0dgqzf000ckuagz56ycwy6/index.html">
+<meta property="og:url" content="http://yoursite.com/2018/05/25/Insufficient-boot-space-when-Ubuntu-system-is-updated/index.html">
 <meta property="og:site_name" content="SmileLingyong">
 <meta property="og:description" content="code{white-space: pre;}       系统：Ubuntu16.04 + win10  由于自己Ubuntu系统在分区的时候，单独分了一个boot空间512M，然后才用了3个月，日常更新系统时，就出现了boot空间不足的问题，无法再更新系统。之后自己查阅了相关资料，尝试释放一下boot空间，具体操作如下： 第一步 首先查看磁盘存储情况，使用命令">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/2018/05/25/cjw0dgqzf000ckuagz56ycwy6/Ubuntu系统boot空间不足1.png">
-<meta property="og:image" content="http://yoursite.com/2018/05/25/cjw0dgqzf000ckuagz56ycwy6/Ubuntu系统boot空间不足2.png">
-<meta property="og:updated_time" content="2019-05-23T08:06:02.481Z">
+<meta property="og:image" content="http://yoursite.com/2018/05/25/Insufficient-boot-space-when-Ubuntu-system-is-updated/Ubuntu系统boot空间不足1.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/25/Insufficient-boot-space-when-Ubuntu-system-is-updated/Ubuntu系统boot空间不足2.png">
+<meta property="og:updated_time" content="2019-05-23T08:28:36.140Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ubuntu系统更新时boot空间不足问题">
 <meta name="twitter:description" content="code{white-space: pre;}       系统：Ubuntu16.04 + win10  由于自己Ubuntu系统在分区的时候，单独分了一个boot空间512M，然后才用了3个月，日常更新系统时，就出现了boot空间不足的问题，无法再更新系统。之后自己查阅了相关资料，尝试释放一下boot空间，具体操作如下： 第一步 首先查看磁盘存储情况，使用命令">
-<meta name="twitter:image" content="http://yoursite.com/2018/05/25/cjw0dgqzf000ckuagz56ycwy6/Ubuntu系统boot空间不足1.png">
+<meta name="twitter:image" content="http://yoursite.com/2018/05/25/Insufficient-boot-space-when-Ubuntu-system-is-updated/Ubuntu系统boot空间不足1.png">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -281,7 +281,7 @@
           
 
           
-            <span id="/2018/05/25/cjw0dgqzf000ckuagz56ycwy6/"class="leancloud_visitors"  data-flag-title="Ubuntu系统更新时boot空间不足问题">
+            <span id="/2018/05/25/Insufficient-boot-space-when-Ubuntu-system-is-updated/"class="leancloud_visitors"  data-flag-title="Ubuntu系统更新时boot空间不足问题">
             &nbsp; | &nbsp;   
             views
             </span>
@@ -329,20 +329,20 @@
 <h4 id="第五步">第五步</h4>
 <p>清理之后我们使用：<code>df -h</code> 查看当前磁盘存储情况</p>
 <div class="figure">
-<img src="/2018/05/25/cjw0dgqzf000ckuagz56ycwy6/Ubuntu系统boot空间不足1.png">
+<img src="/2018/05/25/Insufficient-boot-space-when-Ubuntu-system-is-updated/Ubuntu系统boot空间不足1.png">
 
 </div>
 <p>可以发现，我们此时的boot已经清理出比较多的空间，还是不错的。</p>
 <h4 id="第六步">第六步</h4>
 <p>查看当前系统安装的内核情况： <code>dpkg --get-selections|grep linux-image</code></p>
 <div class="figure">
-<img src="/2018/05/25/cjw0dgqzf000ckuagz56ycwy6/Ubuntu系统boot空间不足2.png">
+<img src="/2018/05/25/Insufficient-boot-space-when-Ubuntu-system-is-updated/Ubuntu系统boot空间不足2.png">
 
 </div>
 <p>发现之前的几个老版本内核现在都是<code>deinstall</code> 未安装状态，说明清理成功。</p>
 <h4 id="第七步-重要">第七步 (重要)</h4>
 <p>我们在删除了旧的内核之后，需要使用 <code>sudo update-grub</code> 命令更新GRUB配置</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo update-grub</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo update-grub</span><br></pre></td></tr></table></figure>
 <p>更新完成之后，重启电脑，一切正常，系统也能正常更新了～</p>
 <h4 id="reference">Reference</h4>
 <ul>
