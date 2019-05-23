@@ -58,7 +58,7 @@
 
 
 
-  <meta name="keywords" content="MATLAB,Tools," />
+  <meta name="keywords" content="Machine Learning,Deeping Learning," />
 
 
 
@@ -67,20 +67,21 @@
   <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=0.4.5.2" />
 
 
-<meta name="description" content="code{white-space: pre;}      1. 自动使用不同的颜色 1plot(x1,y2,x2,y2,x3,y3,...); 此方法比较简单，能满足一般需要。但默认只能在7种颜色之间循环，具体的颜色可通过以下命令查看">
-<meta name="keywords" content="MATLAB,Tools">
+<meta name="description" content="code{white-space: pre;}          Contrastive loss 最初源于 Yann LeCun “Dimensionality Reduction by Learning an Invariant Mapping” CVPR 2016。该损失函数主要是用于降维中，即本来相似的样本，在经过降维（特征提取）后，在特征空间中，两个样本">
+<meta name="keywords" content="Machine Learning,Deeping Learning">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MATLAB画图使用不同颜色">
-<meta property="og:url" content="http://yoursite.com/2018/04/07/MATLAB-drawing-useing-different-colors/index.html">
+<meta property="og:title" content="Contrastive-Loss-对比损失函数及梯度的计算">
+<meta property="og:url" content="http://yoursite.com/2019/05/23/Contrastive-Loss-contrast loss function and gradient calculation/index.html">
 <meta property="og:site_name" content="SmileLingyong">
-<meta property="og:description" content="code{white-space: pre;}      1. 自动使用不同的颜色 1plot(x1,y2,x2,y2,x3,y3,...); 此方法比较简单，能满足一般需要。但默认只能在7种颜色之间循环，具体的颜色可通过以下命令查看">
+<meta property="og:description" content="code{white-space: pre;}          Contrastive loss 最初源于 Yann LeCun “Dimensionality Reduction by Learning an Invariant Mapping” CVPR 2016。该损失函数主要是用于降维中，即本来相似的样本，在经过降维（特征提取）后，在特征空间中，两个样本">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/2018/04/07/MATLAB-drawing-useing-different-colors/img.png">
-<meta property="og:updated_time" content="2019-05-16T04:17:24.350Z">
+<meta property="og:image" content="http://yoursite.com/2019/05/23/Contrastive-Loss-contrast%20loss%20function%20and%20gradient%20calculation/contrastive_loss.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/23/Contrastive-Loss-contrast%20loss%20function%20and%20gradient%20calculation/Dimensionality_Reduction.png">
+<meta property="og:updated_time" content="2019-05-23T08:46:58.791Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MATLAB画图使用不同颜色">
-<meta name="twitter:description" content="code{white-space: pre;}      1. 自动使用不同的颜色 1plot(x1,y2,x2,y2,x3,y3,...); 此方法比较简单，能满足一般需要。但默认只能在7种颜色之间循环，具体的颜色可通过以下命令查看">
-<meta name="twitter:image" content="http://yoursite.com/2018/04/07/MATLAB-drawing-useing-different-colors/img.png">
+<meta name="twitter:title" content="Contrastive-Loss-对比损失函数及梯度的计算">
+<meta name="twitter:description" content="code{white-space: pre;}          Contrastive loss 最初源于 Yann LeCun “Dimensionality Reduction by Learning an Invariant Mapping” CVPR 2016。该损失函数主要是用于降维中，即本来相似的样本，在经过降维（特征提取）后，在特征空间中，两个样本">
+<meta name="twitter:image" content="http://yoursite.com/2019/05/23/Contrastive-Loss-contrast%20loss%20function%20and%20gradient%20calculation/contrastive_loss.png">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -92,7 +93,7 @@
 
 
 
-  <title> MATLAB画图使用不同颜色 | SmileLingyong </title>
+  <title> Contrastive-Loss-对比损失函数及梯度的计算 | SmileLingyong </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -218,7 +219,7 @@
             
             
               
-                MATLAB画图使用不同颜色
+                Contrastive-Loss-对比损失函数及梯度的计算
               
             
           </h1>
@@ -227,8 +228,8 @@
         <div class="post-meta">
           <span class="post-time">
             Posted on
-            <time itemprop="dateCreated" datetime="2018-04-07T23:02:43+08:00" content="2018-04-07">
-              2018-04-07 23:02
+            <time itemprop="dateCreated" datetime="2019-05-23T16:39:21+08:00" content="2019-05-23">
+              2019-05-23 16:39
             </time>
           </span>
 
@@ -237,8 +238,8 @@
               &nbsp; | &nbsp; In
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Tools/" itemprop="url" rel="index">
-                    <span itemprop="name">Tools</span>
+                  <a href="/categories/ML/" itemprop="url" rel="index">
+                    <span itemprop="name">ML</span>
                   </a>
                 </span>
 
@@ -261,8 +262,20 @@
 
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/MATLAB/" itemprop="url" rel="index">
-                    <span itemprop="name">MATLAB</span>
+                  <a href="/categories/DL/" itemprop="url" rel="index">
+                    <span itemprop="name">DL</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/损失函数/" itemprop="url" rel="index">
+                    <span itemprop="name">损失函数</span>
                   </a>
                 </span>
 
@@ -280,7 +293,7 @@
           
 
           
-            <span id="/2018/04/07/MATLAB-drawing-useing-different-colors/"class="leancloud_visitors"  data-flag-title="MATLAB画图使用不同颜色">
+            <span id="/2019/05/23/Contrastive-Loss-contrast loss function and gradient calculation/"class="leancloud_visitors"  data-flag-title="Contrastive-Loss-对比损失函数及梯度的计算">
             &nbsp; | &nbsp;   
             views
             </span>
@@ -305,30 +318,80 @@
   <title></title>
   <style type="text/css">code{white-space: pre;}</style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pygments-css@1.0.0/github.min.css" type="text/css">
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
 </head>
 <body>
-<h2 id="自动使用不同的颜色">1. 自动使用不同的颜色</h2>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">plot</span>(x1,y2,x2,y2,x3,y3,...);</span><br></pre></td></tr></table></figure>
-<p>此方法比较简单，能满足一般需要。但默认只能在7种颜色之间循环，具体的颜色可通过以下命令查看 <a id="more"></a></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">get(gca,'ColorOrder')</span><br></pre></td></tr></table></figure>
-<p>具体实例：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x1 = linspace(1,10,100);</span><br><span class="line">y1 = sin(x1);</span><br><span class="line">y2 = cos(x1);</span><br><span class="line">y3 = 1./(x1);</span><br><span class="line">plot(x1, y1, x1, y2, x1, y3);</span><br></pre></td></tr></table></figure>
-<h2 id="设置一个颜色rgb数组通过循环使用不同颜色">2. 设置一个颜色<code>rgb</code>数组，通过循环使用不同颜色</h2>
-<p>基本命令：</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">plot</span>(y,<span class="string">'color'</span>, [<span class="number">1</span> <span class="number">0</span> <span class="number">0</span>]);</span><br></pre></td></tr></table></figure>
-<p>具体实例：</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">close all;</span><br><span class="line">clear;  </span><br><span class="line">clc;</span><br><span class="line">M = <span class="number">10</span>; </span><br><span class="line">N = <span class="number">10</span>;  </span><br><span class="line">data = <span class="built_in">rand</span>(M,N); <span class="comment">% 生成M组N点演示数据  </span></span><br><span class="line">color = [<span class="number">0</span> <span class="number">0</span> <span class="number">0</span>  </span><br><span class="line"><span class="number">0</span> <span class="number">0</span> <span class="number">1</span>  </span><br><span class="line"><span class="number">0</span> <span class="number">1</span> <span class="number">0</span>  </span><br><span class="line"><span class="number">0</span> <span class="number">1</span> <span class="number">1</span>  </span><br><span class="line"><span class="number">1</span> <span class="number">0</span> <span class="number">0</span>  </span><br><span class="line"><span class="number">1</span> <span class="number">0</span> <span class="number">1</span>  </span><br><span class="line"><span class="number">1</span> <span class="number">1</span> <span class="number">0</span>  </span><br><span class="line"><span class="number">1</span> <span class="number">1</span> <span class="number">1</span>  </span><br><span class="line"><span class="number">0</span> <span class="number">.5</span> <span class="number">0</span>  </span><br><span class="line"><span class="number">0</span> <span class="number">.75</span> <span class="number">.75</span>  </span><br><span class="line">] ; <span class="comment">% 自定义M组颜色</span></span><br><span class="line"><span class="built_in">figure</span>(<span class="number">1</span>);</span><br><span class="line"><span class="built_in">hold</span> on; <span class="comment">% 在同一张图上绘制  </span></span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span> = <span class="number">1</span> : M  </span><br><span class="line">    <span class="built_in">plot</span>(data(<span class="built_in">i</span>,:),<span class="string">'color'</span>,color(<span class="built_in">i</span>,:));  </span><br><span class="line">    pause(<span class="number">0.5</span>); <span class="comment">% 暂停0.5s</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-<p>对于上面的color，你也可以使用系统定义好的<code>colormap</code> ，基本命令：</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">color = colormap(jet(M));  <span class="comment">% M 是你要用的颜色数量</span></span><br></pre></td></tr></table></figure>
-<p>具体实例：</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">close all;</span><br><span class="line">clear;  </span><br><span class="line">clc;</span><br><span class="line">M = <span class="number">10</span>; </span><br><span class="line">N = <span class="number">10</span>;  </span><br><span class="line">data = <span class="built_in">rand</span>(M,N);  <span class="comment">% 生成M组N点演示数据  </span></span><br><span class="line">color = colormap(jet(M));</span><br><span class="line"><span class="built_in">figure</span>(<span class="number">1</span>);</span><br><span class="line"><span class="built_in">hold</span> on;  <span class="comment">% 在同一张图上绘制  </span></span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span> = <span class="number">1</span> : M  </span><br><span class="line">    <span class="built_in">plot</span>(data(<span class="built_in">i</span>,:),<span class="string">'color'</span>,color(<span class="built_in">i</span>,:));  </span><br><span class="line">    pause(<span class="number">0.5</span>); <span class="comment">% 暂停0.5s</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>Contrastive loss</strong> 最初源于 <code>Yann LeCun</code> “<strong>Dimensionality Reduction by Learning an Invariant Mapping</strong>” CVPR 2016。该损失函数主要是<strong>用于降维中</strong>，即本来相似的样本，在经过降维（特征提取）后，在特征空间中，两个样本仍旧相似；而原本不相似的样本，在经过降维后，在特征空间中，两个样本仍旧不相似。同样，该损失函数也可以很好的表达<strong>成对样本的匹配程度</strong>。</p>
+<a id="more"></a>
+</blockquote>
+<h3 id="contrastive-loss-定义">1. Contrastive Loss 定义</h3>
+<p>在caffe的孪生神经网络（<code>siamese network</code>）中，其采用的损失函数是contrastive loss，这种损失函数可以有效的处理孪生神经网络中的paired data的关系。contrastive loss的表达式如下：<br>
+<span class="math display">\[
+L(W, (Y, X_1, X_2))=\frac{1}{2N}\sum_{n=1}^NYD_W ^2+(1-Y)max(m-D_W,0)^2
+\]</span><br>
+其中 <span class="math inline">\(D_W(X1, X2)=||X_1 - X_2||_2 = (\sum^N_i{(X^i_1 - X^i_2)^2})^\frac{1}{2}\)</span>，代表两个样本特征<span class="math inline">\(X_1\)</span>和<span class="math inline">\(X_2\)</span>的欧氏距离（二范数），Y为两个样本是否匹配的标签，Y=1代表两个样本相似或者匹配，Y=0则代表不匹配，m为设定的阈值。</p>
+<p>观察上述的<code>contrastive loss</code>的表达式可以发现，这种损失函数可以很好的表达<strong>成对样本的匹配程度</strong>，也能够很好用于训练提取特征的模型。</p>
+<ul>
+<li><p>当Y = 1（即样本相似时），损失函数只剩下 <span class="math inline">\(L_S = \frac{1}{2N}\sum_{n=1}^NYD_W ^2\)</span> ，即原本相似的样本，如果在特征空间的欧式距离较大，则说明当前的模型不好，因此加大损失。</p></li>
+<li><p>当Y = 0（即样本不相似时），损失函数为 <span class="math inline">\(L_D = \frac{1}{2N}\sum (1-Y)max(m-D_W,0)^2\)</span> ，即当样本不相似时，其特征空间的欧式距离反而小的话，损失值会变大，这也正好符号我们的要求。</p></li>
+</ul>
+<p>[注意这里设置了一个阈值ｍargin，表示我们只考不相似特征欧式距离在０～ｍargin之间的，当距离超过ｍargin的，则把其loss看做为０(即不相似的特征离的很远，其loss应该是很低的；而对于相似的特征反而离的很近，我们就需要增加其loss，从而不断更新成对样本的匹配程度)]</p>
 <div class="figure">
-<img src="/2018/04/07/MATLAB-drawing-useing-different-colors/img.png">
+<img src="/2019/05/23/Contrastive-Loss-contrast loss function and gradient calculation/contrastive_loss.png">
 
 </div>
-<h2 id="reference">3. Reference:</h2>
+<p>这张图表示的就是损失函数值与样本特征的欧式距离之间的关系，其中红色虚线表示的是相似样本的损失值，蓝色实线表示的不相似样本的损失值。</p>
+<h3 id="梯度计算">2. 梯度计算</h3>
+<p>论文中使用<code>stochastic gradient descent</code> 来不断更新 <span class="math inline">\(D_W\)</span>,不断减小loss，更好表达成对样本的匹配程度。</p>
 <ul>
-<li><a href="https://blog.csdn.net/minidick/article/details/1921457" class="uri" target="_blank" rel="noopener">https://blog.csdn.net/minidick/article/details/1921457</a></li>
+<li>Y = 1（即样本相似时），损失函数为 <span class="math inline">\(L_S = \frac{1}{2N}\sum_{n=1}^ND_W ^2\)</span> ，此时计算梯度为：</li>
+</ul>
+<p><span class="math display">\[
+\frac{\partial L_S}{\partial W} = D_W\frac{\partial D_W}{\partial W} \\
+\]</span></p>
+<p>即分别对 <span class="math inline">\(X_1\)</span>和<span class="math inline">\(X_2\)</span>求偏导，更新梯度 :</p>
+<p><span class="math display">\[
+\frac{\partial L_S}{\partial W}  =  \left\{
+\begin{eqnarray}
+ &amp;&amp;\frac{\partial L_S}{\partial X_1} = D_W\frac{\partial D_W}{\partial X_1} = D_W\frac{\partial}{\partial X_1} ||X_1 - X_2||_2 = D_W\frac{ X_1-X_2}{||X_1-X_2||_2} = X_1 - X_2                                \  &amp;, D_W &gt; m \\
+ &amp;&amp;\frac{\partial L_S}{\partial X_2} = D_W\frac{\partial D_W}{\partial X_2} = D_W\frac{\partial}{\partial X_2} ||X_1 - X_2||_2 = D_W\frac{ -(X_1-X_2)}{||X_1-X_2||_2} = -(X_1 - X_2)               &amp;, D_W &lt; m
+\end{eqnarray}\right.
+\]</span></p>
+<ul>
+<li>Y = 0 （即样本不相似时），损失函数为 <span class="math inline">\(L_D = \frac{1}{2N}\sum (1-Y)max(m-D_W,0)^2\)</span>，此时计算梯度为 :</li>
+</ul>
+<p><span class="math display">\[
+  \frac{\partial L_D}{\partial W} = \left\{
+  \begin{matrix}
+   &amp;0                                   &amp;, D_W &gt; m \\ 
+   &amp;-(m - D_W)\frac{\partial D_W}{\partial W}      &amp;, D_W &lt; m
+  \end{matrix}\right.
+  \]</span></p>
+<p>同理，当<span class="math inline">\(D_W &lt; m\)</span>时，分别对 <span class="math inline">\(X_1\)</span>和<span class="math inline">\(X_2\)</span>求偏导：</p>
+<p><span class="math display">\[
+\frac{\partial L_D}{\partial W}  =  \left\{\begin{eqnarray} 
+&amp;&amp;\frac{\partial L_D}{\partial X_1} = -(m - D_W)\frac{\partial D_W}{\partial X_1} =  -(m - D_W)\frac{\partial}{\partial X_1} ||X_1 - X_2||_2  = -(m - D_W)\frac{ X_1-X_2}{||X_1-X_2||_2}  = -(m - D_W)\frac{ X_1-X_2}{D_W}                                \  \\  
+&amp;&amp;\frac{\partial L_D}{\partial X_2} = -(m - D_W)\frac{\partial D_W}{\partial X_2} =  -(m - D_W)\frac{\partial}{\partial X_2} ||X_1 - X_2||_2  = -(m - D_W)\frac{ -(X_1-X_2)}{||X_1-X_2||_2}  = -(m - D_W)\frac{ -(X_1-X_2)}{D_W}                  &amp;
+\end{eqnarray}\right.
+\]</span></p>
+<h3 id="spring-model-analogy-弹簧模型类比">3. Spring Model Analogy 弹簧模型类比</h3>
+<p>弹簧模型公式：<br>
+<span class="math display">\[
+F = -KX
+\]</span><br>
+(F表示两点间弹簧的作用力，K是弹簧的劲度系数，X为弹簧拉伸或收缩的长度，弹簧静止状态时X=0)</p>
+<p>论文中将该<code>contrastive loss</code>损失函数类比于弹簧模型：将成对的样本特征，使用该损失函数来表达成对样本特征的匹配程度。成对的样本特征之间（类比于图中的一个个点），我们假设这些点之间都有一个弹簧，弹簧静止时长度为０，点对之间无作用力。①对于样本相似的特征，相当于其间的弹簧产生了正位移Ｘ(X &lt; m)，即弹簧被拉伸了X的长度，此时两个相似特征（点）之间存在吸引力。②对于样本不相似的特征，相当于其间的弹簧产生的了负位移，即弹簧被压缩了，此时两个不相似特征之间存在排斥力。注意弹簧的特性：当两点之间弹簧位移超Ｘ&gt;m时，此时，弹簧发生形变，此时两点之间视为没有吸引力了。具体如下图所示：</p>
+<p>结合上面求梯度的公式也可以很好的理解该损失函数的思想，上面的 $ $ 和 $ $ 代表两点间弹簧的作用力F，<span class="math inline">\(\frac{\partial D_W}{\partial W}\)</span> 对应弹簧的劲度系数，<span class="math inline">\(D_W\)</span> 和 <span class="math inline">\(-(m - D_W)\)</span>代表弹簧的缩放位移。</p>
+<div class="figure">
+<img src="/2019/05/23/Contrastive-Loss-contrast loss function and gradient calculation/Dimensionality_Reduction.png">
+
+</div>
+<p>上图显示了类比的弹簧系统。实心圆表示与中心点相似的点。空心圆圈代表不同的点。弹簧显示为红色曲折线。作用在点上的力以蓝色箭头显示。箭头的长度近似给出了力的强度。在右侧的两个图中，x轴是距离<span class="math inline">\(D_W\)</span>，y轴是损失函数的值。（a）中显示使用仅吸引<code>attractonly</code>弹簧连接到相似点的点。（b）表示相似点对的损失函数及其梯度。（c）表示该点仅与半径为m的圆内的不同点连接，仅具有<code>m-repulse-only</code>排斥弹簧连接到不相似的点。（d）显示不相似点对相关的损失函数及其梯度。（e）显示一个点被不同方向的其他点拉动，形成平衡的情况。</p>
+<h3 id="reference">4. Reference</h3>
+<ul>
+<li><a href="4_Paper/Dimensionality_Reduction_by_Learning_an_Invariant_Mapping.pdf">Dimensionality Reduction by Learning an Invariant Mapping</a></li>
+<li><a href="https://blog.csdn.net/autocyz/article/details/53149760" class="uri" target="_blank" rel="noopener">https://blog.csdn.net/autocyz/article/details/53149760</a></li>
 </ul>
 </body>
 </html>
@@ -340,9 +403,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/MATLAB/" rel="tag">#MATLAB</a>
+            <a href="/tags/Machine-Learning/" rel="tag">#Machine Learning</a>
           
-            <a href="/tags/Tools/" rel="tag">#Tools</a>
+            <a href="/tags/Deeping-Learning/" rel="tag">#Deeping Learning</a>
           
         </div>
       
@@ -351,16 +414,12 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/04/08/RCNN/" rel="prev">
-                <i class="fa fa-chevron-left"></i> 【目标检测】RCNN (Rich feature hierarchies for accurate object detection and semantic segmentation)
-              </a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/07/Ubuntu16.04+GTX1070+CUDA8.0+cudnn5.1+Caffe+Tensorflow/" rel="next">
-                Ubuntu16.04 + GTX1070 + CUDA8.0 + cudnn5.1 + Caffe + Tensorflow <i class="fa fa-chevron-right"></i>
+              <a href="/2019/05/23/Softmax-and-Softmax-Loss-gradient-calcule/" rel="next">
+                【转载】Softmax和Softmax-Loss函数及梯度计算 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -487,7 +546,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#自动使用不同的颜色"><span class="nav-text">1. 自动使用不同的颜色</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置一个颜色rgb数组通过循环使用不同颜色"><span class="nav-text">2. 设置一个颜色rgb数组，通过循环使用不同颜色</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reference"><span class="nav-text">3. Reference:</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#contrastive-loss-定义"><span class="nav-text">1. Contrastive Loss 定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#梯度计算"><span class="nav-text">2. 梯度计算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#spring-model-analogy-弹簧模型类比"><span class="nav-text">3. Spring Model Analogy 弹簧模型类比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#reference"><span class="nav-text">4. Reference</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
