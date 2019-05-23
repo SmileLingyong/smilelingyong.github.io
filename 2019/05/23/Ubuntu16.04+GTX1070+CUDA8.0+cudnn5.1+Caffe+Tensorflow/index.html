@@ -75,19 +75,19 @@
 <meta property="og:site_name" content="SmileLingyong">
 <meta property="og:description" content="code{white-space: pre;}">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://pic4.zhimg.com/50/v2-70a75af209fdc4948721bce9d57f6bc8_hd.jpg">
-<meta property="og:image" content="https://pic1.zhimg.com/50/v2-0faa763e18d5ae06dcc7b65f95fed3fa_hd.jpg">
-<meta property="og:image" content="https://pic3.zhimg.com/50/v2-e3387334a9f89ea6c58810f7baaa85c4_hd.jpg">
-<meta property="og:image" content="http://yoursite.com/2019/05/23/Ubuntu16.04+GTX1070+CUDA8.0+cudnn5.1+Caffe+Tensorflow/anaconda-navigator.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/23/Ubuntu16.04+GTX1070+CUDA8.0+cudnn5.1+Caffe+Tensorflow/1.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/23/Ubuntu16.04+GTX1070+CUDA8.0+cudnn5.1+Caffe+Tensorflow/2.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/23/Ubuntu16.04+GTX1070+CUDA8.0+cudnn5.1+Caffe+Tensorflow/3.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/23/Ubuntu16.04+GTX1070+CUDA8.0+cudnn5.1+Caffe+Tensorflow/pnganaconda-navigator.png">
 <meta property="og:image" content="http://yoursite.com/2019/05/23/Ubuntu16.04+GTX1070+CUDA8.0+cudnn5.1+Caffe+Tensorflow/tensorflow对应版本.png">
-<meta property="og:image" content="https://i.imgur.com/dVE4UGD.png">
-<meta property="og:image" content="https://i.imgur.com/f3rY1k1.png">
-<meta property="og:image" content="https://i.imgur.com/mbwWW1s.png">
-<meta property="og:updated_time" content="2019-05-23T07:36:53.678Z">
+<meta property="og:image" content="http://yoursite.com/2019/05/23/Ubuntu16.04+GTX1070+CUDA8.0+cudnn5.1+Caffe+Tensorflow/PyCharm配置TensorFlow1.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/23/Ubuntu16.04+GTX1070+CUDA8.0+cudnn5.1+Caffe+Tensorflow/PyCharm配置TensorFlow2.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/23/Ubuntu16.04+GTX1070+CUDA8.0+cudnn5.1+Caffe+Tensorflow/PyCharm配置TensorFlow3.png">
+<meta property="og:updated_time" content="2019-05-23T07:49:26.599Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ubuntu16.04 + GTX1070 + CUDA8.0 + cudnn5.1 + Caffe + Tensorflow">
 <meta name="twitter:description" content="code{white-space: pre;}">
-<meta name="twitter:image" content="https://pic4.zhimg.com/50/v2-70a75af209fdc4948721bce9d57f6bc8_hd.jpg">
+<meta name="twitter:image" content="http://yoursite.com/2019/05/23/Ubuntu16.04+GTX1070+CUDA8.0+cudnn5.1+Caffe+Tensorflow/1.png">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -396,7 +396,7 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvidia-smi</span><br></pre></td></tr></table></figure>
 <p>显示信息类似于下面的</p>
 <div class="figure">
-<img src="https://pic4.zhimg.com/50/v2-70a75af209fdc4948721bce9d57f6bc8_hd.jpg">
+<img src="/2019/05/23/Ubuntu16.04+GTX1070+CUDA8.0+cudnn5.1+Caffe+Tensorflow/1.png">
 
 </div>
 <h3 id="安装cuda8.0">3. 安装CUDA8.0</h3>
@@ -406,7 +406,7 @@
 <p>除了第二项“”是否安装显卡驱动“选择no之外，其他全部按照默认设定</p>
 <p>安装过程显示如下信息</p>
 <div class="figure">
-<img src="https://pic1.zhimg.com/50/v2-0faa763e18d5ae06dcc7b65f95fed3fa_hd.jpg">
+<img src="/2019/05/23/Ubuntu16.04+GTX1070+CUDA8.0+cudnn5.1+Caffe+Tensorflow/2.png">
 
 </div>
 <p>然后点空格键跳过这些说明，看到如下信息:</p>
@@ -428,7 +428,7 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ./bin/x86_64/linux/release </span><br><span class="line">./deviceQuery</span><br></pre></td></tr></table></figure>
 <p>若出现显卡信息，则说明安装完成了</p>
 <div class="figure">
-<img src="https://pic3.zhimg.com/50/v2-e3387334a9f89ea6c58810f7baaa85c4_hd.jpg">
+<img src="/2019/05/23/Ubuntu16.04+GTX1070+CUDA8.0+cudnn5.1+Caffe+Tensorflow/3.png">
 
 </div>
 <p>查看cuda版本：</p>
@@ -532,7 +532,6 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo find / -name matlab</span><br></pre></td></tr></table></figure>
 <hr>
 <hr>
-<hr>
 <h3 id="安装anaconda-3">7. 安装Anaconda 3</h3>
 <p>从 <a href="https://www.anaconda.com/download/#linux" target="_blank" rel="noopener">Anaconda官网</a> 下载Python3.6版本，然后打开命令行进入安装包目录：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd ~/Download</span><br></pre></td></tr></table></figure>
@@ -555,7 +554,7 @@
 <p>输入以下命令可以开启<code>anaconda-navigator</code>，这里面集成了Anaconda自带的一些工具。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">anaconda-navigator</span><br></pre></td></tr></table></figure>
 <div class="figure">
-<img src="/2019/05/23/Ubuntu16.04+GTX1070+CUDA8.0+cudnn5.1+Caffe+Tensorflow/anaconda-navigator.png">
+<img src="/2019/05/23/Ubuntu16.04+GTX1070+CUDA8.0+cudnn5.1+Caffe+Tensorflow/pnganaconda-navigator.png">
 
 </div>
 <hr>
@@ -619,7 +618,6 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line">hello = tf.constant(<span class="string">'Hello, TensorFlow!'</span>)</span><br><span class="line">sess = tf.Session()</span><br><span class="line">print(sess.run(hello))</span><br></pre></td></tr></table></figure>
 <p>如果没有报错，输出了 <code>b'Hello, TensorFlow!'</code> 并输出一些警告信息，则说明安装成功：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>hello = tf.constant(<span class="string">'Hello, TensorFlow!'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sess = tf.Session()</span><br><span class="line"><span class="number">2018</span><span class="number">-03</span><span class="number">-21</span> <span class="number">17</span>:<span class="number">10</span>:<span class="number">38.087816</span>: W tensorflow/core/platform/cpu_feature_guard.cc:<span class="number">45</span>] The TensorFlow library wasn<span class="string">'t compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.</span></span><br><span class="line"><span class="string">2018-03-21 17:10:38.087834: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn'</span>t compiled to use SSE4<span class="number">.2</span> instructions, but these are available on your machine <span class="keyword">and</span> could speed up CPU computations.</span><br><span class="line"><span class="number">2018</span><span class="number">-03</span><span class="number">-21</span> <span class="number">17</span>:<span class="number">10</span>:<span class="number">38.087858</span>: W tensorflow/core/platform/cpu_feature_guard.cc:<span class="number">45</span>] The TensorFlow library wasn<span class="string">'t compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.</span></span><br><span class="line"><span class="string">2018-03-21 17:10:38.087863: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn'</span>t compiled to use AVX2 instructions, but these are available on your machine <span class="keyword">and</span> could speed up CPU computations.</span><br><span class="line"><span class="number">2018</span><span class="number">-03</span><span class="number">-21</span> <span class="number">17</span>:<span class="number">10</span>:<span class="number">38.087888</span>: W tensorflow/core/platform/cpu_feature_guard.cc:<span class="number">45</span>] The TensorFlow library wasn<span class="string">'t compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.</span></span><br><span class="line"><span class="string">2018-03-21 17:10:38.206568: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:893] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero</span></span><br><span class="line"><span class="string">2018-03-21 17:10:38.206856: I tensorflow/core/common_runtime/gpu/gpu_device.cc:940] Found device 0 with properties: </span></span><br><span class="line"><span class="string">name: GeForce GTX 1070</span></span><br><span class="line"><span class="string">major: 6 minor: 1 memoryClockRate (GHz) 1.695</span></span><br><span class="line"><span class="string">pciBusID 0000:01:00.0</span></span><br><span class="line"><span class="string">Total memory: 7.92GiB</span></span><br><span class="line"><span class="string">Free memory: 7.14GiB</span></span><br><span class="line"><span class="string">2018-03-21 17:10:38.206872: I tensorflow/core/common_runtime/gpu/gpu_device.cc:961] DMA: 0 </span></span><br><span class="line"><span class="string">2018-03-21 17:10:38.206877: I tensorflow/core/common_runtime/gpu/gpu_device.cc:971] 0:   Y </span></span><br><span class="line"><span class="string">2018-03-21 17:10:38.206888: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Creating TensorFlow device (/gpu:0) -&gt; (device: 0, name: GeForce GTX 1070, pci bus id: 0000:01:00.0)</span></span><br><span class="line"><span class="string">&gt;&gt;&gt; print(sess.run(hello))</span></span><br><span class="line"><span class="string">b'</span>Hello, TensorFlow!<span class="string">'</span></span><br><span class="line"><span class="string">&gt;&gt;&gt;</span></span><br></pre></td></tr></table></figure>
-<p>安装</p>
 <h3 id="安装java-jdk">9. 安装java jdk</h3>
 <p>我们要安装PyCharm必须先安装java jdk才行，具体安装命令如下：</p>
 <p>安装命令：</p>
@@ -643,11 +641,11 @@
 <h4 id="在pycharm中配置tensorflow环境">10.1 在PyCharm中配置TensorFlow环境</h4>
 <p>要在pycharm下使用tensorflow，要设置好pycharm下解释器interpreter的路径<code>File --&gt; Setting --&gt; Project --&gt; Project Interpreter</code>，这里也就是tensorflow的路径，如下图所示：</p>
 <div class="figure">
-<img src="https://i.imgur.com/dVE4UGD.png">
+<img src="/2019/05/23/Ubuntu16.04+GTX1070+CUDA8.0+cudnn5.1+Caffe+Tensorflow/PyCharm配置TensorFlow1.png">
 
 </div>
 <div class="figure">
-<img src="https://i.imgur.com/f3rY1k1.png">
+<img src="/2019/05/23/Ubuntu16.04+GTX1070+CUDA8.0+cudnn5.1+Caffe+Tensorflow/PyCharm配置TensorFlow2.png">
 
 </div>
 <p>在PyCharm中测试该代码</p>
@@ -655,7 +653,7 @@
 <p>运行后会提示警告，但这个警告并没有影响</p>
 <figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">W c:<span class="symbol">\t</span>f_jenkins<span class="symbol">\h</span>ome<span class="symbol">\w</span>orkspace<span class="symbol">\r</span>elease-win<span class="symbol">\d</span>evice<span class="symbol">\g</span>pu<span class="symbol">\o</span>s<span class="symbol">\w</span>indows<span class="symbol">\t</span>ensorflow<span class="symbol">\c</span>ore<span class="symbol">\p</span>latform<span class="symbol">\c</span>pu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.</span><br></pre></td></tr></table></figure>
 <div class="figure">
-<img src="https://i.imgur.com/mbwWW1s.png">
+<img src="/2019/05/23/Ubuntu16.04+GTX1070+CUDA8.0+cudnn5.1+Caffe+Tensorflow/PyCharm配置TensorFlow3.png">
 
 </div>
 <p>我们可以通过在上面代码之前，添加两条语句，忽略掉警告</p>
