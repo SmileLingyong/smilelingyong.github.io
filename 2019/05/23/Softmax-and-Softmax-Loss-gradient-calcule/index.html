@@ -77,7 +77,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2019/05/23/Softmax-and-Softmax-Loss-gradient-calcule/maxresdefault.jpg">
 <meta property="og:image" content="http://yoursite.com/2019/05/23/Softmax-and-Softmax-Loss-gradient-calcule/softmax-loss-discrepancy.svg">
-<meta property="og:updated_time" content="2019-05-23T04:04:58.314Z">
+<meta property="og:updated_time" content="2019-05-23T05:52:51.491Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【转载】Softmax和Softmax-Loss函数及梯度计算">
 <meta name="twitter:description" content="code{white-space: pre;}">
@@ -331,7 +331,7 @@
 <span class="math display">\[
 h_\theta(x) = \frac{1}{1+e^{(-\theta^Tx)}}
 \]</span><br>
-我们将训练模型参数 <span class="math inline">\(\theta\)</span>，使其能够最小化<strong>代价函数</strong> ：<br>
+我们将训练模型参数 <span class="math inline">\(\theta​\)</span>，使其能够最小化<strong>代价函数</strong> ：<br>
 <span class="math display">\[
 \begin{align}
 J(\theta) = -\frac{1}{m} \left[ \sum_{i=1}^m y^{(i)} \log h_\theta(x^{(i)}) + (1-y^{(i)}) \log (1-h_\theta(x^{(i)})) \right]
@@ -391,7 +391,7 @@ h{\theta}(x) = \sigma(\theta^T x) = \sigma(z) = \left({\color{Red}{\sigma{1}(z)}
 <span class="math display">\[
 {\color{Green}{o_i}} = {\color{Red}{\sigma_{i}(z)}}
 =\frac{\exp \left(z_{i}\right)}{\sum_{j=1}^{m} \exp \left(z_{j}\right)}, \quad i=1, \ldots, m  \\
-{\color{Green}{【观察到的数据 \ x \ (或z)\ 属于类别\ i\ 的概率，或者称作似然 (Likelihood)】}}
+{\color{Green}{\small{【观察到的数据 \ x \ (或z)\ 属于类别\ i\ 的概率，或者称作似然 (Likelihood)】}}}
 \]</span><br>
 它在 Logistic Regression 里其到的作用是讲线性预测值转化为类别概率：<span class="math inline">\(m\)</span> 代表类别数，假设 <span class="math inline">\(z_{i}=\theta_{i}^{T} x\)</span> 是第 <span class="math inline">\(i\)</span> 个类别的线性预测结果，带入 <span class="math inline">\(Softmax\)</span> 的结果其实就是先对每一个 <span class="math inline">\(z_i\)</span> 取 exponential 变成非负，然后除以所有项之和进行归一化，现在每个 <span class="math inline">\(o_{i}=\sigma_{i}(z)\)</span> 就可以解释成：<strong>观察到的数据 <span class="math inline">\(x\)</span> 属于类别 <span class="math inline">\(i\)</span> 的概率，或者称作似然 (Likelihood)</strong>。</p>
 <p>然后 Logistic Regression 的目标函数是根据最大似然原则来建立的，假设数据 <span class="math inline">\(x\)</span> 所对应的类别为 <span class="math inline">\(y\)</span>，则根据我们刚才的<strong>计算最大似然就是要最大化 <span class="math inline">\(o_y\)</span> 的值</strong> (通常是使用 <strong>negative log-likelihood</strong> 而不是 likelihood，也就是说<strong>最小化 <span class="math inline">\(-log(o_y)\)</span> 的值</strong>，这两者结果在数学上是等价的)。后面这个操作就是 caffe 文档里说的 <strong>Multinomial Logistic Loss</strong>，具体写出来是这个样子：<br>
@@ -402,7 +402,7 @@ h{\theta}(x) = \sigma(\theta^T x) = \sigma(z) = \left({\color{Red}{\sigma{1}(z)}
 <p>而 <strong>Softmax-Loss</strong> 其实就是把两者结合到一起，只要把 <span class="math inline">\(o_y\)</span> 的定义展开即可：<br>
 <span class="math display">\[
 \tilde{\ell}(y, z)=-\log \left(\frac{e^{z_{y}}}{\sum_{j=1}^{m} e^{z_{j}}}\right)=\log \left(\sum_{j=1}^{m} e^{z_{j}}\right)-z_{y} \\
-{\color{Green}{【将观察到的数据 \ x \ (或z)\ 属于类别 \ y \ 的概率做最大似然估计，或最小\ negative\  log\ 似然】}}
+{\color{Green}{\small{【将观察到的数据 \ x \ (或z)\ 属于类别 \ y \ 的概率做最大似然估计，或最小\ negative\  log\ 似然】}}}
 \]</span></p>
 <p>比如如果我们要写一个 Logistic Regression 的 solver，那么因为要处理的就是这个东西，比较自然地就可以将整个东西合在一起来考虑，或者甚至将 <span class="math inline">\(z_i = w_i^Tx + b_i\)</span> 的定义直接一起带进去然后对 <span class="math inline">\(w\)</span> 和 <span class="math inline">\(b\)</span> 进行求导来得到 Gradient Descent 的 update rule.</p>
 <p>反过来，如果是在设计 Deep Neural Networks 的库，则可能会倾向于将两者分开来看待：因为 Deep Learning 的模型都是一层一层叠起来的结构，一个计算库的主要工作是提供各种各样的 layer，然后让用户可以选择通过不同的方式来对各种 layer 组合得到一个网络层级结构就可以了。比如用户可能最终目的就是得到各个类别的概率似然值，这个时候就只需要一个 <code>Softmax Layer</code>，而不一定要进行 <code>Multinomial Logistic Loss</code> 操作；或者是用户有通过其他什么方式已经得到了某种概率似然值，然后要做最大似然估计，此时则只需要后面的 <code>Multinomial Logistic Loss</code> 而不需要前面的 <code>Softmax</code> 操作。因此提供两个不同的 Layer 结构比只提供一个合在一起的 Softmax-Loss Layer 要灵活许多。从代码的角度来说也显得更加模块化。但是这里自然地就出现了一个问题：<strong>numerical stability</strong>。</p>
@@ -476,7 +476,7 @@ o_i(1 - o_k), &amp; k = i \\
 \begin{aligned}
 \sum_{i=1}^{m} \frac{\partial o_{i}}{\partial z_{k}} \cdot \frac{\partial \ell(y, o)}{\partial o_{i}}
 &amp; = (\delta_{i k} o_{i}-o_{i} o_{k}) \cdot (-\frac{\delta_{i y}}{o_{y}}) \\
-&amp; {\color{Red}{\Downarrow 根据链式法则，当 i = y \ 才能往前传递，即把上面的\ i\ 都用\ y \ 替换即可}} \\
+&amp; {\color{Red}{\small{\Downarrow 根据链式法则，当 i = y \ 才能往前传递，即把上面的\ i\ 都用\ y \ 替换即可}}} \\
 &amp; = (\delta_{y k} o_{y}-o_{y} o_{k}) \cdot (-\frac{1}{o_{y}}) \\
 &amp; = o_{k}-\delta_{y k}
 \end{aligned}
