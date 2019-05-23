@@ -76,7 +76,7 @@
 <meta property="og:description" content="code{white-space: pre;}">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2019/05/23/Softmax-and-Softmax-Loss-gradient-calcule/softmax-loss-discrepancy.svg">
-<meta property="og:updated_time" content="2019-05-23T03:33:00.378Z">
+<meta property="og:updated_time" content="2019-05-23T03:54:43.204Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【转载】Softmax和Softmax-Loss函数及梯度计算">
 <meta name="twitter:description" content="code{white-space: pre;}">
@@ -321,7 +321,7 @@
 </head>
 <body>
 <a id="more"></a>
-<h4 id="结合logistic-regression-分析-softmax">1. 结合Logistic Regression 分析 Softmax</h4>
+<h2 id="结合logistic-regression-分析-softmax">1. 结合Logistic Regression 分析 Softmax</h2>
 <p>训练集由 <span class="math inline">\(m\)</span> 个已标记的样本构成：<span class="math inline">\(\{(x^{(1)}, y^{(1)}), ... , (x^{(m)}, y^{(m)})\}\)</span>，其中输入的第 <span class="math inline">\(i\)</span> 个样例 <span class="math inline">\(x^{(i)} \in \Re^{n+1}\)</span>，即特征向量 <span class="math inline">\(x\)</span> 的维度为 <span class="math inline">\(n + 1\)</span> ，其中 <span class="math inline">\(x_0 = 1\)</span> 对应截距项。由于 logistic 回归是针对二分类问题的，因此类标记 <span class="math inline">\(y^{(i)} \in \{0,1\}\)</span>。<strong>假设函数(hypothesis function)</strong> 如下：<br>
 <span class="math display">\[
 h_\theta(x) = \frac{1}{1+e^{(-\theta^Tx)}}
@@ -374,7 +374,7 @@ J(\theta) = - \frac{1}{m} \left[ \sum_{i=1}^{m} \sum_{j=1}^{k}  1\left\{y^{(i)} 
 \nabla_{\theta_j} J(\theta) = - \frac{1}{m} \sum_{i=1}^{m}{ \left[ x^{(i)} \left( 1\{ y^{(i)} = j\}  - p(y^{(i)} = j | x^{(i)}; \theta) \right) \right]  }
 \end{align}
 \]</span></p>
-<h4 id="softmax">2. Softmax</h4>
+<h2 id="softmax">2. Softmax</h2>
 <blockquote>
 <p>结合上面理解此时的 Softmax函数：<br>
 <span class="math display">\[
@@ -393,7 +393,7 @@ h{\theta}(x) = \sigma(\theta^T x) = \sigma(z) = \left({\color{Red}{\sigma{1}(z)}
 <span class="math display">\[
 \ell(y, o)=-\log \left(o_{y}\right)
 \]</span></p>
-<h4 id="softmax-loss-softmax-multinomial-logistic-loss">3. Softmax-Loss = Softmax + Multinomial Logistic Loss</h4>
+<h2 id="softmax-loss-softmax-multinomial-logistic-loss">3. Softmax-Loss = Softmax + Multinomial Logistic Loss</h2>
 <p>而 <strong>Softmax-Loss</strong> 其实就是把两者结合到一起，只要把 <span class="math inline">\(o_y\)</span> 的定义展开即可：<br>
 <span class="math display">\[
 \tilde{\ell}(y, z)=-\log \left(\frac{e^{z_{y}}}{\sum_{j=1}^{m} e^{z_{j}}}\right)=\log \left(\sum_{j=1}^{m} e^{z_{j}}\right)-z_{y} \\
@@ -493,7 +493,7 @@ e^{x}=10^{x / \log 10}
 <p>比较有趣的是往右边的正数半轴看，发现到了 <span class="math inline">\(10^2\)</span> 之后蓝线和黄线都没有了，说明他们都得到了 <code>NaN</code>，不过这里是另一个问题：<strong>对一个比较大的数求 exponential 非常容易发生 overflow</strong>。还是用刚才的式子可以看到 ，已经超过了 float 可以表达的最大上限，所以会变成 <code>Inf</code>，然后在 normalize 的一步会出现 <code>Inf/Inf</code> 这样的情况，于是就得到 <code>NaN</code> 了。</p>
 <p>这个问题其实也是有解决办法的，我们刚才贴的代码里的 <code>softmax</code> 函数第一行有一行被注释掉的代码，就是 <strong>在求 exponential 之前将 <span class="math inline">\(z\)</span> 的每一个元素减去 <span class="math inline">\(z_i\)</span> 的最大值</strong>。这样求 exponential 的时候会碰到的最大的数就是 0 了，不会发生 overflow 的问题，但是如果其他数原本是正常范围，现在全部被减去了一个非常大的数，于是都变成了绝对值非常大的负数，所以全部都会发生 underflow，但是 underflow 的时候得到的是 0，这其实是非常 meaningful 的近似值，而且后续的计算也不会出现奇怪的 <code>NaN</code>。</p>
 <blockquote>
-<p>证明：将输入 <span class="math inline">\(z​\)</span> 的每一个元素都减去 <span class="math inline">\(z_i​\)</span> 元素中的最大值，然后求 Softmax 函数结果相等</p>
+<p>证明：将输入 <span class="math inline">\(z\)</span> 的每一个元素都减去 <span class="math inline">\(z_i\)</span> 元素中的最大值，然后求 Softmax 函数结果相等</p>
 </blockquote>
 <p><span class="math display">\[
 \begin{aligned}
@@ -504,7 +504,7 @@ e^{x}=10^{x / \log 10}
 &amp; = \frac{e^{z_i}}{\sum_{j = 1}^{m}e^{z_j}}
  \end{aligned}
 \]</span></p>
-<h4 id="reference">4. Reference</h4>
+<h2 id="reference">4. Reference</h2>
 <ul>
 <li><a href="http://freemind.pluskid.org/machine-learning/softmax-vs-softmax-loss-numerical-stability/" target="_blank" rel="noopener">Softmax vs. Softmax-Loss: Numerical Stability</a></li>
 <li><a href="http://ufldl.stanford.edu/wiki/index.php/Softmax%E5%9B%9E%E5%BD%92" target="_blank" rel="noopener">Softmax UFLDL</a></li>
@@ -665,7 +665,7 @@ e^{x}=10^{x / \log 10}
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#结合logistic-regression-分析-softmax"><span class="nav-text">1. 结合Logistic Regression 分析 Softmax</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#softmax"><span class="nav-text">2. Softmax</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#softmax-loss-softmax-multinomial-logistic-loss"><span class="nav-text">3. Softmax-Loss = Softmax + Multinomial Logistic Loss</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#reference"><span class="nav-text">4. Reference</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#结合logistic-regression-分析-softmax"><span class="nav-text">1. 结合Logistic Regression 分析 Softmax</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#softmax"><span class="nav-text">2. Softmax</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#softmax-loss-softmax-multinomial-logistic-loss"><span class="nav-text">3. Softmax-Loss = Softmax + Multinomial Logistic Loss</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reference"><span class="nav-text">4. Reference</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
