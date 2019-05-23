@@ -1,0 +1,1198 @@
+<!doctype html>
+<html class="theme-next use-motion ">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/others/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+
+
+  <link href="/vendors/googleapis/css/Lato.css" rel="stylesheet" type="text/css">
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/others/font-awesome/css/font-awesome.min.css?v=4.4.0" />
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.2"/>
+
+
+    <meta name="description" content="向上，向阳！" />
+
+
+
+  <meta name="keywords" content="Machine Learning,Deeping Learning,MATLAB,Linux," />
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=0.4.5.2" />
+
+
+<meta name="description" content="code{white-space: pre;}">
+<meta name="keywords" content="Machine Learning,Deeping Learning,MATLAB,Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ubuntu16.04 + GTX1070 + CUDA8.0 + cudnn5.1 + Caffe + Tensorflow">
+<meta property="og:url" content="http://yoursite.com/2019/05/23/Ubuntu16.04+GTX1070+CUDA8.0+cudnn5.1+Caffe+Tensorflow/index.html">
+<meta property="og:site_name" content="SmileLingyong">
+<meta property="og:description" content="code{white-space: pre;}">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://pic4.zhimg.com/50/v2-70a75af209fdc4948721bce9d57f6bc8_hd.jpg">
+<meta property="og:image" content="https://pic1.zhimg.com/50/v2-0faa763e18d5ae06dcc7b65f95fed3fa_hd.jpg">
+<meta property="og:image" content="https://pic3.zhimg.com/50/v2-e3387334a9f89ea6c58810f7baaa85c4_hd.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/05/23/Ubuntu16.04+GTX1070+CUDA8.0+cudnn5.1+Caffe+Tensorflow/anaconda-navigator.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/23/Ubuntu16.04+GTX1070+CUDA8.0+cudnn5.1+Caffe+Tensorflow/tensorflow对应版本.png">
+<meta property="og:image" content="https://i.imgur.com/dVE4UGD.png">
+<meta property="og:image" content="https://i.imgur.com/f3rY1k1.png">
+<meta property="og:image" content="https://i.imgur.com/mbwWW1s.png">
+<meta property="og:updated_time" content="2019-05-23T07:36:53.678Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ubuntu16.04 + GTX1070 + CUDA8.0 + cudnn5.1 + Caffe + Tensorflow">
+<meta name="twitter:description" content="code{white-space: pre;}">
+<meta name="twitter:image" content="https://pic4.zhimg.com/50/v2-70a75af209fdc4948721bce9d57f6bc8_hd.jpg">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: '',
+    sidebar: 'always'
+  };
+</script>
+
+
+
+  <title> Ubuntu16.04 + GTX1070 + CUDA8.0 + cudnn5.1 + Caffe + Tensorflow | SmileLingyong </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+
+
+
+  <div id="container" class="container one-column page-post-detail">
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+      
+	  	<span style="font-size:14px;float:right;padding:39px 40px 0 0;">——穷则独善其身，达则兼济天下.</span>
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+
+        	<div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Ubuntu16.04 + GTX1070 + CUDA8.0 + cudnn5.1 + Caffe + Tensorflow
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            Posted on
+            <time itemprop="dateCreated" datetime="2019-05-23T15:20:32+08:00" content="2019-05-23">
+              2019-05-23 15:20
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; In
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/ML/" itemprop="url" rel="index">
+                    <span itemprop="name">ML</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Tools/" itemprop="url" rel="index">
+                    <span itemprop="name">Tools</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/DL/" itemprop="url" rel="index">
+                    <span itemprop="name">DL</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/MATLAB/" itemprop="url" rel="index">
+                    <span itemprop="name">MATLAB</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Blog/" itemprop="url" rel="index">
+                    <span itemprop="name">Blog</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+            <span id="/2019/05/23/Ubuntu16.04+GTX1070+CUDA8.0+cudnn5.1+Caffe+Tensorflow/"class="leancloud_visitors"  data-flag-title="Ubuntu16.04 + GTX1070 + CUDA8.0 + cudnn5.1 + Caffe + Tensorflow">
+            &nbsp; | &nbsp;   
+            views
+            </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <meta name="generator" content="pandoc">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pygments-css@1.0.0/github.min.css" type="text/css">
+</head>
+<body>
+<p><a id="more"></a></p>
+<p>首先，去<a href="http://www.nvidia.com/Download/index.aspx?lang=en-us" target="_blank" rel="noopener">NVIDIA官网</a>下载你电脑对应型号所需驱动。我当时下载的是(NVIDIA-Linux-x86_64-375.39.run)，目前应该有最新的稳定版本，下载好之后，我们再进行后续步骤。</p>
+<h3 id="禁用nouveau驱动">1. 禁用nouveau驱动</h3>
+<p>要先禁用Ubuntu 自带的显卡驱动，才能装Nvidia显卡驱动</p>
+<p>按 <code>Ctrl+Alt+F1</code>进入命令提示符,新建一个黑名单文件</p>
+<p>先输入用户名，再输入密码，然后就可以输入下面的命令了</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/modprobe.d/blacklist-nouveau.conf</span><br></pre></td></tr></table></figure>
+<p>然后再输入一下命令(这里使用的是vi，不熟悉vi的同学可以百度一下，只需要知道几个最基本的命令就可以了，比如插入，删除，保存，退出等等。)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">blacklist nouveau  </span><br><span class="line">options nouveau modset=0</span><br></pre></td></tr></table></figure>
+<p>将上述两行输入完之后。就可以保存退出了(:wq)</p>
+<p>执行以下命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo update-initramfs -u</span><br></pre></td></tr></table></figure>
+<p>执行 lspci | grep nouveau查看是否有内容</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lspci | grep nouveau</span><br></pre></td></tr></table></figure>
+<p>如果什么也没有，那就说明禁用成功了。</p>
+<h3 id="安装显卡驱动">2. 安装显卡驱动</h3>
+<p>我安装的是(NVIDIA-Linux-x86_64-375.39.run)这个驱动</p>
+<p>Ctrl+alt+F1，输入用户名，密码，进入命令行。</p>
+<p>关闭图形界面</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service lightdm stop</span><br></pre></td></tr></table></figure>
+<p>安装驱动(当然先cd到驱动所在目录)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod 755 NVIDIA-Linux-x86_64-375.39.run  //获取权限  </span><br><span class="line">sudo ./NVIDIA-Linux-x86_64-375.39.run  //安装驱动</span><br></pre></td></tr></table></figure>
+<p><strong>在这里特别强调，安装NVIDIA驱动的时候：</strong><br>
+（1）只有集显而没有独立显卡的时候才要加 –no-opengl-files，即输入：<br>
+<code>sudo ./NVIDIA-Linux-x86_64-375.39.run  --no-opengl-files</code> （是为了避免循环登录的问题）<br>
+（2）若有独立显卡的则不需要加 –no-opengl-files，<br>
+直接按照上面的语句运行即可。如果的确出现了循环登录的问题，再卸掉NVIDIA驱动重新安装即可。</p>
+<p>驱动安装完成后</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service lightdm start</span><br></pre></td></tr></table></figure>
+<p>然后<code>Ctrl+Alt+A7</code>返回正常界面</p>
+<p>安装完成之后输入下面的命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvidia-smi</span><br></pre></td></tr></table></figure>
+<p>显示信息类似于下面的</p>
+<div class="figure">
+<img src="https://pic4.zhimg.com/50/v2-70a75af209fdc4948721bce9d57f6bc8_hd.jpg">
+
+</div>
+<h3 id="安装cuda8.0">3. 安装CUDA8.0</h3>
+<p>我安装的是cuda_8.0.61_375.26_linux.run <a href="https://developer.nvidia.com/cuda-80-ga2-download-archive" target="_blank" rel="noopener">CUDA Toolkit 8.0 - Feb 2017</a></p>
+<p>cd到CUDA文件所在的目录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo sh cuda_8.0.61_375.26_linux.run</span><br></pre></td></tr></table></figure>
+<p>除了第二项“”是否安装显卡驱动“选择no之外，其他全部按照默认设定</p>
+<p>安装过程显示如下信息</p>
+<div class="figure">
+<img src="https://pic1.zhimg.com/50/v2-0faa763e18d5ae06dcc7b65f95fed3fa_hd.jpg">
+
+</div>
+<p>然后点空格键跳过这些说明，看到如下信息:</p>
+<p>(Install NVIDIA Accelerated Graphics Driver for Linux-x86_64 375.26?这一个必须选no，因为一般CUDA中带的驱动可能会老一些，选no这样就不会替代我们刚装好的驱动。)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">Do you accept the previously read EULA?</span><br><span class="line">accept/decline/quit: accept</span><br><span class="line"></span><br><span class="line">Install NVIDIA Accelerated Graphics Driver for Linux-x86_64 375.26?</span><br><span class="line">(y)es/(n)o/(q)uit: n   （！！！注意：这里要选n）</span><br><span class="line"></span><br><span class="line">Install the CUDA 8.0 Toolkit?</span><br><span class="line">(y)es/(n)o/(q)uit: y</span><br><span class="line"></span><br><span class="line">Enter Toolkit Location</span><br><span class="line"> [ default is /usr/local/cuda-8.0 ]: </span><br><span class="line"></span><br><span class="line">Do you want to install a symbolic link at /usr/local/cuda?</span><br><span class="line">(y)es/(n)o/(q)uit: y</span><br><span class="line"></span><br><span class="line">Install the CUDA 8.0 Samples?</span><br><span class="line">(y)es/(n)o/(q)uit: y</span><br><span class="line"></span><br><span class="line">Enter CUDA Samples Location</span><br><span class="line"> [ default is /home/username ]: </span><br><span class="line"></span><br><span class="line">Installing the CUDA Toolkit in /usr/local/cuda-8.0 ...</span><br><span class="line"></span><br><span class="line">Missing recommended library: libGLU.so</span><br><span class="line">Missing recommended library: libX11.so</span><br><span class="line">Missing recommended library: libXi.so</span><br><span class="line">Missing recommended library: libXmu.so</span><br><span class="line">Missing recommended library: libGL.so</span><br><span class="line">Installing the CUDA Samples in /home/username ...</span><br><span class="line">Copying samples to /home/username/NVIDIA_CUDA-8.0_Samples now...</span><br><span class="line">Finished copying samples.</span><br><span class="line">===========</span><br><span class="line">= Summary =</span><br><span class="line">===========</span><br><span class="line">Driver:   Not Selected</span><br><span class="line">Toolkit:  Installed in /usr/local/cuda-8.0</span><br><span class="line">Samples:  Installed in /home/username, but missing recommended libraries</span><br><span class="line">Please make sure that</span><br><span class="line"></span><br><span class="line">- PATH includes /usr/local/cuda-8.0/bin</span><br><span class="line">- LD_LIBRARY_PATH includes /usr/local/cuda-8.0/lib64, or, add /usr/local/cuda-8.0/lib64 to /etc/ld.so.conf and run ldconfig as root</span><br><span class="line"></span><br><span class="line">To uninstall the CUDA Toolkit, run the uninstall script in /usr/local/cuda-8.0/bin</span><br><span class="line">Please see CUDA_Installation_Guide_Linux.pdf in /usr/local/cuda-8.0/doc/pdf for detailed information on setting up CUDA.</span><br><span class="line"></span><br><span class="line">***WARNING: Incomplete installation! This installation did not install the CUDA Driver. A driver of version at least 361.00 is required for CUDA 8.0 functionality to work.</span><br><span class="line"></span><br><span class="line">To install the driver using this installer, run the following command, replacing &lt;CudaInstaller&gt; with the name of this run file:</span><br><span class="line">sudo &lt;CudaInstaller&gt;.run -silent -driver</span><br><span class="line">Logfile is /tmp/cuda_install_8175.log</span><br></pre></td></tr></table></figure>
+<hr>
+<p><strong>到此CUDA安装完毕</strong></p>
+<p>设置环境变量</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/profile</span><br></pre></td></tr></table></figure>
+<p>在文件最后加上下面两句（如果你安装时使用的是默认路径的话）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export PATH=/usr/local/cuda-8.0/bin:$PATH  </span><br><span class="line">export LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64:$LD_LIBRARY_PATH</span><br></pre></td></tr></table></figure>
+<p>使环境变量立即生效</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ldconfig</span><br></pre></td></tr></table></figure>
+<p>因为接下来安装Samples需要make，所以得先装好一些库和依赖</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install freeglut3-dev build-essential libx11-dev libxmu-dev libxi-dev  libglu1-mesa libglu1-mesa-dev libgl1-mesa-glx</span><br></pre></td></tr></table></figure>
+<p>安装CUDA自带的Samples</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/cuda/samples</span><br><span class="line">sudo make all -j8</span><br></pre></td></tr></table></figure>
+<p>编译时间较久，编译完之后</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ./bin/x86_64/linux/release </span><br><span class="line">./deviceQuery</span><br></pre></td></tr></table></figure>
+<p>若出现显卡信息，则说明安装完成了</p>
+<div class="figure">
+<img src="https://pic3.zhimg.com/50/v2-e3387334a9f89ea6c58810f7baaa85c4_hd.jpg">
+
+</div>
+<p>查看cuda版本：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvcc -V</span><br></pre></td></tr></table></figure>
+<p>会输出cuda的版本信息。如果cuda安装不成功，需要卸载重装，卸载命令如下，</p>
+<p>若完成以上步骤，说明安装成功！</p>
+<h3 id="安装cudnn-5.1">4. 安装Cudnn 5.1</h3>
+<ul>
+<li><a href="http://docs.nvidia.com/deeplearning/sdk/cudnn-install/index.html#install-windows" target="_blank" rel="noopener">Tutorial</a></li>
+<li><a href="https://developer.nvidia.com/rdp/cudnn-download" target="_blank" rel="noopener">Download cuDNN v5.1 (Jan 20, 2017), for CUDA 8.0</a></li>
+</ul>
+<p>下载后解压，然后得到一个cuda文件夹，（cd到cuda文件夹所在目录）然后执行下列命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">sudo cp cuda/include/cudnn.h /usr/local/cuda-8.0/include</span><br><span class="line">sudo cp cuda/lib64/libcudnn* /usr/local/cuda-8.0/lib64</span><br><span class="line">sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda-8.0/lib64/libcudnn*</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 建立软链接，尤其注意生成的libcdnn的版本，要根据自己的自行调整</span><br><span class="line">cd /usr/local/cuda/lib64/</span><br><span class="line">sudo rm -rf libcudnn.so libcudnn.so.5    #删除原有动态文件</span><br><span class="line">sudo ln -sf libcudnn.so.5.1.10 libcudnn.so.5  </span><br><span class="line">sudo ln -sf libcudnn.so.5 libcudnn.so  </span><br><span class="line">sudo ldconfig  </span><br><span class="line"></span><br><span class="line">sudo ldconfig /usr/local/cuda/lib64/ #这句话也要写，不然会报找不到libcudnn.so.5 动态链接文件的错误</span><br></pre></td></tr></table></figure>
+<hr>
+<p>然后按照以下步骤编译caffe，其中有报错，自己参考了这篇博客：</p>
+<p><a href="blog.csdn.net/wopawn/article/details/52302164">ubuntu16.04+gtx1060+cuda8.0+caffe安装、测试经历</a></p>
+<h4 id="以上都完成才算成功安装好了cuda-cudnn">以上都完成，才算成功安装好了cuda + cudnn</h4>
+<hr>
+<h4 id="若cuda没有安装成功卸载方式如下">（若cuda没有安装成功，卸载方式如下）</h4>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo /usr/local/cuda-7.5/bin/uninstall_cuda_7.5.pl</span><br><span class="line">sudo /usr/bin/nvidia-uninstall12</span><br></pre></td></tr></table></figure>
+<h4 id="若nvidia驱动没有安装成功卸载方式如下">（若NVIDIA驱动没有安装成功，卸载方式如下）</h4>
+<p>（1）如果安装的是从官网下载的驱动，则重新运行run文件来卸载：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ./NVIDIA-Linux-x86_64-390.25.run --uninstall</span><br></pre></td></tr></table></figure>
+<p>（不放心的话，就再输入一遍下面的语句）</p>
+<p>（2）如果使用的是apt-get 安装，则输入：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get remove --purge nvidia*</span><br></pre></td></tr></table></figure>
+<h3 id="安装matlab2016b">5. <a href="http://blog.csdn.net/jesse_mx/article/details/53956358" target="_blank" rel="noopener">安装MATLAB2016b</a></h3>
+<p><strong>注意：</strong>Ubuntu16.04安装MATLAB 2016b后，会和系统文件冲突，具体冲突文件：</p>
+<p>MATLAB中的： <code>/usr/local/MATLAB/R2016b/sys/os/glnxa64/libstdc++.so.6</code></p>
+<p>系统文件 ： <code>/usr/lib/x86_64-linux-gnu/libstdc++.so.6</code></p>
+<p>下面我们会备份MATLAB中的libstdc++.so.6 ，并将其删除，从而让Ubuntu使用系统自带的<code>libstdc++.so.6</code>文件。 这里在下面会有具体的操作方法。</p>
+<h3 id="编译caffe">6. 编译caffe</h3>
+<h4 id="依赖包安装">6.1 依赖包安装</h4>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install build-essential #必要的编译工具依赖</span><br><span class="line">sudo apt-get install libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev protobuf-compiler</span><br><span class="line"></span><br><span class="line">sudo apt-get install --no-install-recommends libboost-all-dev</span><br><span class="line">sudo apt-get install libatlas-base-dev</span><br><span class="line">sudo apt-get install libgflags-dev libgoogle-glog-dev liblmdb-dev</span><br><span class="line">sudo pip install scikit-image</span><br><span class="line">sudo pip install protobuf</span><br><span class="line">sudo apt-get install libhdf5-serial-dev</span><br><span class="line">sudo apt-get install libopenblas-dev</span><br></pre></td></tr></table></figure>
+<h4 id="安装git拉取caffe源码">6.2 安装git，拉取caffe源码</h4>
+<p>进入你的工作目录，例如，我想把我的 caffe 放到 <code>/home/lly/work/</code> 目录下</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /home/lly/work/</span><br><span class="line">sudo apt-get install git</span><br><span class="line">git clone https://github.com/BVLC/caffe.git</span><br></pre></td></tr></table></figure>
+<h4 id="编译caffe主体部分">6.3 编译caffe主体部分</h4>
+<p>终端输入 ：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /home/lly/work/caffe</span><br><span class="line">cp Makefile.config.example Makefile.config</span><br><span class="line">sudo gedit Makefile.config</span><br></pre></td></tr></table></figure>
+<p>①将 <code>USE_CUDNN := 1</code> 取消注释，</p>
+<p>② <code>INCLUDE_DIRS := $(PYTHON_INCLUDE) /usr/local/include</code> 后面打上一个空格 ，然后添加 <code>/usr/include/hdf5/serial</code> 如果没有这一句可能会报一个找不到hdf5.h的错误，然后下面一行加一个空格后也要添加 <code>/usr/lib/x86_64-linux-gnu/hdf5/serial/lib</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">INCLUDE_DIRS := $(PYTHON_INCLUDE) /usr/local/include  /usr/lib/x86_64-linux-gnu/hdf5/serial/include</span><br><span class="line">LIBRARY_DIRS := $(PYTHON_LIB) /usr/local/lib /usr/lib /usr/lib /usr/lib/x86_64-linux-gnu/hdf5/serial/lib</span><br></pre></td></tr></table></figure>
+<p>然后开始编译：</p>
+<p>终端输入</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo make all -j4</span><br></pre></td></tr></table></figure>
+<p>测试编译是否成功：</p>
+<p>先输入：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ldconfig /usr/local/cuda/lib64</span><br></pre></td></tr></table></figure>
+<p>然后再输入：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo make test -j4</span><br><span class="line">sudo make runtest -j4</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>caffe主体部分编译成功，我们再来编译MATLAB接口部分，这样易于排除错误来源</strong></p>
+</blockquote>
+<p>添加MATLAB 安装路径</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MATLAB_DIR := /usr/local/MATLAB/R2016b</span><br></pre></td></tr></table></figure>
+<p>因为MATLAB的库文件和Ubuntu系统的库文件有冲突，我们先把MATLAB的的文件备份一下，然后再把系统的文件添加到环境变量中，这样系统就会默认使用系统的动态文件了。</p>
+<p>在/usr/local/MATLAB/R2016b/sys/os/glnxa64下 把 libstdc++.so.6 重命名为 libstdc++.so.6_back</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mv libstdc++.so.6 libstdc++.so.6_back</span><br></pre></td></tr></table></figure>
+<p>然后编译MATLAB接口：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo make matcaffe -j8</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">MEX matlab/+caffe/private/caffe_.cpp</span><br><span class="line">Building with 'g++'.</span><br><span class="line">Warning: You are using gcc version '5.4.0'. The version of gcc is not supported. The version currently supported with MEX is '4.9.x'. For a list of currently supported compilers see: http://www.mathworks.com/support/compilers/current_release.</span><br><span class="line">MEX completed successfully.</span><br><span class="line"><span class="meta">#</span> 显示如下输出，编译成功，继续测试</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo make mattest -j8</span><br></pre></td></tr></table></figure>
+<p>显示如下错误：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">cd matlab; /usr/local/MATLAB/R2016b/bin/matlab -nodisplay -r 'caffe.run_tests(), exit()'</span><br><span class="line"></span><br><span class="line">                         &lt; M A T L A B (R) &gt;</span><br><span class="line">               Copyright 1984-2016 The MathWorks, Inc.</span><br><span class="line">                R2016b (9.1.0.441655) 64-bit (glnxa64)</span><br><span class="line">                          September 7, 2016</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line">To get started, type one of these: helpwin, helpdesk, or demo.</span><br><span class="line">For product information, visit www.mathworks.com.</span><br><span class="line"> </span><br><span class="line">Invalid MEX-file</span><br><span class="line">'/home/lly/work/caffe/matlab/+caffe/private/caffe_.mexa64':</span><br><span class="line">libcudart.so.8.0: cannot open shared object file: No such file or</span><br><span class="line">directory.</span><br><span class="line"></span><br><span class="line">Error in caffe.set_mode_cpu (line 5)</span><br><span class="line">caffe_('set_mode_cpu');</span><br><span class="line"></span><br><span class="line">Error in caffe.run_tests (line 6)</span><br><span class="line">caffe.set_mode_cpu();</span><br></pre></td></tr></table></figure>
+<p>这依然是MATLAB文件与系统文件冲突的问题，我们还是需要备份MATLAB的文件，使用Ubuntu系统自带的来编译：</p>
+<p>我解决的方案是链接到Matlab路径下：(注意，原来/usr/local/MATLAB/R2016b/bin/glnxa64/这个目录下是没有.8.0的这三个动态链接文件的，只有.7.5的版本的这三个文件)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sudo ln -sf /usr/local/cuda-8.0/lib64/libcudart.so.8.0 /usr/local/MATLAB/R2016b/bin/glnxa64/libcudart.so.8.0</span><br><span class="line"></span><br><span class="line">sudo ln -sf /usr/local/cuda-8.0/lib64/libcublas.so.8.0 /usr/local/MATLAB/R2016b/bin/glnxa64/libcublas.so.8.0</span><br><span class="line"></span><br><span class="line">sudo ln -sf /usr/local/cuda-8.0/lib64/libcurand.so.8.0 /usr/local/MATLAB/R2016b/bin/glnxa64/libcurand.sosudo mv libopencv_imgproc.so.2.4.9 libopencv_imgproc.so.2.4.9.bak.8.0</span><br><span class="line"></span><br><span class="line">sudo ldconfig            #编译立即生效</span><br></pre></td></tr></table></figure>
+<p>但依然还是报错：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">cd matlab; /usr/local/MATLAB/R2016b/bin/matlab -nodisplay -r 'caffe.run_tests(), exit()'</span><br><span class="line"></span><br><span class="line">                         &lt; M A T L A B (R) &gt;</span><br><span class="line">               Copyright 1984-2016 The MathWorks, Inc.</span><br><span class="line">                R2016b (9.1.0.441655) 64-bit (glnxa64)</span><br><span class="line">                          September 7, 2016</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line">To get started, type one of these: helpwin, helpdesk, or demo.</span><br><span class="line">For product information, visit www.mathworks.com.</span><br><span class="line"> </span><br><span class="line">Invalid MEX-file</span><br><span class="line">'/home/lly/work/caffe/matlab/+caffe/private/caffe_.mexa64':</span><br><span class="line">/home/lly/work/caffe/matlab/+caffe/private/caffe_.mexa64: undefined</span><br><span class="line">symbol:</span><br><span class="line">_ZN2cv8imencodeERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKNS_11_InputArrayERSt6vectorIhSaIhEERKSB_IiSaIiEE.</span><br><span class="line"></span><br><span class="line">Error in caffe.set_mode_cpu (line 5)</span><br><span class="line">caffe_('set_mode_cpu');</span><br><span class="line"></span><br><span class="line">Error in caffe.run_tests (line 6)</span><br><span class="line">caffe.set_mode_cpu();</span><br></pre></td></tr></table></figure>
+<p>简单粗暴的解决方法就是先将 /usr/local/MATLAB/R2016b/bin/glnxa64 中 以下三个文件备份，然后再删除其就可以了：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo mv libopencv_core.so.2.4 libopencv_core.so.2.4.bak</span><br><span class="line">sudo mv libopencv_highgui.so.2.4 libopencv_highgui.so.2.4.bak</span><br><span class="line">sudo mv libopencv_imgproc.so.2.4 libopencv_imgproc.so.2.4.bak</span><br></pre></td></tr></table></figure>
+<p><strong>如果运行的时候还是会报找不到 <code>libcudnn.so.5</code> 的问题，就执行如下语句</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ldconfig /usr/local/cuda/lib64/  # 在上面已经说明了</span><br></pre></td></tr></table></figure>
+<p>参考博客：<a href="http://blog.csdn.net/m0_37407756/article/details/70789271" class="uri" target="_blank" rel="noopener">http://blog.csdn.net/m0_37407756/article/details/70789271</a></p>
+<blockquote>
+<p><strong>解决MATLAB中的 MEvent. CASE! 错误</strong></p>
+</blockquote>
+<p>在控制台输出：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!synclient HorizTwoFingerScroll=<span class="number">0</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>问题：MATLAB is selecting SOFTWARE OPENGL rendering.</strong></p>
+</blockquote>
+<p><a href="https://www.jarviswang.me/?p=467" class="uri" target="_blank" rel="noopener">https://www.jarviswang.me/?p=467</a></p>
+<p>可以通过上面的操作，解决文件冲突问题。</p>
+<p>问题：，MATLAB无法识别系统NVIDIA驱动，运行imshow() 都会报错：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">MATLAB has experienced a low-level graphics error, and may not have drawn correctly.</span><br><span class="line">Read about what you can do to prevent this issue at Resolving Low-Level Graphics Issues then restart MATLAB.</span><br><span class="line">To share details of this issue with MathWorks technical support,</span><br><span class="line">please include this file with your service request.</span><br></pre></td></tr></table></figure>
+<p>这个问题可能是NVIDIA驱动没有装好，自己出现这样的问题是因为NVIDIA驱动安装的时候使用了 <code>--no-opengl-files</code> 没有装OpenGL文件造成的。卸载原来的驱动，再重新装一遍NVIDIA驱动既可以解决问题。</p>
+<blockquote>
+<p><strong>Ubuntu 卸载MATLAB</strong></p>
+</blockquote>
+<p>1.删除MATLAB的安装目录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo rm -rf /home/lly/local/MATLAB/</span><br></pre></td></tr></table></figure>
+<p>（改成你自己的matlab路径）删除matlab文件夹。<br>
+2.在/home/lly（你的用户名）下面有.matlab 文件夹，删之这是一个隐藏文件夹，先要显示隐藏文件，才看得见。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -a -l</span><br></pre></td></tr></table></figure>
+<p>3.如果桌面有matlab快捷方式的话，把它删掉，</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo remove /usr/share/applications/matlab.desktop</span><br></pre></td></tr></table></figure>
+<p>删除/usr/share/application /matlab.desktop，这里matlab.desktop改成你自己安装时起的名字。<br>
+4.查找/下含有matlab的所有文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo find / -name matlab</span><br></pre></td></tr></table></figure>
+<hr>
+<hr>
+<hr>
+<h3 id="安装anaconda-3">7. 安装Anaconda 3</h3>
+<p>从 <a href="https://www.anaconda.com/download/#linux" target="_blank" rel="noopener">Anaconda官网</a> 下载Python3.6版本，然后打开命令行进入安装包目录：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd ~/Download</span><br></pre></td></tr></table></figure>
+<p>输入以下命令安装，由于我需要安装在<code>/opt</code>目录，所以加上了<code>sudo</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo bash Anaconda3-5.0.0-Linux-x86_64.sh</span><br></pre></td></tr></table></figure>
+<p>会提示一下信息</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Welcome to Anaconda3 5.0.0</span><br><span class="line"></span><br><span class="line">In order to continue the installation process, please review the license</span><br><span class="line">agreement.</span><br><span class="line">Please, press ENTER to continue</span><br><span class="line"><span class="meta">&gt;</span>&gt;&gt;</span><br></pre></td></tr></table></figure>
+<p>输入回车继续安装，接下来提示一些授权信息，输入<code>yes</code> 继续</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Do you accept the license terms? [yes|no]</span><br><span class="line">[no] &gt;&gt;&gt; yes</span><br></pre></td></tr></table></figure>
+<p>接下来指定安装目录，不指定的话会安装到默认路径下。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Anaconda3 will now be installed into this location:</span><br><span class="line">/home/lly/anaconda3</span><br><span class="line"></span><br><span class="line">  - Press ENTER to confirm the location</span><br><span class="line">  - Press CTRL-C to abort the installation</span><br><span class="line">  - Or specify a different location below</span><br><span class="line"></span><br><span class="line">[/home/lly/anaconda3] &gt;&gt;&gt; /opt/anaconda3</span><br></pre></td></tr></table></figure>
+<p>然后稍等一会，提示是否要将Anaconda的安装路径添加到PATH环境变量中，输入<code>yes</code>就好了。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">installation finished.</span><br><span class="line">Do you wish the installer to prepend the Anaconda3 install location</span><br><span class="line">to PATH in your /home/hj/.bashrc ? [yes|no]</span><br><span class="line">[no] &gt;&gt;&gt; yes</span><br></pre></td></tr></table></figure>
+<p>若输入<code>no</code>，需要手动在<code>.bashrc</code>文件中添加以下内容，然后<code>source ~/.bashrc</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export PATH="/opt/anaconda3/bin:$PATH"</span><br></pre></td></tr></table></figure>
+<p>现在在终端中启动Python，发现已经替换成Anaconda的Python了</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">lly@lly:~$ python</span><br><span class="line">Python 3.6.4 |Anaconda, Inc.| (default, Jan 16 2018, 18:10:19) </span><br><span class="line">[GCC 7.2.0] on linux</span><br><span class="line">Type "help", "copyright", "credits" or "license" for more information.</span><br><span class="line"><span class="meta">&gt;</span>&gt;&gt;</span><br></pre></td></tr></table></figure>
+<p>若没有生效，则终端输入，然后重开一个终端即可生效。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ~/.bashrc</span><br></pre></td></tr></table></figure>
+<p>输入以下命令可以开启<code>anaconda-navigator</code>，这里面集成了Anaconda自带的一些工具。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">anaconda-navigator</span><br></pre></td></tr></table></figure>
+<div class="figure">
+<img src="/2019/05/23/Ubuntu16.04+GTX1070+CUDA8.0+cudnn5.1+Caffe+Tensorflow/anaconda-navigator.png">
+
+</div>
+<hr>
+<blockquote>
+<p><strong>补充知识 conda基本命令 （具体细节可参考印象笔记）</strong></p>
+</blockquote>
+<ul>
+<li>conda基本命令：</li>
+<li><code>conda --version</code> 查看当前Anaconda版本</li>
+<li><code>conda info -e</code> 查看当前环境版本</li>
+<li><code>conda create -n python27 python=2.7</code> 创建一个python2.7版本的开发环境</li>
+<li><code>activate python27</code> 切换到 python2.7的版本分支（环境）</li>
+<li><code>deactivate</code> 切换回 root分支（环境）</li>
+<li>​</li>
+<li><code>conda remove -n python27 --all</code> 删除一个分支（环境）</li>
+<li><code>conda create -n clonedpython27 --clone python27</code> 克隆python27这个分支，并将新分支命名为clonedpython27</li>
+</ul>
+<hr>
+<h3 id="使用anaconda安装-tensorflow">8. 使用Anaconda安装 Tensorflow</h3>
+<p>在conda环境中安装tensorflow的好处是可以便捷的管理tensorflow的依赖包。</p>
+<h4 id="建立一个tensorflow的运行环境">8.1 建立一个tensorflow的运行环境</h4>
+<blockquote>
+<p><strong>注意：这里最好通过管理员方式打开 <code>Anaconda Prompt</code> 进行安装，这样可以避免很多错误。</strong></p>
+</blockquote>
+<p>建立一个 命名为<code>tensorflowde</code> 的conda 环境，指定Python版本是3.5 。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> Python 3.5  </span><br><span class="line">conda create -n tensorflow python=3.5</span><br></pre></td></tr></table></figure>
+<p>如果想安装其他环境下的tensorflow 则自己选择Python版本即可。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> Python 2.7  </span><br><span class="line">conda create -n tensorflow python=2.7  </span><br><span class="line">  </span><br><span class="line"><span class="meta">#</span> Python 3.4  </span><br><span class="line">conda create -n tensorflow python=3.4</span><br></pre></td></tr></table></figure>
+<p>注意，不要重复执行多次创建名为tensorflow的conda环境。以上语句选择自己需要Python版本的执行一条即可。</p>
+<h4 id="在conda环境中安装tensorflow">8.2 在conda环境中安装tensorflow</h4>
+<p>在conda环境中安装tensorflow的好处是可以便捷的管理tensorflow的依赖包。分为两个步骤：激活上一步建立的名为tensorflow的conda环境；用conda或者pip工具安装Tensorflow，作者选择的是pip方式。</p>
+<ul>
+<li>查看当前环境</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">conda info -e</span><br><span class="line"><span class="meta">#</span> conda environments:</span><br><span class="line"><span class="meta">#</span></span><br><span class="line">tensorflow               /home/lly/.conda/envs/tensorflow</span><br><span class="line">base                  *  /opt/anaconda3</span><br></pre></td></tr></table></figure>
+<p>可以看到，我们当前所在的是默认的base环境</p>
+<ul>
+<li>激活名为tensorflow 的 conda环境：</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source activate tensorflow</span><br></pre></td></tr></table></figure>
+<p>然后可以根据需要安装的不同的tensorflow版本选择对应的一条环境变量设置export语句（操作系统，Python版本，CPU版本还是CPU+GPU版本）这里我们选择Ubuntu操作系统，Python3.5，GPU版本 1.2版本的tensorflow进行安装。<a href="http://blog.csdn.net/nxcxl88/article/details/52704877" target="_blank" rel="noopener">参考博客</a> <a href="https://www.tensorflow.org/install/install_linux?hl=zh-cn#InstallingAnaconda" target="_blank" rel="noopener">官网教程</a></p>
+<p>(注意：这里你要能找到自己对应cuda 和 cudnn版本的源才行)</p>
+<p><a href="https://www.tensorflow.org/install/install_sources?hl=zh-cn" target="_blank" rel="noopener">官网版本详情</a></p>
+<div class="figure">
+<img src="/2019/05/23/Ubuntu16.04+GTX1070+CUDA8.0+cudnn5.1+Caffe+Tensorflow/tensorflow对应版本.png">
+
+</div>
+<p>作者自己直接使用pip 进行安装了tensorflow-gpu==1.2版本的</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install tensorflow-gpu==1.2</span><br></pre></td></tr></table></figure>
+<p>如果提示连接网络失败，则根据提示更新一下pip再进行安装tensorflow即可。</p>
+<p>期间自己忽略了自己cuda8.0和cudnn5.1版本问题，直接默认安装了Tensorflow官网教程中的源安装的，当时是1.6版本的tensorflow，然后在测试tensorflow的时候就会报错。类似如下错误：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">libcudnn.so.8:cannot open sharedobject file: No such file or directory</span><br></pre></td></tr></table></figure>
+<p>然后降级到了1.2版本才正常使用，降级方法：<a href="http://blog.csdn.net/silent56_th/article/details/77587792" target="_blank" rel="noopener">参考</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip uninstall tensorflow-gpu</span><br><span class="line">pip install tensorflow-gpu==1.2</span><br></pre></td></tr></table></figure>
+<ul>
+<li>测试</li>
+</ul>
+<p>在tensorflow的conda环境中进行测试，命令行输入python，进入tensorflow的python环境</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(tensorflow) lly@lly:~$ python</span><br><span class="line">Python 3.5.5 |Anaconda, Inc.| (default, Mar 12 2018, 23:12:44) </span><br><span class="line">[GCC 7.2.0] on linux</span><br><span class="line">Type "help", "copyright", "credits" or "license" for more information.</span><br><span class="line"><span class="meta">&gt;</span>&gt;&gt;</span><br></pre></td></tr></table></figure>
+<p>然后输入：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line">hello = tf.constant(<span class="string">'Hello, TensorFlow!'</span>)</span><br><span class="line">sess = tf.Session()</span><br><span class="line">print(sess.run(hello))</span><br></pre></td></tr></table></figure>
+<p>如果没有报错，输出了 <code>b'Hello, TensorFlow!'</code> 并输出一些警告信息，则说明安装成功：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>hello = tf.constant(<span class="string">'Hello, TensorFlow!'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sess = tf.Session()</span><br><span class="line"><span class="number">2018</span><span class="number">-03</span><span class="number">-21</span> <span class="number">17</span>:<span class="number">10</span>:<span class="number">38.087816</span>: W tensorflow/core/platform/cpu_feature_guard.cc:<span class="number">45</span>] The TensorFlow library wasn<span class="string">'t compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.</span></span><br><span class="line"><span class="string">2018-03-21 17:10:38.087834: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn'</span>t compiled to use SSE4<span class="number">.2</span> instructions, but these are available on your machine <span class="keyword">and</span> could speed up CPU computations.</span><br><span class="line"><span class="number">2018</span><span class="number">-03</span><span class="number">-21</span> <span class="number">17</span>:<span class="number">10</span>:<span class="number">38.087858</span>: W tensorflow/core/platform/cpu_feature_guard.cc:<span class="number">45</span>] The TensorFlow library wasn<span class="string">'t compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.</span></span><br><span class="line"><span class="string">2018-03-21 17:10:38.087863: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn'</span>t compiled to use AVX2 instructions, but these are available on your machine <span class="keyword">and</span> could speed up CPU computations.</span><br><span class="line"><span class="number">2018</span><span class="number">-03</span><span class="number">-21</span> <span class="number">17</span>:<span class="number">10</span>:<span class="number">38.087888</span>: W tensorflow/core/platform/cpu_feature_guard.cc:<span class="number">45</span>] The TensorFlow library wasn<span class="string">'t compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.</span></span><br><span class="line"><span class="string">2018-03-21 17:10:38.206568: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:893] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero</span></span><br><span class="line"><span class="string">2018-03-21 17:10:38.206856: I tensorflow/core/common_runtime/gpu/gpu_device.cc:940] Found device 0 with properties: </span></span><br><span class="line"><span class="string">name: GeForce GTX 1070</span></span><br><span class="line"><span class="string">major: 6 minor: 1 memoryClockRate (GHz) 1.695</span></span><br><span class="line"><span class="string">pciBusID 0000:01:00.0</span></span><br><span class="line"><span class="string">Total memory: 7.92GiB</span></span><br><span class="line"><span class="string">Free memory: 7.14GiB</span></span><br><span class="line"><span class="string">2018-03-21 17:10:38.206872: I tensorflow/core/common_runtime/gpu/gpu_device.cc:961] DMA: 0 </span></span><br><span class="line"><span class="string">2018-03-21 17:10:38.206877: I tensorflow/core/common_runtime/gpu/gpu_device.cc:971] 0:   Y </span></span><br><span class="line"><span class="string">2018-03-21 17:10:38.206888: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Creating TensorFlow device (/gpu:0) -&gt; (device: 0, name: GeForce GTX 1070, pci bus id: 0000:01:00.0)</span></span><br><span class="line"><span class="string">&gt;&gt;&gt; print(sess.run(hello))</span></span><br><span class="line"><span class="string">b'</span>Hello, TensorFlow!<span class="string">'</span></span><br><span class="line"><span class="string">&gt;&gt;&gt;</span></span><br></pre></td></tr></table></figure>
+<p>安装</p>
+<h3 id="安装java-jdk">9. 安装java jdk</h3>
+<p>我们要安装PyCharm必须先安装java jdk才行，具体安装命令如下：</p>
+<p>安装命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:webupd8team/java</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install oracle-java8-installer</span><br></pre></td></tr></table></figure>
+<p>安装过程中会出现oracle license对话框，选择 是</p>
+<p>安装完成后，输入 <code>java  -version</code> 或者 <code>javac -version</code> 查看是否安装成功。得到类似以下输出，表示安装成功。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">lly@lly:~$ java -version</span><br><span class="line">java version "1.8.0_161"</span><br><span class="line">Java(TM) SE Runtime Environment (build 1.8.0_161-b12)</span><br><span class="line">Java HotSpot(TM) 64-Bit Server VM (build 25.161-b12, mixed mode)</span><br></pre></td></tr></table></figure>
+<h3 id="安装pycharm">10. 安装Pycharm</h3>
+<p>到 <a href="https://www.jetbrains.com/pycharm/download/#section=linux" target="_blank" rel="noopener">Pycharm官网</a> 下载Community免费版</p>
+<p>终端进入下载目录，并解压：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd Downloads/   </span><br><span class="line">tar xfz pycharm-*.tar.gz</span><br></pre></td></tr></table></figure>
+<p>运行解压文件中bin目录下的pycharm.sh 文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd pycharm-community-3.4.1/bin/</span><br><span class="line">./pycharm.sh</span><br></pre></td></tr></table></figure>
+<p>安装过程中询问是否导入settings，选择不导入—&gt;OK，然后全部是默认，根据提示选择。</p>
+<p><strong>设置快捷方式</strong></p>
+<p>在Ubuntu下，每次都要找到 pycharm.sh所在的文件夹，执行./pycharm.sh，非常麻烦。最好能创建一个快捷方式。Ubuntu的快捷方式都放在/usr/share/applications，首先在该目录下创建一个Pycharm.desktop</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gedit /usr/share/applications/Pycharm.desktop</span><br></pre></td></tr></table></figure>
+<p>然后输入以下内容，注意Exec和Icon需要找到正确的路径：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[Desktop Entry]</span><br><span class="line">Type=Application</span><br><span class="line">Name=Pycharm</span><br><span class="line">GenericName=Pycharm3</span><br><span class="line">Comment=Pycharm3:The Python IDE</span><br><span class="line">Exec="/home/lly/Downloads/pycharm-community-2017.3.4/bin/pycharm.sh" %f</span><br><span class="line">Icon=/home/lly/Downloads/pycharm-community-2017.3.4/bin/pycharm.png</span><br><span class="line">Terminal=pycharm</span><br><span class="line">Categories=Pycharm;</span><br></pre></td></tr></table></figure>
+<p>然后就可以在自己的应用中找到Pycharm了。</p>
+<h4 id="在pycharm中配置tensorflow环境">10.1 在PyCharm中配置TensorFlow环境</h4>
+<p>要在pycharm下使用tensorflow，要设置好pycharm下解释器interpreter的路径<code>File --&gt; Setting --&gt; Project --&gt; Project Interpreter</code>，这里也就是tensorflow的路径，如下图所示：</p>
+<div class="figure">
+<img src="https://i.imgur.com/dVE4UGD.png">
+
+</div>
+<div class="figure">
+<img src="https://i.imgur.com/f3rY1k1.png">
+
+</div>
+<p>在PyCharm中测试该代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>hello = tf.constant(<span class="string">'Hello, TensorFlow!'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sess = tf.Session()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(sess.run(hello))</span><br></pre></td></tr></table></figure>
+<p>运行后会提示警告，但这个警告并没有影响</p>
+<figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">W c:<span class="symbol">\t</span>f_jenkins<span class="symbol">\h</span>ome<span class="symbol">\w</span>orkspace<span class="symbol">\r</span>elease-win<span class="symbol">\d</span>evice<span class="symbol">\g</span>pu<span class="symbol">\o</span>s<span class="symbol">\w</span>indows<span class="symbol">\t</span>ensorflow<span class="symbol">\c</span>ore<span class="symbol">\p</span>latform<span class="symbol">\c</span>pu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.</span><br></pre></td></tr></table></figure>
+<div class="figure">
+<img src="https://i.imgur.com/mbwWW1s.png">
+
+</div>
+<p>我们可以通过在上面代码之前，添加两条语句，忽略掉警告</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 加上这两句，可以不显示警告</span></span><br><span class="line"><span class="comment"># import os</span></span><br><span class="line"><span class="comment"># os.environ['TF_CPP_MIN_LOG_LEVEL']='2'</span></span><br></pre></td></tr></table></figure>
+<h3 id="reference">11. Reference</h3>
+<ul>
+<li><a href="https://zhuanlan.zhihu.com/p/27168325" class="uri" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/27168325</a></li>
+<li><a href="http://blog.csdn.net/wopawn/article/details/52302164" class="uri" target="_blank" rel="noopener">http://blog.csdn.net/wopawn/article/details/52302164</a></li>
+<li><a href="http://blog.csdn.net/yhaolpz/article/details/71375762" class="uri" target="_blank" rel="noopener">http://blog.csdn.net/yhaolpz/article/details/71375762</a></li>
+<li><a href="http://blog.csdn.net/qq_26093511/article/details/78991101" class="uri" target="_blank" rel="noopener">http://blog.csdn.net/qq_26093511/article/details/78991101</a></li>
+<li><a href="http://blog.csdn.net/as923889498/article/details/78513436" class="uri" target="_blank" rel="noopener">http://blog.csdn.net/as923889498/article/details/78513436</a></li>
+<li><a href="http://www.cnblogs.com/laiqun/p/6031925.html" target="_blank" rel="noopener">ubuntu下 编译Caffe的Matlab接口</a></li>
+<li><a href="http://blog.csdn.net/u013078356/article/details/55095757" target="_blank" rel="noopener">Ubuntu16.04+cuda8.0+opencv3.0.0 caffe编译的那些坑</a></li>
+<li><a href="https://github.com/BVLC/caffe/issues/3934" class="uri" target="_blank" rel="noopener">https://github.com/BVLC/caffe/issues/3934</a></li>
+<li><a href="http://blog.csdn.net/m0_37407756/article/details/70789271" target="_blank" rel="noopener">caffe编译遇到的问题（持续更新)</a></li>
+<li><a href="http://blog.csdn.net/u011598848/article/details/73556763" target="_blank" rel="noopener">Ubuntu 16.04 安装Anaconda3</a></li>
+<li><a href="http://blog.csdn.net/nxcxl88/article/details/52704877" class="uri" target="_blank" rel="noopener">http://blog.csdn.net/nxcxl88/article/details/52704877</a></li>
+<li><a href="http://blog.csdn.net/dabokele/article/details/53013921" class="uri" target="_blank" rel="noopener">http://blog.csdn.net/dabokele/article/details/53013921</a></li>
+<li><a href="https://www.tensorflow.org/install/install_linux?hl=zh-cn#InstallingAnaconda" target="_blank" rel="noopener">官网Tensorflow使用Anaconda</a></li>
+<li><a href="http://blog.csdn.net/silent56_th/article/details/77587792" target="_blank" rel="noopener">Tensorflow 版本不对报错</a></li>
+</ul>
+</body>
+</html>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Machine-Learning/" rel="tag">#Machine Learning</a>
+          
+            <a href="/tags/Deeping-Learning/" rel="tag">#Deeping Learning</a>
+          
+            <a href="/tags/MATLAB/" rel="tag">#MATLAB</a>
+          
+            <a href="/tags/Linux/" rel="tag">#Linux</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/23/Softmax-and-Softmax-Loss-gradient-calcule/" rel="next">
+                【转载】Softmax和Softmax-Loss函数及梯度计算 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+          </div>
+        
+      
+
+        
+          
+  
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+      
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table Of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview" sidebar-panel >
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/avatar.jpg" alt="SmileLingyong" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">SmileLingyong</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">向上，向阳！</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-name">categories</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">18</span>
+              <span class="site-state-item-name">tags</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="smilelingyong@gmail.com" target="_blank">
+                  <i class="fa fa-e-mail"></i> E-Mail
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/SmileLingyong" target="_blank">
+                  <i class="fa fa-github"></i> Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://blog.csdn.net/forever__1234" target="_blank">
+                  <i class="fa fa-csdn"></i> CSDN
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#禁用nouveau驱动"><span class="nav-text">1. 禁用nouveau驱动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装显卡驱动"><span class="nav-text">2. 安装显卡驱动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装cuda8.0"><span class="nav-text">3. 安装CUDA8.0</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装cudnn-5.1"><span class="nav-text">4. 安装Cudnn 5.1</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#以上都完成才算成功安装好了cuda-cudnn"><span class="nav-text">以上都完成，才算成功安装好了cuda + cudnn</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#若cuda没有安装成功卸载方式如下"><span class="nav-text">（若cuda没有安装成功，卸载方式如下）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#若nvidia驱动没有安装成功卸载方式如下"><span class="nav-text">（若NVIDIA驱动没有安装成功，卸载方式如下）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装matlab2016b"><span class="nav-text">5. 安装MATLAB2016b</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编译caffe"><span class="nav-text">6. 编译caffe</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#依赖包安装"><span class="nav-text">6.1 依赖包安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装git拉取caffe源码"><span class="nav-text">6.2 安装git，拉取caffe源码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编译caffe主体部分"><span class="nav-text">6.3 编译caffe主体部分</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装anaconda-3"><span class="nav-text">7. 安装Anaconda 3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用anaconda安装-tensorflow"><span class="nav-text">8. 使用Anaconda安装 Tensorflow</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#建立一个tensorflow的运行环境"><span class="nav-text">8.1 建立一个tensorflow的运行环境</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在conda环境中安装tensorflow"><span class="nav-text">8.2 在conda环境中安装tensorflow</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装java-jdk"><span class="nav-text">9. 安装java jdk</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装pycharm"><span class="nav-text">10. 安装Pycharm</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#在pycharm中配置tensorflow环境"><span class="nav-text">10.1 在PyCharm中配置TensorFlow环境</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#reference"><span class="nav-text">11. Reference</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+	  </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">SmileLingyong</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="#">
+    FreeSky
+  </a>(Reserved)
+
+  
+  <span id="busuanzi_container_site_uv">
+     &nbsp; | &nbsp;  用户量: <span id="busuanzi_value_site_uv"></span>
+  </span>
+  <span id="busuanzi_container_site_pv">
+    &nbsp; | &nbsp;  总访问量: <span id="busuanzi_value_site_pv"></span>
+  </span>
+
+  
+</div>
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/others/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+    
+
+  
+
+
+  
+  
+  <script type="text/javascript" src="/others/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
+  
+
+  <script type="text/javascript" src="/others/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/others/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.2" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.2"></script>
+  <script type="text/javascript" src="/others/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    var $aboutContent = $('#posts-about');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0 && $aboutContent.length === 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+
+      motionIntegrator.bootstrap();
+    });
+  </script>
+
+  
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+  
+     <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("9QoQXWnRR4zwSFuxRv52kUpi-gzGzoHsz", "zlgcRzgHF7AHu8TKLJUwCAjw");</script>
+<script>
+function showTime(Counter) {
+  var query = new AV.Query(Counter);
+  $(".leancloud_visitors").each(function() {
+    var url = $(this).attr("id").trim();
+    query.equalTo("url", url);
+    query.find({
+      success: function(results) {
+        if (results.length == 0) {
+          var content = $(document.getElementById(url)).text() + ': 0';
+          $(document.getElementById(url)).text(content);
+          return;
+        }
+        for (var i = 0; i < results.length; i++) {
+          var object = results[i];
+          var content = $(document.getElementById(url)).text() + ': ' + object.get('time');
+          $(document.getElementById(url)).text(content);
+        }
+      },
+      error: function(object, error) {
+        console.log("Error: " + error.code + " " + error.message);
+      }
+    });
+
+  });
+}
+
+function addCount(Counter) {
+  var Counter = AV.Object.extend("Counter");
+  url = $(".leancloud_visitors").attr('id').trim();
+  title = $(".leancloud_visitors").attr('data-flag-title').trim();
+  var query = new AV.Query(Counter);
+  query.equalTo("url", url);
+  query.find({
+    success: function(results) {
+      if (results.length > 0) {
+        var counter = results[0];
+        counter.fetchWhenSave(true);
+        counter.increment("time");
+        counter.save(null, {
+          success: function(counter) {
+            var content = $(document.getElementById(url)).text() + ': ' + counter.get('time');
+            $(document.getElementById(url)).text(content);
+          },
+          error: function(counter, error) {
+            console.log('Failed to save Visitor num, with error message: ' + error.message);
+          }
+        });
+      } else {
+        var newcounter = new Counter();
+        newcounter.set("title", title);
+        newcounter.set("url", url);
+        newcounter.set("time", 1);
+        newcounter.save(null, {
+          success: function(newcounter) {
+              console.log("newcounter.get('time')="+newcounter.get('time'));
+            var content = $(document.getElementById(url)).text() + ': ' + newcounter.get('time');
+            $(document.getElementById(url)).text(content);
+          },
+          error: function(newcounter, error) {
+            console.log('Failed to create');
+          }
+        });
+      }
+    },
+    error: function(error) {
+      console.log('Error:' + error.code + " " + error.message);
+    }
+  });
+}
+$(function() {
+  var Counter = AV.Object.extend("Counter");
+  if ($('.leancloud_visitors').length == 1) {
+    addCount(Counter);
+  } else if ($('.post-title-link').length > 1) {
+    showTime(Counter);
+  }
+}); 
+</script>
+  
+</body>
+</html>
