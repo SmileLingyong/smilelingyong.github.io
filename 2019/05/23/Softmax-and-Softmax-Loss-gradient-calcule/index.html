@@ -75,12 +75,13 @@
 <meta property="og:site_name" content="SmileLingyong">
 <meta property="og:description" content="code{white-space: pre;}">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2019/05/23/Softmax-and-Softmax-Loss-gradient-calcule/maxresdefault.jpg">
 <meta property="og:image" content="http://yoursite.com/2019/05/23/Softmax-and-Softmax-Loss-gradient-calcule/softmax-loss-discrepancy.svg">
-<meta property="og:updated_time" content="2019-05-23T03:54:43.204Z">
+<meta property="og:updated_time" content="2019-05-23T04:04:58.314Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【转载】Softmax和Softmax-Loss函数及梯度计算">
 <meta name="twitter:description" content="code{white-space: pre;}">
-<meta name="twitter:image" content="http://yoursite.com/2019/05/23/Softmax-and-Softmax-Loss-gradient-calcule/softmax-loss-discrepancy.svg">
+<meta name="twitter:image" content="http://yoursite.com/2019/05/23/Softmax-and-Softmax-Loss-gradient-calcule/maxresdefault.jpg">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -320,6 +321,10 @@
   <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
 </head>
 <body>
+<div class="figure">
+<img src="/2019/05/23/Softmax-and-Softmax-Loss-gradient-calcule/maxresdefault.jpg">
+
+</div>
 <a id="more"></a>
 <h2 id="结合logistic-regression-分析-softmax">1. 结合Logistic Regression 分析 Softmax</h2>
 <p>训练集由 <span class="math inline">\(m\)</span> 个已标记的样本构成：<span class="math inline">\(\{(x^{(1)}, y^{(1)}), ... , (x^{(m)}, y^{(m)})\}\)</span>，其中输入的第 <span class="math inline">\(i\)</span> 个样例 <span class="math inline">\(x^{(i)} \in \Re^{n+1}\)</span>，即特征向量 <span class="math inline">\(x\)</span> 的维度为 <span class="math inline">\(n + 1\)</span> ，其中 <span class="math inline">\(x_0 = 1\)</span> 对应截距项。由于 logistic 回归是针对二分类问题的，因此类标记 <span class="math inline">\(y^{(i)} \in \{0,1\}\)</span>。<strong>假设函数(hypothesis function)</strong> 如下：<br>
@@ -508,6 +513,7 @@ e^{x}=10^{x / \log 10}
 <ul>
 <li><a href="http://freemind.pluskid.org/machine-learning/softmax-vs-softmax-loss-numerical-stability/" target="_blank" rel="noopener">Softmax vs. Softmax-Loss: Numerical Stability</a></li>
 <li><a href="http://ufldl.stanford.edu/wiki/index.php/Softmax%E5%9B%9E%E5%BD%92" target="_blank" rel="noopener">Softmax UFLDL</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/25723112" class="uri" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/25723112</a></li>
 <li><a href="https://blog.csdn.net/u014313009/article/details/51045303" class="uri" target="_blank" rel="noopener">https://blog.csdn.net/u014313009/article/details/51045303</a></li>
 <li><a href="https://blog.csdn.net/u014380165/article/details/77284921" class="uri" target="_blank" rel="noopener">https://blog.csdn.net/u014380165/article/details/77284921</a></li>
 <li><a href="https://eli.thegreenplace.net/2016/the-softmax-function-and-its-derivative/" class="uri" target="_blank" rel="noopener">https://eli.thegreenplace.net/2016/the-softmax-function-and-its-derivative/</a></li>
