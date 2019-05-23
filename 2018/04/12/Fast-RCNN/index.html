@@ -67,13 +67,13 @@
   <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=0.4.5.2" />
 
 
-<meta name="description" content="code{white-space: pre;}          Girshick, Ross. “Fast r-cnn.” Proceedings of the IEEE International Conference on Computer Vision. 2015.  继2014年的RCNN, SPP-Net，Ross Girshick在15年推出Fast">
+<meta name="description" content="code{white-space: pre;}          Girshick, Ross. “Fast r-cnn.” Proceedings of the IEEE International Conference on Computer Vision. 2015.">
 <meta name="keywords" content="Machine Learning,Deeping Learning,学习笔记,RCNN,Paper">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【目标检测】Fast-R-CNN (Fast Region-based Convolutional Network method)">
 <meta property="og:url" content="http://yoursite.com/2018/04/12/Fast-RCNN/index.html">
 <meta property="og:site_name" content="SmileLingyong">
-<meta property="og:description" content="code{white-space: pre;}          Girshick, Ross. “Fast r-cnn.” Proceedings of the IEEE International Conference on Computer Vision. 2015.  继2014年的RCNN, SPP-Net，Ross Girshick在15年推出Fast">
+<meta property="og:description" content="code{white-space: pre;}          Girshick, Ross. “Fast r-cnn.” Proceedings of the IEEE International Conference on Computer Vision. 2015.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2018/04/12/Fast-RCNN/fast-rcnn.png">
 <meta property="og:image" content="http://yoursite.com/2018/04/12/Fast-RCNN/基本结构.png">
@@ -85,10 +85,10 @@
 <meta property="og:image" content="http://yoursite.com/2018/04/12/Fast-RCNN/分类与位置调整">
 <meta property="og:image" content="http://yoursite.com/2018/04/12/Fast-RCNN/smoothL1.png">
 <meta property="og:image" content="http://yoursite.com/2018/04/12/Fast-RCNN/SVD">
-<meta property="og:updated_time" content="2019-05-23T09:49:15.123Z">
+<meta property="og:updated_time" content="2019-05-23T09:58:06.731Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【目标检测】Fast-R-CNN (Fast Region-based Convolutional Network method)">
-<meta name="twitter:description" content="code{white-space: pre;}          Girshick, Ross. “Fast r-cnn.” Proceedings of the IEEE International Conference on Computer Vision. 2015.  继2014年的RCNN, SPP-Net，Ross Girshick在15年推出Fast">
+<meta name="twitter:description" content="code{white-space: pre;}          Girshick, Ross. “Fast r-cnn.” Proceedings of the IEEE International Conference on Computer Vision. 2015.">
 <meta name="twitter:image" content="http://yoursite.com/2018/04/12/Fast-RCNN/fast-rcnn.png">
 
 
@@ -332,6 +332,7 @@
 <blockquote>
 <p>Girshick, Ross. “Fast r-cnn.” Proceedings of the IEEE International Conference on Computer Vision. 2015.</p>
 </blockquote>
+<a id="more"></a>
 <p>继2014年的RCNN, SPP-Net，Ross Girshick在15年推出Fast RCNN，构思精巧，流程更为紧凑，大幅提升了目标检测的速度。在Github上提供了<a href="https://github.com/rbgirshick/fast-rcnn" target="_blank" rel="noopener">源码</a>。</p>
 <p>同样使用最大规模的网络，Fast RCNN和RCNN相比，训练时间从84小时减少为9.5小时，<strong>测试时间从47秒减少为0.32秒</strong>。在PASCAL VOC 2007上的准确率相差无几，约在66%-67%之间.</p>
 <h2 id="思想">1. 思想</h2>
@@ -559,8 +560,8 @@ y=Wx=U⋅(Σ⋅V^T)⋅x=U⋅z
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/03/20/SVM-achieves-multiple-classification/" rel="prev">
-                <i class="fa fa-chevron-left"></i> SVM实现多分类
+              <a href="/2018/04/24/Faster-RCNN/" rel="prev">
+                <i class="fa fa-chevron-left"></i> 【目标检测】Faster-R-CNN  (Towards Real-Time Object Detection with Region Proposal Networks)
               </a>
             
           </div>
@@ -633,7 +634,7 @@ y=Wx=U⋅(Σ⋅V^T)⋅x=U⋅z
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">25</span>
+              <span class="site-state-item-count">26</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>

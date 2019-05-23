@@ -1,0 +1,974 @@
+<!doctype html>
+<html class="theme-next use-motion ">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/others/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+
+
+  <link href="/vendors/googleapis/css/Lato.css" rel="stylesheet" type="text/css">
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/others/font-awesome/css/font-awesome.min.css?v=4.4.0" />
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.2"/>
+
+
+    <meta name="description" content="向上，向阳！" />
+
+
+
+  <meta name="keywords" content="Machine Learning,Deeping Learning,学习笔记,RCNN,Paper," />
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=0.4.5.2" />
+
+
+<meta name="description" content="code{white-space: pre;}          Ren, Shaoqing, et al. “Faster R-CNN: Towards real-time object detection with region proposal networks.” Advances in Neural Information Processing Syst">
+<meta name="keywords" content="Machine Learning,Deeping Learning,学习笔记,RCNN,Paper">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【目标检测】Faster-R-CNN  (Towards Real-Time Object Detection with Region Proposal Networks)">
+<meta property="og:url" content="http://yoursite.com/2018/04/24/Faster-RCNN/index.html">
+<meta property="og:site_name" content="SmileLingyong">
+<meta property="og:description" content="code{white-space: pre;}          Ren, Shaoqing, et al. “Faster R-CNN: Towards real-time object detection with region proposal networks.” Advances in Neural Information Processing Syst">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://img-blog.csdn.net/20160414164536029">
+<meta property="og:image" content="http://yoursite.com/2018/04/24/Faster-RCNN/Faster-RCNN.png">
+<meta property="og:image" content="http://yoursite.com/2018/04/24/Faster-RCNN/VGG_proposal_detestion_prototxt.png">
+<meta property="og:image" content="http://yoursite.com/2018/04/24/Faster-RCNN/RPN注释修改版.png">
+<meta property="og:image" content="http://yoursite.com/2018/04/24/Faster-RCNN/anchors.png">
+<meta property="og:image" content="http://yoursite.com/2018/04/24/Faster-RCNN/anchor_boxes.png">
+<meta property="og:image" content="http://yoursite.com/2018/04/24/Faster-RCNN/shared_network.png">
+<meta property="og:image" content="http://yoursite.com/2018/04/24/Faster-RCNN/RPN-Fast-RCNN联合训练.png">
+<meta property="og:image" content="https://img-blog.csdn.net/20160415150343559">
+<meta property="og:image" content="https://img-blog.csdn.net/20160415151012671">
+<meta property="og:updated_time" content="2019-05-23T10:04:21.907Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【目标检测】Faster-R-CNN  (Towards Real-Time Object Detection with Region Proposal Networks)">
+<meta name="twitter:description" content="code{white-space: pre;}          Ren, Shaoqing, et al. “Faster R-CNN: Towards real-time object detection with region proposal networks.” Advances in Neural Information Processing Syst">
+<meta name="twitter:image" content="https://img-blog.csdn.net/20160414164536029">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: '',
+    sidebar: 'always'
+  };
+</script>
+
+
+
+  <title> 【目标检测】Faster-R-CNN  (Towards Real-Time Object Detection with Region Proposal Networks) | SmileLingyong </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+
+
+
+  <div id="container" class="container one-column page-post-detail">
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+      
+	  	<span style="font-size:14px;float:right;padding:39px 40px 0 0;">——穷则独善其身，达则兼济天下.</span>
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+
+        	<div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                【目标检测】Faster-R-CNN  (Towards Real-Time Object Detection with Region Proposal Networks)
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            Posted on
+            <time itemprop="dateCreated" datetime="2018-04-24T14:04:21+08:00" content="2018-04-24">
+              2018-04-24 14:04
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; In
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/ML/" itemprop="url" rel="index">
+                    <span itemprop="name">ML</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/DL/" itemprop="url" rel="index">
+                    <span itemprop="name">DL</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/RCNN/" itemprop="url" rel="index">
+                    <span itemprop="name">RCNN</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Paper/" itemprop="url" rel="index">
+                    <span itemprop="name">Paper</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+            <span id="/2018/04/24/Faster-RCNN/"class="leancloud_visitors"  data-flag-title="【目标检测】Faster-R-CNN  (Towards Real-Time Object Detection with Region Proposal Networks)">
+            &nbsp; | &nbsp;   
+            views
+            </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <meta name="generator" content="pandoc">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pygments-css@1.0.0/github.min.css" type="text/css">
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+</head>
+<body>
+<blockquote>
+<p>Ren, Shaoqing, et al. “Faster R-CNN: Towards real-time object detection with region proposal networks.” Advances in Neural Information Processing Systems. 2015.</p>
+</blockquote>
+<a id="more"></a>
+<p>本文是继RCNN，Fast RCNN之后，目标检测界的领军人物<a href="http://www.cs.berkeley.edu/~rbg/" target="_blank" rel="noopener">Ross Girshick</a>团队在2015年的又一力作。<strong>简单网络目标检测速度达到17fps</strong>，在PASCAL VOC上准确率为59.9%；复杂网络达到5fps，准确率78.8%。</p>
+<h2 id="思想">1. 思想</h2>
+<p>从RCNN到Fast RCNN，再到本文的Faster RCNN，目标检测的四个基本步骤（候选区域生成，特征提取，分类，位置精修）终于被<strong>统一到一个深度网络框架之内</strong>。所有计算没有重复，完全在GPU中完成，大大提高了运行速度。<br>
+<img src="https://img-blog.csdn.net/20160414164536029" alt="这里写图片描述"></p>
+<p><img src="/2018/04/24/Faster-RCNN/Faster-RCNN.png"><br>
+<span class="math display">\[
+Faster-RCNN
+\]</span><br>
+Faster RCNN可以简单地看做“区域生成网络+Fast RCNN“的系统，用区域生成网络(RPN)代替Fast RCNN中的Selective Search方法。本篇论文着重解决了这个系统中的三个问题：</p>
+<ol style="list-style-type: decimal">
+<li>如何<strong>设计</strong>区域生成网络</li>
+<li>如何<strong>训练</strong>区域生成网络</li>
+<li>如何让区域生成网络和Fast RCNN网络<strong>共享特征提取网络</strong></li>
+</ol>
+<h2 id="区域生成网络region-proposal-network">2. 区域生成网络(Region Proposal Network)</h2>
+<p>RPN的核心思想是使用卷积神经网络直接产生region proposal，使用的方法本质上就是滑动窗口。RPN的设计比较巧妙，RPN只需在最后的卷积层上滑动一遍，因为anchor机制和边框回归可以得到多尺度多长宽比的region proposal。我们通过如下VGG模型进行分析：</p>
+<div class="figure">
+<img src="/2018/04/24/Faster-RCNN/VGG_proposal_detestion_prototxt.png">
+
+</div>
+<p>以上是<code>script_faster_rcnn_demo.m</code> 代码中使用的VGG网络结构<code>proposal + detection</code>，我们输入一张图片375x500 (进行尺度缩放后为600x800, 即对应于test_scales=600，短边最短为600，长边最长不超过1000进行的缩放:<a href="https://github.com/SmileLingyong/faster_rcnn-master/blob/master/utils/prep_im_for_blob_size.m" target="_blank" rel="noopener">Reference</a>)，然后将其处理成caffe输入的blob格式<code>im_blob: 800x600x3</code> 输入到<code>proposal</code>(RPN)网络中:<a href="https://github.com/SmileLingyong/faster_rcnn-master/blob/master/functions/rpn/proposal_im_detect.m#L22:L27" target="_blank" rel="noopener">Reference</a>，经过卷积操作后得到最后一层conv5_3的卷积特征图feature map（大小为50x38，共有512个，ZF则有256个）。在这个特征图上使用3x3的卷积核(滑动窗口)与特征图进行卷积后，可以得到一个512维的特征向量50x38x512，后面接 <code>cls layer</code> 和 <code>reg layer</code> 分别用于分类和边框回归（跟Fast R-CNN类似，只不过这里的类别只有目标和背景两个类别）。</p>
+<ul>
+<li><code>cls layer</code> 即 <code>proposal_cls_score层</code> ：输出每一个位置上，9个anchor属于前景和背景的概率（代码中只取了每个位置属于前景的概率:<a href="https://github.com/SmileLingyong/faster_rcnn-master/blob/master/functions/rpn/proposal_im_detect.m#L50" target="_blank" rel="noopener">Reference</a>，即 17100x1 = 50x38x9个anchors属于前景的概率）；</li>
+<li><code>reg layer</code> 即 <code>proposal_bbox_pred层</code> ：输出每一个位置上，9个anchor对应窗口应该平移缩放的参数（之后可使用该参数，对缩放后的原图上的 50x38x9 个anchors进行边框回归，修正每个anchor属于前景的位置）</li>
+</ul>
+<blockquote>
+<p>就局部来说，这两层是全连接网络；</p>
+<p>就全局来说，由于网络在所有位置（共50x38个）的参数相同，所以实际用尺寸为1×1的卷积网络实现。</p>
+</blockquote>
+<div class="figure">
+<img src="/2018/04/24/Faster-RCNN/RPN注释修改版.png">
+
+</div>
+<p>这样设计的好处是什么呢？虽然现在也是用的滑动窗口策略，但是：滑动窗口操作是在卷积层特征图上进行的，维度较原始图像降低了16x16倍（中间经过了4次2x2的pooling操作）；多尺度采用了9种anchor，对应了三种尺度和三种长宽比，加上后边接了边框回归，所以即便是这9种anchor外的窗口也能得到一个跟目标比较接近的region proposal。</p>
+<h3 id="候选区域anchor">2.1 候选区域（anchor）</h3>
+<p>我们通过RPN网络，可以得到最后一个卷积层conv5_3的feature map大小50x38(因为输入的im_blob格式是width优先)，我们取featuremap_size为<code>38x50</code>，这是为了与缩放后的原图(height优先)<code>600x800</code>进行对应。然后我们计算该38x50个像素点对应于缩放后原图中的位置，即将feature map中的每个像素点位置×conf.feat_stride，即可映射回缩放后原图的位置（<a href="https://blog.csdn.net/forever__1234/article/details/79910175#%E6%84%9F%E5%8F%97%E9%87%8E" target="_blank" rel="noopener">感受野的概念</a>）。接着使用映射回缩放后原图上的点，共38x50个位置，计算其在缩放后原图上的9个anchors，即9个可能的候选窗口：三种面积 { <span class="math inline">\(128^2,256^2,512^2\)</span> } × 三种比例{ <span class="math inline">\(1:1,1:2,2:1\)</span> } ，共可以计算得到38x50x9 = 17100个anchors，每个anchor就是一个候选框:<a href="https://github.com/SmileLingyong/faster_rcnn-master/blob/master/functions/rpn/proposal_locate_anchors.m" target="_blank" rel="noopener">Reference</a>。这样我们就粗略得到了输入的一张图片所拥有的<u><code>anchors</code></u>。（注意，这里每个位置上的9个anchors尺寸，代码中提前设计好了，对应于下图中的conf.anchors）。</p>
+<div class="figure">
+<img src="/2018/04/24/Faster-RCNN/anchors.png">
+
+</div>
+<p>我们使用一张测试图片，将通过以上方法产生的<u><code>anchors</code></u>，维度为17100x4(未进行Bounding boxes regression前的)，取前9个和最后9个anchors，即对应于将feature map映射回缩放后原图(600x800尺寸)上的最左上角的一点，和最右下角一点具有的9个anchors，绘制如下，以便更好的理解：</p>
+<blockquote>
+<p>绿、蓝、红分别对应三种比例：{ <span class="math inline">\(1:1,1:2,2:1\)</span> }<br>
+每一种颜色中又有三种面积： { <span class="math inline">\(128^2,256^2,512^2\)</span> }</p>
+</blockquote>
+<div class="figure">
+<img src="/2018/04/24/Faster-RCNN/anchor_boxes.png">
+
+</div>
+<blockquote>
+<p>在整个Faster RCNN算法中，有三种尺度。<br>
+<strong>原图尺度</strong>：原始输入的大小。不受任何限制，不影响性能。<br>
+<strong>归一化尺度（缩放后的原图）</strong>：输入特征提取网络的大小，在测试时设置，源码中opts.test_scale=600。anchor是在这个尺度上设定的，具体如上所述。这个参数和anchor的相对大小决定了想要检测的目标范围。<br>
+<strong>网络输入尺度</strong>：输入特征检测网络的大小，在训练时设置，源码中为224x224。</p>
+</blockquote>
+<h3 id="窗口分类和位置精修">2.2 窗口分类和位置精修</h3>
+<p>将以上计算得到的anchors，结合上面RPN网络<code>proposal_bbox_pred层</code>所输出的平移缩放参数进行边框回归，得到pred_boxes，然后将这些anchors按归一化尺度缩放回对应于原图尺寸375x500，并把anchors超过原图375x500边界的部分都减去，得到最终的pred_boxes：即得到输入的一张原图内所拥有的所有anchors:<a href="https://github.com/SmileLingyong/faster_rcnn-master/blob/master/functions/rpn/proposal_im_detect.m#L33:L46" target="_blank" rel="noopener">Reference</a>；以及每个anchors属于前景和背景的得分 ( <code>proposal_cls_score层</code> 所输出的，代码中只取了其属于前景的得分)。</p>
+<h3 id="测试阶段">2.3 测试阶段</h3>
+<p>通过RPN网络得到了该张图片的50x38x9=17100个anchors，以及每个anchors属于前景的分数，然后将anchors根据分数进行排序，选取得分最高的6000个anchors，然后再使用NMS（Non-Maximum Suppression）留下比较好的约2000个左右候选框。之后，再将这些候选框anchors boxes做为<code>rois</code>输入到Fast-RCNN <code>detection test网络</code>，并输入RPN网络conv5_3输出的feature map做为<code>data</code>，进行后续的Softmax分类+Boundingboxes回归。</p>
+<blockquote>
+<p>因此，Faster-RCNN和RCNN, Fast-RCNN一样，属于2-stage的检测算法。</p>
+</blockquote>
+<h2 id="区域生成网络训练">3. 区域生成网络：训练</h2>
+<h3 id="样本">3.1 样本</h3>
+<p>考察训练集中的每张图像：<br>
+a. 对每个标定的真值候选区域，与其重叠比例最大的anchor记为前景样本<br>
+b. 对a)剩余的anchor，如果其与某个标定重叠比例大于0.7，记为前景样本；如果其与任意一个标定的重叠比例都小于0.3，记为背景样本<br>
+c. 对a),b)剩余的anchor，弃去不用。<br>
+d. 跨越图像边界的anchor弃去不用</p>
+<h3 id="代价函数">3.2 代价函数</h3>
+<p>同时最小化两种代价：<br>
+a. 分类误差<br>
+b. 前景样本的窗口位置偏差<br>
+具体参看Fast RCNN中的<a href="https://blog.csdn.net/forever__1234/article/details/79919994#分类与位置调整" target="_blank" rel="noopener">“分类与位置调整”段落</a>。<br>
+(实质是一样的，只是公式表达的方式不同而已)</p>
+<h3 id="超参数">3.3 超参数</h3>
+<p>原始特征提取网络使用ImageNet的分类样本初始化，其余新增层随机初始化。<br>
+每个mini-batch包含从一张图像中提取的256个anchor，前景背景样本1:1.<br>
+前60K迭代，学习率0.001，后20K迭代，学习率0.0001。<br>
+momentum设置为0.9，weight decay设置为0.0005。</p>
+<h2 id="共享特征">4. 共享特征</h2>
+<p>区域生成网络（RPN）和Fast RCNN都需要一个原始特征提取网络（下图灰色方框）。这个网络使用ImageNet的分类库得到初始参数 <span class="math inline">\(W_0\)</span> ，但要如何精调参数，使其同时满足两方的需求呢？本文讲解了三种方法。<br>
+<img src="/2018/04/24/Faster-RCNN/shared_network.png"></p>
+<h3 id="轮流训练">4.1 轮流训练</h3>
+<p>​ (1) 使用在ImageNet上预训练的模型初始化网络参数，微调RPN网络；<br>
+​ (2) 使用ImageNet上与训练的模型初始化Fast RCNN网络，使用(1)中RPN网络提取region proposal训练Fast R-CNN网络；<br>
+​ (3) 使用(2)的Fast R-CNN网络重新初始化RPN, 固定卷积层进行微调，即固定共有的卷积层参数来微调训练 (将学习率设置为0)；<br>
+​ (4) 固定(2)中Fast R-CNN的卷积层，使用(3)中RPN提取的region proposal微调网络。</p>
+<p>权值共享后的RPN和Fast R-CNN用于目标检测精度会提高一些。如Ross Girshick在ICCV 15年的讲座Training R-CNNs of various velocities中所述，采用此方法没有什么根本原因，主要是因为”实现问题，以及截稿日期“。需要注意的是，最新的版本已经将RPN网络和Fast R-CNN网络结合到了一起——将RPN获取到的proposal直接连到ROI pooling层，这才是一个真正意义上的使用一个CNN网络实现端到端目标检测的框架。</p>
+<div class="figure">
+<img src="/2018/04/24/Faster-RCNN/RPN-Fast-RCNN联合训练.png">
+
+</div>
+<h3 id="近似联合训练">4.2 近似联合训练</h3>
+<p>直接在上图结构上训练。在backward计算梯度时，把提取的ROI区域当做固定值看待；在backward更新参数时，来自RPN和来自Fast RCNN的增量合并输入原始特征提取层。<br>
+此方法和前方法效果类似，但能将训练时间减少20%-25%。<a href="https://github.com/rbgirshick/py-Faster-rcnn" target="_blank" rel="noopener">公布的python代码</a>中包含此方法。</p>
+<h3 id="联合训练">4.3 联合训练</h3>
+<p>直接在上图结构上训练。但在backward计算梯度时，要考虑ROI区域的变化的影响。推导超出本文范畴，请参看15年NIP论文。</p>
+<h2 id="实验">5. 实验</h2>
+<p>除了开篇提到的基本性能外，还有一些值得注意的结论</p>
+<ul>
+<li>与Selective Search方法（黑）相比，当每张图生成的候选区域从2000减少到300时，本文RPN方法（红蓝）的召回率下降不大。说明<strong>RPN方法的目的性更明确</strong>。<br>
+<img src="https://img-blog.csdn.net/20160415150343559" alt="这里写图片描述"></li>
+<li>使用更大的Microsoft COCO库训练，直接在PASCAL VOC上测试，准确率提升6%。说明<strong>Faster RCNN迁移性良好</strong>，没有over fitting。<br>
+<img src="https://img-blog.csdn.net/20160415151012671" alt="这里写图片描述"></li>
+</ul>
+<h2 id="reference">6. Reference</h2>
+<ul>
+<li><a href="https://zhuanlan.zhihu.com/p/31426458" target="_blank" rel="noopener">一文读懂Faster-RCNN</a></li>
+<li><a href="https://blog.csdn.net/shenxiaolu1984/article/details/51152614" class="uri" target="_blank" rel="noopener">https://blog.csdn.net/shenxiaolu1984/article/details/51152614</a></li>
+<li><a href="https://blog.csdn.net/qq_17448289/article/details/52871461" class="uri" target="_blank" rel="noopener">https://blog.csdn.net/qq_17448289/article/details/52871461</a></li>
+<li><a href="http://noahsnail.com/2018/01/03/2018-01-03-Faster%20R-CNN%E8%AE%BA%E6%96%87%E7%BF%BB%E8%AF%91%E2%80%94%E2%80%94%E4%B8%AD%E6%96%87%E7%89%88/" target="_blank" rel="noopener">Faster-RCNN中文翻译</a></li>
+<li><a href="https://blog.csdn.net/happyflyy/article/details/54917514" class="uri" target="_blank" rel="noopener">https://blog.csdn.net/happyflyy/article/details/54917514</a></li>
+</ul>
+</body>
+</html>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Machine-Learning/" rel="tag">#Machine Learning</a>
+          
+            <a href="/tags/Deeping-Learning/" rel="tag">#Deeping Learning</a>
+          
+            <a href="/tags/学习笔记/" rel="tag">#学习笔记</a>
+          
+            <a href="/tags/RCNN/" rel="tag">#RCNN</a>
+          
+            <a href="/tags/Paper/" rel="tag">#Paper</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/20/SVM-achieves-multiple-classification/" rel="prev">
+                <i class="fa fa-chevron-left"></i> SVM实现多分类
+              </a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/12/Fast-RCNN/" rel="next">
+                【目标检测】Fast-R-CNN (Fast Region-based Convolutional Network method) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+          </div>
+        
+      
+
+        
+          
+  
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+      
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table Of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview" sidebar-panel >
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/avatar.jpg" alt="SmileLingyong" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">SmileLingyong</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">向上，向阳！</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">26</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-name">categories</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">18</span>
+              <span class="site-state-item-name">tags</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="smilelingyong@gmail.com" target="_blank">
+                  <i class="fa fa-e-mail"></i> E-Mail
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/SmileLingyong" target="_blank">
+                  <i class="fa fa-github"></i> Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://blog.csdn.net/forever__1234" target="_blank">
+                  <i class="fa fa-csdn"></i> CSDN
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#思想"><span class="nav-text">1. 思想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#区域生成网络region-proposal-network"><span class="nav-text">2. 区域生成网络(Region Proposal Network)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#候选区域anchor"><span class="nav-text">2.1 候选区域（anchor）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#窗口分类和位置精修"><span class="nav-text">2.2 窗口分类和位置精修</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试阶段"><span class="nav-text">2.3 测试阶段</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#区域生成网络训练"><span class="nav-text">3. 区域生成网络：训练</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#样本"><span class="nav-text">3.1 样本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代价函数"><span class="nav-text">3.2 代价函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#超参数"><span class="nav-text">3.3 超参数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#共享特征"><span class="nav-text">4. 共享特征</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#轮流训练"><span class="nav-text">4.1 轮流训练</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#近似联合训练"><span class="nav-text">4.2 近似联合训练</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#联合训练"><span class="nav-text">4.3 联合训练</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实验"><span class="nav-text">5. 实验</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reference"><span class="nav-text">6. Reference</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+	  </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">SmileLingyong</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="#">
+    FreeSky
+  </a>(Reserved)
+
+  
+  <span id="busuanzi_container_site_uv">
+     &nbsp; | &nbsp;  用户量: <span id="busuanzi_value_site_uv"></span>
+  </span>
+  <span id="busuanzi_container_site_pv">
+    &nbsp; | &nbsp;  总访问量: <span id="busuanzi_value_site_pv"></span>
+  </span>
+
+  
+</div>
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/others/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+    
+
+  
+
+
+  
+  
+  <script type="text/javascript" src="/others/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
+  
+
+  <script type="text/javascript" src="/others/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/others/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.2" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.2"></script>
+  <script type="text/javascript" src="/others/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    var $aboutContent = $('#posts-about');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0 && $aboutContent.length === 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+
+      motionIntegrator.bootstrap();
+    });
+  </script>
+
+  
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+  
+     <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("9QoQXWnRR4zwSFuxRv52kUpi-gzGzoHsz", "zlgcRzgHF7AHu8TKLJUwCAjw");</script>
+<script>
+function showTime(Counter) {
+  var query = new AV.Query(Counter);
+  $(".leancloud_visitors").each(function() {
+    var url = $(this).attr("id").trim();
+    query.equalTo("url", url);
+    query.find({
+      success: function(results) {
+        if (results.length == 0) {
+          var content = $(document.getElementById(url)).text() + ': 0';
+          $(document.getElementById(url)).text(content);
+          return;
+        }
+        for (var i = 0; i < results.length; i++) {
+          var object = results[i];
+          var content = $(document.getElementById(url)).text() + ': ' + object.get('time');
+          $(document.getElementById(url)).text(content);
+        }
+      },
+      error: function(object, error) {
+        console.log("Error: " + error.code + " " + error.message);
+      }
+    });
+
+  });
+}
+
+function addCount(Counter) {
+  var Counter = AV.Object.extend("Counter");
+  url = $(".leancloud_visitors").attr('id').trim();
+  title = $(".leancloud_visitors").attr('data-flag-title').trim();
+  var query = new AV.Query(Counter);
+  query.equalTo("url", url);
+  query.find({
+    success: function(results) {
+      if (results.length > 0) {
+        var counter = results[0];
+        counter.fetchWhenSave(true);
+        counter.increment("time");
+        counter.save(null, {
+          success: function(counter) {
+            var content = $(document.getElementById(url)).text() + ': ' + counter.get('time');
+            $(document.getElementById(url)).text(content);
+          },
+          error: function(counter, error) {
+            console.log('Failed to save Visitor num, with error message: ' + error.message);
+          }
+        });
+      } else {
+        var newcounter = new Counter();
+        newcounter.set("title", title);
+        newcounter.set("url", url);
+        newcounter.set("time", 1);
+        newcounter.save(null, {
+          success: function(newcounter) {
+              console.log("newcounter.get('time')="+newcounter.get('time'));
+            var content = $(document.getElementById(url)).text() + ': ' + newcounter.get('time');
+            $(document.getElementById(url)).text(content);
+          },
+          error: function(newcounter, error) {
+            console.log('Failed to create');
+          }
+        });
+      }
+    },
+    error: function(error) {
+      console.log('Error:' + error.code + " " + error.message);
+    }
+  });
+}
+$(function() {
+  var Counter = AV.Object.extend("Counter");
+  if ($('.leancloud_visitors').length == 1) {
+    addCount(Counter);
+  } else if ($('.post-title-link').length > 1) {
+    showTime(Counter);
+  }
+}); 
+</script>
+  
+</body>
+</html>
