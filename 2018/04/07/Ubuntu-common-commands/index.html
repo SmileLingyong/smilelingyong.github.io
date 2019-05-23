@@ -1,0 +1,1002 @@
+<!doctype html>
+<html class="theme-next use-motion ">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/others/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+
+
+  <link href="/vendors/googleapis/css/Lato.css" rel="stylesheet" type="text/css">
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/others/font-awesome/css/font-awesome.min.css?v=4.4.0" />
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.2"/>
+
+
+    <meta name="description" content="向上，向阳！" />
+
+
+
+  <meta name="keywords" content="Tools,Linux," />
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=0.4.5.2" />
+
+
+<meta name="description" content="code{white-space: pre;}">
+<meta name="keywords" content="Tools,Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ubuntu常用命令">
+<meta property="og:url" content="http://yoursite.com/2018/04/07/Ubuntu-common-commands/index.html">
+<meta property="og:site_name" content="SmileLingyong">
+<meta property="og:description" content="code{white-space: pre;}">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-05-23T09:04:38.160Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ubuntu常用命令">
+<meta name="twitter:description" content="code{white-space: pre;}">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: '',
+    sidebar: 'always'
+  };
+</script>
+
+
+
+  <title> Ubuntu常用命令 | SmileLingyong </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+
+
+
+  <div id="container" class="container one-column page-post-detail">
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+      
+	  	<span style="font-size:14px;float:right;padding:39px 40px 0 0;">——穷则独善其身，达则兼济天下.</span>
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+
+        	<div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Ubuntu常用命令
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            Posted on
+            <time itemprop="dateCreated" datetime="2018-04-07T23:31:30+08:00" content="2018-04-07">
+              2018-04-07 23:31
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; In
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Tools/" itemprop="url" rel="index">
+                    <span itemprop="name">Tools</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+            <span id="/2018/04/07/Ubuntu-common-commands/"class="leancloud_visitors"  data-flag-title="Ubuntu常用命令">
+            &nbsp; | &nbsp;   
+            views
+            </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <meta name="generator" content="pandoc">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pygments-css@1.0.0/github.min.css" type="text/css">
+</head>
+<body>
+<p><a id="more"></a></p>
+<h3 id="更新源">更新源</h3>
+<p>Ubuntu 的软件源配置文件是 <code>/etc/apt/sources.list</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak  # 更新源前，先备份一份源</span><br><span class="line">sudo vim /etc/apt/sources.list  # 更改源配置文件</span><br></pre></td></tr></table></figure>
+<p>再文件末尾添加如下源：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial main restricted universe multiverse</span><br><span class="line"><span class="meta">#</span> deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial main main restricted universe multiverse</span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-updates main restricted universe multiverse</span><br><span class="line"><span class="meta">#</span> deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-updates main restricted universe multiverse</span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-backports main restricted universe multiverse</span><br><span class="line"><span class="meta">#</span> deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-backports main restricted universe multiverse</span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-security main restricted universe multiverse</span><br><span class="line"><span class="meta">#</span> deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-security main restricted universe multiverse</span><br></pre></td></tr></table></figure>
+<p>然后控制台输入命令更新系统：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get upgrade</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="移除软件或库">移除软件或库</h3>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 删除 LibreOffice 软件</span><br><span class="line">sudo apt-get remove libreoffice-common</span><br></pre></td></tr></table></figure>
+<h3 id="安装命令">安装命令</h3>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 官网下载sogo安装包，然后用命令行安装sogo拼音输入法</span><br><span class="line">sudo dpkg -i sogoupinyin_2.1.0.0082_amd64.deb</span><br><span class="line"><span class="meta">#</span> 如果提示依赖有问题，执行下面命令后重新安装：</span><br><span class="line">sudo apt-get install -f</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 安装git</span><br><span class="line">sudo apt-get install git</span><br></pre></td></tr></table></figure>
+<h3 id="解压命令">解压命令</h3>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 如安装Jdk时，我们使用tar命令进行解压</span><br><span class="line"><span class="meta">#</span> 首先到Oracle官网下载JDK8，下载地址如下：:http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html</span><br><span class="line"><span class="meta">#</span> 安装命令如下：</span><br><span class="line">sudo mkdir /usr/lib/jvm   ## 新建一个文件夹 </span><br><span class="line">sudo cp ./jdk-8u112-linux-x64.tar.gz /usr/lib/jvm/  ##  复制命令</span><br><span class="line">cd /usr/lib/jvm</span><br><span class="line">sudo tar -zxvf jdk-8u91-linux-x64.tar.gz   ## 解压命令</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 上述命令将 jdk-8u112-linux-x64.tar.gz 解压到了 /usr/lib/jvm 目录下，</span><br><span class="line"><span class="meta">#</span> 然后在下面 /etc/profile文件中配置变量:</span><br><span class="line">sudo gedit /etc/profile</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 在文件末尾追加:</span><br><span class="line">export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_112</span><br><span class="line">export JRE_HOME=$&#123;JAVA_HOME&#125;/jre</span><br><span class="line">export CLASSPATH=.:$&#123;JAVA_HOME&#125;/lib:$&#123;JRE_HOME&#125;/lib</span><br><span class="line">export PATH=$&#123;JAVA_HOME&#125;/bin:$PATH</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 执行下面命令使当前bash环境生效：</span><br><span class="line">source /etc/profile     </span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 查看是否安装成功：</span><br><span class="line">java -version</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="添加环境变量">添加环境变量</h3>
+<p>参考：<a href="http://www.powerxing.com/linux-environment-variable/" class="uri" target="_blank" rel="noopener">http://www.powerxing.com/linux-environment-variable/</a></p>
+<p>设置 Linux 环境变量可以通过 export 实现，也可以通过修改几个文件来实现，有必要弄清楚这两种方法以及这几个文件的区别。</p>
+<h4 id="通过文件设置-linux-环境变量">通过文件设置 Linux 环境变量</h4>
+<p>首先是设置全局环境变量，对所有用户都会生效：</p>
+<ul>
+<li>etc/profile: 此文件为系统的每个用户设置环境信息。当用户登录时，该文件被执行一次，并从 /etc/profile.d 目录的配置文件中搜集shell 的设置。一般用于设置所有用户使用的全局变量。</li>
+<li>/etc/bashrc: 当 bash shell 被打开时，该文件被读取。也就是说，每次新打开一个终端 shell，该文件就会被读取。</li>
+</ul>
+<p>接着是与上述两个文件对应，但只对单个用户生效：</p>
+<ul>
+<li><p>~/.bash_profile 或 ~/.profile: 只对单个用户生效，当用户登录时该文件仅执行一次。用户可使用该文件添加自己使用的 shell 变量信息。另外在不同的LINUX操作系统下，这个文件可能是不同的，可能是 ~/.bash_profile， ~/.bash_login 或 ~/.profile 其中的一种或几种，如果存在几种的话，那么执行的顺序便是：~/.bash_profile、 ~/.bash_login、 ~/.profile。比如 Ubuntu 系统一般是 ~/.profile 文件。</p></li>
+<li><p>~/.bashrc: 只对单个用户生效，当登录以及每次打开新的 shell 时，该文件被读取。</p></li>
+</ul>
+<p>然后需要使用 <code>source</code> 命令，使当前配置的环境变量生效：</p>
+<p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ~/.bashrc</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><p>此外，修改 /etc/environment 这个文件也能实现环境变量的设置。/etc/environment 设置的也是全局变量，从文件本身的作用上来说， /etc/environment 设置的是整个系统的环境，而/etc/profile是设置所有用户的环境。有几点需注意：</p></li>
+<li>系统先读取 etc/profile 再读取 /etc/environment（还是反过来？）</li>
+<li>/etc/environment 中不能包含命令，即直接通过 <code>VAR=&quot;...&quot;</code> 的方式设置，不使用 export 。</li>
+<li><p>使用 <code>source /etc/environment</code> 可以使变量设置在当前窗口立即生效，需注销/重启之后，才能对每个新终端窗口都生效。</p></li>
+</ul>
+<h4 id="修改-linux-环境变量实例">修改 Linux 环境变量实例</h4>
+<p>以 Ubuntu 为例，修改 ~/.profile 文件：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.profile</span><br></pre></td></tr></table></figure>
+<p>如果该文件存在，则在文件的最后看到如下代码，PATH 变量的值使用冒号(:)隔开的：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> set PATH so it includes user's private bin if it exists</span><br><span class="line">if [ -d "$HOME/bin" ] ; then    </span><br><span class="line">	PATH="$HOME/bin:$PATH"</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<p>在最后加上代码 <code>PATH=&quot;$PATH:/usr/local/hadoop/bin&quot;</code>，注意等号(=)两边不要有空格，即：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> set PATH so it includes user's private bin if it exists</span><br><span class="line">if [ -d "$HOME/bin" ] ; then    </span><br><span class="line">	PATH="$HOME/bin:$PATH"</span><br><span class="line">fi</span><br><span class="line">PATH="$PATH:/usr/local/hadoop/bin"</span><br></pre></td></tr></table></figure>
+<p>因为这个文件是在用户登陆是才读取一次的，所以需要重启才会生效（修改 /etc/profile、/etc/environment 也是如此）。但可以使用命令 <code>source ./.profile</code> 使其立即生效。通过 <code>echo $PATH</code> 可以看到修改后的变量值：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ./.profileecho $PATH</span><br></pre></td></tr></table></figure>
+<h4 id="通过-shell-命令-export-修改-linux-环境变量">通过 Shell 命令 export 修改 Linux 环境变量</h4>
+<p>另一种修改 Linux 环境变量的方式就是通过 Shell 命令 export，注意变量名不要有美元号 $，赋值语句中才需要有：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export PATH=$PATH:/usr/local/hadoop/bin</span><br></pre></td></tr></table></figure>
+<p><code>export 方式只对当前终端 Shell 有效</code></p>
+<p>使用 export 设置的变量，只对当前终端 Shell 有效，也就是说如果新打开一个终端，那这个 export 设置的变量在新终端中使无法读取到的。适合设置一些临时变量。</p>
+<p>根据变量所需，选择设置方式，例如 JAVA_HOME 这类变量，就适合将其设为为全局变量，可在 /etc/environment 中设置。</p>
+<h3 id="设置权限">设置权限</h3>
+<p>参考：<a href="http://blog.csdn.net/flyingflame/article/details/1652458" class="uri" target="_blank" rel="noopener">http://blog.csdn.net/flyingflame/article/details/1652458</a></p>
+<p>将目前目录下的所有档案与子目录皆设为任何人可读取 :</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod -R a+r *</span><br></pre></td></tr></table></figure>
+<p>将目前目录下的所有档案与子目录皆设为任何人可可读可取可写:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod -R 777 *</span><br></pre></td></tr></table></figure>
+<h3 id="后台管理">后台管理</h3>
+<h4 id="nohup-后台运行">nohup 后台运行</h4>
+<p>自己常用的后台开启shadowsocks</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup sh shadow.sh  &amp;</span><br></pre></td></tr></table></figure>
+<h4 id="查看后台进程">查看后台进程</h4>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jobs -l</span><br></pre></td></tr></table></figure>
+<h4 id="将后台切换到当前运行">将后台切换到当前运行</h4>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bg %` # 将进程好为1的后台程序设置到当前运行</span><br></pre></td></tr></table></figure>
+<h4 id="ctrl-z-暂停当前进程">Ctrl + Z 暂停当前进程</h4>
+<p>然后可以通过使用</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">jobs -l 	# 查看当前进程</span><br><span class="line">bg %1   	# 将暂停的进程切换到当前进程</span><br></pre></td></tr></table></figure>
+<h4 id="kill-杀死当前进程">kill 杀死当前进程</h4>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kill %1    # 杀死进程号为1的进程</span><br></pre></td></tr></table></figure>
+<h3 id="vim常用命令">Vim常用命令</h3>
+<ul>
+<li>ZZ 保存</li>
+<li>U 返回</li>
+<li>. 前进</li>
+<li>i O 插入</li>
+</ul>
+<h4 id="vim-全选复制删除">Vim 全选复制删除</h4>
+<p><strong>全部删除</strong>：按esc键后，先按gg（到达顶部），然后dG<br>
+<strong>全部复制</strong>：按esc键后，先按gg，然后ggyG<br>
+<strong>全选高亮显示</strong>：按esc键后，先按gg，然后ggvG或者ggVG</p>
+<p><strong>单行复制</strong>：按esc键后, 然后yy<br>
+<strong>单行删除</strong>：按esc键后, 然后dd<br>
+<strong>粘贴</strong> ：按esc键后, 然后p</p>
+<blockquote>
+<p>解析：</p>
+</blockquote>
+<p><strong>set nu:</strong> 显示行号</p>
+<p><strong>H J K L : </strong> 左 ，下， 上， 右</p>
+<p><strong>gg：</strong>是让光标移到首行，在<strong>vim</strong>才有效，vi中无效</p>
+<p><strong>v ：</strong> 是进入Visual(可视）模式</p>
+<p><strong>G ：</strong>光标移到最后一行</p>
+<p><strong>5G : </strong> 移动到第5行</p>
+<p>选中内容以后就可以其他的操作了，比如：<br>
+<strong>d</strong> 删除<strong>选</strong>中内容<br>
+<strong>y</strong> 复制<strong>选</strong>中内容到0号寄存器<br>
+**“+y** 复制<strong>选</strong>中内容到＋寄存器，也就是系统的剪贴板，供其他程序用</p>
+<blockquote>
+<p>vim只能粘贴50行的问题：</p>
+</blockquote>
+<p>在当前用户主目录（<sub>）编辑</sub>/.vimrc（如果不存在，新建这个文件），添加一行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:set viminfo='1000,&lt;500</span><br></pre></td></tr></table></figure>
+<p>至于为什么要输入输入’1000,这个其实不重要，最主要的是输入&lt;500,它是设置寄存器保存的行数的。即最大值为 500</p>
+<h3 id="文件搜索find-命令">文件搜索：<code>find 命令</code></h3>
+<p>通用格式: <code>find pathname -options [-print -exec -ok]</code></p>
+<p>例子</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">find / -name filename 		# 再根目录里面搜索文件名为filename的文件</span><br><span class="line">find /etc -name *s*			# 在目录里面搜索带有s的文件</span><br><span class="line">find /etc -name *S 			# 在目录里面搜索以s结尾的文件</span><br><span class="line">find /etc -name s*			# 在目录里面搜索以s开头的文件</span><br><span class="line">find / -amin -10			# 在系统中搜索最后１０分钟访问的文件</span><br><span class="line">find / -atime -2			# 查找在系统中最后４８小时访问的文件</span><br><span class="line">find / -empty 				# 查找在系统中为空的文件或者是文件夹</span><br><span class="line">find / -group groupname 	# 查找在系统中属于groupname的文件</span><br><span class="line">find / -mmin -5				# 查找在系统中最后５分钟修改过的文件</span><br><span class="line">find / -mtime -1			# 查找在系统中最后２４小时修改过的文件</span><br><span class="line">find / -nouser			    # 查找在系统中属于费用户的文件</span><br><span class="line">find / -user username 		# 查找在系统中属于username的文件</span><br><span class="line">find / -ctime -1			# 查找在系统中最后２４小时被改变状态的文件</span><br><span class="line">find / -fstype type			# 查找在系统中文件类型为？的文件</span><br><span class="line">find / -user user１name -or -useruser２name # 查找在系统中属于user1name或着属于user2name的文件</span><br><span class="line">find / -user user1name -and-user2name  # 在系统中查找既属于user1name又属于user2name用户的文件．</span><br></pre></td></tr></table></figure>
+<h3 id="关键字搜索grep">关键字搜索：<code>grep</code></h3>
+<p>例如：再<code>src/caffe/layer_factory.cpp</code> 中有个宏调用： REGISTER_LAYER_CREATOR(Pooling, GetPoolingLayer); 可以用过grep 命令查看这个宏到底干了什么，再caffe根目录下运行一下命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep -n -H -R "REGISTER_LAYER_CREATOR"</span><br></pre></td></tr></table></figure>
+<p>命令行参数解释：</p>
+<table>
+<thead>
+<tr class="header">
+<th>参数</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>-n</td>
+<td>显示行号，便于定位</td>
+</tr>
+<tr class="even">
+<td>-H</td>
+<td>显示文件名，便于定位</td>
+</tr>
+<tr class="odd">
+<td>-R</td>
+<td>递归查找每个子目录，视乎工程较大、分多个目录存放的场景</td>
+</tr>
+</tbody>
+</table>
+<h3 id="查看端口是是否被占用">查看端口是是否被占用</h3>
+<ul>
+<li><code>lsof</code></li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsof -i  # 端口号查看某个端口是否被占用</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>netstat</code></li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -anp|grep 80   # 查看80端口是否被占用</span><br></pre></td></tr></table></figure>
+<h3 id="多文件替换字符">多文件替换字符</h3>
+<ul>
+<li><code>sed</code> <code>xargs</code></li>
+</ul>
+<p>比如我们要替换掉所有标签文件中标错了的标签，将&gt;race 替换为 &gt;trace，具体使用方法如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">grep "&gt;rack" -rl /home/lly/test/* | xargs sed -i "s/&gt;rack/&gt;track/g"</span><br><span class="line"><span class="meta">#</span> &gt;rack ：表示我们需要替换的字符串</span><br><span class="line"><span class="meta">#</span> /home/lly/test/* ：表示我们需要将这个目录先所有文件进行这样的操作</span><br><span class="line"><span class="meta">#</span> "s/&gt;rack/&gt;track/g" ： "s/原字符串/新的字符串/g"</span><br></pre></td></tr></table></figure>
+<h3 id="性能分析">性能分析</h3>
+<ul>
+<li><code>top</code></li>
+</ul>
+<p>查看资源占用情况</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">top </span><br><span class="line"><span class="meta">#</span> 然后可以通过按键盘 'x' 高亮显示当前排序的列，默认按CPU占用情况排序</span><br><span class="line"><span class="meta">#</span> 接着可以通过使用键盘 shift + &lt; ，或者 shift + &gt; 来转移列排序</span><br></pre></td></tr></table></figure>
+<p>reference： <a href="http://www.cnblogs.com/peida/archive/2012/12/24/2831353.html" class="uri" target="_blank" rel="noopener">http://www.cnblogs.com/peida/archive/2012/12/24/2831353.html</a></p>
+<h3 id="释放内存">释放内存</h3>
+<ul>
+<li><code>free</code></li>
+</ul>
+<p>查看内存使用情况</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">free -h</span><br><span class="line"><span class="meta">#</span> 每隔一秒查看内存变化情况</span><br><span class="line">watch -n 1 free -m</span><br><span class="line"><span class="meta">#</span> This command will also display in real-time your system memory usage:</span><br><span class="line">watch -n 1 cat /proc/meminfo</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 释放未使用的内存：</span><br><span class="line">sudo sysctl -w vm.drop_caches=3</span><br><span class="line"><span class="meta">#</span> free up memory either used or cached (page cache, inodes, and dentries):</span><br><span class="line">sudo sync &amp;&amp; echo 3 | sudo tee /proc/sys/vm/drop_caches</span><br></pre></td></tr></table></figure>
+<h3 id="terminal进入usb">Terminal进入USB</h3>
+<p><strong>1. Find what the drive is called</strong></p>
+<p>You’ll need to know what the drive is called to mount it. To do that fire off one of the following (ranked in order of my preference):</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">lsblk</span><br><span class="line">sudo blkid</span><br><span class="line">sudo fdisk -l</span><br></pre></td></tr></table></figure>
+<p>You’re looking for a partition that should look something like: <code>/dev/sdb1</code>. The more disks you have the higher the letter this is likely to be. Anyway, find it and remember what it’s called.</p>
+<p><strong>2. Create a mount point (optional)</strong></p>
+<p>This needs to be mounted into the filesystem <em>somewhere</em>. You can usually use /mnt/ if you’re being lazy and nothing else is mounted there but otherwise you’ll want to create a new directory:</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo  <span class="built_in">mkdir</span> /media/usb</span><br></pre></td></tr></table></figure>
+<p><strong>3. Mount!</strong></p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mount <span class="regexp">/dev/</span>sdb1 <span class="regexp">/media/u</span>sb</span><br></pre></td></tr></table></figure>
+<p>When you’re done, just fire off:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo umount <span class="regexp">/media/u</span>sb</span><br></pre></td></tr></table></figure>
+</body>
+</html>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Tools/" rel="tag">#Tools</a>
+          
+            <a href="/tags/Linux/" rel="tag">#Linux</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/08/RCNN/" rel="prev">
+                <i class="fa fa-chevron-left"></i> 【目标检测】RCNN (Rich feature hierarchies for accurate object detection and semantic segmentation)
+              </a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/07/Insufficient-boot-space-when-Ubuntu-system-is-updated/" rel="next">
+                Ubuntu系统更新时boot空间不足问题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+          </div>
+        
+      
+
+        
+          
+  
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+      
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table Of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview" sidebar-panel >
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/avatar.jpg" alt="SmileLingyong" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">SmileLingyong</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">向上，向阳！</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">24</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-name">categories</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">18</span>
+              <span class="site-state-item-name">tags</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="smilelingyong@gmail.com" target="_blank">
+                  <i class="fa fa-e-mail"></i> E-Mail
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/SmileLingyong" target="_blank">
+                  <i class="fa fa-github"></i> Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://blog.csdn.net/forever__1234" target="_blank">
+                  <i class="fa fa-csdn"></i> CSDN
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#更新源"><span class="nav-text">更新源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#移除软件或库"><span class="nav-text">移除软件或库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装命令"><span class="nav-text">安装命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解压命令"><span class="nav-text">解压命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加环境变量"><span class="nav-text">添加环境变量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#通过文件设置-linux-环境变量"><span class="nav-text">通过文件设置 Linux 环境变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改-linux-环境变量实例"><span class="nav-text">修改 Linux 环境变量实例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#通过-shell-命令-export-修改-linux-环境变量"><span class="nav-text">通过 Shell 命令 export 修改 Linux 环境变量</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置权限"><span class="nav-text">设置权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#后台管理"><span class="nav-text">后台管理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#nohup-后台运行"><span class="nav-text">nohup 后台运行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看后台进程"><span class="nav-text">查看后台进程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#将后台切换到当前运行"><span class="nav-text">将后台切换到当前运行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ctrl-z-暂停当前进程"><span class="nav-text">Ctrl + Z 暂停当前进程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#kill-杀死当前进程"><span class="nav-text">kill 杀死当前进程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vim常用命令"><span class="nav-text">Vim常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#vim-全选复制删除"><span class="nav-text">Vim 全选复制删除</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件搜索find-命令"><span class="nav-text">文件搜索：find 命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关键字搜索grep"><span class="nav-text">关键字搜索：grep</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看端口是是否被占用"><span class="nav-text">查看端口是是否被占用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多文件替换字符"><span class="nav-text">多文件替换字符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#性能分析"><span class="nav-text">性能分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#释放内存"><span class="nav-text">释放内存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#terminal进入usb"><span class="nav-text">Terminal进入USB</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+	  </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">SmileLingyong</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="#">
+    FreeSky
+  </a>(Reserved)
+
+  
+  <span id="busuanzi_container_site_uv">
+     &nbsp; | &nbsp;  用户量: <span id="busuanzi_value_site_uv"></span>
+  </span>
+  <span id="busuanzi_container_site_pv">
+    &nbsp; | &nbsp;  总访问量: <span id="busuanzi_value_site_pv"></span>
+  </span>
+
+  
+</div>
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/others/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+    
+
+  
+
+
+  
+  
+  <script type="text/javascript" src="/others/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
+  
+
+  <script type="text/javascript" src="/others/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/others/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.2" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.2"></script>
+  <script type="text/javascript" src="/others/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    var $aboutContent = $('#posts-about');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0 && $aboutContent.length === 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+
+      motionIntegrator.bootstrap();
+    });
+  </script>
+
+  
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+  
+     <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("9QoQXWnRR4zwSFuxRv52kUpi-gzGzoHsz", "zlgcRzgHF7AHu8TKLJUwCAjw");</script>
+<script>
+function showTime(Counter) {
+  var query = new AV.Query(Counter);
+  $(".leancloud_visitors").each(function() {
+    var url = $(this).attr("id").trim();
+    query.equalTo("url", url);
+    query.find({
+      success: function(results) {
+        if (results.length == 0) {
+          var content = $(document.getElementById(url)).text() + ': 0';
+          $(document.getElementById(url)).text(content);
+          return;
+        }
+        for (var i = 0; i < results.length; i++) {
+          var object = results[i];
+          var content = $(document.getElementById(url)).text() + ': ' + object.get('time');
+          $(document.getElementById(url)).text(content);
+        }
+      },
+      error: function(object, error) {
+        console.log("Error: " + error.code + " " + error.message);
+      }
+    });
+
+  });
+}
+
+function addCount(Counter) {
+  var Counter = AV.Object.extend("Counter");
+  url = $(".leancloud_visitors").attr('id').trim();
+  title = $(".leancloud_visitors").attr('data-flag-title').trim();
+  var query = new AV.Query(Counter);
+  query.equalTo("url", url);
+  query.find({
+    success: function(results) {
+      if (results.length > 0) {
+        var counter = results[0];
+        counter.fetchWhenSave(true);
+        counter.increment("time");
+        counter.save(null, {
+          success: function(counter) {
+            var content = $(document.getElementById(url)).text() + ': ' + counter.get('time');
+            $(document.getElementById(url)).text(content);
+          },
+          error: function(counter, error) {
+            console.log('Failed to save Visitor num, with error message: ' + error.message);
+          }
+        });
+      } else {
+        var newcounter = new Counter();
+        newcounter.set("title", title);
+        newcounter.set("url", url);
+        newcounter.set("time", 1);
+        newcounter.save(null, {
+          success: function(newcounter) {
+              console.log("newcounter.get('time')="+newcounter.get('time'));
+            var content = $(document.getElementById(url)).text() + ': ' + newcounter.get('time');
+            $(document.getElementById(url)).text(content);
+          },
+          error: function(newcounter, error) {
+            console.log('Failed to create');
+          }
+        });
+      }
+    },
+    error: function(error) {
+      console.log('Error:' + error.code + " " + error.message);
+    }
+  });
+}
+$(function() {
+  var Counter = AV.Object.extend("Counter");
+  if ($('.leancloud_visitors').length == 1) {
+    addCount(Counter);
+  } else if ($('.post-title-link').length > 1) {
+    showTime(Counter);
+  }
+}); 
+</script>
+  
+</body>
+</html>
