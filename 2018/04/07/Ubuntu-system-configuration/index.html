@@ -76,7 +76,7 @@
 <meta property="og:description" content="code{white-space: pre;}">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2018/04/07/Ubuntu-system-configuration/Ubuntu系统配置.png">
-<meta property="og:updated_time" content="2019-05-16T04:12:08.035Z">
+<meta property="og:updated_time" content="2019-05-23T06:12:25.560Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ubuntu系统配置">
 <meta name="twitter:description" content="code{white-space: pre;}">
@@ -312,36 +312,36 @@
 <img src="/2018/04/07/Ubuntu-system-configuration/Ubuntu系统配置.png">
 
 </div>
-<h2 id="基本设置">基本设置</h2>
-<h3 id="设置root密码">设置root密码</h3>
+<h2 id="基本设置">1. 基本设置</h2>
+<h3 id="设置root密码">1.1 设置root密码</h3>
 <p>Ubuntu安装后默认没有root密码，需要用户自己设置。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo su -</span><br><span class="line"><span class="comment">## 输入账户密码</span></span><br><span class="line"></span><br><span class="line">passwd</span><br><span class="line"><span class="comment">## 输入新的root密码</span></span><br><span class="line"><span class="comment">## 再次输入root密码</span></span><br></pre></td></tr></table></figure>
-<h3 id="更新软件源">更新软件源</h3>
+<h3 id="更新软件源">1.2 更新软件源</h3>
 <p>将软件源更换为国内的源，自己选择了aliyun，速度最快（清华的源也可以）<br>
 Ubuntu 的软件源配置文件是/etc/apt/sources.list。将系统自带的该文件做个备份，将该文件替换为下面内容，即可使用 TUNA 的软件源镜像。<br>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial main main restricted universe multiverse</span></span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-updates main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-updates main restricted universe multiverse</span></span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-backports main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-backports main restricted universe multiverse</span></span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-security main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-security main restricted universe multiverse</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="系统美化">系统美化</h2>
-<h3 id="系统更新">系统更新</h3>
+<h2 id="系统美化">2. 系统美化</h2>
+<h3 id="系统更新">2.1 系统更新</h3>
 <p>安装完系统之后，需要更新一些补丁。<code>ALT+CTRL+T</code>打开终端，输入下面代码：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get upgrade</span><br></pre></td></tr></table></figure>
-<h3 id="卸载libreoffice">卸载libreOffice</h3>
+<h3 id="卸载libreoffice">2.1 卸载libreOffice</h3>
 <p>LibreOffice是Ubuntu自带的开源office软件，后面我们会换成WPS，个人喜欢WPS。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get remove libreoffice-common</span><br></pre></td></tr></table></figure>
-<h3 id="删除amazon的链接">删除Amazon的链接</h3>
+<h3 id="删除amazon的链接">2.3 删除Amazon的链接</h3>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get remove unity-webapps-common</span><br></pre></td></tr></table></figure>
-<h3 id="删除不常用的软件">删除不常用的软件</h3>
+<h3 id="删除不常用的软件">2.4 删除不常用的软件</h3>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get remove thunderbird totem rhythmbox empathy brasero simple-scan gnome-mahjongg aisleriot</span><br><span class="line"></span><br><span class="line">sudo apt-get remove gnome-mines cheese transmission-common gnome-orca webbrowser-app gnome-sudoku landscape-client-ui-install</span><br><span class="line"></span><br><span class="line">sudo apt-get remove onboard deja-dup</span><br></pre></td></tr></table></figure>
-<h2 id="主题美化篇">主题美化篇</h2>
-<h3 id="安装桌面unity-tweak-tool">安装桌面unity-tweak-tool</h3>
+<h2 id="主题美化篇">3. 主题美化篇</h2>
+<h3 id="安装桌面unity-tweak-tool">3.1 安装桌面unity-tweak-tool</h3>
 <p>调整Unity桌面环境，推荐使用unity-tweak-tool。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install unity-tweak-tool</span><br></pre></td></tr></table></figure>
-<h3 id="flatabulous主题">Flatabulous主题</h3>
+<h3 id="flatabulous主题">3.2 Flatabulous主题</h3>
 <p>使用下面命令安装Flatabulous主题</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:noobslab/themes</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install flatabulous-theme</span><br></pre></td></tr></table></figure>
 <p>该主题有配套图标，安装方式如下：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:noobslab/icons</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install ultra-flat-icons</span><br></pre></td></tr></table></figure>
 <p>安装往后打开unity-tweak-tool，进入主题，修改为Flatabulous，进入图标修改为Ultra-flat</p>
-<h3 id="字体">字体</h3>
+<h3 id="字体">3.3 字体</h3>
 <p>字体我选择了YaHeiConsolas字体（自己没有使用这个字体，直接使用默认的Ubuntu字体了）<br>
 <a href="http://www.mycode.net.cn/wp-content/uploads/2015/07/YaHeiConsolas.tar.gz" target="_blank" rel="noopener">下载地址戳这里</a> ，执行下面命令安装<br>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf YaHeiConsolas.tar.gz</span><br><span class="line">sudo mkdir -p /usr/share/fonts/vista</span><br><span class="line">sudo cp YaHeiConsolas.ttf /usr/share/fonts/vista/</span><br><span class="line">sudo chmod 644 /usr/share/fonts/vista/*.ttf</span><br><span class="line">cd /usr/share/fonts/vista/</span><br><span class="line">sudo mkfontscale &amp;&amp; sudo mkfontdir &amp;&amp; sudo fc-cache -fv</span><br></pre></td></tr></table></figure></p>
@@ -349,29 +349,29 @@ Ubuntu 的软件源配置文件是/etc/apt/sources.list。将系统自带的该�
 <blockquote>
 <p>注意：Ubuntu14.04 会遇到一个问题，提示<em>unity tweak tool schema missing</em> 然后只需要执行一下命令即可解决这个问题： <code>sudo apt-get install unity-webapps-common</code></p>
 </blockquote>
-<h2 id="安装常用软件">安装常用软件</h2>
-<h3 id="科学上网shadowsocks查看另一篇博客">科学上网Shadowsocks（查看另一篇博客）</h3>
-<h3 id="安装搜狗输入法">安装搜狗输入法</h3>
+<h2 id="安装常用软件">4. 安装常用软件</h2>
+<h3 id="科学上网shadowsocks查看另一篇博客">4.1 科学上网Shadowsocks（查看另一篇博客）</h3>
+<h3 id="安装搜狗输入法">4.2 安装搜狗输入法</h3>
 <p>首先去官网下载搜狗拼音输入法。<br>
 <a href="http://pinyin.sogou.com/linux/?r=pinyin" target="_blank" rel="noopener">搜狗拼音输入法Linux版官网下载地址</a><br>
 安装命令如下：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg -i sogoupinyin_2.1.0.0082_amd64.deb</span><br></pre></td></tr></table></figure>
 <p>如果提示依赖有问题，执行下面命令后重新安装：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install -f</span><br></pre></td></tr></table></figure>
-<h3 id="安装wps">安装WPS</h3>
+<h3 id="安装wps">4.3 安装WPS</h3>
 <p>去官网下载wps .deb安装包: <a href="http://www.wps.cn/product/" target="_blank" rel="noopener">wps官网</a><br>
 然后使用命令安装：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg -i wps-office_10.1.0.5672~a21_amd64.deb</span><br></pre></td></tr></table></figure>
 <p>如果提示依赖有问题，执行下面命令后重新安装：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install -f</span><br></pre></td></tr></table></figure>
-<h3 id="安装截图工具-shutter">安装截图工具 Shutter</h3>
+<h3 id="安装截图工具-shutter">4.4 安装截图工具 Shutter</h3>
 <p>可以直接到软件管理中搜索安装。<br>
 配置Shutter快捷键</p>
-<h3 id="安装chrome浏览器">安装Chrome浏览器</h3>
+<h3 id="安装chrome浏览器">4.5 安装Chrome浏览器</h3>
 <p>最好用的浏览器，没有之一，强大的插件功能。<br>
 安装命令如下：<br>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sudo wget http://www.linuxidc.com/files/repo/google-chrome.list -P /etc/apt/sources.list.d/</span><br><span class="line"><span class="meta">#</span><span class="bash"> 以下是一条语句</span></span><br><span class="line">wget -q -O - https://dl.google.com/linux/linux_signing_key.pub  | sudo apt-key add -   </span><br><span class="line"></span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install google-chrome-stable</span><br><span class="line">google-chrome-stable</span><br></pre></td></tr></table></figure></p>
-<h3 id="安装git">安装Git</h3>
+<h3 id="安装git">4.6 安装Git</h3>
 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="builtin-name">get</span> install git</span><br></pre></td></tr></table></figure>
 <p><strong>配置用户名和邮箱:</strong></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name "smile"</span><br><span class="line">git config --global user.email "smilelingyong@163.com"</span><br></pre></td></tr></table></figure>
@@ -403,7 +403,7 @@ Ubuntu 的软件源配置文件是/etc/apt/sources.list。将系统自带的该�
 参考博客：<a href="http://blog.csdn.net/jiaqi0109/article/details/62261374" target="_blank" rel="noopener">Ubuntu 16.04/10 Git配置及连接Github</a><br>
 具体Git用法可以参考<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="noopener">廖雪峰老师Git教程</a>。</li>
 </ul>
-<h3 id="安装oracle-jdk-8">安装Oracle JDK 8</h3>
+<h3 id="安装oracle-jdk-8">4.7 安装Oracle JDK 8</h3>
 <p>首先到Oracle官网下载JDK8，下载地址如下：<br>
 <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="noopener">Oracle JDK8 Linux 版官网下载地址</a><br>
 安装命令如下：</p>
@@ -416,9 +416,9 @@ Ubuntu 的软件源配置文件是/etc/apt/sources.list。将系统自带的该�
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure>
 <p>查看是否安装成功：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
-<h3 id="安装sublime-3">安装Sublime 3</h3>
+<h3 id="安装sublime-3">4.8 安装Sublime 3</h3>
 <p>参考博客：<a href="http://blog.csdn.net/frank_wangjianliang/article/details/51226807" class="uri" target="_blank" rel="noopener">http://blog.csdn.net/frank_wangjianliang/article/details/51226807</a></p>
-<h3 id="安装网易云音乐">安装网易云音乐</h3>
+<h3 id="安装网易云音乐">4.9 安装网易云音乐</h3>
 <p>网易云音乐应该是Linux里体验最好的音乐播放器了，首先去官网下载网易云音乐。<br>
 <strong>注意：下载对应的版本，系统是Ubuntu16.04，就下载对应的Ubuntu16.04版本</strong><br>
 <a href="http://music.163.com/#/download" target="_blank" rel="noopener">网易云音乐Linux版官网下载地址</a><br>
@@ -426,13 +426,13 @@ Ubuntu 的软件源配置文件是/etc/apt/sources.list。将系统自带的该�
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg -i netease-cloud-music_1.0.0_amd64_ubuntu16.04.deb</span><br></pre></td></tr></table></figure></p>
 <p>如果提示依赖有问题，执行下面命令后重新安装：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install -f</span><br></pre></td></tr></table></figure>
-<h3 id="安装有道词典">安装有道词典</h3>
+<h3 id="安装有道词典">4.10 安装有道词典</h3>
 <p>去有道官网下载安装包：<a href="http://cidian.youdao.com/index-linux.html" target="_blank" rel="noopener">有道官网</a><br>
 安装命令如下：<br>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg -i youdao-dict_1.1.0-0-ubuntu_amd64.deb</span><br></pre></td></tr></table></figure></p>
 <p>如果提示依赖有问题，执行下面命令后重新安装：<br>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install -f</span><br></pre></td></tr></table></figure></p>
-<h3 id="安装teamviewer">安装Teamviewer</h3>
+<h3 id="安装teamviewer">4.11 安装Teamviewer</h3>
 <p>去Teamviwer官网下载 .deb安装包：<a href="https://www.teamviewer.com/en/download/linux/" target="_blank" rel="noopener">Teamviwer官网下载地址</a><br>
 64位Ubuntu 16.04系统需要添加32位架构支持，命令如下</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg --add-architecture i386</span><br><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
@@ -446,23 +446,23 @@ Ubuntu 的软件源配置文件是/etc/apt/sources.list。将系统自带的该�
 <p><strong>卸载Teamviewer</strong></p>
 </blockquote>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get --purge remove teamviewer</span><br><span class="line"><span class="meta">#</span><span class="bash"> 删除相应的目录</span></span><br><span class="line">rm -rf /home/lly/.local/share/teamviewer</span><br><span class="line">rm -rf /home/lly/.local/share/teamviewer12</span><br><span class="line">rm -rf /home/lly/.config/teamviewer</span><br></pre></td></tr></table></figure>
-<h3 id="安装java-jdk">安装java jdk</h3>
+<h3 id="安装java-jdk">4.12 安装java jdk</h3>
 <p>安装命令：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:webupd8team/java</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install oracle-java8-installer</span><br></pre></td></tr></table></figure>
 <p>安装过程中会出现oracle license对话框，选择 是<br>
 安装完成后，输入 <code>java  -version</code> 或者 <code>javac -version</code> 查看是否安装成功。得到类似以下输出，表示安装成功。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">lly@lly:~$ java -version</span><br><span class="line">java version "1.8.0_161"</span><br><span class="line">Java(TM) SE Runtime Environment (build 1.8.0_161-b12)</span><br><span class="line">Java HotSpot(TM) 64-Bit Server VM (build 25.161-b12, mixed mode)</span><br></pre></td></tr></table></figure>
-<h3 id="anaconda以及jupyter相关操作">Anaconda以及Jupyter相关操作</h3>
+<h3 id="anaconda以及jupyter相关操作">4.13 Anaconda以及Jupyter相关操作</h3>
 <p>打开 <strong><code>Anaconda Navigator</code></strong>：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">anaconda-navigator</span><br></pre></td></tr></table></figure>
 <p>打开 <strong><code>jupyter-notebook</code></strong> :</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nuhup jupyter-notebook &amp;</span><br></pre></td></tr></table></figure>
 <p>查看 jupyter-notebook <strong><code>token</code></strong></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter-notebook list</span><br></pre></td></tr></table></figure>
-<h2 id="安装系统软件">安装系统软件</h2>
-<h3 id="psensor">Psensor</h3>
-<h3 id="system-load-indicator">System Load Indicator</h3>
-<h3 id="redshift">Redshift</h3>
+<h2 id="安装系统软件">5. 安装系统软件</h2>
+<h3 id="psensor">5.1 Psensor</h3>
+<h3 id="system-load-indicator">5.2 System Load Indicator</h3>
+<h3 id="redshift">5.3 Redshift</h3>
 </body>
 </html>
 </span>
@@ -622,7 +622,7 @@ Ubuntu 的软件源配置文件是/etc/apt/sources.list。将系统自带的该�
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本设置"><span class="nav-text">基本设置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#设置root密码"><span class="nav-text">设置root密码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更新软件源"><span class="nav-text">更新软件源</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#系统美化"><span class="nav-text">系统美化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#系统更新"><span class="nav-text">系统更新</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#卸载libreoffice"><span class="nav-text">卸载libreOffice</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除amazon的链接"><span class="nav-text">删除Amazon的链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除不常用的软件"><span class="nav-text">删除不常用的软件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主题美化篇"><span class="nav-text">主题美化篇</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装桌面unity-tweak-tool"><span class="nav-text">安装桌面unity-tweak-tool</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flatabulous主题"><span class="nav-text">Flatabulous主题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字体"><span class="nav-text">字体</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装常用软件"><span class="nav-text">安装常用软件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#科学上网shadowsocks查看另一篇博客"><span class="nav-text">科学上网Shadowsocks（查看另一篇博客）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装搜狗输入法"><span class="nav-text">安装搜狗输入法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装wps"><span class="nav-text">安装WPS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装截图工具-shutter"><span class="nav-text">安装截图工具 Shutter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装chrome浏览器"><span class="nav-text">安装Chrome浏览器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装git"><span class="nav-text">安装Git</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装oracle-jdk-8"><span class="nav-text">安装Oracle JDK 8</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装sublime-3"><span class="nav-text">安装Sublime 3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装网易云音乐"><span class="nav-text">安装网易云音乐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装有道词典"><span class="nav-text">安装有道词典</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装teamviewer"><span class="nav-text">安装Teamviewer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装java-jdk"><span class="nav-text">安装java jdk</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#anaconda以及jupyter相关操作"><span class="nav-text">Anaconda以及Jupyter相关操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装系统软件"><span class="nav-text">安装系统软件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#psensor"><span class="nav-text">Psensor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#system-load-indicator"><span class="nav-text">System Load Indicator</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#redshift"><span class="nav-text">Redshift</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本设置"><span class="nav-text">1. 基本设置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#设置root密码"><span class="nav-text">1.1 设置root密码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更新软件源"><span class="nav-text">1.2 更新软件源</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#系统美化"><span class="nav-text">2. 系统美化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#系统更新"><span class="nav-text">2.1 系统更新</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#卸载libreoffice"><span class="nav-text">2.1 卸载libreOffice</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除amazon的链接"><span class="nav-text">2.3 删除Amazon的链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除不常用的软件"><span class="nav-text">2.4 删除不常用的软件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主题美化篇"><span class="nav-text">3. 主题美化篇</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装桌面unity-tweak-tool"><span class="nav-text">3.1 安装桌面unity-tweak-tool</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flatabulous主题"><span class="nav-text">3.2 Flatabulous主题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字体"><span class="nav-text">3.3 字体</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装常用软件"><span class="nav-text">4. 安装常用软件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#科学上网shadowsocks查看另一篇博客"><span class="nav-text">4.1 科学上网Shadowsocks（查看另一篇博客）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装搜狗输入法"><span class="nav-text">4.2 安装搜狗输入法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装wps"><span class="nav-text">4.3 安装WPS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装截图工具-shutter"><span class="nav-text">4.4 安装截图工具 Shutter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装chrome浏览器"><span class="nav-text">4.5 安装Chrome浏览器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装git"><span class="nav-text">4.6 安装Git</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装oracle-jdk-8"><span class="nav-text">4.7 安装Oracle JDK 8</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装sublime-3"><span class="nav-text">4.8 安装Sublime 3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装网易云音乐"><span class="nav-text">4.9 安装网易云音乐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装有道词典"><span class="nav-text">4.10 安装有道词典</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装teamviewer"><span class="nav-text">4.11 安装Teamviewer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装java-jdk"><span class="nav-text">4.12 安装java jdk</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#anaconda以及jupyter相关操作"><span class="nav-text">4.13 Anaconda以及Jupyter相关操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装系统软件"><span class="nav-text">5. 安装系统软件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#psensor"><span class="nav-text">5.1 Psensor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#system-load-indicator"><span class="nav-text">5.2 System Load Indicator</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#redshift"><span class="nav-text">5.3 Redshift</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
