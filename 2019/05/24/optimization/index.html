@@ -82,7 +82,7 @@
 <meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Cgamma">
 <meta property="og:image" content="http://yoursite.com/2019/05/24/optimization/5.gif">
 <meta property="og:image" content="http://yoursite.com/2019/05/24/optimization/1.gif">
-<meta property="og:updated_time" content="2019-05-24T08:35:01.722Z">
+<meta property="og:updated_time" content="2019-05-24T08:55:12.865Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="优化算法">
 <meta name="twitter:description" content="code{white-space: pre;}              文章转载于：从 SGD 到 Adam —— 深度学习优化算法概览(一)">
@@ -377,16 +377,20 @@ m_t = \gamma m_{t-1} + \eta g_t \\
 \theta_{t+1}= \theta_t - m_t
 \]</span><br>
 即在原步长(SGD中是<span class="math inline">\(\eta g_t\)</span>) 之上，增加了与上一时刻动量相关的一项 <span class="math inline">\(\gamma m_{t-1}\)</span>，目的是结合上一时刻步长(下降梯度)， 其中 <span class="math inline">\(m_{t-1}\)</span> 是上一时刻的动量，<span class="math inline">\(\gamma\)</span> 是动量因子。也就是说，<span class="math inline">\(t\)</span> 时刻的下降方向，不仅由当前点的梯度方向决定，而且由此前累积的下降方向决定，<span class="math inline">\(\gamma\)</span> 通常取 0.9 左右。这就意味着下降方向主要是此前累积的下降方向，并略微偏向当前时刻的下降方向。<strong>这使得参数中那些梯度方向变化不大的维度可以加速更新，并减少梯度方向变化较大的维度上的更新幅度</strong>。由此产生了加速收敛和减小震荡的效果。</p>
-<img src="/2019/05/24/optimization/2.jpg"><br>
-​
-<center>
-图 1(a): SGD
-</center>
-<img src="/2019/05/24/optimization/3.jpg"><br>
-​
-<center>
-图 1(b): SGD with momentum
-</center>
+<table>
+<thead>
+<tr class="header">
+<th align="center"><img src="/2019/05/24/optimization/2.jpg"></th>
+<th align="center"><img src="/2019/05/24/optimization/3.jpg"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">图 1(a): SGD</td>
+<td align="center">图 1(b): SGD with momentum</td>
+</tr>
+</tbody>
+</table>
 <p>从图 1 中可以看出，引入动量有效的加速了梯度下降收敛过程。</p>
 <h2 id="nesterov-accelerated-gradient">Nesterov Accelerated Gradient</h2>
 <p><strong>SGD 还有一个问题是困在局部最优的沟壑里面震荡</strong>。想象一下你走到一个盆地，四周都是略高的小山，你觉得没有下坡的方向，那就只能待在这里了。可是如果你爬上高地，就会发现外面的世界还很广阔。因此，我们不能停留在当前位置去观察未来的方向，而要向前一步、多看一步、看远一些。</p>
@@ -505,22 +509,24 @@ m_t = \gamma m_{t-1} + \eta g_t
 \]</span><br>
 即可在 Adam 中引入 Nesterov 加速效果。</p>
 <h2 id="可视化分析">可视化分析</h2>
-<div class="figure">
-<img src="/2019/05/24/optimization/5.gif">
-
-</div>
-​
-<center>
-图 3: SGD optimization on loss surface contours
-</center>
-<div class="figure">
-<img src="/2019/05/24/optimization/1.gif">
-
-</div>
-​
-<center>
-图 4: SGD optimization on saddle point
-</center>
+<table>
+<colgroup>
+<col width="55%">
+<col width="44%">
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center"><img src="/2019/05/24/optimization/5.gif"></th>
+<th align="center"><img src="/2019/05/24/optimization/1.gif"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">图 3: SGD optimization on loss surface contours</td>
+<td align="center">图 4: SGD optimization on saddle point</td>
+</tr>
+</tbody>
+</table>
 <p>图 3 和图 4 两张动图直观的展现了不同算法的性能。(Image credit: <a href="http://link.zhihu.com/?target=https%3A//twitter.com/alecrad" target="_blank" rel="noopener">Alec Radford</a>)</p>
 <p>图 3 中，我们可以看到不同算法在损失面等高线图中的学习过程，它们均同同一点出发，但沿着不同路径达到最小值点。其中 Adagrad、Adadelta、RMSprop 从最开始就找到了正确的方向并快速收敛；SGD 找到了正确方向但收敛速度很慢；SGD-M 和 NAG 最初都偏离了航道，但也能最终纠正到正确方向，SGD-M 偏离的惯性比 NAG 更大。</p>
 <p>图 4 展现了不同算法在鞍点处的表现。这里，SGD、SGD-M、NAG 都受到了鞍点的严重影响，尽管后两者最终还是逃离了鞍点；而 Adagrad、RMSprop、Adadelta 都很快找到了正确的方向。<br>
@@ -529,6 +535,7 @@ m_t = \gamma m_{t-1} + \eta g_t
 <h2 id="reference">Reference</h2>
 <ul>
 <li><a href="https://blog.csdn.net/google19890102/article/details/69942970" class="uri" target="_blank" rel="noopener">https://blog.csdn.net/google19890102/article/details/69942970</a></li>
+<li><a href="https://blog.csdn.net/google19890102/article/details/69942970" target="_blank" rel="noopener">翻译的一篇博客</a></li>
 <li><a href="https://zhuanlan.zhihu.com/p/32230623" target="_blank" rel="noopener">一个框架看懂优化算法之异同 SGD/AdaGrad/Adam</a></li>
 <li><a href="https://zhuanlan.zhihu.com/p/32626442" target="_blank" rel="noopener">从 SGD 到 Adam —— 深度学习优化算法概览(一)</a></li>
 <li><a href="http://cs231n.github.io/neural-networks-3/" class="uri" target="_blank" rel="noopener">http://cs231n.github.io/neural-networks-3/</a></li>

@@ -76,7 +76,7 @@
 <meta property="og:description" content="code{white-space: pre;}">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2018/04/07/Ubuntu-system-configuration/Ubuntu系统配置.png">
-<meta property="og:updated_time" content="2019-05-23T08:38:29.873Z">
+<meta property="og:updated_time" content="2019-05-24T08:40:39.144Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ubuntu系统配置">
 <meta name="twitter:description" content="code{white-space: pre;}">
@@ -403,6 +403,9 @@ Ubuntu 的软件源配置文件是/etc/apt/sources.list。将系统自带的该�
 参考博客：<a href="http://blog.csdn.net/jiaqi0109/article/details/62261374" target="_blank" rel="noopener">Ubuntu 16.04/10 Git配置及连接Github</a><br>
 具体Git用法可以参考<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="noopener">廖雪峰老师Git教程</a>。</li>
 </ul>
+<p><strong>解决 git 中中文文件名，显示乱码问题</strong></p>
+<p>通过将Git配置变量 core.quotepath 设置为false</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global core.quotepath <span class="literal">false</span></span><br></pre></td></tr></table></figure>
 <h3 id="安装oracle-jdk-8">4.7 安装Oracle JDK 8</h3>
 <p>首先到Oracle官网下载JDK8，下载地址如下：<br>
 <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="noopener">Oracle JDK8 Linux 版官网下载地址</a><br>
