@@ -77,7 +77,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2019/05/23/Contrastive-Loss-contrast%20loss%20function%20and%20gradient%20calculation/contrastive_loss.png">
 <meta property="og:image" content="http://yoursite.com/2019/05/23/Contrastive-Loss-contrast%20loss%20function%20and%20gradient%20calculation/Dimensionality_Reduction.png">
-<meta property="og:updated_time" content="2019-05-23T09:11:06.543Z">
+<meta property="og:updated_time" content="2019-05-24T01:05:16.074Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Contrastive Loss 对比损失函数及梯度的计算">
 <meta name="twitter:description" content="code{white-space: pre;}          Contrastive loss 最初源于 Yann LeCun “Dimensionality Reduction by Learning an Invariant Mapping” CVPR 2016。该损失函数主要是用于降维中，即本来相似的样本，在经过降维（特征提取）后，在特征空间中，两个样本">
@@ -238,8 +238,8 @@
               &nbsp; | &nbsp; In
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">学习笔记</span>
+                  <a href="/categories/ML/" itemprop="url" rel="index">
+                    <span itemprop="name">ML</span>
                   </a>
                 </span>
 
@@ -250,8 +250,8 @@
 
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/ML/" itemprop="url" rel="index">
-                    <span itemprop="name">ML</span>
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
                   </a>
                 </span>
 
@@ -382,7 +382,7 @@ F = -KX
 \]</span><br>
 (F表示两点间弹簧的作用力，K是弹簧的劲度系数，X为弹簧拉伸或收缩的长度，弹簧静止状态时X=0)</p>
 <p>论文中将该<code>contrastive loss</code>损失函数类比于弹簧模型：将成对的样本特征，使用该损失函数来表达成对样本特征的匹配程度。成对的样本特征之间（类比于图中的一个个点），我们假设这些点之间都有一个弹簧，弹簧静止时长度为０，点对之间无作用力。①对于样本相似的特征，相当于其间的弹簧产生了正位移Ｘ(X &lt; m)，即弹簧被拉伸了X的长度，此时两个相似特征（点）之间存在吸引力。②对于样本不相似的特征，相当于其间的弹簧产生的了负位移，即弹簧被压缩了，此时两个不相似特征之间存在排斥力。注意弹簧的特性：当两点之间弹簧位移超Ｘ&gt;m时，此时，弹簧发生形变，此时两点之间视为没有吸引力了。具体如下图所示：</p>
-<p>结合上面求梯度的公式也可以很好的理解该损失函数的思想，上面的 $ $ 和 $ $ 代表两点间弹簧的作用力F，<span class="math inline">\(\frac{\partial D_W}{\partial W}\)</span> 对应弹簧的劲度系数，<span class="math inline">\(D_W\)</span> 和 <span class="math inline">\(-(m - D_W)\)</span>代表弹簧的缩放位移。</p>
+<p>结合上面求梯度的公式也可以很好的理解该损失函数的思想，上面的 <span class="math inline">\(\frac{\partial L_S}{\partial W}​\)</span> 和 <span class="math inline">\(\frac{\partial L_D}{\partial W}​\)</span> 代表两点间弹簧的作用力F，<span class="math inline">\(\frac{\partial D_W}{\partial W}​\)</span> 对应弹簧的劲度系数，<span class="math inline">\(D_W​\)</span> 和 <span class="math inline">\(-(m - D_W)​\)</span>代表弹簧的缩放位移。</p>
 <div class="figure">
 <img src="/2019/05/23/Contrastive-Loss-contrast loss function and gradient calculation/Dimensionality_Reduction.png">
 
