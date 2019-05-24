@@ -81,7 +81,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/05/24/optimization/4.jpg">
 <meta property="og:image" content="http://yoursite.com/2019/05/24/optimization/5.gif">
 <meta property="og:image" content="http://yoursite.com/2019/05/24/optimization/1.gif">
-<meta property="og:updated_time" content="2019-05-24T12:06:12.004Z">
+<meta property="og:updated_time" content="2019-05-24T12:41:54.624Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="优化算法">
 <meta name="twitter:description" content="code{white-space: pre;}              文章转载于：从 SGD 到 Adam —— 深度学习优化算法概览(一) 和 梯度下降优化算法综述">
@@ -490,18 +490,16 @@ R M S[\Delta \theta]_{t}=\sqrt{E\left[\Delta \theta^{2}\right]_{t}+\epsilon}
 <p><code>RMSprop</code> 是一个未被发表的<strong>自适应学习率的算法</strong>，该算法由Geoff Hinton在其<a href="http://www.cs.toronto.edu/~tijmen/csc321/slides/lecture_slides_lec6.pdf" target="_blank" rel="noopener">Coursera课堂的课程6e</a>中提出。</p>
 <p>RMSprop和Adadelta在相同的时间里被独立的提出，都起源于对Adagrad的极速递减的学习率问题的求解。实际上，<code>RMSprop</code> 是先前我们得到的 <code>Adadelta</code> 的第一个更新向量的特例：<br>
 <span class="math display">\[
-\begin{array}{l}{E\left[g^{2}\right]_{t}=0.9 E\left[g^{2}\right]_{t-1}+0.1 g_{t}^{2}} \\ {\theta_{t+1}=\theta_{t}-\frac{\eta}{\sqrt{E\left[g^{2}\right]_{t}+\epsilon}} g_{t}}\end{array}
+\begin{array}{l}{E\left[g^{2}\right]_{t}= γ E\left[g^{2}\right]_{t-1}+(1-γ) g_{t}^{2}} \\ {\theta_{t+1}=\theta_{t}-\frac{\eta}{\sqrt{E\left[g^{2}\right]_{t}+\epsilon}} g_{t}}\end{array}
 \]</span><br>
-同样，<code>RMSprop</code> 将学习率分解成一个平方梯度的指数衰减的平均。Hinton建议将 <span class="math inline">\(γ\)</span> 设置为0.9，对于学习率 <span class="math inline">\(η\)</span>，一个好的固定值为0.001。</p>
+同样，<code>RMSprop</code> 将学习率分解成一个平方梯度的指数衰减的平均。Hinton建议将 <span class="math inline">\(γ​\)</span> 设置为0.9，对于学习率 <span class="math inline">\(η​\)</span>，一个好的固定值为0.001。</p>
 <h2 id="adam">10. Adam</h2>
 <p>Adam 可以认为是 RMSprop 和 Momentum 的结合。和 RMSprop 对二阶动量使用指数移动平均类似，Adam 中对一阶动量也是用指数移动平均计算。<br>
 <span class="math display">\[
-m_t = \eta[ \beta_1 m_{t-1} + (1 - \beta_1)g_t ]
-\]</span><br>
-<span class="math display">\[
+m_t = \eta[ \beta_1 m_{t-1} + (1 - \beta_1)g_t ]   \\ 
 v_t = \beta_2 v_{t-1} + (1-\beta_2) \cdot \text{diag}(g_t^2)
-\]</span></p>
-<p>其中，初值</p>
+\]</span><br>
+其中，初值</p>
 <p><span class="math display">\[
 m_0 = 0 \\
 v_0 = 0
