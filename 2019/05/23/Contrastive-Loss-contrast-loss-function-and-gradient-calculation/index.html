@@ -77,7 +77,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2019/05/23/Contrastive-Loss-contrast-loss-function-and-gradient-calculation/contrastive_loss.png">
 <meta property="og:image" content="http://yoursite.com/2019/05/23/Contrastive-Loss-contrast-loss-function-and-gradient-calculation/Dimensionality_Reduction.png">
-<meta property="og:updated_time" content="2019-05-24T01:56:46.693Z">
+<meta property="og:updated_time" content="2019-05-24T02:36:53.341Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Contrastive Loss 对比损失函数及梯度的计算">
 <meta name="twitter:description" content="code{white-space: pre;}          Contrastive loss 最初源于 Yann LeCun “Dimensionality Reduction by Learning an Invariant Mapping” CVPR 2006。该损失函数主要是用于降维中，即本来相似的样本，在经过降维（特征提取）后，在特征空间中，两个样本">
@@ -354,12 +354,12 @@ L(W, (Y, X_1, X_2))=\frac{1}{2N}\sum_{n=1}^N \left( YD_W ^2+(1-Y)max(m-D_W,0)^2 
 <p><span class="math display">\[
 \frac{\partial L_S}{\partial W}  =  \left\{
 \begin{eqnarray}
- &amp;&amp;\frac{\partial L_S}{\partial X_1} = D_W\frac{\partial D_W}{\partial X_1} = D_W\frac{\partial}{\partial X_1} ||X_1 - X_2||_2 = D_W\frac{ X_1-X_2}{||X_1-X_2||_2} = X_1 - X_2                                \  &amp;, D_W &gt; m \\
- &amp;&amp;\frac{\partial L_S}{\partial X_2} = D_W\frac{\partial D_W}{\partial X_2} = D_W\frac{\partial}{\partial X_2} ||X_1 - X_2||_2 = D_W\frac{ -(X_1-X_2)}{||X_1-X_2||_2} = -(X_1 - X_2)               &amp;, D_W &lt; m
+ &amp;&amp;\frac{\partial L_S}{\partial X_1} = D_W\frac{\partial D_W}{\partial X_1} = D_W\frac{\partial}{\partial X_1} ||X_1 - X_2||_2 = D_W\frac{ X_1-X_2}{||X_1-X_2||_2} = X_1 - X_2                               \\
+ &amp;&amp;\frac{\partial L_S}{\partial X_2} = D_W\frac{\partial D_W}{\partial X_2} = D_W\frac{\partial}{\partial X_2} ||X_1 - X_2||_2 = D_W\frac{ -(X_1-X_2)}{||X_1-X_2||_2} = -(X_1 - X_2)            
 \end{eqnarray}\right.
 \]</span></p>
 <ul>
-<li><span class="math inline">\(Y = 0\)</span> （即样本不相似时），损失函数为 <span class="math inline">\(L_D = \frac{1}{2N}\sum (1-Y)max(m-D_W,0)^2\)</span>，此时计算梯度为 :</li>
+<li><span class="math inline">\(Y = 0​\)</span> （即样本不相似时），损失函数为 <span class="math inline">\(L_D = \frac{1}{2N}\sum (1-Y)max(m-D_W,0)^2​\)</span>，此时计算梯度为 :</li>
 </ul>
 <p><span class="math display">\[
   \frac{\partial L_D}{\partial W} = \left\{
