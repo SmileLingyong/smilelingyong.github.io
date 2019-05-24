@@ -67,25 +67,24 @@
   <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=0.4.5.2" />
 
 
-<meta name="description" content="code{white-space: pre;}              文章转载于：从 SGD 到 Adam —— 深度学习优化算法概览(一)">
+<meta name="description" content="code{white-space: pre;}              文章转载于：从 SGD 到 Adam —— 深度学习优化算法概览(一) 和 梯度下降优化算法综述">
 <meta name="keywords" content="Machine Learning,Deeping Learning,优化算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="优化算法">
 <meta property="og:url" content="http://yoursite.com/2019/05/24/optimization/index.html">
 <meta property="og:site_name" content="SmileLingyong">
-<meta property="og:description" content="code{white-space: pre;}              文章转载于：从 SGD 到 Adam —— 深度学习优化算法概览(一)">
+<meta property="og:description" content="code{white-space: pre;}              文章转载于：从 SGD 到 Adam —— 深度学习优化算法概览(一) 和 梯度下降优化算法综述">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2019/05/24/optimization/1.gif">
 <meta property="og:image" content="http://yoursite.com/2019/05/24/optimization/2.jpg">
 <meta property="og:image" content="http://yoursite.com/2019/05/24/optimization/3.jpg">
 <meta property="og:image" content="http://yoursite.com/2019/05/24/optimization/4.jpg">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Cgamma">
 <meta property="og:image" content="http://yoursite.com/2019/05/24/optimization/5.gif">
 <meta property="og:image" content="http://yoursite.com/2019/05/24/optimization/1.gif">
-<meta property="og:updated_time" content="2019-05-24T08:55:12.865Z">
+<meta property="og:updated_time" content="2019-05-24T10:14:49.812Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="优化算法">
-<meta name="twitter:description" content="code{white-space: pre;}              文章转载于：从 SGD 到 Adam —— 深度学习优化算法概览(一)">
+<meta name="twitter:description" content="code{white-space: pre;}              文章转载于：从 SGD 到 Adam —— 深度学习优化算法概览(一) 和 梯度下降优化算法综述">
 <meta name="twitter:image" content="http://yoursite.com/2019/05/24/optimization/1.gif">
 
 
@@ -319,14 +318,14 @@
 
 </div>
 <blockquote>
-<p>文章转载于：<a href="https://zhuanlan.zhihu.com/p/32626442" target="_blank" rel="noopener">从 SGD 到 Adam —— 深度学习优化算法概览(一)</a></p>
+<p>文章转载于：<a href="https://zhuanlan.zhihu.com/p/32626442" target="_blank" rel="noopener">从 SGD 到 Adam —— 深度学习优化算法概览(一)</a> 和 <a href="https://blog.csdn.net/google19890102/article/details/69942970" target="_blank" rel="noopener">梯度下降优化算法综述</a></p>
 </blockquote>
 <a id="more"></a>
-<h2 id="引言">引言</h2>
+<h2 id="引言">1. 引言</h2>
 <p>最优化问题是计算数学中最为重要的研究方向之一。而在深度学习领域，优化算法的选择也是一个模型的重中之重。即使在数据集和模型架构完全相同的情况下，采用不同的优化算法，也很可能导致截然不同的训练效果。</p>
 <p>梯度下降是目前神经网络中使用最为广泛的优化算法之一。为了弥补朴素梯度下降的种种缺陷，研究者们发明了一系列变种算法，优化算法经历了 <code>SGD -&gt; SGDM -&gt; NAG -&gt; AdaGrad -&gt; AdaDelta -&gt; Adam -&gt; NAdam</code> 这样的发展历程。从最初的 SGD (随机梯度下降) 逐步演进到 NAdam。然而，许多学术界最为前沿的文章中，都并没有一味使用 Adam/NAdam 等公认“好用”的自适应算法，很多甚至还选择了最为初级的 SGD 或者 SGD with Momentum 等。</p>
 <p>本文旨在梳理深度学习优化算法的发展历程，并在一个更加概括的框架之下，对优化算法做出分析和对比。</p>
-<h2 id="gradient-descent">Gradient Descent</h2>
+<h2 id="gradient-descent">2. Gradient Descent</h2>
 <p>梯度下降是指，在给定待优化的模型参数 <span class="math inline">\(\theta \in \mathbb{R}^d\)</span> 和目标函数 <span class="math inline">\(J(\theta)\)</span> 后，算法通过沿梯度 <span class="math inline">\(\nabla_\theta J(\theta)\)</span>的相反方向更新 <span class="math inline">\(\theta\)</span> 来最小化 <span class="math inline">\(J(\theta)\)</span> 。学习率 <span class="math inline">\(\eta\)</span> 决定了每一时刻的更新步长。对于每个epoch <span class="math inline">\(t\)</span> ，我们可以用下述步骤描述梯度下降的流程：</p>
 <p>(1) 计算目标函数关于参数的梯度<br>
 <span class="math display">\[
@@ -347,9 +346,9 @@ v_t = \psi(g_1, g_2, \cdots, g_t)
 <blockquote>
 <p>注意：本文提到的步长，就是下降梯度。</p>
 </blockquote>
-<h2 id="gradient-descent-和其算法变种">Gradient Descent 和其算法变种</h2>
+<h2 id="gradient-descent-和其算法变种">3. Gradient Descent 和其算法变种</h2>
 <p>根据以上框架，我们来分析和比较梯度下降的各变种算法。</p>
-<h2 id="vanilla-sgd">Vanilla SGD</h2>
+<h2 id="vanilla-sgd">4. Vanilla SGD</h2>
 <p>朴素 SGD (Stochastic Gradient Descent) 最为简单，没有动量的概念，即<br>
 <span class="math display">\[
 m_t = \eta g_t
@@ -370,7 +369,7 @@ v_t = I^2
 <li>容易停留在一个局部最优点</li>
 <li>如何合理的选择学习率也是 SGD 的一大难点</li>
 </ul>
-<h2 id="sgd-with-momentum">SGD with Momentum</h2>
+<h2 id="sgd-with-momentum">5. SGD with Momentum</h2>
 <p><strong>为了抑制SGD的震荡，SGD-M认为梯度下降过程可以加入惯性(动量) Momentum[3]，加速 SGD 在正确方向的下降并抑制震荡</strong>。就好像下坡的时候，如果发现是陡坡，那就利用惯性跑的快一些。其在SGD的基础上，引入了一阶动量，然后进行更新：<br>
 <span class="math display">\[
 m_t = \gamma m_{t-1} + \eta g_t \\
@@ -392,7 +391,7 @@ m_t = \gamma m_{t-1} + \eta g_t \\
 </tbody>
 </table>
 <p>从图 1 中可以看出，引入动量有效的加速了梯度下降收敛过程。</p>
-<h2 id="nesterov-accelerated-gradient">Nesterov Accelerated Gradient</h2>
+<h2 id="nesterov-accelerated-gradient">6. Nesterov Accelerated Gradient</h2>
 <p><strong>SGD 还有一个问题是困在局部最优的沟壑里面震荡</strong>。想象一下你走到一个盆地，四周都是略高的小山，你觉得没有下坡的方向，那就只能待在这里了。可是如果你爬上高地，就会发现外面的世界还很广阔。因此，我们不能停留在当前位置去观察未来的方向，而要向前一步、多看一步、看远一些。</p>
 <div class="figure">
 <img src="/2019/05/24/optimization/4.jpg">
@@ -426,22 +425,76 @@ m_t   &amp;= \gamma m_{t-1} + \eta g_t \\
 当前时刻的动量项指的是: <span class="math inline">\({m_t}\)</span><br>
 (上面的图只是为了助于理解，其中累积动量</p>
 </blockquote>
-<h2 id="adagrad">Adagrad</h2>
-<p>SGD、SGD-M 和 NAG 均是以相同的学习率去更新 <span class="math inline">\(\theta\)</span> 的各个分量。而深度学习模型中往往涉及大量的参数，不同参数的更新频率往往有所区别。对于更新不频繁的参数（典型例子：更新 word embedding 中的低频词），我们希望单次步长更大，多学习一些知识；对于更新频繁的参数，我们则希望步长较小，使得学习到的参数更稳定，不至于被单个样本影响太多。</p>
-<p>Adagrad[4] 算法即可达到此效果。其引入了二阶动量：<br>
+<h2 id="adagrad">7. Adagrad</h2>
+<p>SGD、SGD-M 和 NAG 均是以相同的学习率去更新 <span class="math inline">\(\theta\)</span> 的各个分量 <span class="math inline">\(\theta_i\)</span>。而深度学习模型中往往涉及大量的参数，不同参数的更新频率往往有所区别。<strong>对于更新不频繁的参数</strong>（典型例子：更新 word embedding 中的低频词），<strong>我们希望单次步长更大，多学习一些知识；对于更新频繁的参数，我们则希望步长较小，使得学习到的参数更稳定，不至于被单个样本影响太多。</strong></p>
+<p>Adagrad在 <span class="math inline">\(t\)</span> 时刻对每一个参数 <span class="math inline">\(\theta_i\)</span> 使用了不同的学习率，我们首先介绍 Adagrad 对每一个参数的更新，然后我们对其向量化。为了简洁，令 <span class="math inline">\(g_{t,i}\)</span> 为在 <span class="math inline">\(t\)</span> 时刻目标函数关于参数 <span class="math inline">\(θ_i\)</span> 的梯度：<br>
+<span class="math display">\[
+g_{t, i} = \nabla_\theta J(\theta_{i})
+\]</span><br>
+在 <span class="math inline">\(t\)</span> 时刻，对每个参数 <span class="math inline">\(θ_i\)</span> 的更新过程变为：<br>
+<span class="math display">\[
+\theta_{t+1, i} = \theta_{t, i} - \eta g_{t, i}
+\]</span><br>
+对于上述的更新规则，在 <span class="math inline">\(t\)</span> 时刻，基于对 <span class="math inline">\(θ_i\)</span> 计算过的历史梯度，Adagrad修正了对每一个参数 <span class="math inline">\(θ_i\)</span> 的学习率：<br>
+<span class="math display">\[
+\theta_{t+1, i}=\theta_{t, i}-\frac{\eta}{\sqrt{v_{t, i i}+\epsilon}} \cdot g_{t, i}
+\]</span><br>
+其中， <span class="math inline">\(v_t \in \mathbb{R}^{d\times d}\)</span> 是对角矩阵，其元素 <span class="math inline">\(v_{t, ii}\)</span> 为参数 第 <span class="math inline">\(i\)</span> 维<strong>从初始时刻到 <span class="math inline">\(t\)</span> 时刻的梯度平方和</strong>。即通过<strong>引入二阶动量</strong>，<strong>来调整每一个参数的学习率</strong>，等效为 <span class="math inline">\(\eta / \sqrt{v_t + \epsilon}\)</span><br>
 <span class="math display">\[
 v_t = \text{diag}(\sum_{i=1}^t g_{i,1}^2, \sum_{i=1}^t g_{i,2}^2, \cdots, \sum_{i=1}^t g_{i,d}^2)
 \]</span><br>
-其中， <span class="math inline">\(v_t \in \mathbb{R}^{d\times d}\)</span> 是对角矩阵，其元素 <span class="math inline">\(v_{t, ii}\)</span> 为参数第 <span class="math inline">\(i\)</span> 维从初始时刻到时刻 <span class="math inline">\(t\)</span> 的梯度平方和。</p>
-<p>此时，可以这样理解：<strong>学习率等效为 <span class="math inline">\(\eta / \sqrt{v_t + \epsilon}\)</span></strong> 。对于此前频繁更新过的参数，其二阶动量的对应分量较大，学习率就较小。这一方法在稀疏数据的场景下表现很好。但也<u>存在一些问题</u>：<strong>因为 <span class="math inline">\(\sqrt{v_t}\)</span> 是单调递增的，会使得学习率单调递减至0，可能会使得训练过程提前结束，即便后续还有数据也无法学到必要的知识。</strong></p>
-<h2 id="adadeltarmsprop">AdaDelta/RMSprop</h2>
-<p>在 Adagrad 中， <span class="math inline">\(\sqrt{v_t}\)</span> 是单调递增的，使得学习率逐渐递减至 0，可能导致训练过程提前结束。为了改进这一缺点，可以考虑<strong>在计算二阶动量时不累积全部历史梯度，而只关注最近某一时间窗口内的下降梯度</strong>。根据此思想有了 RMSprop[5]。记 <span class="math inline">\(g_t \odot g_t\)</span> 为 <span class="math inline">\(g_t^2\)</span> ，有</p>
-<p><span class="math display">\[
-v_t = \gamma v_{t-1} + (1-\gamma) \cdot \text{diag}(g_t^2)
+由于 <span class="math inline">\(v_t\)</span> 的对角线上包含了关于所有参数 <span class="math inline">\(θ\)</span> 的历史梯度的平方和，现在，我们可以通过 <span class="math inline">\(v_t\)</span> 和 <span class="math inline">\(g_t\)</span> 之间的元素向量乘法⊙向量化上述的操作：<br>
+<span class="math display">\[
+\theta_{t+1}=\theta_{t}-\frac{\eta}{\sqrt{v_{t}+\epsilon}} \odot g_{t}
 \]</span><br>
-其二阶动量采用指数移动平均公式计算，这样即可避免二阶动量持续累积的问题。和 SGD-M 中的参数类似，<img src="https://www.zhihu.com/equation?tex=%5Cgamma" alt> 通常取 0.9 左右。</p>
-<h2 id="adam">Adam</h2>
-<p>Adam[6] 可以认为是 RMSprop 和 Momentum 的结合。和 RMSprop 对二阶动量使用指数移动平均类似，Adam 中对一阶动量也是用指数移动平均计算。<br>
+Adagrad算法的一个主要优点是无需手动调整学习率。在大多数的应用场景中，通常采用常数0.01。通过引入二阶动量，对于此前频繁更新过的参数，其二阶动量的对应分量较大，学习率就较小。这一方法在稀疏数据的场景下表现很好。但也<u>存在一些问题</u>：<strong>因为 <span class="math inline">\(\sqrt{v_t}\)</span> 是单调递增的，会使得学习率单调递减至0，可能会使得训练过程提前结束，即便后续还有数据也无法学到必要的知识。</strong></p>
+<h2 id="adadelta">8. AdaDelta</h2>
+<p><code>Adadelta</code> 是 <code>Adagrad</code> 的一种扩展算法，以<strong>处理Adagrad学习速率单调递减的问题</strong>。考虑<strong>在计算二阶动量时，不是计算所有的历史梯度平方，而只关注最近某一时间窗口内的下降梯度，Adadelta将计算计算历史梯度的窗口大小限制为一个固定值 <span class="math inline">\(w\)</span></strong></p>
+<p>在 <code>Adadelta</code> 中，无需存储先前的 <span class="math inline">\(w\)</span> 个平方梯度，而是将梯度的平方递归地表示成所有历史梯度平方的均值。在 <span class="math inline">\(t\)</span> 时刻的均值 <span class="math inline">\(E[g^2]_t\)</span> 只取决于先前的均值和当前的梯度（分量 <span class="math inline">\(γ\)</span> 类似于动量项）：<br>
+<span class="math display">\[
+E\left[g^{2}\right]_{t}=\gamma E\left[g^{2}\right]_{t-1}+(1-\gamma) g_{t}^{2}
+\]</span><br>
+我们将 <span class="math inline">\(γ\)</span> 设置成与动量项相似的值，即0.9左右。为了简单起见，我们利用参数更新向量 <span class="math inline">\(Δθ_t\)</span> 重新表示SGD的更新过程：</p>
+<p><span class="math display">\[
+\begin{array}{c}{\Delta \theta_{t}=-\eta \cdot g_{t, i}} \\ {\theta_{t+1}=\theta_{t}+\Delta \theta_{t}}\end{array}
+\]</span><br>
+我们先前得到的 <code>Adagrad</code> 参数更新向量变为：<br>
+<span class="math display">\[
+\Delta \theta_{t}=-\frac{\eta}{\sqrt{v_{t}+\epsilon}} \odot g_{t}
+\]</span><br>
+现在，我们简单将对角矩阵 <span class="math inline">\(v_t\)</span> 替换成历史梯度的均值 <span class="math inline">\(E[g^2]_t\)</span>：<br>
+<span class="math display">\[
+\Delta \theta_{t}=-\frac{\eta}{\sqrt{E\left[g^{2}\right]_{t}+\epsilon}} g_{t}
+\]</span><br>
+由于分母仅仅是梯度的均方根（root mean squared，RMS）误差，我们可以简写为：<br>
+<span class="math display">\[
+\Delta \theta_{t}=-\frac{\eta}{R M S[g]_{t}} g_{t}
+\]</span><br>
+作者指出上述更新公式中的每个部分（与SGD，SDG-M 或者Adagrad）并不一致，即更新规则中必须与参数具有相同的假设单位。为了实现这个要求，作者首次定义了另一个指数衰减均值，这次不是梯度平方，而是参数的平方的更新：<br>
+<span class="math display">\[
+E\left[\Delta \theta^{2}\right]_{t}=\gamma E\left[\Delta \theta^{2}\right]_{t-1}+(1-\gamma) \Delta \theta_{t}^{2}
+\]</span><br>
+因此，参数更新的均方根误差为：<br>
+<span class="math display">\[
+R M S[\Delta \theta]_{t}=\sqrt{E\left[\Delta \theta^{2}\right]_{t}+\epsilon}
+\]</span><br>
+由于 <span class="math inline">\(RMS[Δθ]_t\)</span> 是未知的，我们利用参数的均方根误差来近似更新。利用 <span class="math inline">\(RMS[Δθ]_{t−1}\)</span> 替换先前的更新规则中的学习率 <span class="math inline">\(η\)</span>，最终得到 <code>Adadelta</code> 的更新规则：<br>
+<span class="math display">\[
+\Delta \theta_{t}=-\frac{R M S[\Delta \theta]_{t-1}}{R M S[g]_{t}} g_{t}
+\]</span></p>
+<p><span class="math display">\[
+\theta_{t+1}=\theta_{t}+\Delta \theta_{t}
+\]</span></p>
+<p>使用 <code>Adadelta</code> 算法，我们甚至都无需设置默认的学习率，因为更新规则中已经移除了学习率。</p>
+<h2 id="rmsprop">9. RMSprop</h2>
+<p><code>RMSprop</code> 是一个未被发表的<strong>自适应学习率的算法</strong>，该算法由Geoff Hinton在其<a href="http://www.cs.toronto.edu/~tijmen/csc321/slides/lecture_slides_lec6.pdf" target="_blank" rel="noopener">Coursera课堂的课程6e</a>中提出。</p>
+<p>RMSprop和Adadelta在相同的时间里被独立的提出，都起源于对Adagrad的极速递减的学习率问题的求解。实际上，<code>RMSprop</code> 是先前我们得到的 <code>Adadelta</code> 的第一个更新向量的特例：<br>
+<span class="math display">\[
+\begin{array}{l}{E\left[g^{2}\right]_{t}=0.9 E\left[g^{2}\right]_{t-1}+0.1 g_{t}^{2}} \\ {\theta_{t+1}=\theta_{t}-\frac{\eta}{\sqrt{E\left[g^{2}\right]_{t}+\epsilon}} g_{t}}\end{array}
+\]</span><br>
+同样，<code>RMSprop</code> 将学习率分解成一个平方梯度的指数衰减的平均。Hinton建议将 <span class="math inline">\(γ\)</span> 设置为0.9，对于学习率 <span class="math inline">\(η\)</span>，一个好的固定值为0.001。</p>
+<h2 id="adam">10. Adam</h2>
+<p>Adam 可以认为是 RMSprop 和 Momentum 的结合。和 RMSprop 对二阶动量使用指数移动平均类似，Adam 中对一阶动量也是用指数移动平均计算。<br>
 <span class="math display">\[
 m_t = \eta[ \beta_1 m_{t-1} + (1 - \beta_1)g_t ]
 \]</span><br>
@@ -465,11 +518,11 @@ v_0 = 0
 \theta_{t+1} = \theta_t - \frac{1}{\sqrt{\hat{v}_t} + \epsilon } \hat{m}_t
 \]</span><br>
 可以保证迭代较为平稳。</p>
-<h2 id="nadam">NAdam</h2>
+<h2 id="nadam">11. NAdam</h2>
 <blockquote>
 <p>这里还没有太看懂，先把上面的优化算法完全理解了再说！</p>
 </blockquote>
-<p>NAdam[7] 在 Adam 之上融合了 NAG 的思想。</p>
+<p>NAdam 在 Adam 之上融合了 NAG 的思想。</p>
 <p>首先回顾 NAG 的公式，</p>
 <p><span class="math display">\[
 g_t = \nabla_\theta J(\theta_t - \gamma m_{t-1})
@@ -480,7 +533,7 @@ m_t = \gamma m_{t-1} + \eta g_t
 <p><span class="math display">\[
 \theta_{t+1} = \theta_t - m_t
 \]</span></p>
-<p>NAG 的核心在于，计算梯度时使用了「未来位置」<span class="math inline">\(\theta_t - \gamma m_{t-1}\)</span>。NAdam 中提出了一种公式变形的思路[7]，大意可以这样理解：只要能在梯度计算中考虑到「未来因素」，即能达到 Nesterov 的效果；既然如此，那么在计算梯度时，可以仍然使用原始公式 <span class="math inline">\(g_t = \nabla_\theta J(\theta_t)\)</span> ，但在前一次迭代计算 <span class="math inline">\(\theta_t\)</span> 时，就使用了未来时刻的动量，即 <span class="math inline">\(\theta_t = \theta_{t-1} - m_t\)</span> ，那么理论上所达到的效果是类似的。</p>
+<p>NAG 的核心在于，计算梯度时使用了「未来位置」<span class="math inline">\(\theta_t - \gamma m_{t-1}\)</span>。NAdam 中提出了一种公式变形的思路，大意可以这样理解：只要能在梯度计算中考虑到「未来因素」，即能达到 Nesterov 的效果；既然如此，那么在计算梯度时，可以仍然使用原始公式 <span class="math inline">\(g_t = \nabla_\theta J(\theta_t)\)</span> ，但在前一次迭代计算 <span class="math inline">\(\theta_t\)</span> 时，就使用了未来时刻的动量，即 <span class="math inline">\(\theta_t = \theta_{t-1} - m_t\)</span> ，那么理论上所达到的效果是类似的。</p>
 <p>这时，公式修改为，</p>
 <p><span class="math display">\[
 g_t = \nabla_\theta J(\theta_t)
@@ -508,7 +561,11 @@ m_t = \gamma m_{t-1} + \eta g_t
 \theta_{t+1} = \theta_t - \frac{1}{\sqrt{\hat{v}_t} + \epsilon } \bar{m}_t
 \]</span><br>
 即可在 Adam 中引入 Nesterov 加速效果。</p>
-<h2 id="可视化分析">可视化分析</h2>
+<h2 id="选择使用哪种优化算法">12. 选择使用哪种优化算法</h2>
+<p>那么，我们应该选择使用哪种优化算法呢？如果输入数据是稀疏的，选择任一自适应学习率算法可能会得到最好的结果。选用这类算法的另一个好处是无需调整学习率，选用默认值就可能达到最好的结果。</p>
+<p>总的来说，RMSprop是Adagrad的扩展形式，用于处理在Adagrad中急速递减的学习率。RMSprop与Adadelta相同，所不同的是Adadelta在更新规则中使用参数的均方根进行更新。最后，Adam是将偏差校正和动量加入到RMSprop中。在这样的情况下，RMSprop、Adadelta和Adam是很相似的算法并且在相似的环境中性能都不错。Kingma等人[9]指出在优化后期由于梯度变得越来越稀疏，偏差校正能够帮助Adam微弱地胜过RMSprop。综合看来，Adam可能是最佳的选择。</p>
+<p>有趣的是，最近许多论文中采用不带动量的SGD和一种简单的学习率的退火策略。已表明，通常SGD能够找到最小值点，但是比其他优化的SGD花费更多的时间，与其他算法相比，SGD更加依赖鲁棒的初始化和退火策略，同时，SGD可能会陷入鞍点，而不是局部极小值点。因此，如果你关心的是快速收敛和训练一个深层的或者复杂的神经网络，你应该选择一个自适应学习率的方法。</p>
+<h2 id="可视化分析">13. 可视化分析</h2>
 <table>
 <colgroup>
 <col width="55%">
@@ -532,7 +589,7 @@ m_t = \gamma m_{t-1} + \eta g_t
 <p>图 4 展现了不同算法在鞍点处的表现。这里，SGD、SGD-M、NAG 都受到了鞍点的严重影响，尽管后两者最终还是逃离了鞍点；而 Adagrad、RMSprop、Adadelta 都很快找到了正确的方向。<br>
 关于两图的讨论，也可参考[2]和[8]。<br>
 可以看到，几种自适应算法在这些场景下都展现了更好的性能。</p>
-<h2 id="reference">Reference</h2>
+<h2 id="reference">14. Reference</h2>
 <ul>
 <li><a href="https://blog.csdn.net/google19890102/article/details/69942970" class="uri" target="_blank" rel="noopener">https://blog.csdn.net/google19890102/article/details/69942970</a></li>
 <li><a href="https://blog.csdn.net/google19890102/article/details/69942970" target="_blank" rel="noopener">翻译的一篇博客</a></li>
@@ -703,7 +760,7 @@ m_t = \gamma m_{t-1} + \eta g_t
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#引言"><span class="nav-text">引言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gradient-descent"><span class="nav-text">Gradient Descent</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gradient-descent-和其算法变种"><span class="nav-text">Gradient Descent 和其算法变种</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vanilla-sgd"><span class="nav-text">Vanilla SGD</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sgd-with-momentum"><span class="nav-text">SGD with Momentum</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nesterov-accelerated-gradient"><span class="nav-text">Nesterov Accelerated Gradient</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#adagrad"><span class="nav-text">Adagrad</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#adadeltarmsprop"><span class="nav-text">AdaDelta/RMSprop</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#adam"><span class="nav-text">Adam</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nadam"><span class="nav-text">NAdam</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可视化分析"><span class="nav-text">可视化分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reference"><span class="nav-text">Reference</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#引言"><span class="nav-text">1. 引言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gradient-descent"><span class="nav-text">2. Gradient Descent</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gradient-descent-和其算法变种"><span class="nav-text">3. Gradient Descent 和其算法变种</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vanilla-sgd"><span class="nav-text">4. Vanilla SGD</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sgd-with-momentum"><span class="nav-text">5. SGD with Momentum</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nesterov-accelerated-gradient"><span class="nav-text">6. Nesterov Accelerated Gradient</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#adagrad"><span class="nav-text">7. Adagrad</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#adadelta"><span class="nav-text">8. AdaDelta</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rmsprop"><span class="nav-text">9. RMSprop</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#adam"><span class="nav-text">10. Adam</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nadam"><span class="nav-text">11. NAdam</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选择使用哪种优化算法"><span class="nav-text">12. 选择使用哪种优化算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可视化分析"><span class="nav-text">13. 可视化分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reference"><span class="nav-text">14. Reference</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
