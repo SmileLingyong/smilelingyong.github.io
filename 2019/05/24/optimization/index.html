@@ -1,0 +1,1060 @@
+<!doctype html>
+<html class="theme-next use-motion ">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/others/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+
+
+  <link href="/vendors/googleapis/css/Lato.css" rel="stylesheet" type="text/css">
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/others/font-awesome/css/font-awesome.min.css?v=4.4.0" />
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.2"/>
+
+
+    <meta name="description" content="向上，向阳！" />
+
+
+
+  <meta name="keywords" content="Machine Learning,Deeping Learning,优化算法," />
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=0.4.5.2" />
+
+
+<meta name="description" content="code{white-space: pre;}              文章转载于：从 SGD 到 Adam —— 深度学习优化算法概览(一)">
+<meta name="keywords" content="Machine Learning,Deeping Learning,优化算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="优化算法">
+<meta property="og:url" content="http://yoursite.com/2019/05/24/optimization/index.html">
+<meta property="og:site_name" content="SmileLingyong">
+<meta property="og:description" content="code{white-space: pre;}              文章转载于：从 SGD 到 Adam —— 深度学习优化算法概览(一)">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2019/05/24/optimization/1.gif">
+<meta property="og:image" content="http://yoursite.com/2019/05/24/optimization/2.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/05/24/optimization/3.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/05/24/optimization/4.jpg">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Cgamma">
+<meta property="og:image" content="http://yoursite.com/2019/05/24/optimization/5.gif">
+<meta property="og:image" content="http://yoursite.com/2019/05/24/optimization/1.gif">
+<meta property="og:updated_time" content="2019-05-24T08:35:01.722Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="优化算法">
+<meta name="twitter:description" content="code{white-space: pre;}              文章转载于：从 SGD 到 Adam —— 深度学习优化算法概览(一)">
+<meta name="twitter:image" content="http://yoursite.com/2019/05/24/optimization/1.gif">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: '',
+    sidebar: 'always'
+  };
+</script>
+
+
+
+  <title> 优化算法 | SmileLingyong </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+
+
+
+  <div id="container" class="container one-column page-post-detail">
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+      
+	  	<span style="font-size:14px;float:right;padding:39px 40px 0 0;">——穷则独善其身，达则兼济天下.</span>
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+
+        	<div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                优化算法
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            Posted on
+            <time itemprop="dateCreated" datetime="2019-05-24T14:16:43+08:00" content="2019-05-24">
+              2019-05-24 14:16
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; In
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/ML/" itemprop="url" rel="index">
+                    <span itemprop="name">ML</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/DL/" itemprop="url" rel="index">
+                    <span itemprop="name">DL</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+            <span id="/2019/05/24/optimization/"class="leancloud_visitors"  data-flag-title="优化算法">
+            &nbsp; | &nbsp;   
+            views
+            </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <meta name="generator" content="pandoc">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pygments-css@1.0.0/github.min.css" type="text/css">
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+</head>
+<body>
+<div class="figure">
+<img src="/2019/05/24/optimization/1.gif">
+
+</div>
+<blockquote>
+<p>文章转载于：<a href="https://zhuanlan.zhihu.com/p/32626442" target="_blank" rel="noopener">从 SGD 到 Adam —— 深度学习优化算法概览(一)</a></p>
+</blockquote>
+<a id="more"></a>
+<h2 id="引言">引言</h2>
+<p>最优化问题是计算数学中最为重要的研究方向之一。而在深度学习领域，优化算法的选择也是一个模型的重中之重。即使在数据集和模型架构完全相同的情况下，采用不同的优化算法，也很可能导致截然不同的训练效果。</p>
+<p>梯度下降是目前神经网络中使用最为广泛的优化算法之一。为了弥补朴素梯度下降的种种缺陷，研究者们发明了一系列变种算法，优化算法经历了 <code>SGD -&gt; SGDM -&gt; NAG -&gt; AdaGrad -&gt; AdaDelta -&gt; Adam -&gt; NAdam</code> 这样的发展历程。从最初的 SGD (随机梯度下降) 逐步演进到 NAdam。然而，许多学术界最为前沿的文章中，都并没有一味使用 Adam/NAdam 等公认“好用”的自适应算法，很多甚至还选择了最为初级的 SGD 或者 SGD with Momentum 等。</p>
+<p>本文旨在梳理深度学习优化算法的发展历程，并在一个更加概括的框架之下，对优化算法做出分析和对比。</p>
+<h2 id="gradient-descent">Gradient Descent</h2>
+<p>梯度下降是指，在给定待优化的模型参数 <span class="math inline">\(\theta \in \mathbb{R}^d\)</span> 和目标函数 <span class="math inline">\(J(\theta)\)</span> 后，算法通过沿梯度 <span class="math inline">\(\nabla_\theta J(\theta)\)</span>的相反方向更新 <span class="math inline">\(\theta\)</span> 来最小化 <span class="math inline">\(J(\theta)\)</span> 。学习率 <span class="math inline">\(\eta\)</span> 决定了每一时刻的更新步长。对于每个epoch <span class="math inline">\(t\)</span> ，我们可以用下述步骤描述梯度下降的流程：</p>
+<p>(1) 计算目标函数关于参数的梯度<br>
+<span class="math display">\[
+g_t = \nabla_\theta J(\theta)
+\]</span><br>
+(2) 根据历史梯度计算一阶和二阶动量<br>
+<span class="math display">\[
+m_t = \phi(g_1, g_2, \cdots, g_t)
+\]</span></p>
+<p><span class="math display">\[
+v_t = \psi(g_1, g_2, \cdots, g_t)
+\]</span></p>
+<p>(3) 计算当前时刻的下降梯度(步长) <span class="math inline">\(\frac{m_t}{\sqrt{v_t + \epsilon}}\)</span> ，并根据下降梯度更新模型参数<br>
+<span class="math display">\[
+\theta_{t+1} = \theta_t - \frac{m_t}{\sqrt{v_t + \epsilon}}
+\]</span><br>
+其中， <span class="math inline">\(\epsilon\)</span> 为平滑项，防止分母为零，通常取 <span class="math inline">\(1e-8\)</span> 。</p>
+<blockquote>
+<p>注意：本文提到的步长，就是下降梯度。</p>
+</blockquote>
+<h2 id="gradient-descent-和其算法变种">Gradient Descent 和其算法变种</h2>
+<p>根据以上框架，我们来分析和比较梯度下降的各变种算法。</p>
+<h2 id="vanilla-sgd">Vanilla SGD</h2>
+<p>朴素 SGD (Stochastic Gradient Descent) 最为简单，没有动量的概念，即<br>
+<span class="math display">\[
+m_t = \eta g_t
+\]</span></p>
+<p><span class="math display">\[
+v_t = I^2
+\]</span></p>
+<p><span class="math display">\[
+\epsilon = 0
+\]</span></p>
+<p>这时，更新步骤就是最简单的<br>
+<span class="math display">\[
+\theta_{i+1}= \theta_t - \eta g_t
+\]</span><br>
+<strong>缺点：</strong></p>
+<ul>
+<li>收敛速度慢，而且可能会在沟壑的两边持续震荡</li>
+<li>容易停留在一个局部最优点</li>
+<li>如何合理的选择学习率也是 SGD 的一大难点</li>
+</ul>
+<h2 id="sgd-with-momentum">SGD with Momentum</h2>
+<p><strong>为了抑制SGD的震荡，SGD-M认为梯度下降过程可以加入惯性(动量) Momentum[3]，加速 SGD 在正确方向的下降并抑制震荡</strong>。就好像下坡的时候，如果发现是陡坡，那就利用惯性跑的快一些。其在SGD的基础上，引入了一阶动量，然后进行更新：<br>
+<span class="math display">\[
+m_t = \gamma m_{t-1} + \eta g_t \\
+\theta_{t+1}= \theta_t - m_t
+\]</span><br>
+即在原步长(SGD中是<span class="math inline">\(\eta g_t\)</span>) 之上，增加了与上一时刻动量相关的一项 <span class="math inline">\(\gamma m_{t-1}\)</span>，目的是结合上一时刻步长(下降梯度)， 其中 <span class="math inline">\(m_{t-1}\)</span> 是上一时刻的动量，<span class="math inline">\(\gamma\)</span> 是动量因子。也就是说，<span class="math inline">\(t\)</span> 时刻的下降方向，不仅由当前点的梯度方向决定，而且由此前累积的下降方向决定，<span class="math inline">\(\gamma\)</span> 通常取 0.9 左右。这就意味着下降方向主要是此前累积的下降方向，并略微偏向当前时刻的下降方向。<strong>这使得参数中那些梯度方向变化不大的维度可以加速更新，并减少梯度方向变化较大的维度上的更新幅度</strong>。由此产生了加速收敛和减小震荡的效果。</p>
+<img src="/2019/05/24/optimization/2.jpg"><br>
+​
+<center>
+图 1(a): SGD
+</center>
+<img src="/2019/05/24/optimization/3.jpg"><br>
+​
+<center>
+图 1(b): SGD with momentum
+</center>
+<p>从图 1 中可以看出，引入动量有效的加速了梯度下降收敛过程。</p>
+<h2 id="nesterov-accelerated-gradient">Nesterov Accelerated Gradient</h2>
+<p><strong>SGD 还有一个问题是困在局部最优的沟壑里面震荡</strong>。想象一下你走到一个盆地，四周都是略高的小山，你觉得没有下坡的方向，那就只能待在这里了。可是如果你爬上高地，就会发现外面的世界还很广阔。因此，我们不能停留在当前位置去观察未来的方向，而要向前一步、多看一步、看远一些。</p>
+<div class="figure">
+<img src="/2019/05/24/optimization/4.jpg">
+
+</div>
+​
+<center>
+图 2: Nesterov update
+</center>
+<p>NAG全称Nesterov Accelerated Gradient，则是在SGD、SGD-M的基础上的进一步改进，算法能够在目标函数有增高趋势之前，减缓更新速率。我们知道在时刻 <span class="math inline">\(t\)</span> 的主要下降方向是由累积动量决定的，自己的梯度方向说了也不算，那与其看当前梯度方向，不如先看看如果跟着累积动量走了一步后，那个时候再怎么走。因此，NAG在步骤1，<strong>不计算当前位置的梯度方向，而是计算如果按照累积动量走了一步，那个时候的下降方向</strong>：<br>
+<span class="math display">\[
+g_t = \nabla_\theta J(\theta - \gamma m_{t-1})  \tag{1}
+\]</span><br>
+参考图2理解：最初，SGD-M先计算当前时刻的梯度（短蓝向量）和累积动量 （长蓝向量）进行参数更新。改进的方法NAG，先利用累积动量计算出下一时刻的 <span class="math inline">\(\theta\)</span> 的近似位置 <span class="math inline">\(\theta - \gamma m_{t-1}\)</span>（棕向量），并根据该未来位置计算梯度（红向量）公式(1)，然后使用和 SGD-M 中相同的方式计算当前时刻的动量项(下降梯度)，进而得到完整的参数更新（绿向量），公式(2)即将该未来位置的梯度与累积动量计算当前时刻的动量项(下降梯度)：<br>
+<span class="math display">\[
+\begin{equation}
+\begin{split}
+m_t   &amp;= \gamma m_{t-1} + \eta g_t \\
+    &amp;= \gamma m_{t-1} + \eta  \nabla_\theta J(\theta - \gamma m_{t-1})  
+\end{split}
+\end{equation} \tag{2}
+\]</span></p>
+<p>更新参数：<br>
+<span class="math display">\[
+\theta_{t+1} = \theta_t -  m_t  \tag{3}
+\]</span></p>
+<p>这种计算梯度的方式可以使算法更好的「预测未来」，提前调整更新速率。</p>
+<blockquote>
+<p>注意：<br>
+累积动量指的是上一时刻的动量乘上动量因子: <span class="math inline">\(\gamma m_{t-1}\)</span><br>
+当前时刻的动量项指的是: <span class="math inline">\({m_t}\)</span><br>
+(上面的图只是为了助于理解，其中累积动量</p>
+</blockquote>
+<h2 id="adagrad">Adagrad</h2>
+<p>SGD、SGD-M 和 NAG 均是以相同的学习率去更新 <span class="math inline">\(\theta\)</span> 的各个分量。而深度学习模型中往往涉及大量的参数，不同参数的更新频率往往有所区别。对于更新不频繁的参数（典型例子：更新 word embedding 中的低频词），我们希望单次步长更大，多学习一些知识；对于更新频繁的参数，我们则希望步长较小，使得学习到的参数更稳定，不至于被单个样本影响太多。</p>
+<p>Adagrad[4] 算法即可达到此效果。其引入了二阶动量：<br>
+<span class="math display">\[
+v_t = \text{diag}(\sum_{i=1}^t g_{i,1}^2, \sum_{i=1}^t g_{i,2}^2, \cdots, \sum_{i=1}^t g_{i,d}^2)
+\]</span><br>
+其中， <span class="math inline">\(v_t \in \mathbb{R}^{d\times d}\)</span> 是对角矩阵，其元素 <span class="math inline">\(v_{t, ii}\)</span> 为参数第 <span class="math inline">\(i\)</span> 维从初始时刻到时刻 <span class="math inline">\(t\)</span> 的梯度平方和。</p>
+<p>此时，可以这样理解：<strong>学习率等效为 <span class="math inline">\(\eta / \sqrt{v_t + \epsilon}\)</span></strong> 。对于此前频繁更新过的参数，其二阶动量的对应分量较大，学习率就较小。这一方法在稀疏数据的场景下表现很好。但也<u>存在一些问题</u>：<strong>因为 <span class="math inline">\(\sqrt{v_t}\)</span> 是单调递增的，会使得学习率单调递减至0，可能会使得训练过程提前结束，即便后续还有数据也无法学到必要的知识。</strong></p>
+<h2 id="adadeltarmsprop">AdaDelta/RMSprop</h2>
+<p>在 Adagrad 中， <span class="math inline">\(\sqrt{v_t}\)</span> 是单调递增的，使得学习率逐渐递减至 0，可能导致训练过程提前结束。为了改进这一缺点，可以考虑<strong>在计算二阶动量时不累积全部历史梯度，而只关注最近某一时间窗口内的下降梯度</strong>。根据此思想有了 RMSprop[5]。记 <span class="math inline">\(g_t \odot g_t\)</span> 为 <span class="math inline">\(g_t^2\)</span> ，有</p>
+<p><span class="math display">\[
+v_t = \gamma v_{t-1} + (1-\gamma) \cdot \text{diag}(g_t^2)
+\]</span><br>
+其二阶动量采用指数移动平均公式计算，这样即可避免二阶动量持续累积的问题。和 SGD-M 中的参数类似，<img src="https://www.zhihu.com/equation?tex=%5Cgamma" alt> 通常取 0.9 左右。</p>
+<h2 id="adam">Adam</h2>
+<p>Adam[6] 可以认为是 RMSprop 和 Momentum 的结合。和 RMSprop 对二阶动量使用指数移动平均类似，Adam 中对一阶动量也是用指数移动平均计算。<br>
+<span class="math display">\[
+m_t = \eta[ \beta_1 m_{t-1} + (1 - \beta_1)g_t ]
+\]</span><br>
+<span class="math display">\[
+v_t = \beta_2 v_{t-1} + (1-\beta_2) \cdot \text{diag}(g_t^2)
+\]</span></p>
+<p>其中，初值</p>
+<p><span class="math display">\[
+m_0 = 0 \\
+v_0 = 0
+\]</span><br>
+注意到，在迭代初始阶段，<span class="math inline">\(m_t\)</span> 和 <span class="math inline">\(v_t\)</span> 有一个向初值的偏移（过多的偏向了 0）。因此，可以对一阶和二阶动量做偏置校正 (bias correction)，<br>
+<span class="math display">\[
+\hat{m}_t = \frac{m_t}{1-\beta_1^t}
+\]</span></p>
+<p><span class="math display">\[
+\hat{v}_t = \frac{v_t}{1-\beta_2^t}
+\]</span><br>
+再进行更新，</p>
+<p><span class="math display">\[
+\theta_{t+1} = \theta_t - \frac{1}{\sqrt{\hat{v}_t} + \epsilon } \hat{m}_t
+\]</span><br>
+可以保证迭代较为平稳。</p>
+<h2 id="nadam">NAdam</h2>
+<blockquote>
+<p>这里还没有太看懂，先把上面的优化算法完全理解了再说！</p>
+</blockquote>
+<p>NAdam[7] 在 Adam 之上融合了 NAG 的思想。</p>
+<p>首先回顾 NAG 的公式，</p>
+<p><span class="math display">\[
+g_t = \nabla_\theta J(\theta_t - \gamma m_{t-1})
+\]</span></p>
+<p><span class="math display">\[
+m_t = \gamma m_{t-1} + \eta g_t
+\]</span></p>
+<p><span class="math display">\[
+\theta_{t+1} = \theta_t - m_t
+\]</span></p>
+<p>NAG 的核心在于，计算梯度时使用了「未来位置」<span class="math inline">\(\theta_t - \gamma m_{t-1}\)</span>。NAdam 中提出了一种公式变形的思路[7]，大意可以这样理解：只要能在梯度计算中考虑到「未来因素」，即能达到 Nesterov 的效果；既然如此，那么在计算梯度时，可以仍然使用原始公式 <span class="math inline">\(g_t = \nabla_\theta J(\theta_t)\)</span> ，但在前一次迭代计算 <span class="math inline">\(\theta_t\)</span> 时，就使用了未来时刻的动量，即 <span class="math inline">\(\theta_t = \theta_{t-1} - m_t\)</span> ，那么理论上所达到的效果是类似的。</p>
+<p>这时，公式修改为，</p>
+<p><span class="math display">\[
+g_t = \nabla_\theta J(\theta_t)
+\]</span></p>
+<p><span class="math display">\[
+m_t = \gamma m_{t-1} + \eta g_t
+\]</span></p>
+<p><span class="math display">\[
+\bar{m}_t = \gamma m_t + \eta g_t
+\]</span></p>
+<p><span class="math display">\[
+\theta_{t+1} = \theta_t - \bar{m}_t
+\]</span></p>
+<p>理论上，下一刻的动量为 <span class="math inline">\(m_{t+1} = \gamma m_t + \eta g_{t+1}\)</span>，在假定连续两次的梯度变化不大的情况下，即 <span class="math inline">\(g_{t+1} \approx g_t\)</span> ，有 <span class="math inline">\(m_{t+1} \approx \gamma m_t + \eta g_t \equiv \bar{m}_t\)</span>。此时，即可用 <span class="math inline">\(\bar{m}_t\)</span> 近似表示未来动量加入到 <span class="math inline">\(\theta\)</span> 的迭代式中。</p>
+<p>类似的，在 Adam 可以加入 <span class="math inline">\(\bar{m}_t \leftarrow \hat{m}_t\)</span> 的变形，将 <span class="math inline">\(\hat{m}_t\)</span> 展开有</p>
+<p><span class="math display">\[
+\hat{m_t} = \frac{m_t}{1-\beta_1^t} = \eta[ \frac{\beta_1 m_{t-1}}{1-\beta_1^t} + \frac{(1 - \beta_1)g_t}{1-\beta_1^t} ]
+\]</span><br>
+引入</p>
+<p><span class="math display">\[
+\bar{m}_t = \eta[ \frac{\beta_1 m_{t}}{1-\beta_1^{t+1}} + \frac{(1 - \beta_1)g_t}{1-\beta_1^t} ]
+\]</span><br>
+再进行更新，<br>
+<span class="math display">\[
+\theta_{t+1} = \theta_t - \frac{1}{\sqrt{\hat{v}_t} + \epsilon } \bar{m}_t
+\]</span><br>
+即可在 Adam 中引入 Nesterov 加速效果。</p>
+<h2 id="可视化分析">可视化分析</h2>
+<div class="figure">
+<img src="/2019/05/24/optimization/5.gif">
+
+</div>
+​
+<center>
+图 3: SGD optimization on loss surface contours
+</center>
+<div class="figure">
+<img src="/2019/05/24/optimization/1.gif">
+
+</div>
+​
+<center>
+图 4: SGD optimization on saddle point
+</center>
+<p>图 3 和图 4 两张动图直观的展现了不同算法的性能。(Image credit: <a href="http://link.zhihu.com/?target=https%3A//twitter.com/alecrad" target="_blank" rel="noopener">Alec Radford</a>)</p>
+<p>图 3 中，我们可以看到不同算法在损失面等高线图中的学习过程，它们均同同一点出发，但沿着不同路径达到最小值点。其中 Adagrad、Adadelta、RMSprop 从最开始就找到了正确的方向并快速收敛；SGD 找到了正确方向但收敛速度很慢；SGD-M 和 NAG 最初都偏离了航道，但也能最终纠正到正确方向，SGD-M 偏离的惯性比 NAG 更大。</p>
+<p>图 4 展现了不同算法在鞍点处的表现。这里，SGD、SGD-M、NAG 都受到了鞍点的严重影响，尽管后两者最终还是逃离了鞍点；而 Adagrad、RMSprop、Adadelta 都很快找到了正确的方向。<br>
+关于两图的讨论，也可参考[2]和[8]。<br>
+可以看到，几种自适应算法在这些场景下都展现了更好的性能。</p>
+<h2 id="reference">Reference</h2>
+<ul>
+<li><a href="https://blog.csdn.net/google19890102/article/details/69942970" class="uri" target="_blank" rel="noopener">https://blog.csdn.net/google19890102/article/details/69942970</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/32230623" target="_blank" rel="noopener">一个框架看懂优化算法之异同 SGD/AdaGrad/Adam</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/32626442" target="_blank" rel="noopener">从 SGD 到 Adam —— 深度学习优化算法概览(一)</a></li>
+<li><a href="http://cs231n.github.io/neural-networks-3/" class="uri" target="_blank" rel="noopener">http://cs231n.github.io/neural-networks-3/</a></li>
+<li><a href="https://arxiv.org/abs/1609.04747" target="_blank" rel="noopener">An overview of gradient descent optimization algorithms [paper]</a></li>
+<li><a href="http://ruder.io/optimizing-gradient-descent/index.html" target="_blank" rel="noopener">上面博客看不懂就参考这篇博客：An overview of gradient descent optimization algorithms [blog]</a></li>
+<li><a href="https://www.cnblogs.com/xinchrome/p/4964930.html" class="uri" target="_blank" rel="noopener">https://www.cnblogs.com/xinchrome/p/4964930.html</a></li>
+<li><a href="http://www.cs.toronto.edu/~tijmen/csc321/slides/lecture_slides_lec6.pdf" class="uri" target="_blank" rel="noopener">http://www.cs.toronto.edu/~tijmen/csc321/slides/lecture_slides_lec6.pdf</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/27449596" class="uri" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/27449596</a></li>
+<li><a href="https://juejin.im/entry/5983115f6fb9a03c50227fd4" class="uri" target="_blank" rel="noopener">https://juejin.im/entry/5983115f6fb9a03c50227fd4</a></li>
+<li><a href="https://www.cnblogs.com/denny402/p/5074212.html" class="uri" target="_blank" rel="noopener">https://www.cnblogs.com/denny402/p/5074212.html</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/27449596" class="uri" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/27449596</a></li>
+</ul>
+</body>
+</html>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Machine-Learning/" rel="tag">#Machine Learning</a>
+          
+            <a href="/tags/Deeping-Learning/" rel="tag">#Deeping Learning</a>
+          
+            <a href="/tags/优化算法/" rel="tag">#优化算法</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/24/SVD-singular-value-decomposition-and-its-application/" rel="next">
+                SVD奇异值分解及其应用 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+          </div>
+        
+      
+
+        
+          
+  
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+      
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table Of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview" sidebar-panel >
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/avatar.jpg" alt="SmileLingyong" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">SmileLingyong</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">向上，向阳！</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">29</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-name">categories</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-name">tags</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="smilelingyong@gmail.com" target="_blank">
+                  <i class="fa fa-e-mail"></i> E-Mail
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/SmileLingyong" target="_blank">
+                  <i class="fa fa-github"></i> Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://blog.csdn.net/forever__1234" target="_blank">
+                  <i class="fa fa-csdn"></i> CSDN
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#引言"><span class="nav-text">引言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gradient-descent"><span class="nav-text">Gradient Descent</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gradient-descent-和其算法变种"><span class="nav-text">Gradient Descent 和其算法变种</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vanilla-sgd"><span class="nav-text">Vanilla SGD</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sgd-with-momentum"><span class="nav-text">SGD with Momentum</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nesterov-accelerated-gradient"><span class="nav-text">Nesterov Accelerated Gradient</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#adagrad"><span class="nav-text">Adagrad</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#adadeltarmsprop"><span class="nav-text">AdaDelta/RMSprop</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#adam"><span class="nav-text">Adam</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nadam"><span class="nav-text">NAdam</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可视化分析"><span class="nav-text">可视化分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reference"><span class="nav-text">Reference</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+	  </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">SmileLingyong</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="#">
+    FreeSky
+  </a>(Reserved)
+
+  
+  <span id="busuanzi_container_site_uv">
+     &nbsp; | &nbsp;  用户量: <span id="busuanzi_value_site_uv"></span>
+  </span>
+  <span id="busuanzi_container_site_pv">
+    &nbsp; | &nbsp;  总访问量: <span id="busuanzi_value_site_pv"></span>
+  </span>
+
+  
+</div>
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/others/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+    
+
+  
+
+
+  
+  
+  <script type="text/javascript" src="/others/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
+  
+
+  <script type="text/javascript" src="/others/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/others/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.2" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.2"></script>
+  <script type="text/javascript" src="/others/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    var $aboutContent = $('#posts-about');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0 && $aboutContent.length === 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+
+      motionIntegrator.bootstrap();
+    });
+  </script>
+
+  
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+  
+     <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("9QoQXWnRR4zwSFuxRv52kUpi-gzGzoHsz", "zlgcRzgHF7AHu8TKLJUwCAjw");</script>
+<script>
+function showTime(Counter) {
+  var query = new AV.Query(Counter);
+  $(".leancloud_visitors").each(function() {
+    var url = $(this).attr("id").trim();
+    query.equalTo("url", url);
+    query.find({
+      success: function(results) {
+        if (results.length == 0) {
+          var content = $(document.getElementById(url)).text() + ': 0';
+          $(document.getElementById(url)).text(content);
+          return;
+        }
+        for (var i = 0; i < results.length; i++) {
+          var object = results[i];
+          var content = $(document.getElementById(url)).text() + ': ' + object.get('time');
+          $(document.getElementById(url)).text(content);
+        }
+      },
+      error: function(object, error) {
+        console.log("Error: " + error.code + " " + error.message);
+      }
+    });
+
+  });
+}
+
+function addCount(Counter) {
+  var Counter = AV.Object.extend("Counter");
+  url = $(".leancloud_visitors").attr('id').trim();
+  title = $(".leancloud_visitors").attr('data-flag-title').trim();
+  var query = new AV.Query(Counter);
+  query.equalTo("url", url);
+  query.find({
+    success: function(results) {
+      if (results.length > 0) {
+        var counter = results[0];
+        counter.fetchWhenSave(true);
+        counter.increment("time");
+        counter.save(null, {
+          success: function(counter) {
+            var content = $(document.getElementById(url)).text() + ': ' + counter.get('time');
+            $(document.getElementById(url)).text(content);
+          },
+          error: function(counter, error) {
+            console.log('Failed to save Visitor num, with error message: ' + error.message);
+          }
+        });
+      } else {
+        var newcounter = new Counter();
+        newcounter.set("title", title);
+        newcounter.set("url", url);
+        newcounter.set("time", 1);
+        newcounter.save(null, {
+          success: function(newcounter) {
+              console.log("newcounter.get('time')="+newcounter.get('time'));
+            var content = $(document.getElementById(url)).text() + ': ' + newcounter.get('time');
+            $(document.getElementById(url)).text(content);
+          },
+          error: function(newcounter, error) {
+            console.log('Failed to create');
+          }
+        });
+      }
+    },
+    error: function(error) {
+      console.log('Error:' + error.code + " " + error.message);
+    }
+  });
+}
+$(function() {
+  var Counter = AV.Object.extend("Counter");
+  if ($('.leancloud_visitors').length == 1) {
+    addCount(Counter);
+  } else if ($('.post-title-link').length > 1) {
+    showTime(Counter);
+  }
+}); 
+</script>
+  
+</body>
+</html>
