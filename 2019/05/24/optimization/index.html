@@ -81,7 +81,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/05/24/optimization/4.jpg">
 <meta property="og:image" content="http://yoursite.com/2019/05/24/optimization/5.gif">
 <meta property="og:image" content="http://yoursite.com/2019/05/24/optimization/1.gif">
-<meta property="og:updated_time" content="2019-05-24T10:14:49.812Z">
+<meta property="og:updated_time" content="2019-05-24T12:06:12.004Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="优化算法">
 <meta name="twitter:description" content="code{white-space: pre;}              文章转载于：从 SGD 到 Adam —— 深度学习优化算法概览(一) 和 梯度下降优化算法综述">
@@ -435,7 +435,7 @@ g_{t, i} = \nabla_\theta J(\theta_{i})
 <span class="math display">\[
 \theta_{t+1, i} = \theta_{t, i} - \eta g_{t, i}
 \]</span><br>
-对于上述的更新规则，在 <span class="math inline">\(t\)</span> 时刻，基于对 <span class="math inline">\(θ_i\)</span> 计算过的历史梯度，Adagrad修正了对每一个参数 <span class="math inline">\(θ_i\)</span> 的学习率：<br>
+对于上述的更新规则，在 <span class="math inline">\(t\)</span> 时刻，我们要计算 <span class="math inline">\(θ_i\)</span> 从初始时刻到 <span class="math inline">\(t\)</span> 时刻的历史梯度平方和，来修正每一个参数 <span class="math inline">\(θ_i\)</span> 的学习率：<br>
 <span class="math display">\[
 \theta_{t+1, i}=\theta_{t, i}-\frac{\eta}{\sqrt{v_{t, i i}+\epsilon}} \cdot g_{t, i}
 \]</span><br>
@@ -449,7 +449,7 @@ v_t = \text{diag}(\sum_{i=1}^t g_{i,1}^2, \sum_{i=1}^t g_{i,2}^2, \cdots, \sum_{
 \]</span><br>
 Adagrad算法的一个主要优点是无需手动调整学习率。在大多数的应用场景中，通常采用常数0.01。通过引入二阶动量，对于此前频繁更新过的参数，其二阶动量的对应分量较大，学习率就较小。这一方法在稀疏数据的场景下表现很好。但也<u>存在一些问题</u>：<strong>因为 <span class="math inline">\(\sqrt{v_t}\)</span> 是单调递增的，会使得学习率单调递减至0，可能会使得训练过程提前结束，即便后续还有数据也无法学到必要的知识。</strong></p>
 <h2 id="adadelta">8. AdaDelta</h2>
-<p><code>Adadelta</code> 是 <code>Adagrad</code> 的一种扩展算法，以<strong>处理Adagrad学习速率单调递减的问题</strong>。考虑<strong>在计算二阶动量时，不是计算所有的历史梯度平方，而只关注最近某一时间窗口内的下降梯度，Adadelta将计算计算历史梯度的窗口大小限制为一个固定值 <span class="math inline">\(w\)</span></strong></p>
+<p><code>Adadelta</code> 是 <code>Adagrad</code> 的一种扩展算法，以<strong>处理Adagrad学习速率单调递减的问题</strong>。考虑<strong>在计算二阶动量时，不是计算所有的历史梯度平方和，而只关注最近某一时间窗口内的下降梯度，Adadelta将计算历史梯度的窗口大小限制为一个固定值 <span class="math inline">\(w\)</span></strong></p>
 <p>在 <code>Adadelta</code> 中，无需存储先前的 <span class="math inline">\(w\)</span> 个平方梯度，而是将梯度的平方递归地表示成所有历史梯度平方的均值。在 <span class="math inline">\(t\)</span> 时刻的均值 <span class="math inline">\(E[g^2]_t\)</span> 只取决于先前的均值和当前的梯度（分量 <span class="math inline">\(γ\)</span> 类似于动量项）：<br>
 <span class="math display">\[
 E\left[g^{2}\right]_{t}=\gamma E\left[g^{2}\right]_{t-1}+(1-\gamma) g_{t}^{2}
