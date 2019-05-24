@@ -77,7 +77,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2019/05/23/Softmax-and-Softmax-Loss-gradient-calcule/maxresdefault.jpg">
 <meta property="og:image" content="http://yoursite.com/2019/05/23/Softmax-and-Softmax-Loss-gradient-calcule/softmax-loss-discrepancy.svg">
-<meta property="og:updated_time" content="2019-05-23T08:42:20.662Z">
+<meta property="og:updated_time" content="2019-05-24T00:29:21.084Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【转载】Softmax和Softmax-Loss函数及梯度计算">
 <meta name="twitter:description" content="code{white-space: pre;}">
@@ -238,8 +238,8 @@
               &nbsp; | &nbsp; In
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/ML/" itemprop="url" rel="index">
-                    <span itemprop="name">ML</span>
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
                   </a>
                 </span>
 
@@ -250,8 +250,8 @@
 
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">学习笔记</span>
+                  <a href="/categories/ML/" itemprop="url" rel="index">
+                    <span itemprop="name">ML</span>
                   </a>
                 </span>
 
@@ -358,7 +358,7 @@ e^{ \theta_k^T x^{(i)} } \\
 \end{bmatrix}
 \end{align}
 \]</span><br>
-其中 <span class="math inline">\(\theta_1, \theta_2, \ldots, \theta_k \in \Re^{n+1}\)</span> 是模型的参数。请注意 $ $ 这一项对概率分布进行归一化，使得所有概率之和为 1</p>
+其中 <span class="math inline">\(\theta_1, \theta_2, \ldots, \theta_k \in \Re^{n+1}\)</span> 是模型的参数。请注意 <span class="math inline">\(\frac{1}{ \sum_{j=1}^{k}{e^{ \theta_j^T x^{(i)} }}}\)</span> 这一项对概率分布进行归一化，使得所有概率之和为 1</p>
 <p>其<strong>代价函数</strong>为：<br>
 <span class="math display">\[
 \begin{align}
@@ -383,7 +383,7 @@ J(\theta) = - \frac{1}{m} \left[ \sum_{i=1}^{m} \sum_{j=1}^{k}  1\left\{y^{(i)} 
 <blockquote>
 <p>结合上面理解此时的 Softmax函数：<br>
 <span class="math display">\[
-h{\theta}(x) = \sigma(\theta^T x) = \sigma(z) = \left({\color{Red}{\sigma{1}(z)}}, \ldots, \sigma_{m}(z)\right)
+h_{\theta}(x) = \sigma(\theta^T x) = \sigma(z) = \left({\color{Red}{\sigma_{1}(z)}}, \ldots, \sigma_{m}(z)\right)
 \]</span><br>
 此时的 <span class="math inline">\(x\)</span> 为一个样例输入 <span class="math inline">\(\in \Re^{n+1}\)</span>，等价与上面的一个 <span class="math inline">\(x^{(i)}\)</span>，其中共有 <span class="math inline">\(m\)</span> 个类别，<span class="math inline">\(z_i\)</span> 表示输入样例 <span class="math inline">\(x\)</span> 是第 <span class="math inline">\(i\)</span> 个类别的线性预测结果，等价于 <span class="math inline">\(z_i = \theta^T_i x\)</span></p>
 </blockquote>
@@ -393,13 +393,13 @@ h{\theta}(x) = \sigma(\theta^T x) = \sigma(z) = \left({\color{Red}{\sigma{1}(z)}
 =\frac{\exp \left(z_{i}\right)}{\sum_{j=1}^{m} \exp \left(z_{j}\right)}, \quad i=1, \ldots, m  \\
 {\color{Green}{\small{【观察到的数据 \ x \ (或z)\ 属于类别\ i\ 的概率，或者称作似然 (Likelihood)】}}}
 \]</span><br>
-它在 Logistic Regression 里其到的作用是讲线性预测值转化为类别概率：<span class="math inline">\(m\)</span> 代表类别数，假设 <span class="math inline">\(z_{i}=\theta_{i}^{T} x\)</span> 是第 <span class="math inline">\(i\)</span> 个类别的线性预测结果，带入 <span class="math inline">\(Softmax\)</span> 的结果其实就是先对每一个 <span class="math inline">\(z_i\)</span> 取 exponential 变成非负，然后除以所有项之和进行归一化，现在每个 <span class="math inline">\(o_{i}=\sigma_{i}(z)\)</span> 就可以解释成：<strong>观察到的数据 <span class="math inline">\(x\)</span> 属于类别 <span class="math inline">\(i\)</span> 的概率，或者称作似然 (Likelihood)</strong>。</p>
+它在 Logistic Regression 里起到的作用是讲线性预测值转化为类别概率：<span class="math inline">\(m\)</span> 代表类别数，假设 <span class="math inline">\(z_i = w_i^Tx + b_i\)</span> 是第 <span class="math inline">\(i\)</span> 个类别的线性预测结果，带入 <span class="math inline">\(Softmax\)</span> 的结果其实就是先对每一个 <span class="math inline">\(z_i\)</span> 取 exponential 变成非负，然后除以所有项之和进行归一化，现在每个 <span class="math inline">\(o_{i}=\sigma_{i}(z)\)</span> 就可以解释成：<strong>观察到的数据 <span class="math inline">\(x\)</span> 属于类别 <span class="math inline">\(i\)</span> 的概率，或者称作似然 (Likelihood)</strong>。</p>
 <p>然后 Logistic Regression 的目标函数是根据最大似然原则来建立的，假设数据 <span class="math inline">\(x\)</span> 所对应的类别为 <span class="math inline">\(y\)</span>，则根据我们刚才的<strong>计算最大似然就是要最大化 <span class="math inline">\(o_y\)</span> 的值</strong> (通常是使用 <strong>negative log-likelihood</strong> 而不是 likelihood，也就是说<strong>最小化 <span class="math inline">\(-log(o_y)\)</span> 的值</strong>，这两者结果在数学上是等价的)。后面这个操作就是 caffe 文档里说的 <strong>Multinomial Logistic Loss</strong>，具体写出来是这个样子：<br>
 <span class="math display">\[
 \ell(y, o)=-\log \left(o_{y}\right)
 \]</span></p>
 <h2 id="softmax-loss-softmax-multinomial-logistic-loss">3. Softmax-Loss = Softmax + Multinomial Logistic Loss</h2>
-<p>而 <strong>Softmax-Loss</strong> 其实就是把两者结合到一起，只要把 <span class="math inline">\(o_y\)</span> 的定义展开即可：<br>
+<p>而 <strong>Softmax-Loss</strong> 其实就是把两者结合到一起，只要把 <span class="math inline">\(o_y​\)</span> 的定义展开即可：<br>
 <span class="math display">\[
 \tilde{\ell}(y, z)=-\log \left(\frac{e^{z_{y}}}{\sum_{j=1}^{m} e^{z_{j}}}\right)=\log \left(\sum_{j=1}^{m} e^{z_{j}}\right)-z_{y} \\
 {\color{Green}{\small{【将观察到的数据 \ x \ (或z)\ 属于类别 \ y \ 的概率做最大似然估计，或最小\ negative\  log\ 似然】}}}
@@ -459,7 +459,7 @@ h{\theta}(x) = \sigma(\theta^T x) = \sigma(z) = \left({\color{Red}{\sigma{1}(z)}
 &amp; = \frac{\partial}{\partial z_{k}} \frac{\exp \left(z_{i}\right)}{\sum_{j=1}^{m} \exp \left(z_{j}\right)} \\
 &amp; =\frac{\delta_{i k} e^{z_{i}}\left(\sum_{j=1}^{m} e^{z_{j}}\right)-e^{z_{i}} e^{z_{k}}}{\left(\sum_{j=1}^{m} e^{z_{j}}\right)^{2}} \\ 
 &amp; =\delta_{i k} o_{i}-o_{i} o_{k} 
-\end{aligned} 
+\end{aligned}
 \]</span><br>
 即 <strong>Softmax 层的梯度为：</strong><br>
 <span class="math display">\[
@@ -613,21 +613,21 @@ e^{x}=10^{x / \log 10}
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">26</span>
+              <span class="site-state-item-count">27</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-count">13</span>
               <span class="site-state-item-name">categories</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">18</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">tags</span>
               </a>
           </div>
