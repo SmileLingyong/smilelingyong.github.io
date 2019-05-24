@@ -67,20 +67,20 @@
   <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=0.4.5.2" />
 
 
-<meta name="description" content="code{white-space: pre;}          Contrastive loss 最初源于 Yann LeCun “Dimensionality Reduction by Learning an Invariant Mapping” CVPR 2016。该损失函数主要是用于降维中，即本来相似的样本，在经过降维（特征提取）后，在特征空间中，两个样本">
+<meta name="description" content="code{white-space: pre;}          Contrastive loss 最初源于 Yann LeCun “Dimensionality Reduction by Learning an Invariant Mapping” CVPR 2006。该损失函数主要是用于降维中，即本来相似的样本，在经过降维（特征提取）后，在特征空间中，两个样本">
 <meta name="keywords" content="Machine Learning,Deeping Learning">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Contrastive Loss 对比损失函数及梯度的计算">
 <meta property="og:url" content="http://yoursite.com/2019/05/23/Contrastive-Loss-contrast loss function and gradient calculation/index.html">
 <meta property="og:site_name" content="SmileLingyong">
-<meta property="og:description" content="code{white-space: pre;}          Contrastive loss 最初源于 Yann LeCun “Dimensionality Reduction by Learning an Invariant Mapping” CVPR 2016。该损失函数主要是用于降维中，即本来相似的样本，在经过降维（特征提取）后，在特征空间中，两个样本">
+<meta property="og:description" content="code{white-space: pre;}          Contrastive loss 最初源于 Yann LeCun “Dimensionality Reduction by Learning an Invariant Mapping” CVPR 2006。该损失函数主要是用于降维中，即本来相似的样本，在经过降维（特征提取）后，在特征空间中，两个样本">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2019/05/23/Contrastive-Loss-contrast%20loss%20function%20and%20gradient%20calculation/contrastive_loss.png">
 <meta property="og:image" content="http://yoursite.com/2019/05/23/Contrastive-Loss-contrast%20loss%20function%20and%20gradient%20calculation/Dimensionality_Reduction.png">
-<meta property="og:updated_time" content="2019-05-24T01:05:16.074Z">
+<meta property="og:updated_time" content="2019-05-24T01:45:45.857Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Contrastive Loss 对比损失函数及梯度的计算">
-<meta name="twitter:description" content="code{white-space: pre;}          Contrastive loss 最初源于 Yann LeCun “Dimensionality Reduction by Learning an Invariant Mapping” CVPR 2016。该损失函数主要是用于降维中，即本来相似的样本，在经过降维（特征提取）后，在特征空间中，两个样本">
+<meta name="twitter:description" content="code{white-space: pre;}          Contrastive loss 最初源于 Yann LeCun “Dimensionality Reduction by Learning an Invariant Mapping” CVPR 2006。该损失函数主要是用于降维中，即本来相似的样本，在经过降维（特征提取）后，在特征空间中，两个样本">
 <meta name="twitter:image" content="http://yoursite.com/2019/05/23/Contrastive-Loss-contrast%20loss%20function%20and%20gradient%20calculation/contrastive_loss.png">
 
 
@@ -322,30 +322,30 @@
 </head>
 <body>
 <blockquote>
-<p><strong>Contrastive loss</strong> 最初源于 <code>Yann LeCun</code> “<strong>Dimensionality Reduction by Learning an Invariant Mapping</strong>” CVPR 2016。该损失函数主要是<strong>用于降维中</strong>，即本来相似的样本，在经过降维（特征提取）后，在特征空间中，两个样本仍旧相似；而原本不相似的样本，在经过降维后，在特征空间中，两个样本仍旧不相似。同样，该损失函数也可以很好的表达<strong>成对样本的匹配程度</strong>。</p>
+<p><strong>Contrastive loss</strong> 最初源于 <code>Yann LeCun</code> “<strong>Dimensionality Reduction by Learning an Invariant Mapping</strong>” CVPR 2006。该损失函数主要是<strong>用于降维中</strong>，即本来相似的样本，在经过降维（特征提取）后，在特征空间中，两个样本仍旧相似；而原本不相似的样本，在经过降维后，在特征空间中，两个样本仍旧不相似。同样，该损失函数也可以很好的表达<strong>成对样本的匹配程度</strong>。</p>
 <a id="more"></a>
 </blockquote>
 <h3 id="contrastive-loss-定义">1. Contrastive Loss 定义</h3>
-<p>在caffe的孪生神经网络（<code>siamese network</code>）中，其采用的损失函数是contrastive loss，这种损失函数可以有效的处理孪生神经网络中的paired data的关系。contrastive loss的表达式如下：<br>
+<p>在caffe的孪生神经网络（<code>siamese network</code>）中，其采用的损失函数是 contrastive loss，这种损失函数可以有效的处理孪生神经网络中的paired data的关系。contrastive loss 的表达式如下：<br>
 <span class="math display">\[
-L(W, (Y, X_1, X_2))=\frac{1}{2N}\sum_{n=1}^NYD_W ^2+(1-Y)max(m-D_W,0)^2
+L(W, (Y, X_1, X_2))=\frac{1}{2N}\sum_{n=1}^N \left( YD_W ^2+(1-Y)max(m-D_W,0)^2 \right)
 \]</span><br>
-其中 <span class="math inline">\(D_W(X1, X2)=||X_1 - X_2||_2 = (\sum^N_i{(X^i_1 - X^i_2)^2})^\frac{1}{2}\)</span>，代表两个样本特征<span class="math inline">\(X_1\)</span>和<span class="math inline">\(X_2\)</span>的欧氏距离（二范数），Y为两个样本是否匹配的标签，Y=1代表两个样本相似或者匹配，Y=0则代表不匹配，m为设定的阈值。</p>
+其中 <span class="math inline">\(D_W(X_1, X_2)=||X_1 - X_2||_2 = (\sum^P_{i=1}{(X^i_1 - X^i_2)^2})^\frac{1}{2}\)</span>，代表两个样本特征 <span class="math inline">\(X_1\)</span> 和 <span class="math inline">\(X_2\)</span> 的欧氏距离（二范数）<span class="math inline">\(P\)</span> 表示样本的特征维数，<span class="math inline">\(Y\)</span> 为两个样本是否匹配的标签，<span class="math inline">\(Y=1\)</span> 代表两个样本相似或者匹配，<span class="math inline">\(Y=0\)</span> 则代表不匹配，<span class="math inline">\(m\)</span> 为设定的阈值，<span class="math inline">\(N\)</span> 为样本个数。</p>
 <p>观察上述的<code>contrastive loss</code>的表达式可以发现，这种损失函数可以很好的表达<strong>成对样本的匹配程度</strong>，也能够很好用于训练提取特征的模型。</p>
 <ul>
-<li><p>当Y = 1（即样本相似时），损失函数只剩下 <span class="math inline">\(L_S = \frac{1}{2N}\sum_{n=1}^NYD_W ^2\)</span> ，即原本相似的样本，如果在特征空间的欧式距离较大，则说明当前的模型不好，因此加大损失。</p></li>
-<li><p>当Y = 0（即样本不相似时），损失函数为 <span class="math inline">\(L_D = \frac{1}{2N}\sum (1-Y)max(m-D_W,0)^2\)</span> ，即当样本不相似时，其特征空间的欧式距离反而小的话，损失值会变大，这也正好符号我们的要求。</p></li>
+<li><p>当 <span class="math inline">\(Y = 1\)</span>（即样本相似时），损失函数只剩下 <span class="math inline">\(L_S = \frac{1}{2N}\sum_{n=1}^NYD_W ^2\)</span> ，即原本相似的样本，如果在特征空间的欧式距离较大，则说明当前的模型不好，因此加大损失。</p></li>
+<li><p>当 <span class="math inline">\(Y = 0\)</span>（即样本不相似时），损失函数为 <span class="math inline">\(L_D = \frac{1}{2N}\sum_{n=1}^N (1-Y)max(m-D_W,0)^2\)</span> ，即当样本不相似时，其特征空间的欧式距离反而小的话，损失值会变大，这也正好符号我们的要求。</p></li>
 </ul>
-<p>[注意这里设置了一个阈值ｍargin，表示我们只考不相似特征欧式距离在０～ｍargin之间的，当距离超过ｍargin的，则把其loss看做为０(即不相似的特征离的很远，其loss应该是很低的；而对于相似的特征反而离的很近，我们就需要增加其loss，从而不断更新成对样本的匹配程度)]</p>
+<p>[注意这里设置了一个阈值 ｍargin，表示我们只考不相似特征欧式距离在０～ｍargin 之间的，当距离超过 ｍargin 的，则把其 loss 看做为０(即不相似的特征离的很远，其 loss 应该是很低的；而对于相似的特征反而离的很远，我们就需要增加其 loss，从而不断更新成对样本的匹配程度)]</p>
 <div class="figure">
 <img src="/2019/05/23/Contrastive-Loss-contrast loss function and gradient calculation/contrastive_loss.png">
 
 </div>
 <p>这张图表示的就是损失函数值与样本特征的欧式距离之间的关系，其中红色虚线表示的是相似样本的损失值，蓝色实线表示的不相似样本的损失值。</p>
 <h3 id="梯度计算">2. 梯度计算</h3>
-<p>论文中使用<code>stochastic gradient descent</code> 来不断更新 <span class="math inline">\(D_W\)</span>,不断减小loss，更好表达成对样本的匹配程度。</p>
+<p>论文中使用 <code>stochastic gradient descent</code> 来不断更新 <span class="math inline">\(D_W\)</span>,不断减小 loss，更好表达成对样本的匹配程度。</p>
 <ul>
-<li>Y = 1（即样本相似时），损失函数为 <span class="math inline">\(L_S = \frac{1}{2N}\sum_{n=1}^ND_W ^2\)</span> ，此时计算梯度为：</li>
+<li><span class="math inline">\(Y = 1\)</span>（即样本相似时），损失函数为 <span class="math inline">\(L_S = \frac{1}{2N}\sum_{n=1}^ND_W ^2\)</span> ，此时计算梯度为：</li>
 </ul>
 <p><span class="math display">\[
 \frac{\partial L_S}{\partial W} = D_W\frac{\partial D_W}{\partial W} \\
@@ -359,7 +359,7 @@ L(W, (Y, X_1, X_2))=\frac{1}{2N}\sum_{n=1}^NYD_W ^2+(1-Y)max(m-D_W,0)^2
 \end{eqnarray}\right.
 \]</span></p>
 <ul>
-<li>Y = 0 （即样本不相似时），损失函数为 <span class="math inline">\(L_D = \frac{1}{2N}\sum (1-Y)max(m-D_W,0)^2\)</span>，此时计算梯度为 :</li>
+<li><span class="math inline">\(Y = 0\)</span> （即样本不相似时），损失函数为 <span class="math inline">\(L_D = \frac{1}{2N}\sum (1-Y)max(m-D_W,0)^2\)</span>，此时计算梯度为 :</li>
 </ul>
 <p><span class="math display">\[
   \frac{\partial L_D}{\partial W} = \left\{
@@ -368,7 +368,7 @@ L(W, (Y, X_1, X_2))=\frac{1}{2N}\sum_{n=1}^NYD_W ^2+(1-Y)max(m-D_W,0)^2
    &amp;-(m - D_W)\frac{\partial D_W}{\partial W}      &amp;, D_W &lt; m
   \end{matrix}\right.
   \]</span></p>
-<p>同理，当<span class="math inline">\(D_W &lt; m\)</span>时，分别对 <span class="math inline">\(X_1\)</span>和<span class="math inline">\(X_2\)</span>求偏导：</p>
+<p>同理，当<span class="math inline">\(D_W &lt; m\)</span>时，分别对 <span class="math inline">\(X_1\)</span> 和 <span class="math inline">\(X_2\)</span> 求偏导：</p>
 <p><span class="math display">\[
 \frac{\partial L_D}{\partial W}  =  \left\{\begin{eqnarray} 
 &amp;&amp;\frac{\partial L_D}{\partial X_1} = -(m - D_W)\frac{\partial D_W}{\partial X_1} =  -(m - D_W)\frac{\partial}{\partial X_1} ||X_1 - X_2||_2  = -(m - D_W)\frac{ X_1-X_2}{||X_1-X_2||_2}  = -(m - D_W)\frac{ X_1-X_2}{D_W}                                \  \\  
@@ -380,17 +380,17 @@ L(W, (Y, X_1, X_2))=\frac{1}{2N}\sum_{n=1}^NYD_W ^2+(1-Y)max(m-D_W,0)^2
 <span class="math display">\[
 F = -KX
 \]</span><br>
-(F表示两点间弹簧的作用力，K是弹簧的劲度系数，X为弹簧拉伸或收缩的长度，弹簧静止状态时X=0)</p>
-<p>论文中将该<code>contrastive loss</code>损失函数类比于弹簧模型：将成对的样本特征，使用该损失函数来表达成对样本特征的匹配程度。成对的样本特征之间（类比于图中的一个个点），我们假设这些点之间都有一个弹簧，弹簧静止时长度为０，点对之间无作用力。①对于样本相似的特征，相当于其间的弹簧产生了正位移Ｘ(X &lt; m)，即弹簧被拉伸了X的长度，此时两个相似特征（点）之间存在吸引力。②对于样本不相似的特征，相当于其间的弹簧产生的了负位移，即弹簧被压缩了，此时两个不相似特征之间存在排斥力。注意弹簧的特性：当两点之间弹簧位移超Ｘ&gt;m时，此时，弹簧发生形变，此时两点之间视为没有吸引力了。具体如下图所示：</p>
-<p>结合上面求梯度的公式也可以很好的理解该损失函数的思想，上面的 <span class="math inline">\(\frac{\partial L_S}{\partial W}​\)</span> 和 <span class="math inline">\(\frac{\partial L_D}{\partial W}​\)</span> 代表两点间弹簧的作用力F，<span class="math inline">\(\frac{\partial D_W}{\partial W}​\)</span> 对应弹簧的劲度系数，<span class="math inline">\(D_W​\)</span> 和 <span class="math inline">\(-(m - D_W)​\)</span>代表弹簧的缩放位移。</p>
+( <span class="math inline">\(F\)</span> 表示两点间弹簧的作用力，<span class="math inline">\(K\)</span> 是弹簧的劲度系数，<span class="math inline">\(X\)</span> 为弹簧拉伸或收缩的长度，弹簧静止状态时 <span class="math inline">\(X=0\)</span> )</p>
+<p>论文中将该 <code>contrastive loss</code> 损失函数类比于弹簧模型：将成对的样本特征，使用该损失函数来表达成对样本特征的匹配程度。成对的样本特征之间（类比于图中的一个个点），我们假设这些点之间都有一个弹簧，弹簧静止时长度为０，点对之间无作用力。①对于样本相似的特征，相当于其间的弹簧产生了正位移 <span class="math inline">\(X(X &lt; m)\)</span>，即弹簧被拉伸了 <span class="math inline">\(X\)</span> 的长度，此时两个相似特征（点）之间存在吸引力。②对于样本不相似的特征，相当于其间的弹簧产生的了负位移，即弹簧被压缩了，此时两个不相似特征之间存在排斥力。注意弹簧的特性：当两点之间弹簧位移超<span class="math inline">\(X&gt;m\)</span> 时，此时，弹簧发生形变，此时两点之间视为没有吸引力了。具体如下图所示：</p>
+<p>结合上面求梯度的公式也可以很好的理解该损失函数的思想，上面的 <span class="math inline">\(\frac{\partial L_S}{\partial W}\)</span> 和 <span class="math inline">\(\frac{\partial L_D}{\partial W}\)</span> 代表两点间弹簧的作用力 <span class="math inline">\(F\)</span>，<span class="math inline">\(\frac{\partial D_W}{\partial W}\)</span> 对应弹簧的劲度系数，<span class="math inline">\(D_W\)</span> 和 <span class="math inline">\(-(m - D_W)\)</span> 代表弹簧的缩放位移。</p>
 <div class="figure">
 <img src="/2019/05/23/Contrastive-Loss-contrast loss function and gradient calculation/Dimensionality_Reduction.png">
 
 </div>
-<p>上图显示了类比的弹簧系统。实心圆表示与中心点相似的点。空心圆圈代表不同的点。弹簧显示为红色曲折线。作用在点上的力以蓝色箭头显示。箭头的长度近似给出了力的强度。在右侧的两个图中，x轴是距离<span class="math inline">\(D_W\)</span>，y轴是损失函数的值。（a）中显示使用仅吸引<code>attractonly</code>弹簧连接到相似点的点。（b）表示相似点对的损失函数及其梯度。（c）表示该点仅与半径为m的圆内的不同点连接，仅具有<code>m-repulse-only</code>排斥弹簧连接到不相似的点。（d）显示不相似点对相关的损失函数及其梯度。（e）显示一个点被不同方向的其他点拉动，形成平衡的情况。</p>
+<p>上图显示了类比的弹簧系统。实心圆表示与中心点相似的点。空心圆圈代表不同的点。弹簧显示为红色曲折线。作用在点上的力以蓝色箭头显示。箭头的长度近似给出了力的强度。在右侧的两个图中，x轴是距离 <span class="math inline">\(D_W\)</span>，y轴是损失函数的值。（a）中显示使用仅吸引<code>attractonly</code>弹簧连接到相似点的点。（b）表示相似点对的损失函数及其梯度。（c）表示该点仅与半径为m的圆内的不同点连接，仅具有<code>m-repulse-only</code>排斥弹簧连接到不相似的点。（d）显示不相似点对相关的损失函数及其梯度。（e）显示一个点被不同方向的其他点拉动，形成平衡的情况。</p>
 <h3 id="reference">4. Reference</h3>
 <ul>
-<li><a href="4_Paper/Dimensionality_Reduction_by_Learning_an_Invariant_Mapping.pdf">Dimensionality Reduction by Learning an Invariant Mapping</a></li>
+<li><a href="http://yann.lecun.com/exdb/publis/pdf/hadsell-chopra-lecun-06.pdf" target="_blank" rel="noopener">Dimensionality Reduction by Learning an Invariant Mapping</a></li>
 <li><a href="https://blog.csdn.net/autocyz/article/details/53149760" class="uri" target="_blank" rel="noopener">https://blog.csdn.net/autocyz/article/details/53149760</a></li>
 </ul>
 </body>
