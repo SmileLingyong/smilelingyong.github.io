@@ -101,9 +101,12 @@
 <meta property="og:image" content="http://yoursite.com/2019/05/08/Try-your-best!You-will-find-the-job/BN_02.png">
 <meta property="og:image" content="http://yoursite.com/2019/05/08/Try-your-best!You-will-find-the-job/GN.png">
 <meta property="og:image" content="http://yoursite.com/2019/05/08/Try-your-best!You-will-find-the-job/BN_croped.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/08/Try-your-best!You-will-find-the-job/2.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/05/08/Try-your-best!You-will-find-the-job/3.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/05/08/Try-your-best!You-will-find-the-job/4.jpg">
 <meta property="og:image" content="http://yoursite.com/2019/05/08/Try-your-best!You-will-find-the-job/caffe_conv_02.jpg">
 <meta property="og:image" content="http://yoursite.com/2019/05/08/Try-your-best!You-will-find-the-job/caffe_conv_01.png">
-<meta property="og:updated_time" content="2019-05-24T04:26:00.174Z">
+<meta property="og:updated_time" content="2019-05-24T13:52:37.657Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="加油！一定能找到好工作！">
 <meta name="twitter:description" content="code{white-space: pre;}">
@@ -1641,6 +1644,26 @@ J(\theta)=-\frac{1}{m} \sum_{i=1}^{m}\left[y^{(i)} \log h_{\theta}\left(x^{(i)}\
 </ul>
 <h4 id="adaboost-算法">AdaBoost 算法</h4>
 <h4 id="gbdt-算法">GBDT 算法</h4>
+<hr>
+<h3 id="神经网络">神经网络</h3>
+<h4 id="为什么要使用梯度更新规则">为什么要使用梯度更新规则</h4>
+<p>首先，深层网络由许多非线性层堆叠而来，每一层非线性层都可以视为是一个非线性函数 <span class="math inline">\(f(x)\)</span> (非线性来自于非线性激活函数），因此整个深度网络可以视为是一个复合的非线性多元函数<br>
+<span class="math display">\[
+F(x)=f_{n}\left(\ldots f_{3}\left(f_{2}\left(f_{1}(x) * \theta_{1}+b\right) * \theta_{2}+b\right) \dots\right)
+\]</span><br>
+我们最终的目的是希望这个多元函数可以很好的完成输入到输出之间的映射。而使用梯度更新规则，可以根据损失函数计算的误差通过梯度反向传播的方式，指导深度网络权值的更新优化。</p>
+<h4 id="梯度爆炸与梯度消失">梯度爆炸与梯度消失</h4>
+<ul>
+<li><strong>梯度爆炸</strong></li>
+</ul>
+<ol style="list-style-type: decimal">
+<li>由于网络权重初始化太大，然后随着层数的不断增加，以及反向传播的过程，很容易造成梯度爆炸现象。</li>
+</ol>
+<p>梯度爆炸一般出现在深层网络和<strong>权值初始化值太大</strong>的情况下。当权值初始化太大的时候，然后通过激活函数，得到一个比较大的激活值，</p>
+<ul>
+<li><strong>梯度消失</strong></li>
+</ul>
+<hr>
 <h3 id="归一化">归一化</h3>
 <h3 id="batch-normalization批标准化">Batch Normalization(批标准化)</h3>
 <h4 id="bn层作用以及如何使用bn层">BN层作用，以及如何使用BN层</h4>
@@ -1777,6 +1800,200 @@ J(\theta)=-\frac{1}{m} \sum_{i=1}^{m}\left[y^{(i)} \log h_{\theta}\left(x^{(i)}\
 <p><strong><code>IN</code>：</strong> 归一化维度为 <strong>[H, W]</strong></p>
 <p><strong><code>GN</code>：</strong> GN 介于 LN 和 IN 之间，其首先将channel分为许多组（group），对每一组做归一化，即先将feature的维度由[N, C, H, W] reshape为 [N*G，C//G , H, W]，归一化的维度为 <strong>[C//G , H, W]</strong> 。GN相当于特征的group归一化，其对batch_size更鲁棒</p>
 <p>事实上，GN 的极端情况就是 LN 和 IN，分别对应G等于1和G等于C</p>
+<hr>
+<h3 id="优化算法">优化算法</h3>
+<p>梯度下降是目前神经网络中使用最为广泛的优化算法之一。为了弥补朴素梯度下降的种种缺陷，研究者们发明了一系列变种算法，优化算法经历了 <code>SGD -&gt; SGDM -&gt; NAG -&gt; AdaGrad -&gt; AdaDelta -&gt; Adam -&gt; NAdam</code> 这样的发展历程。</p>
+<h4 id="gradient-descent">Gradient Descent</h4>
+<p>梯度下降是指，在给定待优化的模型参数 <span class="math inline">\(\theta \in \mathbb{R}^d\)</span> 和目标函数 <span class="math inline">\(J(\theta)\)</span> 后，算法通过沿梯度 <span class="math inline">\(\nabla_\theta J(\theta)\)</span>的相反方向更新 <span class="math inline">\(\theta\)</span> 来最小化 <span class="math inline">\(J(\theta)\)</span> 。学习率 <span class="math inline">\(\eta\)</span> 决定了每一时刻的更新步长。对于每个epoch <span class="math inline">\(t\)</span> ，我们可以用下述步骤描述梯度下降的流程：</p>
+<p>(1) 计算目标函数关于参数的梯度<br>
+<span class="math display">\[
+g_t = \nabla_\theta J(\theta)
+\]</span><br>
+(2) 根据历史梯度计算一阶和二阶动量<br>
+<span class="math display">\[
+m_t = \phi(g_1, g_2, \cdots, g_t)
+\]</span></p>
+<p><span class="math display">\[
+v_t = \psi(g_1, g_2, \cdots, g_t)
+\]</span></p>
+<p>(3) 计算当前时刻的下降梯度(步长) <span class="math inline">\(\frac{m_t}{\sqrt{v_t + \epsilon}}\)</span> ，并根据下降梯度更新模型参数<br>
+<span class="math display">\[
+\theta_{t+1} = \theta_t - \frac{m_t}{\sqrt{v_t + \epsilon}}
+\]</span><br>
+其中， <span class="math inline">\(\epsilon\)</span> 为平滑项，防止分母为零，通常取 <span class="math inline">\(1e-8\)</span> 。</p>
+<blockquote>
+<p>注意：本文提到的步长，就是下降梯度。</p>
+</blockquote>
+<h4 id="gradient-descent-和其算法变种">Gradient Descent 和其算法变种</h4>
+<p>根据以上框架，我们来分析和比较梯度下降的各变种算法。</p>
+<h4 id="vanilla-sgd">Vanilla SGD</h4>
+<p>朴素 SGD (Stochastic Gradient Descent) 最为简单，没有动量的概念，即<br>
+<span class="math display">\[
+m_t = \eta g_t
+\]</span></p>
+<p><span class="math display">\[
+v_t = I^2
+\]</span></p>
+<p><span class="math display">\[
+\epsilon = 0
+\]</span></p>
+<p>这时，更新步骤就是最简单的<br>
+<span class="math display">\[
+\theta_{i+1}= \theta_t - \eta g_t
+\]</span><br>
+<strong>缺点：</strong></p>
+<ul>
+<li>收敛速度慢，而且可能会在沟壑的两边持续震荡</li>
+<li>容易停留在一个局部最优点</li>
+<li>如何合理的选择学习率也是 SGD 的一大难点</li>
+</ul>
+<h4 id="sgd-with-momentum">SGD with Momentum</h4>
+<p><strong>为了抑制SGD的震荡，SGD-M认为梯度下降过程可以加入惯性(动量) Momentum[3]，加速 SGD 在正确方向的下降并抑制震荡</strong>。就好像下坡的时候，如果发现是陡坡，那就利用惯性跑的快一些。其在SGD的基础上，引入了一阶动量，然后进行更新：<br>
+<span class="math display">\[
+m_t = \gamma m_{t-1} + \eta g_t \\
+\theta_{t+1}= \theta_t - m_t
+\]</span><br>
+即在原步长(SGD中是<span class="math inline">\(\eta g_t\)</span>) 之上，增加了与上一时刻动量相关的一项 <span class="math inline">\(\gamma m_{t-1}\)</span>，目的是结合上一时刻步长(下降梯度)， 其中 <span class="math inline">\(m_{t-1}\)</span> 是上一时刻的动量，<span class="math inline">\(\gamma\)</span> 是动量因子。也就是说，<span class="math inline">\(t\)</span> 时刻的下降方向，不仅由当前点的梯度方向决定，而且由此前累积的下降方向决定，<span class="math inline">\(\gamma\)</span> 通常取 0.9 左右。这就意味着下降方向主要是此前累积的下降方向，并略微偏向当前时刻的下降方向。<strong>这使得参数中那些梯度方向变化不大的维度可以加速更新，并减少梯度方向变化较大的维度上的更新幅度</strong>。由此产生了加速收敛和减小震荡的效果。</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center"><img src="/2019/05/08/Try-your-best!You-will-find-the-job/2.jpg"></th>
+<th align="center"><img src="/2019/05/08/Try-your-best!You-will-find-the-job/3.jpg"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">图 1(a): SGD</td>
+<td align="center">图 1(b): SGD with momentum</td>
+</tr>
+</tbody>
+</table>
+<p>从图 1 中可以看出，引入动量有效的加速了梯度下降收敛过程。</p>
+<h4 id="nesterov-accelerated-gradient">Nesterov Accelerated Gradient</h4>
+<p><strong>SGD 还有一个问题是困在局部最优的沟壑里面震荡</strong>。想象一下你走到一个盆地，四周都是略高的小山，你觉得没有下坡的方向，那就只能待在这里了。可是如果你爬上高地，就会发现外面的世界还很广阔。因此，我们不能停留在当前位置去观察未来的方向，而要向前一步、多看一步、看远一些。</p>
+<div class="figure">
+<img src="/2019/05/08/Try-your-best!You-will-find-the-job/4.jpg">
+
+</div>
+​
+<center>
+图 2: Nesterov update
+</center>
+<p>NAG全称Nesterov Accelerated Gradient，则是在SGD、SGD-M的基础上的进一步改进，算法能够在目标函数有增高趋势之前，减缓更新速率。我们知道在时刻 <span class="math inline">\(t\)</span> 的主要下降方向是由累积动量决定的，自己的梯度方向说了也不算，那与其看当前梯度方向，不如先看看如果跟着累积动量走了一步后，那个时候再怎么走。因此，NAG在步骤1，<strong>不计算当前位置的梯度方向，而是计算如果按照累积动量走了一步，那个时候的下降方向</strong>：<br>
+<span class="math display">\[
+g_t = \nabla_\theta J(\theta - \gamma m_{t-1})  \tag{1}
+\]</span><br>
+参考图2理解：最初，SGD-M先计算当前时刻的梯度（短蓝向量）和累积动量 （长蓝向量）进行参数更新。改进的方法NAG，先利用累积动量计算出下一时刻的 <span class="math inline">\(\theta\)</span> 的近似位置 <span class="math inline">\(\theta - \gamma m_{t-1}\)</span>（棕向量），并根据该未来位置计算梯度（红向量）公式(1)，然后使用和 SGD-M 中相同的方式计算当前时刻的动量项(下降梯度)，进而得到完整的参数更新（绿向量），公式(2)即将该未来位置的梯度与累积动量计算当前时刻的动量项(下降梯度)：<br>
+<span class="math display">\[
+\begin{equation}
+\begin{split}
+m_t   &amp;= \gamma m_{t-1} + \eta g_t \\
+    &amp;= \gamma m_{t-1} + \eta  \nabla_\theta J(\theta - \gamma m_{t-1})  
+\end{split}
+\end{equation} \tag{2}
+\]</span></p>
+<p>更新参数：<br>
+<span class="math display">\[
+\theta_{t+1} = \theta_t -  m_t  \tag{3}
+\]</span></p>
+<p>这种计算梯度的方式可以使算法更好的「预测未来」，提前调整更新速率。</p>
+<blockquote>
+<p>注意：<br>
+累积动量指的是上一时刻的动量乘上动量因子: <span class="math inline">\(\gamma m_{t-1}\)</span><br>
+当前时刻的动量项指的是: <span class="math inline">\({m_t}\)</span><br>
+(上面的图只是为了助于理解，其中累积动量</p>
+</blockquote>
+<h4 id="adagrad">Adagrad</h4>
+<p>SGD、SGD-M 和 NAG 均是以相同的学习率去更新 <span class="math inline">\(\theta\)</span> 的各个分量 <span class="math inline">\(\theta_i\)</span>。而深度学习模型中往往涉及大量的参数，不同参数的更新频率往往有所区别。<strong>对于更新不频繁的参数</strong>（典型例子：更新 word embedding 中的低频词），<strong>我们希望单次步长更大，多学习一些知识；对于更新频繁的参数，我们则希望步长较小，使得学习到的参数更稳定，不至于被单个样本影响太多。</strong></p>
+<p>Adagrad在 <span class="math inline">\(t\)</span> 时刻对每一个参数 <span class="math inline">\(\theta_i\)</span> 使用了不同的学习率，我们首先介绍 Adagrad 对每一个参数的更新，然后我们对其向量化。为了简洁，令 <span class="math inline">\(g_{t,i}\)</span> 为在 <span class="math inline">\(t\)</span> 时刻目标函数关于参数 <span class="math inline">\(θ_i\)</span> 的梯度：<br>
+<span class="math display">\[
+g_{t, i} = \nabla_\theta J(\theta_{i})
+\]</span><br>
+在 <span class="math inline">\(t\)</span> 时刻，对每个参数 <span class="math inline">\(θ_i\)</span> 的更新过程变为：<br>
+<span class="math display">\[
+\theta_{t+1, i} = \theta_{t, i} - \eta g_{t, i}
+\]</span><br>
+对于上述的更新规则，在 <span class="math inline">\(t\)</span> 时刻，我们要计算 <span class="math inline">\(θ_i\)</span> 从初始时刻到 <span class="math inline">\(t\)</span> 时刻的历史梯度平方和，来修正每一个参数 <span class="math inline">\(θ_i\)</span> 的学习率：<br>
+<span class="math display">\[
+\theta_{t+1, i}=\theta_{t, i}-\frac{\eta}{\sqrt{v_{t, i i}+\epsilon}} \cdot g_{t, i}
+\]</span><br>
+其中， <span class="math inline">\(v_t \in \mathbb{R}^{d\times d}\)</span> 是对角矩阵，其元素 <span class="math inline">\(v_{t, ii}\)</span> 为参数 第 <span class="math inline">\(i\)</span> 维<strong>从初始时刻到 <span class="math inline">\(t\)</span> 时刻的梯度平方和</strong>。即通过<strong>引入二阶动量</strong>，<strong>来调整每一个参数的学习率</strong>，等效为 <span class="math inline">\(\eta / \sqrt{v_t + \epsilon}\)</span><br>
+<span class="math display">\[
+v_t = \text{diag}(\sum_{i=1}^t g_{i,1}^2, \sum_{i=1}^t g_{i,2}^2, \cdots, \sum_{i=1}^t g_{i,d}^2)
+\]</span><br>
+由于 <span class="math inline">\(v_t\)</span> 的对角线上包含了关于所有参数 <span class="math inline">\(θ\)</span> 的历史梯度的平方和，现在，我们可以通过 <span class="math inline">\(v_t\)</span> 和 <span class="math inline">\(g_t\)</span> 之间的元素向量乘法⊙向量化上述的操作：<br>
+<span class="math display">\[
+\theta_{t+1}=\theta_{t}-\frac{\eta}{\sqrt{v_{t}+\epsilon}} \odot g_{t}
+\]</span><br>
+Adagrad算法的一个主要优点是无需手动调整学习率。在大多数的应用场景中，通常采用常数0.01。通过引入二阶动量，对于此前频繁更新过的参数，其二阶动量的对应分量较大，学习率就较小。这一方法在稀疏数据的场景下表现很好。但也<u>存在一些问题</u>：<strong>因为 <span class="math inline">\(\sqrt{v_t}\)</span> 是单调递增的，会使得学习率单调递减至0，可能会使得训练过程提前结束，即便后续还有数据也无法学到必要的知识。</strong></p>
+<h4 id="adadelta">AdaDelta</h4>
+<p><code>Adadelta</code> 是 <code>Adagrad</code> 的一种扩展算法，以<strong>处理Adagrad学习速率单调递减的问题</strong>。考虑<strong>在计算二阶动量时，不是计算所有的历史梯度平方和，而只关注最近某一时间窗口内的下降梯度，Adadelta将计算历史梯度的窗口大小限制为一个固定值 <span class="math inline">\(w\)</span></strong></p>
+<p>在 <code>Adadelta</code> 中，无需存储先前的 <span class="math inline">\(w\)</span> 个平方梯度，而是将梯度的平方递归地表示成所有历史梯度平方的均值。在 <span class="math inline">\(t\)</span> 时刻的均值 <span class="math inline">\(E[g^2]_t\)</span> 只取决于先前的均值和当前的梯度（分量 <span class="math inline">\(γ\)</span> 类似于动量项）：<br>
+<span class="math display">\[
+E\left[g^{2}\right]_{t}=\gamma E\left[g^{2}\right]_{t-1}+(1-\gamma) g_{t}^{2}
+\]</span><br>
+我们将 <span class="math inline">\(γ\)</span> 设置成与动量项相似的值，即0.9左右。为了简单起见，我们利用参数更新向量 <span class="math inline">\(Δθ_t\)</span> 重新表示SGD的更新过程：</p>
+<p><span class="math display">\[
+\begin{array}{c}{\Delta \theta_{t}=-\eta \cdot g_{t, i}} \\ {\theta_{t+1}=\theta_{t}+\Delta \theta_{t}}\end{array}
+\]</span><br>
+我们先前得到的 <code>Adagrad</code> 参数更新向量变为：<br>
+<span class="math display">\[
+\Delta \theta_{t}=-\frac{\eta}{\sqrt{v_{t}+\epsilon}} \odot g_{t}
+\]</span><br>
+现在，我们简单将对角矩阵 <span class="math inline">\(v_t\)</span> 替换成历史梯度的均值 <span class="math inline">\(E[g^2]_t\)</span>：<br>
+<span class="math display">\[
+\Delta \theta_{t}=-\frac{\eta}{\sqrt{E\left[g^{2}\right]_{t}+\epsilon}} g_{t}
+\]</span><br>
+由于分母仅仅是梯度的均方根（root mean squared，RMS）误差，我们可以简写为：<br>
+<span class="math display">\[
+\Delta \theta_{t}=-\frac{\eta}{R M S[g]_{t}} g_{t}
+\]</span><br>
+作者指出上述更新公式中的每个部分（与SGD，SDG-M 或者Adagrad）并不一致，即更新规则中必须与参数具有相同的假设单位。为了实现这个要求，作者首次定义了另一个指数衰减均值，这次不是梯度平方，而是参数的平方的更新：<br>
+<span class="math display">\[
+E\left[\Delta \theta^{2}\right]_{t}=\gamma E\left[\Delta \theta^{2}\right]_{t-1}+(1-\gamma) \Delta \theta_{t}^{2}
+\]</span><br>
+因此，参数更新的均方根误差为：<br>
+<span class="math display">\[
+R M S[\Delta \theta]_{t}=\sqrt{E\left[\Delta \theta^{2}\right]_{t}+\epsilon}
+\]</span><br>
+由于 <span class="math inline">\(RMS[Δθ]_t\)</span> 是未知的，我们利用参数的均方根误差来近似更新。利用 <span class="math inline">\(RMS[Δθ]_{t−1}\)</span> 替换先前的更新规则中的学习率 <span class="math inline">\(η\)</span>，最终得到 <code>Adadelta</code> 的更新规则：<br>
+<span class="math display">\[
+\Delta \theta_{t}=-\frac{R M S[\Delta \theta]_{t-1}}{R M S[g]_{t}} g_{t}
+\]</span></p>
+<p><span class="math display">\[
+\theta_{t+1}=\theta_{t}+\Delta \theta_{t}
+\]</span></p>
+<p>使用 <code>Adadelta</code> 算法，我们甚至都无需设置默认的学习率，因为更新规则中已经移除了学习率。</p>
+<h4 id="rmsprop">RMSprop</h4>
+<p><code>RMSprop</code> 是一个未被发表的<strong>自适应学习率的算法</strong>，该算法由Geoff Hinton在其<a href="http://www.cs.toronto.edu/~tijmen/csc321/slides/lecture_slides_lec6.pdf" target="_blank" rel="noopener">Coursera课堂的课程6e</a>中提出。</p>
+<p>RMSprop和Adadelta在相同的时间里被独立的提出，都起源于对Adagrad的极速递减的学习率问题的求解。实际上，<code>RMSprop</code> 是先前我们得到的 <code>Adadelta</code> 的第一个更新向量的特例：<br>
+<span class="math display">\[
+\begin{array}{l}{E\left[g^{2}\right]_{t}= γ E\left[g^{2}\right]_{t-1}+(1-γ) g_{t}^{2}} \\ {\theta_{t+1}=\theta_{t}-\frac{\eta}{\sqrt{E\left[g^{2}\right]_{t}+\epsilon}} g_{t}}\end{array}
+\]</span><br>
+同样，<code>RMSprop</code> 将学习率分解成一个平方梯度的指数衰减的平均。Hinton建议将 <span class="math inline">\(γ\)</span> 设置为0.9，对于学习率 <span class="math inline">\(η\)</span>，一个好的固定值为0.001。</p>
+<h4 id="adam">Adam</h4>
+<p>Adam 可以认为是 RMSprop 和 Momentum 的结合。和 RMSprop 对二阶动量使用指数移动平均类似，Adam 中对一阶动量也是用指数移动平均计算。<br>
+<span class="math display">\[
+m_t = \eta[ \beta_1 m_{t-1} + (1 - \beta_1)g_t ]   \\ 
+v_t = \beta_2 v_{t-1} + (1-\beta_2) \cdot \text{diag}(g_t^2)
+\]</span><br>
+其中，初值</p>
+<p><span class="math display">\[
+m_0 = 0 \\
+v_0 = 0
+\]</span><br>
+注意到，在迭代初始阶段，<span class="math inline">\(m_t\)</span> 和 <span class="math inline">\(v_t\)</span> 有一个向初值的偏移（过多的偏向了 0）。因此，可以对一阶和二阶动量做偏置校正 (bias correction)，<br>
+<span class="math display">\[
+\hat{m}_t = \frac{m_t}{1-\beta_1^t}
+\]</span></p>
+<p><span class="math display">\[
+\hat{v}_t = \frac{v_t}{1-\beta_2^t}
+\]</span><br>
+再进行更新，</p>
+<p><span class="math display">\[
+\theta_{t+1} = \theta_t - \frac{1}{\sqrt{\hat{v}_t} + \epsilon } \hat{m}_t
+\]</span><br>
+可以保证迭代较为平稳。</p>
 <hr>
 <h3 id="caffe">Caffe</h3>
 <h4 id="caffe卷积层的实现">Caffe卷积层的实现</h4>
@@ -2140,7 +2357,7 @@ AGA = A
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#模型评估"><span class="nav-text">模型评估</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#模型评估常用方法"><span class="nav-text">模型评估常用方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#机器学习中的bias和variance有什么区别和联系"><span class="nav-text">机器学习中的Bias和Variance有什么区别和联系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#经验误差与泛化误差"><span class="nav-text">经验误差与泛化误差</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#深度学习中的偏差与方差"><span class="nav-text">深度学习中的偏差与方差</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#偏差方差与boosting和bagging联系"><span class="nav-text">偏差方差与Boosting和Bagging联系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#偏差与方差的计算公式"><span class="nav-text">偏差与方差的计算公式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#偏差与方差的权衡过拟合与模型复杂度的权衡"><span class="nav-text">偏差与方差的权衡（过拟合与模型复杂度的权衡）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#欠拟合与过拟合"><span class="nav-text">欠拟合与过拟合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#根据不同的坐标方式图解欠拟合与过拟合"><span class="nav-text">根据不同的坐标方式，图解欠拟合与过拟合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#降低-过拟合-的方法"><span class="nav-text">降低 过拟合 的方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#降低-欠拟合-的方法"><span class="nav-text">降低 欠拟合 的方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#l1l2-范数正则化"><span class="nav-text">L1/L2 范数正则化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#l1l2-范数的作用异同"><span class="nav-text">L1/L2 范数的作用、异同</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么-l1-和-l2-正则化可以防止过拟合"><span class="nav-text">为什么 L1 和 L2 正则化可以防止过拟合？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么-l1-正则化可以产生稀疏权值而-l2-不会"><span class="nav-text">为什么 L1 正则化可以产生稀疏权值，而 L2 不会？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#交叉验证的主要作用"><span class="nav-text">交叉验证的主要作用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#k-折交叉验证"><span class="nav-text">\(k\) 折交叉验证</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#precision和recall"><span class="nav-text">Precision和Recall</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#p-r曲线"><span class="nav-text">P-R曲线</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#roc与auc"><span class="nav-text">ROC与AUC</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#map"><span class="nav-text">mAP</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#激活函数"><span class="nav-text">激活函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么需要激活函数"><span class="nav-text">为什么需要激活函数？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么要使用非线性激活函数"><span class="nav-text">为什么要使用非线性激活函数？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#什么时候可以用线性激活函数"><span class="nav-text">什么时候可以用线性激活函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常见的激活函数"><span class="nav-text">常见的激活函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么tanh收敛速度比sigmoid快"><span class="nav-text">为什么Tanh收敛速度比Sigmoid快</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#怎样理解-relu-0-时是非线性激活函数"><span class="nav-text">怎样理解 ReLU（&lt; 0 时）是非线性激活函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#损失函数代价函数"><span class="nav-text">损失函数/代价函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么需要损失代价函数"><span class="nav-text">为什么需要损失/代价函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#损失代价函数的作用及原理"><span class="nav-text">损失/代价函数的作用及原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么损失代价函数要非负"><span class="nav-text">为什么损失/代价函数要非负</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常用的损失函数"><span class="nav-text">常用的损失函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#softmax损失函数"><span class="nav-text">Softmax损失函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#softmax-loss损失函数"><span class="nav-text">Softmax-Loss损失函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#熵条件熵kl散度交叉熵"><span class="nav-text">熵、条件熵、KL散度、交叉熵</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么用交叉熵代替二次代价均方误差函数"><span class="nav-text">为什么用交叉熵代替二次代价(均方误差)函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#梯度下降"><span class="nav-text">梯度下降</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#机器学习中为什么需要梯度下降"><span class="nav-text">机器学习中为什么需要梯度下降</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#梯度下降法缺点"><span class="nav-text">梯度下降法缺点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#梯度下降法直观理解"><span class="nav-text">梯度下降法直观理解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#梯度下降法算法描述"><span class="nav-text">梯度下降法算法描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如何对梯度下降法进行调优"><span class="nav-text">如何对梯度下降法进行调优</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#随机梯度和批量梯度区别"><span class="nav-text">随机梯度和批量梯度区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#各种梯度下降法性能比较"><span class="nav-text">各种梯度下降法性能比较</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#范数"><span class="nav-text">范数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#l-p范数"><span class="nav-text">L-P范数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#l0范数"><span class="nav-text">L0范数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#l1范数"><span class="nav-text">L1范数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#l2范数"><span class="nav-text">L2范数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#l-范数"><span class="nav-text">L-∞范数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#欧式距离-与-余弦相似度"><span class="nav-text">欧式距离 与 余弦相似度</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑回归"><span class="nav-text">逻辑回归</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#回归划分"><span class="nav-text">回归划分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#逻辑回归适用性"><span class="nav-text">逻辑回归适用性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#逻辑回归与朴素贝叶斯的区别"><span class="nav-text">逻辑回归与朴素贝叶斯的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#逻辑回归-与-线性回归-的联系与区别"><span class="nav-text">逻辑回归 与 线性回归 的联系与区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#逻辑回归-与-svm-的联系与区别"><span class="nav-text">逻辑回归 与 SVM 的联系与区别 *</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#svm"><span class="nav-text">SVM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集成学习"><span class="nav-text">集成学习</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#集成学习的基本思想"><span class="nav-text">集成学习的基本思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#集成学习为什么有效"><span class="nav-text">集成学习为什么有效</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#boosting-方法"><span class="nav-text">Boosting 方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bagging-方法booststrap-aggregating"><span class="nav-text">Bagging 方法（Booststrap AGGregatING）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么使用决策树作为基学习器"><span class="nav-text">为什么使用决策树作为基学习器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么不稳定的学习器更适合作为基学习器"><span class="nav-text">为什么不稳定的学习器更适合作为基学习器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#还有哪些模型也适合作为基学习器"><span class="nav-text">还有哪些模型也适合作为基学习器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#boosting-方法中能使用线性分类器作为基学习器吗-bagging-呢"><span class="nav-text">Boosting 方法中能使用线性分类器作为基学习器吗？ Bagging 呢？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#boostingbagging-与-偏差方差-的关系"><span class="nav-text">Boosting/Bagging 与 偏差/方差 的关系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bagging与dropout区别与联系"><span class="nav-text">Bagging与Dropout区别与联系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#adaboost-算法"><span class="nav-text">AdaBoost 算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#gbdt-算法"><span class="nav-text">GBDT 算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#归一化"><span class="nav-text">归一化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#batch-normalization批标准化"><span class="nav-text">Batch Normalization(批标准化)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#bn层作用以及如何使用bn层"><span class="nav-text">BN层作用，以及如何使用BN层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#动机"><span class="nav-text">动机</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基本原理"><span class="nav-text">基本原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么训练时不采用移动平均"><span class="nav-text">为什么训练时不采用移动平均？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bnlningn的异同"><span class="nav-text">BN、LN、IN、GN的异同</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#caffe"><span class="nav-text">Caffe</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#caffe卷积层的实现"><span class="nav-text">Caffe卷积层的实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#梯度下降与正规方程的比较"><span class="nav-text">梯度下降与正规方程的比较</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#面试题目"><span class="nav-text">面试题目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#广义逆阵"><span class="nav-text">广义逆阵</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#待整理"><span class="nav-text">待整理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么用smoothl1-loss而不用-l2-loss"><span class="nav-text">为什么用SmoothL1 loss而不用 L2 loss</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#x1卷积核作用"><span class="nav-text">1x1卷积核作用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#svm-和-softmax-区别"><span class="nav-text">SVM 和 Softmax 区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#仿射变换和透视变化区别"><span class="nav-text">仿射变换和透视变化区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#透视变换矩阵的形状"><span class="nav-text">透视变换矩阵的形状</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常用的算子"><span class="nav-text">常用的算子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#梯度消失和梯度爆炸的原因和解决方法"><span class="nav-text">梯度消失和梯度爆炸的原因和解决方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#svmlr-和-softmax-区别"><span class="nav-text">SVM、LR 和 Softmax 区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#svm寻参问题"><span class="nav-text">SVM寻参问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#svm核函数解释"><span class="nav-text">SVM核函数解释</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#softmax-公式以及反向传播"><span class="nav-text">Softmax 公式，以及反向传播</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#交叉熵公式以及方向传播"><span class="nav-text">交叉熵公式，以及方向传播</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#交叉熵损失-可以用-l2损失替换么"><span class="nav-text">交叉熵损失 可以用 L2损失替换么</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#先把yolo看完500问中有检测论文需要看的顺序"><span class="nav-text">先把YOLO看完（500问中有检测论文需要看的顺序）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#简述-yolo-和-ssd"><span class="nav-text">简述 YOLO 和 SSD</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#yolov2"><span class="nav-text">YOLOv2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#batch_size-和-learning-rate的关系怎么平衡和调整二者"><span class="nav-text">batch_size 和 learning rate的关系（怎么平衡和调整二者）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#inception-v1-v4的演变"><span class="nav-text">Inception v1-v4的演变</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#简述-cnn-的演变"><span class="nav-text">简述 CNN 的演变</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#roi-pooling-和-roi-align"><span class="nav-text">ROI Pooling 和 ROI Align</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#优化算法区别以及各自的优势"><span class="nav-text">优化算法，区别以及各自的优势</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cnn为什么有效-1-2"><span class="nav-text">CNN为什么有效 1 2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cnn再图像上表现好的原因"><span class="nav-text">CNN再图像上表现好的原因</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对迁移学习的理解为什么能work"><span class="nav-text">对迁移学习的理解，为什么能work</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实现一个卷积操作"><span class="nav-text">实现一个卷积操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模型精简加速"><span class="nav-text">模型精简加速</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#图像处理中的常用算子"><span class="nav-text">图像处理中的常用算子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#卷积与反卷积"><span class="nav-text">卷积与反卷积</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lstm-与-rnn-模型"><span class="nav-text">LSTM 与 RNN 模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lstm的结构其相对于rnn的好处"><span class="nav-text">LSTM的结构，其相对于RNN的好处</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bn原理与实战"><span class="nav-text">BN原理与实战</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#面经集合"><span class="nav-text">面经集合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#c问题"><span class="nav-text">C++问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#c面向对象的三大特性"><span class="nav-text">C++面向对象的三大特性</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#python问题"><span class="nav-text">Python问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#面试算法题目"><span class="nav-text">面试算法题目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#概率智力题"><span class="nav-text">概率智力题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自己整理的思维导图要每天看"><span class="nav-text">自己整理的思维导图要每天看</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#模型评估"><span class="nav-text">模型评估</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#模型评估常用方法"><span class="nav-text">模型评估常用方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#机器学习中的bias和variance有什么区别和联系"><span class="nav-text">机器学习中的Bias和Variance有什么区别和联系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#经验误差与泛化误差"><span class="nav-text">经验误差与泛化误差</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#深度学习中的偏差与方差"><span class="nav-text">深度学习中的偏差与方差</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#偏差方差与boosting和bagging联系"><span class="nav-text">偏差方差与Boosting和Bagging联系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#偏差与方差的计算公式"><span class="nav-text">偏差与方差的计算公式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#偏差与方差的权衡过拟合与模型复杂度的权衡"><span class="nav-text">偏差与方差的权衡（过拟合与模型复杂度的权衡）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#欠拟合与过拟合"><span class="nav-text">欠拟合与过拟合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#根据不同的坐标方式图解欠拟合与过拟合"><span class="nav-text">根据不同的坐标方式，图解欠拟合与过拟合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#降低-过拟合-的方法"><span class="nav-text">降低 过拟合 的方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#降低-欠拟合-的方法"><span class="nav-text">降低 欠拟合 的方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#l1l2-范数正则化"><span class="nav-text">L1/L2 范数正则化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#l1l2-范数的作用异同"><span class="nav-text">L1/L2 范数的作用、异同</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么-l1-和-l2-正则化可以防止过拟合"><span class="nav-text">为什么 L1 和 L2 正则化可以防止过拟合？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么-l1-正则化可以产生稀疏权值而-l2-不会"><span class="nav-text">为什么 L1 正则化可以产生稀疏权值，而 L2 不会？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#交叉验证的主要作用"><span class="nav-text">交叉验证的主要作用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#k-折交叉验证"><span class="nav-text">\(k\) 折交叉验证</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#precision和recall"><span class="nav-text">Precision和Recall</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#p-r曲线"><span class="nav-text">P-R曲线</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#roc与auc"><span class="nav-text">ROC与AUC</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#map"><span class="nav-text">mAP</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#激活函数"><span class="nav-text">激活函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么需要激活函数"><span class="nav-text">为什么需要激活函数？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么要使用非线性激活函数"><span class="nav-text">为什么要使用非线性激活函数？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#什么时候可以用线性激活函数"><span class="nav-text">什么时候可以用线性激活函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常见的激活函数"><span class="nav-text">常见的激活函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么tanh收敛速度比sigmoid快"><span class="nav-text">为什么Tanh收敛速度比Sigmoid快</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#怎样理解-relu-0-时是非线性激活函数"><span class="nav-text">怎样理解 ReLU（&lt; 0 时）是非线性激活函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#损失函数代价函数"><span class="nav-text">损失函数/代价函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么需要损失代价函数"><span class="nav-text">为什么需要损失/代价函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#损失代价函数的作用及原理"><span class="nav-text">损失/代价函数的作用及原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么损失代价函数要非负"><span class="nav-text">为什么损失/代价函数要非负</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常用的损失函数"><span class="nav-text">常用的损失函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#softmax损失函数"><span class="nav-text">Softmax损失函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#softmax-loss损失函数"><span class="nav-text">Softmax-Loss损失函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#熵条件熵kl散度交叉熵"><span class="nav-text">熵、条件熵、KL散度、交叉熵</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么用交叉熵代替二次代价均方误差函数"><span class="nav-text">为什么用交叉熵代替二次代价(均方误差)函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#梯度下降"><span class="nav-text">梯度下降</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#机器学习中为什么需要梯度下降"><span class="nav-text">机器学习中为什么需要梯度下降</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#梯度下降法缺点"><span class="nav-text">梯度下降法缺点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#梯度下降法直观理解"><span class="nav-text">梯度下降法直观理解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#梯度下降法算法描述"><span class="nav-text">梯度下降法算法描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如何对梯度下降法进行调优"><span class="nav-text">如何对梯度下降法进行调优</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#随机梯度和批量梯度区别"><span class="nav-text">随机梯度和批量梯度区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#各种梯度下降法性能比较"><span class="nav-text">各种梯度下降法性能比较</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#范数"><span class="nav-text">范数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#l-p范数"><span class="nav-text">L-P范数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#l0范数"><span class="nav-text">L0范数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#l1范数"><span class="nav-text">L1范数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#l2范数"><span class="nav-text">L2范数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#l-范数"><span class="nav-text">L-∞范数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#欧式距离-与-余弦相似度"><span class="nav-text">欧式距离 与 余弦相似度</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑回归"><span class="nav-text">逻辑回归</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#回归划分"><span class="nav-text">回归划分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#逻辑回归适用性"><span class="nav-text">逻辑回归适用性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#逻辑回归与朴素贝叶斯的区别"><span class="nav-text">逻辑回归与朴素贝叶斯的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#逻辑回归-与-线性回归-的联系与区别"><span class="nav-text">逻辑回归 与 线性回归 的联系与区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#逻辑回归-与-svm-的联系与区别"><span class="nav-text">逻辑回归 与 SVM 的联系与区别 *</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#svm"><span class="nav-text">SVM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集成学习"><span class="nav-text">集成学习</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#集成学习的基本思想"><span class="nav-text">集成学习的基本思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#集成学习为什么有效"><span class="nav-text">集成学习为什么有效</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#boosting-方法"><span class="nav-text">Boosting 方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bagging-方法booststrap-aggregating"><span class="nav-text">Bagging 方法（Booststrap AGGregatING）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么使用决策树作为基学习器"><span class="nav-text">为什么使用决策树作为基学习器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么不稳定的学习器更适合作为基学习器"><span class="nav-text">为什么不稳定的学习器更适合作为基学习器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#还有哪些模型也适合作为基学习器"><span class="nav-text">还有哪些模型也适合作为基学习器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#boosting-方法中能使用线性分类器作为基学习器吗-bagging-呢"><span class="nav-text">Boosting 方法中能使用线性分类器作为基学习器吗？ Bagging 呢？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#boostingbagging-与-偏差方差-的关系"><span class="nav-text">Boosting/Bagging 与 偏差/方差 的关系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bagging与dropout区别与联系"><span class="nav-text">Bagging与Dropout区别与联系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#adaboost-算法"><span class="nav-text">AdaBoost 算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#gbdt-算法"><span class="nav-text">GBDT 算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#神经网络"><span class="nav-text">神经网络</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么要使用梯度更新规则"><span class="nav-text">为什么要使用梯度更新规则</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#梯度爆炸与梯度消失"><span class="nav-text">梯度爆炸与梯度消失</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#归一化"><span class="nav-text">归一化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#batch-normalization批标准化"><span class="nav-text">Batch Normalization(批标准化)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#bn层作用以及如何使用bn层"><span class="nav-text">BN层作用，以及如何使用BN层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#动机"><span class="nav-text">动机</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基本原理"><span class="nav-text">基本原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么训练时不采用移动平均"><span class="nav-text">为什么训练时不采用移动平均？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bnlningn的异同"><span class="nav-text">BN、LN、IN、GN的异同</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优化算法"><span class="nav-text">优化算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#gradient-descent"><span class="nav-text">Gradient Descent</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#gradient-descent-和其算法变种"><span class="nav-text">Gradient Descent 和其算法变种</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#vanilla-sgd"><span class="nav-text">Vanilla SGD</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sgd-with-momentum"><span class="nav-text">SGD with Momentum</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#nesterov-accelerated-gradient"><span class="nav-text">Nesterov Accelerated Gradient</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#adagrad"><span class="nav-text">Adagrad</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#adadelta"><span class="nav-text">AdaDelta</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#rmsprop"><span class="nav-text">RMSprop</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#adam"><span class="nav-text">Adam</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#caffe"><span class="nav-text">Caffe</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#caffe卷积层的实现"><span class="nav-text">Caffe卷积层的实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#梯度下降与正规方程的比较"><span class="nav-text">梯度下降与正规方程的比较</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#面试题目"><span class="nav-text">面试题目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#广义逆阵"><span class="nav-text">广义逆阵</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#待整理"><span class="nav-text">待整理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么用smoothl1-loss而不用-l2-loss"><span class="nav-text">为什么用SmoothL1 loss而不用 L2 loss</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#x1卷积核作用"><span class="nav-text">1x1卷积核作用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#svm-和-softmax-区别"><span class="nav-text">SVM 和 Softmax 区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#仿射变换和透视变化区别"><span class="nav-text">仿射变换和透视变化区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#透视变换矩阵的形状"><span class="nav-text">透视变换矩阵的形状</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常用的算子"><span class="nav-text">常用的算子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#梯度消失和梯度爆炸的原因和解决方法"><span class="nav-text">梯度消失和梯度爆炸的原因和解决方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#svmlr-和-softmax-区别"><span class="nav-text">SVM、LR 和 Softmax 区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#svm寻参问题"><span class="nav-text">SVM寻参问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#svm核函数解释"><span class="nav-text">SVM核函数解释</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#softmax-公式以及反向传播"><span class="nav-text">Softmax 公式，以及反向传播</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#交叉熵公式以及方向传播"><span class="nav-text">交叉熵公式，以及方向传播</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#交叉熵损失-可以用-l2损失替换么"><span class="nav-text">交叉熵损失 可以用 L2损失替换么</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#先把yolo看完500问中有检测论文需要看的顺序"><span class="nav-text">先把YOLO看完（500问中有检测论文需要看的顺序）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#简述-yolo-和-ssd"><span class="nav-text">简述 YOLO 和 SSD</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#yolov2"><span class="nav-text">YOLOv2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#batch_size-和-learning-rate的关系怎么平衡和调整二者"><span class="nav-text">batch_size 和 learning rate的关系（怎么平衡和调整二者）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#inception-v1-v4的演变"><span class="nav-text">Inception v1-v4的演变</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#简述-cnn-的演变"><span class="nav-text">简述 CNN 的演变</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#roi-pooling-和-roi-align"><span class="nav-text">ROI Pooling 和 ROI Align</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#优化算法区别以及各自的优势"><span class="nav-text">优化算法，区别以及各自的优势</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cnn为什么有效-1-2"><span class="nav-text">CNN为什么有效 1 2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cnn再图像上表现好的原因"><span class="nav-text">CNN再图像上表现好的原因</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对迁移学习的理解为什么能work"><span class="nav-text">对迁移学习的理解，为什么能work</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实现一个卷积操作"><span class="nav-text">实现一个卷积操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模型精简加速"><span class="nav-text">模型精简加速</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#图像处理中的常用算子"><span class="nav-text">图像处理中的常用算子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#卷积与反卷积"><span class="nav-text">卷积与反卷积</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lstm-与-rnn-模型"><span class="nav-text">LSTM 与 RNN 模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lstm的结构其相对于rnn的好处"><span class="nav-text">LSTM的结构，其相对于RNN的好处</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bn原理与实战"><span class="nav-text">BN原理与实战</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#面经集合"><span class="nav-text">面经集合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#c问题"><span class="nav-text">C++问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#c面向对象的三大特性"><span class="nav-text">C++面向对象的三大特性</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#python问题"><span class="nav-text">Python问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#面试算法题目"><span class="nav-text">面试算法题目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#概率智力题"><span class="nav-text">概率智力题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自己整理的思维导图要每天看"><span class="nav-text">自己整理的思维导图要每天看</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
