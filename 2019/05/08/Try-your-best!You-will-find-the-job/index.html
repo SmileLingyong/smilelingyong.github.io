@@ -119,6 +119,8 @@
 <meta property="og:image" content="http://yoursite.com/2019/05/08/Try-your-best!You-will-find-the-job/公式_20180713111647.png">
 <meta property="og:image" content="http://yoursite.com/2019/05/08/Try-your-best!You-will-find-the-job/公式_20180713132655.png">
 <meta property="og:image" content="http://yoursite.com/2019/05/08/Try-your-best!You-will-find-the-job/2-5.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/08/Try-your-best!You-will-find-the-job/2.19.1.1.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/08/Try-your-best!You-will-find-the-job/k-means.png">
 <meta property="og:image" content="http://yoursite.com/2019/05/08/Try-your-best!You-will-find-the-job/梯度下降.png">
 <meta property="og:image" content="http://yoursite.com/2019/05/08/Try-your-best!You-will-find-the-job/BN.png">
 <meta property="og:image" content="http://yoursite.com/2019/05/08/Try-your-best!You-will-find-the-job/BN_02.png">
@@ -129,7 +131,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/05/08/Try-your-best!You-will-find-the-job/4.jpg">
 <meta property="og:image" content="http://yoursite.com/2019/05/08/Try-your-best!You-will-find-the-job/caffe_conv_02.jpg">
 <meta property="og:image" content="http://yoursite.com/2019/05/08/Try-your-best!You-will-find-the-job/caffe_conv_01.png">
-<meta property="og:updated_time" content="2019-05-30T04:17:10.345Z">
+<meta property="og:updated_time" content="2019-05-30T04:33:12.374Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="加油！一定能找到好工作！">
 <meta name="twitter:description" content="code{white-space: pre;}">
@@ -1615,9 +1617,9 @@ H(D)=-\sum_{k=1}^{k}\frac{|C_{k}|}{|D|}log_{2}\frac{|C_{k}|}{|D|}
 <h4 id="信息增益的-与-信息增益比">信息增益的 与 信息增益比</h4>
 <p><strong>（1）信息增益</strong></p>
 <ul>
-<li>定义：<strong>以某特征划分数据集前后的熵的差值</strong>。</li>
+<li><p>定义：<strong>以某特征划分数据集前后的熵的差值</strong>。</p>
+<p>可以表示样本集合的不确定性，熵越大，样本的不确定性就越大。因此可以使用划分前后集合熵的差值来衡量使用当前特征对于样本集合D划分效果的好坏。</p></li>
 </ul>
-<p>熵可以表示样本集合的不确定性，熵越大，样本的不确定性就越大。因此可以使用划分前后集合熵的差值来衡量使用当前特征对于样本集合D划分效果的好坏。</p>
 <p>假设划分前样本集合D的熵为H(D)。使用某个特征A划分数据集D，计算划分后的数据子集的熵为H(D|A)。<br>
 则信息增益为：<br>
 <span class="math display">\[
@@ -1648,8 +1650,443 @@ g(D,A)=H(D)-H(D|A)
 <p>​ <strong>后剪枝</strong>：生成决策树以后，再自下而上对非叶结点进行考察， 若将此节点标记为叶结点可以带来泛化性能提升，则修改之。</p>
 <hr>
 <h3 id="朴素贝叶斯">朴素贝叶斯</h3>
+<h4 id="图解极大似然估计">图解极大似然估计</h4>
+<p>极大似然估计的原理，用一张图片来说明，如下图所示：</p>
+<div class="figure">
+<embed src="file:///home/lly/Documents/Blog/jobs/DeepLearning-500-questions/ch02_机器学习基础/img/ch2/2.19.1.1.png?lastModify=1559189835">
+<p class="caption">img</p>
+</div>
+<p>​ 例：有两个外形完全相同的箱子，1号箱有99只白球，1只黑球；2号箱有1只白球，99只黑球。在一次实验中，取出的是黑球，请问是从哪个箱子中取出的？</p>
+<p>​ 一般的根据经验想法，会猜测这只黑球最像是从2号箱取出，此时描述的“最像”就有“最大似然”的意思，这种想法常称为“最大似然原理”。</p>
+<h4 id="极大似然估计原理">极大似然估计原理</h4>
+<p>​ 总结起来，最大似然估计的目的就是：利用已知的样本结果，反推最有可能（最大概率）导致这样结果的参数值。</p>
+<p>​ 极大似然估计是建立在极大似然原理的基础上的一个统计方法。极大似然估计提供了一种给定观察数据来评估模型参数的方法，即：“模型已定，参数未知”。通过若干次试验，观察其结果，利用试验结果得到某个参数值能够使样本出现的概率为最大，则称为极大似然估计。</p>
+<p>​ 由于样本集中的样本都是独立同分布，可以只考虑一类样本集，来估计参数向量。记已知的样本集为：</p>
+<p>似然函数（likelihood function）：联合概率密度函数称为相对于的的似然函数。</p>
+<p>如果是参数空间中能使似然函数最大的值，则应该是“最可能”的参数值，那么就是的极大似然估计量。它是样本集的函数，记作：</p>
+<p>称为极大似然函数估计值。</p>
+<h4 id="贝叶斯分类器基本原理">贝叶斯分类器基本原理</h4>
+<p>​ 贝叶斯决策论通过<strong>相关概率已知</strong>的情况下利用<strong>误判损失</strong>来选择最优的类别分类。 假设有种可能的分类标记，记为，那对于样本，它属于哪一类呢？</p>
+<p>计算步骤如下：</p>
+<p>step 1. 算出样本属于第i个类的概率，即；</p>
+<p>step 2. 通过比较所有的，得到样本所属的最佳类别。</p>
+<p>step 3. 将类别和样本代入到贝叶斯公式中，得到：</p>
+<p>​ 一般来说，为先验概率，为条件概率，是用于归一化的证据因子。对于可以通过训练样本中类别为的样本所占的比例进行估计；此外，由于只需要找出最大的，因此我们并不需要计算。 为了求解条件概率，基于不同假设提出了不同的方法，以下将介绍朴素贝叶斯分类器和半朴素贝叶斯分类器。</p>
+<h4 id="朴素贝叶斯分类器">朴素贝叶斯分类器</h4>
+<p>极大似然估计的原理，用一张图片来说明，如下图所示：</p>
+<div class="figure">
+<img src="/2019/05/08/Try-your-best!You-will-find-the-job/2.19.1.1.png">
+
+</div>
+<p>​ 例：有两个外形完全相同的箱子，1号箱有99只白球，1只黑球；2号箱有1只白球，99只黑球。在一次实验中，取出的是黑球，请问是从哪个箱子中取出的？</p>
+<p>​ 一般的根据经验想法，会猜测这只黑球最像是从2号箱取出，此时描述的“最像”就有“最大似然”的意思，这种想法常称为“最大似然原理”。</p>
+<h4 id="极大似然估计原理-1">极大似然估计原理</h4>
+<p>​ 总结起来，最大似然估计的目的就是：利用已知的样本结果，反推最有可能（最大概率）导致这样结果的参数值。</p>
+<p>​ 极大似然估计是建立在极大似然原理的基础上的一个统计方法。极大似然估计提供了一种给定观察数据来评估模型参数的方法，即：“模型已定，参数未知”。通过若干次试验，观察其结果，利用试验结果得到某个参数值能够使样本出现的概率为最大，则称为极大似然估计。</p>
+<p>​ 由于样本集中的样本都是独立同分布，可以只考虑一类样本集<span class="math inline">\(D\)</span>，来估计参数向量<span class="math inline">\(\vec\theta\)</span>。记已知的样本集为：<br>
+<span class="math display">\[
+D=\vec x_{1},\vec x_{2},...,\vec x_{n}
+\]</span><br>
+似然函数（likelihood function）：联合概率密度函数<span class="math inline">\(p(D|\vec\theta )\)</span>称为相对于<span class="math inline">\(\vec x_{1},\vec x_{2},...,\vec x_{n}\)</span>的<span class="math inline">\(\vec\theta\)</span>的似然函数。<br>
+<span class="math display">\[
+l(\vec\theta )=p(D|\vec\theta ) =p(\vec x_{1},\vec x_{2},...,\vec x_{n}|\vec\theta )=\prod_{i=1}^{n}p(\vec x_{i}|\vec \theta )
+\]</span><br>
+如果<span class="math inline">\(\hat{\vec\theta}\)</span>是参数空间中能使似然函数<span class="math inline">\(l(\vec\theta)\)</span>最大的<span class="math inline">\(\vec\theta\)</span>值，则<span class="math inline">\(\hat{\vec\theta}\)</span>应该是“最可能”的参数值，那么<span class="math inline">\(\hat{\vec\theta}​\)</span>就是<span class="math inline">\(\theta\)</span>的极大似然估计量。它是样本集的函数，记作：<br>
+<span class="math display">\[
+\hat{\vec\theta}=d(D)= \mathop {\arg \max}_{\vec\theta} l(\vec\theta )
+\]</span><br>
+<span class="math inline">\(\hat{\vec\theta}(\vec x_{1},\vec x_{2},...,\vec x_{n})\)</span>称为极大似然函数估计值。</p>
+<h4 id="贝叶斯分类器基本原理-1">贝叶斯分类器基本原理</h4>
+<p>​ 贝叶斯决策论通过<strong>相关概率已知</strong>的情况下利用<strong>误判损失</strong>来选择最优的类别分类。<br>
+假设有<span class="math inline">\(N\)</span>种可能的分类标记，记为<span class="math inline">\(Y=\{c_1,c_2,...,c_N\}\)</span>，那对于样本<span class="math inline">\(\boldsymbol{x}\)</span>，它属于哪一类呢？</p>
+<p>计算步骤如下：</p>
+<p>step 1. 算出样本<span class="math inline">\(\boldsymbol{x}\)</span>属于第i个类的概率，即<span class="math inline">\(P(c_i|x)​\)</span>；</p>
+<p>step 2. 通过比较所有的<span class="math inline">\(P(c_i|\boldsymbol{x})\)</span>，得到样本<span class="math inline">\(\boldsymbol{x}\)</span>所属的最佳类别。</p>
+<p>step 3. 将类别<span class="math inline">\(c_i\)</span>和样本<span class="math inline">\(\boldsymbol{x}\)</span>代入到贝叶斯公式中，得到：<br>
+<span class="math display">\[
+P(c_i|\boldsymbol{x})=\frac{P(\boldsymbol{x}|c_i)P(c_i)}{P(\boldsymbol{x})}.
+\]</span><br>
+​ 一般来说，<span class="math inline">\(P(c_i)\)</span>为先验概率，<span class="math inline">\(P(\boldsymbol{x}|c_i)\)</span>为条件概率，<span class="math inline">\(P(\boldsymbol{x})\)</span>是用于归一化的证据因子。对于<span class="math inline">\(P(c_i)\)</span>可以通过训练样本中类别为<span class="math inline">\(c_i\)</span>的样本所占的比例进行估计；此外，由于只需要找出最大的<span class="math inline">\(P(\boldsymbol{x}|c_i)\)</span>，因此我们并不需要计算<span class="math inline">\(P(\boldsymbol{x})\)</span>。<br>
+​ 为了求解条件概率，基于不同假设提出了不同的方法，以下将介绍朴素贝叶斯分类器和半朴素贝叶斯分类器。</p>
+<h4 id="朴素贝叶斯分类器-1">朴素贝叶斯分类器</h4>
+<p>​ 假设样本<span class="math inline">\(\boldsymbol{x}\)</span>包含<span class="math inline">\(d\)</span>个属性，即<span class="math inline">\(\boldsymbol{x}=\{ x_1,x_2,...,x_d\}\)</span>。于是有：<br>
+<span class="math display">\[
+P(\boldsymbol{x}|c_i)=P(x_1,x_2,\cdots,x_d|c_i)
+\]</span><br>
+这个联合概率难以从有限的训练样本中直接估计得到。于是，朴素贝叶斯（Naive Bayesian，简称NB）采用了“属性条件独立性假设”：对已知类别，假设所有属性相互独立。于是有：<br>
+<span class="math display">\[
+P(x_1,x_2,\cdots,x_d|c_i)=\prod_{j=1}^d P(x_j|c_i)
+\]</span><br>
+这样的话，我们就可以很容易地推出相应的判定准则了：<br>
+<span class="math display">\[
+h_{nb}(\boldsymbol{x})=\mathop{\arg \max}_{c_i\in Y} P(c_i)\prod_{j=1}^dP(x_j|c_i)
+\]</span><br>
+<strong>条件概率<span class="math inline">\(P(x_j|c_i)​\)</span>的求解</strong></p>
+<p>如果<span class="math inline">\(x_j\)</span>是标签属性，那么我们可以通过计数的方法估计<span class="math inline">\(P(x_j|c_i)\)</span><br>
+<span class="math display">\[
+P(x_j|c_i)=\frac{P(x_j,c_i)}{P(c_i)}\approx\frac{\#(x_j,c_i)}{\#(c_i)}
+\]</span><br>
+其中，<span class="math inline">\(\#(x_j,c_i)\)</span>表示在训练样本中<span class="math inline">\(x_j\)</span>与<span class="math inline">\(c_{i}\)</span>共同出现的次数。</p>
+<p>如果<span class="math inline">\(x_j​\)</span>是数值属性，通常我们假设类别中<span class="math inline">\(c_{i}​\)</span>的所有样本第<span class="math inline">\(j​\)</span>个属性的值服从正态分布。我们首先估计这个分布的均值<span class="math inline">\(μ​\)</span>和方差<span class="math inline">\(σ​\)</span>，然后计算<span class="math inline">\(x_j​\)</span>在这个分布中的概率密度<span class="math inline">\(P(x_j|c_i)​\)</span>。</p>
+<h4 id="举例理解朴素贝叶斯分类器">举例理解朴素贝叶斯分类器</h4>
+<p>使用经典的西瓜训练集如下：</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">编号</th>
+<th align="center">色泽</th>
+<th align="center">根蒂</th>
+<th align="center">敲声</th>
+<th align="center">纹理</th>
+<th align="center">脐部</th>
+<th align="center">触感</th>
+<th align="center">密度</th>
+<th align="center">含糖率</th>
+<th align="center">好瓜</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">1</td>
+<td align="center">青绿</td>
+<td align="center">蜷缩</td>
+<td align="center">浊响</td>
+<td align="center">清晰</td>
+<td align="center">凹陷</td>
+<td align="center">硬滑</td>
+<td align="center">0.697</td>
+<td align="center">0.460</td>
+<td align="center">是</td>
+</tr>
+<tr class="even">
+<td align="center">2</td>
+<td align="center">乌黑</td>
+<td align="center">蜷缩</td>
+<td align="center">沉闷</td>
+<td align="center">清晰</td>
+<td align="center">凹陷</td>
+<td align="center">硬滑</td>
+<td align="center">0.774</td>
+<td align="center">0.376</td>
+<td align="center">是</td>
+</tr>
+<tr class="odd">
+<td align="center">3</td>
+<td align="center">乌黑</td>
+<td align="center">蜷缩</td>
+<td align="center">浊响</td>
+<td align="center">清晰</td>
+<td align="center">凹陷</td>
+<td align="center">硬滑</td>
+<td align="center">0.634</td>
+<td align="center">0.264</td>
+<td align="center">是</td>
+</tr>
+<tr class="even">
+<td align="center">4</td>
+<td align="center">青绿</td>
+<td align="center">蜷缩</td>
+<td align="center">沉闷</td>
+<td align="center">清晰</td>
+<td align="center">凹陷</td>
+<td align="center">硬滑</td>
+<td align="center">0.608</td>
+<td align="center">0.318</td>
+<td align="center">是</td>
+</tr>
+<tr class="odd">
+<td align="center">5</td>
+<td align="center">浅白</td>
+<td align="center">蜷缩</td>
+<td align="center">浊响</td>
+<td align="center">清晰</td>
+<td align="center">凹陷</td>
+<td align="center">硬滑</td>
+<td align="center">0.556</td>
+<td align="center">0.215</td>
+<td align="center">是</td>
+</tr>
+<tr class="even">
+<td align="center">6</td>
+<td align="center">青绿</td>
+<td align="center">稍蜷</td>
+<td align="center">浊响</td>
+<td align="center">清晰</td>
+<td align="center">稍凹</td>
+<td align="center">软粘</td>
+<td align="center">0.403</td>
+<td align="center">0.237</td>
+<td align="center">是</td>
+</tr>
+<tr class="odd">
+<td align="center">7</td>
+<td align="center">乌黑</td>
+<td align="center">稍蜷</td>
+<td align="center">浊响</td>
+<td align="center">稍糊</td>
+<td align="center">稍凹</td>
+<td align="center">软粘</td>
+<td align="center">0.481</td>
+<td align="center">0.149</td>
+<td align="center">是</td>
+</tr>
+<tr class="even">
+<td align="center">8</td>
+<td align="center">乌黑</td>
+<td align="center">稍蜷</td>
+<td align="center">浊响</td>
+<td align="center">清晰</td>
+<td align="center">稍凹</td>
+<td align="center">硬滑</td>
+<td align="center">0.437</td>
+<td align="center">0.211</td>
+<td align="center">是</td>
+</tr>
+<tr class="odd">
+<td align="center">9</td>
+<td align="center">乌黑</td>
+<td align="center">稍蜷</td>
+<td align="center">沉闷</td>
+<td align="center">稍糊</td>
+<td align="center">稍凹</td>
+<td align="center">硬滑</td>
+<td align="center">0.666</td>
+<td align="center">0.091</td>
+<td align="center">否</td>
+</tr>
+<tr class="even">
+<td align="center">10</td>
+<td align="center">青绿</td>
+<td align="center">硬挺</td>
+<td align="center">清脆</td>
+<td align="center">清晰</td>
+<td align="center">平坦</td>
+<td align="center">软粘</td>
+<td align="center">0.243</td>
+<td align="center">0.267</td>
+<td align="center">否</td>
+</tr>
+<tr class="odd">
+<td align="center">11</td>
+<td align="center">浅白</td>
+<td align="center">硬挺</td>
+<td align="center">清脆</td>
+<td align="center">模糊</td>
+<td align="center">平坦</td>
+<td align="center">硬滑</td>
+<td align="center">0.245</td>
+<td align="center">0.057</td>
+<td align="center">否</td>
+</tr>
+<tr class="even">
+<td align="center">12</td>
+<td align="center">浅白</td>
+<td align="center">蜷缩</td>
+<td align="center">浊响</td>
+<td align="center">模糊</td>
+<td align="center">平坦</td>
+<td align="center">软粘</td>
+<td align="center">0.343</td>
+<td align="center">0.099</td>
+<td align="center">否</td>
+</tr>
+<tr class="odd">
+<td align="center">13</td>
+<td align="center">青绿</td>
+<td align="center">稍蜷</td>
+<td align="center">浊响</td>
+<td align="center">稍糊</td>
+<td align="center">凹陷</td>
+<td align="center">硬滑</td>
+<td align="center">0.639</td>
+<td align="center">0.161</td>
+<td align="center">否</td>
+</tr>
+<tr class="even">
+<td align="center">14</td>
+<td align="center">浅白</td>
+<td align="center">稍蜷</td>
+<td align="center">沉闷</td>
+<td align="center">稍糊</td>
+<td align="center">凹陷</td>
+<td align="center">硬滑</td>
+<td align="center">0.657</td>
+<td align="center">0.198</td>
+<td align="center">否</td>
+</tr>
+<tr class="odd">
+<td align="center">15</td>
+<td align="center">乌黑</td>
+<td align="center">稍蜷</td>
+<td align="center">浊响</td>
+<td align="center">清晰</td>
+<td align="center">稍凹</td>
+<td align="center">软粘</td>
+<td align="center">0.360</td>
+<td align="center">0.370</td>
+<td align="center">否</td>
+</tr>
+<tr class="even">
+<td align="center">16</td>
+<td align="center">浅白</td>
+<td align="center">蜷缩</td>
+<td align="center">浊响</td>
+<td align="center">模糊</td>
+<td align="center">平坦</td>
+<td align="center">硬滑</td>
+<td align="center">0.593</td>
+<td align="center">0.042</td>
+<td align="center">否</td>
+</tr>
+<tr class="odd">
+<td align="center">17</td>
+<td align="center">青绿</td>
+<td align="center">蜷缩</td>
+<td align="center">沉闷</td>
+<td align="center">稍糊</td>
+<td align="center">稍凹</td>
+<td align="center">硬滑</td>
+<td align="center">0.719</td>
+<td align="center">0.103</td>
+<td align="center">否</td>
+</tr>
+</tbody>
+</table>
+<p>对下面的测试例“测1”进行 分类：</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">编号</th>
+<th align="center">色泽</th>
+<th align="center">根蒂</th>
+<th align="center">敲声</th>
+<th align="center">纹理</th>
+<th align="center">脐部</th>
+<th align="center">触感</th>
+<th align="center">密度</th>
+<th align="center">含糖率</th>
+<th align="center">好瓜</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">测1</td>
+<td align="center">青绿</td>
+<td align="center">蜷缩</td>
+<td align="center">浊响</td>
+<td align="center">清晰</td>
+<td align="center">凹陷</td>
+<td align="center">硬滑</td>
+<td align="center">0.697</td>
+<td align="center">0.460</td>
+<td align="center">？</td>
+</tr>
+</tbody>
+</table>
+<p>首先，估计类先验概率<span class="math inline">\(P(c_j)\)</span>，有<br>
+<span class="math display">\[
+\begin{align} 
+&amp;P(好瓜=是)=\frac{8}{17}=0.471 \newline 
+&amp;P(好瓜=否)=\frac{9}{17}=0.529 
+\end{align}
+\]</span><br>
+然后，为每个属性估计条件概率（这里，对于连续属性，假定它们服从正态分布）<br>
+<span class="math display">\[
+P_{青绿|是}=P（色泽=青绿|好瓜=是）=\frac{3}{8}=0.375
+\]</span></p>
+<p><span class="math display">\[
+P_{青绿|否}=P（色泽=青绿|好瓜=否）=\frac{3}{9}\approx0.333
+\]</span></p>
+<p><span class="math display">\[
+P_{蜷缩|是}=P（根蒂=蜷缩|好瓜=是）=\frac{5}{8}=0.625
+\]</span></p>
+<p><span class="math display">\[
+P_{蜷缩|否}=P（根蒂=蜷缩|好瓜=否）=\frac{3}{9}=0.333
+\]</span></p>
+<p><span class="math display">\[
+P_{浊响|是}=P（敲声=浊响|好瓜=是）=\frac{6}{8}=0.750
+\]</span></p>
+<p><span class="math display">\[
+P_{浊响|否}=P（敲声=浊响|好瓜=否）=\frac{4}{9}\approx 0.444
+\]</span></p>
+<p><span class="math display">\[
+P_{清晰|是}=P（纹理=清晰|好瓜=是）=\frac{7}{8}= 0.875
+\]</span></p>
+<p><span class="math display">\[
+P_{清晰|否}=P（纹理=清晰|好瓜=否）=\frac{2}{9}\approx 0.222
+\]</span></p>
+<p><span class="math display">\[
+P_{凹陷|是}=P（脐部=凹陷|好瓜=是）=\frac{6}{8}= 0.750
+\]</span></p>
+<p><span class="math display">\[
+P_{凹陷|否}=P（脐部=凹陷|好瓜=否）=\frac{2}{9} \approx 0.222
+\]</span></p>
+<p><span class="math display">\[
+P_{硬滑|是}=P（触感=硬滑|好瓜=是）=\frac{6}{8}= 0.750
+\]</span></p>
+<p><span class="math display">\[
+P_{硬滑|否}=P（触感=硬滑|好瓜=否）=\frac{6}{9} \approx 0.667
+\]</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+\rho_{密度：0.697|是}&amp;=\rho（密度=0.697|好瓜=是）\\&amp;=\frac{1}{\sqrt{2 \pi}\times0.129}exp\left( -\frac{(0.697-0.574)^2}{2\times0.129^2}\right) \approx 1.959
+\end{aligned}
+\]</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+\rho_{密度：0.697|否}&amp;=\rho（密度=0.697|好瓜=否）\\&amp;=\frac{1}{\sqrt{2 \pi}\times0.195}exp\left( -\frac{(0.697-0.496)^2}{2\times0.195^2}\right) \approx 1.203
+\end{aligned}
+\]</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+\rho_{含糖：0.460|是}&amp;=\rho（密度=0.460|好瓜=是）\\&amp;=\frac{1}{\sqrt{2 \pi}\times0.101}exp\left( -\frac{(0.460-0.279)^2}{2\times0.101^2}\right) \approx 0.788
+\end{aligned}
+\]</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+\rho_{含糖：0.460|否}&amp;=\rho（密度=0.460|好瓜=是）\\&amp;=\frac{1}{\sqrt{2 \pi}\times0.108}exp\left( -\frac{(0.460-0.154)^2}{2\times0.108^2}\right) \approx 0.066
+\end{aligned}
+\]</span></p>
+<p>于是有<br>
+<span class="math display">\[
+\begin{align} 
+P(&amp;好瓜=是)\times P_{青绿|是} \times P_{蜷缩|是} \times P_{浊响|是} \times P_{清晰|是} \times P_{凹陷|是}\newline 
+&amp;\times P_{硬滑|是} \times p_{密度：0.697|是} \times p_{含糖：0.460|是} \approx 0.063 \newline\newline 
+P(&amp;好瓜=否)\times P_{青绿|否} \times P_{蜷缩|否} \times P_{浊响|否} \times P_{清晰|否} \times P_{凹陷|否}\newline 
+&amp;\times P_{硬滑|否} \times p_{密度：0.697|否} \times p_{含糖：0.460|否} \approx 6.80\times 10^{-5} 
+\end{align}
+\]</span></p>
+<p>由于<span class="math inline">\(0.063&gt;6.80\times 10^{-5}\)</span>，因此，朴素贝叶斯分类器将测试样本“测1”判别为“好瓜”。</p>
+<h4 id="半朴素贝叶斯分类器">半朴素贝叶斯分类器</h4>
+<p>​ 朴素贝叶斯采用了“属性条件独立性假设”，半朴素贝叶斯分类器的基本想法是适当考虑一部分属性间的相互依赖信息。<strong>独依赖估计</strong>（One-Dependence Estimator，简称ODE）是半朴素贝叶斯分类器最常用的一种策略。顾名思义，独依赖是假设每个属性在类别之外最多依赖一个其他属性，即：<br>
+<span class="math display">\[
+P(\boldsymbol{x}|c_i)=\prod_{j=1}^d P(x_j|c_i,{\rm pa}_j)
+\]</span><br>
+其中<span class="math inline">\(pa_j\)</span>为属性<span class="math inline">\(x_i\)</span>所依赖的属性，成为<span class="math inline">\(x_i\)</span>的父属性。假设父属性<span class="math inline">\(pa_j\)</span>已知，那么可以使用下面的公式估计<span class="math inline">\(P(x_j|c_i,{\rm pa}_j)\)</span><br>
+<span class="math display">\[
+P(x_j|c_i,{\rm pa}_j)=\frac{P(x_j,c_i,{\rm pa}_j)}{P(c_i,{\rm pa}_j)}
+\]</span></p>
 <hr>
 <h3 id="k-means">K-means</h3>
+<h4 id="算法流程"><strong>算法流程</strong></h4>
+<p>K-均值是最普及的聚类算法，算法接受一个未标记的数据集，然后将数据聚类成不同的组。<br>
+K-均值是一个迭代算法，假设我们想要将数据聚类成 n 个组，其方法为:<br>
+（1）首先选择 K 个随机的点，称为聚类中心（ cluster centroids） ；<br>
+（2）对于数据集中的每一个数据，按照距离 K 个中心点的距离，将其与距离最近的中心点关联起来，与同一个中心点关联的所有点聚成一类。<br>
+（3）计算每一个组的平均值，将该组所关联的中心点移动到平均值的位置。<br>
+（4）重复步骤 2-4 直至中心点不再变化。</p>
+<h4 id="伪代码实现">伪代码实现</h4>
+<div class="figure">
+<img src="/2019/05/08/Try-your-best!You-will-find-the-job/k-means.png">
+
+</div>
+<h4 id="k值的选择-手肘法"><strong>K值的选择 手肘法</strong></h4>
+<p>手肘法的核心指标是SSE(sum of the squared errors，误差平方和)<br>
+<span class="math display">\[
+S S E=\sum_{i=1}^{k} \sum_{p \in C_{i}}\left|p-m_{i}\right|^{2}
+\]</span><br>
+其中，Ci是第i个簇，p是Ci中的样本点，mi是Ci的质心（Ci中所有样本的均值），SSE是所有样本的聚类误差，代表了聚类效果的好坏。</p>
+<p>手肘法的核心思想是：随着聚类数k的增大，样本划分会更加精细，每个簇的聚合程度会逐渐提高，那么误差平方和SSE自然会逐渐变小。并且，当k小于真实聚类数时，由于k的增大会大幅增加每个簇的聚合程度，故SSE的下降幅度会很大，而当k到达真实聚类数时，再增加k所得到的聚合程度回报会迅速变小，所以SSE的下降幅度会骤减，然后随着k值的继续增大而趋于平缓，也就是说SSE和k的关系图是一个手肘的形状，而这个肘部对应的k值就是数据的真实聚类数。当然，这也是该方法被称为手肘法的原因。</p>
 <hr>
 <h3 id="pca">PCA</h3>
 <h4 id="思想总结">思想总结</h4>
@@ -1657,7 +2094,7 @@ g(D,A)=H(D)-H(D|A)
 <li>PCA就是将高维的数据通过线性变换投影到低维空间上去。</li>
 <li>投影思想：找出最能够代表原始数据的投影方法，最大化样本的投影方差。被PCA降掉的那些维度只能是那些噪声或是冗余的数据。</li>
 </ol>
-<p><strong>算法总结</strong></p>
+<h4 id="算法总结"><strong>算法总结</strong></h4>
 <p>输入：<span class="math inline">\(n\)</span> 维样本集 <span class="math inline">\(D = \left( x^{(1)},x^{(2)},...,x^{(m)} \right)\)</span> ，目标降低到 <span class="math inline">\(k\)</span> 维</p>
 <p>输出：降维后的新样本集 <span class="math inline">\(D&#39; = \left( z^{(1)},z^{(2)},...,z^{(m)} \right)\)</span> 。</p>
 <p>主要步骤如下：</p>
@@ -1740,7 +2177,6 @@ g(D,A)=H(D)-H(D|A)
 </tr>
 </tbody>
 </table>
-<h3 id="section-1"></h3>
 <hr>
 <h3 id="em">EM</h3>
 <hr>
@@ -3226,7 +3662,7 @@ AGA = A
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#模型评估"><span class="nav-text">模型评估</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#模型评估常用方法"><span class="nav-text">模型评估常用方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#机器学习中的bias和variance有什么区别和联系"><span class="nav-text">机器学习中的Bias和Variance有什么区别和联系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#经验误差与泛化误差"><span class="nav-text">经验误差与泛化误差</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#深度学习中的偏差与方差"><span class="nav-text">深度学习中的偏差与方差</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#偏差方差与boosting和bagging联系"><span class="nav-text">偏差方差与Boosting和Bagging联系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#偏差与方差的计算公式"><span class="nav-text">偏差与方差的计算公式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#偏差与方差的权衡过拟合与模型复杂度的权衡"><span class="nav-text">偏差与方差的权衡（过拟合与模型复杂度的权衡）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#欠拟合与过拟合"><span class="nav-text">欠拟合与过拟合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#根据不同的坐标方式图解欠拟合与过拟合"><span class="nav-text">根据不同的坐标方式，图解欠拟合与过拟合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#降低-过拟合-的方法"><span class="nav-text">降低 过拟合 的方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#降低-欠拟合-的方法"><span class="nav-text">降低 欠拟合 的方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#l1l2-范数正则化"><span class="nav-text">L1/L2 范数正则化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#l1l2-范数的作用异同"><span class="nav-text">L1/L2 范数的作用、异同</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么-l1-和-l2-正则化可以防止过拟合"><span class="nav-text">为什么 L1 和 L2 正则化可以防止过拟合？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么-l1-正则化可以产生稀疏权值而-l2-不会"><span class="nav-text">为什么 L1 正则化可以产生稀疏权值，而 L2 不会？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#交叉验证的主要作用"><span class="nav-text">交叉验证的主要作用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#k-折交叉验证"><span class="nav-text">\(k\) 折交叉验证</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#precision和recall"><span class="nav-text">Precision和Recall</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#p-r曲线"><span class="nav-text">P-R曲线</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#roc与auc"><span class="nav-text">ROC与AUC</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#map"><span class="nav-text">mAP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么要设置单一数字评估指标设置指标的意义"><span class="nav-text">为什么要设置单一数字评估指标，设置指标的意义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#训练验证测试集的定义及划分"><span class="nav-text">训练/验证/测试集的定义及划分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是top5错误率"><span class="nav-text">什么是TOP5错误率</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如何通过模型重新观察数据"><span class="nav-text">如何通过模型重新观察数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#有哪些改善模型的思路"><span class="nav-text">有哪些改善模型的思路</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#激活函数"><span class="nav-text">激活函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么需要激活函数"><span class="nav-text">为什么需要激活函数？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么要使用非线性激活函数"><span class="nav-text">为什么要使用非线性激活函数？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#什么时候可以用线性激活函数"><span class="nav-text">什么时候可以用线性激活函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常见的激活函数"><span class="nav-text">常见的激活函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么tanh收敛速度比sigmoid快"><span class="nav-text">为什么Tanh收敛速度比Sigmoid快</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#怎样理解-relu-0-时是非线性激活函数"><span class="nav-text">怎样理解 ReLU（&lt; 0 时）是非线性激活函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#损失函数代价函数"><span class="nav-text">损失函数/代价函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么需要损失代价函数"><span class="nav-text">为什么需要损失/代价函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#损失代价函数的作用及原理"><span class="nav-text">损失/代价函数的作用及原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么损失代价函数要非负"><span class="nav-text">为什么损失/代价函数要非负</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常用的损失函数"><span class="nav-text">常用的损失函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#softmax损失函数"><span class="nav-text">Softmax损失函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#softmax-loss损失函数"><span class="nav-text">Softmax-Loss损失函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#熵条件熵kl散度交叉熵"><span class="nav-text">熵、条件熵、KL散度、交叉熵</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么用交叉熵代替二次代价均方误差函数"><span class="nav-text">为什么用交叉熵代替二次代价(均方误差)函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#范数"><span class="nav-text">范数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#l-p范数"><span class="nav-text">L-P范数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#l0范数"><span class="nav-text">L0范数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#l1范数"><span class="nav-text">L1范数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#l2范数"><span class="nav-text">L2范数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#l-范数"><span class="nav-text">L-∞范数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#欧式距离-与-余弦相似度"><span class="nav-text">欧式距离 与 余弦相似度</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑回归"><span class="nav-text">逻辑回归</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#回归划分"><span class="nav-text">回归划分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#逻辑回归适用性"><span class="nav-text">逻辑回归适用性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#逻辑回归与朴素贝叶斯的区别"><span class="nav-text">逻辑回归与朴素贝叶斯的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#逻辑回归-与-线性回归-的联系与区别"><span class="nav-text">逻辑回归 与 线性回归 的联系与区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#逻辑回归-与-svm-的联系与区别"><span class="nav-text">逻辑回归 与 SVM 的联系与区别 *</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#svm"><span class="nav-text">SVM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是支持向量"><span class="nav-text">什么是支持向量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#支持向量机的分类"><span class="nav-text">支持向量机的分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#核函数与核技巧"><span class="nav-text">核函数与核技巧</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最大间隔超平面背后的原理"><span class="nav-text">最大间隔超平面背后的原理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#支持向量机推导"><span class="nav-text">支持向量机推导</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#线性可分支持向量机推导"><span class="nav-text">线性可分支持向量机推导</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#符号定义"><span class="nav-text">符号定义：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#svm-标准问题的推导2"><span class="nav-text">SVM 标准问题的推导(2)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#svm-对偶算法的推导5"><span class="nav-text">SVM 对偶算法的推导(5)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section"><span class="nav-text"></span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#knn"><span class="nav-text">KNN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#决策树"><span class="nav-text">决策树</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#分类树-id3-决策树与-c4.5-决策树"><span class="nav-text">[分类树] ID3 决策树与 C4.5 决策树</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#回归树---cart-决策树"><span class="nav-text">[回归树] - CART 决策树</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#决策树学习基本算法"><span class="nav-text">决策树学习基本算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#决策树算法优缺点"><span class="nav-text">决策树算法优缺点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#熵的概念以及理解"><span class="nav-text">熵的概念以及理解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#信息增益的-与-信息增益比"><span class="nav-text">信息增益的 与 信息增益比</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#剪枝处理的作用及策略"><span class="nav-text">剪枝处理的作用及策略</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#朴素贝叶斯"><span class="nav-text">朴素贝叶斯</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#k-means"><span class="nav-text">K-means</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pca"><span class="nav-text">PCA</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#思想总结"><span class="nav-text">思想总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lda"><span class="nav-text">LDA</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#lda降维算法流程"><span class="nav-text">LDA降维算法流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lda和pca区别"><span class="nav-text">LDA和PCA区别</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#section-1"><span class="nav-text"></span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#em"><span class="nav-text">EM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集成学习"><span class="nav-text">集成学习</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#集成学习的基本思想"><span class="nav-text">集成学习的基本思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#集成学习为什么有效"><span class="nav-text">集成学习为什么有效</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#boosting-方法"><span class="nav-text">Boosting 方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bagging-方法booststrap-aggregating"><span class="nav-text">Bagging 方法（Booststrap AGGregatING）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么使用决策树作为基学习器"><span class="nav-text">为什么使用决策树作为基学习器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么不稳定的学习器更适合作为基学习器"><span class="nav-text">为什么不稳定的学习器更适合作为基学习器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#还有哪些模型也适合作为基学习器"><span class="nav-text">还有哪些模型也适合作为基学习器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#boosting-方法中能使用线性分类器作为基学习器吗-bagging-呢"><span class="nav-text">Boosting 方法中能使用线性分类器作为基学习器吗？ Bagging 呢？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#boostingbagging-与-偏差方差-的关系"><span class="nav-text">Boosting/Bagging 与 偏差/方差 的关系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bagging与dropout区别与联系"><span class="nav-text">Bagging与Dropout区别与联系</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#adaboost"><span class="nav-text">AdaBoost</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gbdt"><span class="nav-text">GBDT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rf-随机森林"><span class="nav-text">RF 随机森林</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#xgboost"><span class="nav-text">XGBoost</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#神经网络"><span class="nav-text">神经网络</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#超参数"><span class="nav-text">超参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如何寻找超参数的最优值"><span class="nav-text">如何寻找超参数的最优值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#超参数搜索一般过程"><span class="nav-text">超参数搜索一般过程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#梯度下降"><span class="nav-text">梯度下降</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#机器学习中为什么需要梯度下降"><span class="nav-text">机器学习中为什么需要梯度下降</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#梯度下降法缺点"><span class="nav-text">梯度下降法缺点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#梯度下降法直观理解"><span class="nav-text">梯度下降法直观理解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#梯度下降法算法描述"><span class="nav-text">梯度下降法算法描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如何对梯度下降法进行调优"><span class="nav-text">如何对梯度下降法进行调优</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#随机梯度和批量梯度区别"><span class="nav-text">随机梯度和批量梯度区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#各种梯度下降法性能比较"><span class="nav-text">各种梯度下降法性能比较</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#梯度爆炸与梯度消失"><span class="nav-text">梯度爆炸与梯度消失</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#深度学习为什么要使用梯度更新规则"><span class="nav-text">深度学习为什么要使用梯度更新规则</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#梯度消失爆炸的解决方案"><span class="nav-text">梯度消失、爆炸的解决方案</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如何防止梯度下降陷入局部最优解"><span class="nav-text">如何防止梯度下降陷入局部最优解</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#batch_size"><span class="nav-text">batch_size</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么需要-batch_size"><span class="nav-text">为什么需要 batch_size</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在合理范围内增大batch_size有何好处"><span class="nav-text">在合理范围内，增大Batch_Size有何好处</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#盲目增大-batch_size-有何坏处"><span class="nav-text">盲目增大 Batch_Size 有何坏处</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#学习率-learning-rate"><span class="nav-text">学习率 learning rate</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据处理"><span class="nav-text">数据处理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#权值初始化方法有哪些"><span class="nav-text">权值初始化方法有哪些</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如何解决训练样本少的问题"><span class="nav-text">如何解决训练样本少的问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#深度学习是否能胜任所有数据集"><span class="nav-text">深度学习是否能胜任所有数据集</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#共线性如何判断和解决共线性问题"><span class="nav-text">共线性，如何判断和解决共线性问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常用的数据增强方法"><span class="nav-text">常用的数据增强方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#类别不平衡问题"><span class="nav-text">类别不平衡问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#处理数据中的缺失值"><span class="nav-text">处理数据中的缺失值</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特征选择feature-selection"><span class="nav-text">特征选择(feature selection)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#特征类型有哪些"><span class="nav-text">特征类型有哪些</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如何考虑特征选择"><span class="nav-text">如何考虑特征选择</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#特征选择方法分类"><span class="nav-text">特征选择方法分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#特征选择目的"><span class="nav-text">特征选择目的</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#归一化"><span class="nav-text">归一化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#batch-normalization批标准化"><span class="nav-text">Batch Normalization(批标准化)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#bn层作用以及如何使用bn层"><span class="nav-text">BN层作用，以及如何使用BN层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#动机"><span class="nav-text">动机</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基本原理"><span class="nav-text">基本原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么训练时不采用移动平均"><span class="nav-text">为什么训练时不采用移动平均？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bnlningn的异同"><span class="nav-text">BN、LN、IN、GN的异同</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dropout"><span class="nav-text">Dropout</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优化算法"><span class="nav-text">优化算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#gradient-descent"><span class="nav-text">Gradient Descent</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#gradient-descent-和其算法变种"><span class="nav-text">Gradient Descent 和其算法变种</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#vanilla-sgd"><span class="nav-text">Vanilla SGD</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sgd-with-momentum"><span class="nav-text">SGD with Momentum</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#nesterov-accelerated-gradient"><span class="nav-text">Nesterov Accelerated Gradient</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#adagrad"><span class="nav-text">Adagrad</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#adadelta"><span class="nav-text">AdaDelta</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#rmsprop"><span class="nav-text">RMSprop</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#adam"><span class="nav-text">Adam</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#深度学习为什么不用二阶优化"><span class="nav-text">深度学习为什么不用二阶优化</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#预训练与微调fine-tuning"><span class="nav-text">预训练与微调(fine tuning)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是模型微调-fine-tuning"><span class="nav-text">什么是模型微调 fine tuning</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#微调时候网络参数是否更新"><span class="nav-text">微调时候网络参数是否更新</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#fine-tuning-模型的三种状态"><span class="nav-text">fine-tuning 模型的三种状态</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#caffe"><span class="nav-text">Caffe</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#caffe卷积层的实现"><span class="nav-text">Caffe卷积层的实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#梯度下降与正规方程的比较"><span class="nav-text">梯度下降与正规方程的比较</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据结构"><span class="nav-text">数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#几大排序算法"><span class="nav-text">几大排序算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#面试题目"><span class="nav-text">面试题目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#广义逆阵"><span class="nav-text">广义逆阵</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#待整理"><span class="nav-text">待整理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么用smoothl1-loss而不用-l2-loss"><span class="nav-text">为什么用SmoothL1 loss而不用 L2 loss</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#x1卷积核作用"><span class="nav-text">1x1卷积核作用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#全连接层作用"><span class="nav-text">全连接层作用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#svm-和-softmax-区别"><span class="nav-text">SVM 和 Softmax 区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#仿射变换和透视变化区别"><span class="nav-text">仿射变换和透视变化区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#透视变换矩阵的形状"><span class="nav-text">透视变换矩阵的形状</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常用的算子"><span class="nav-text">常用的算子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#svmlr-和-softmax-区别"><span class="nav-text">SVM、LR 和 Softmax 区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#svm寻参问题"><span class="nav-text">SVM寻参问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#svm核函数解释"><span class="nav-text">SVM核函数解释</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#交叉熵损失-可以用-l2损失替换么"><span class="nav-text">交叉熵损失 可以用 L2损失替换么</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#先把yolo看完500问中有检测论文需要看的顺序"><span class="nav-text">先把YOLO看完（500问中有检测论文需要看的顺序）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#简述-yolo-和-ssd"><span class="nav-text">简述 YOLO 和 SSD</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#yolov2"><span class="nav-text">YOLOv2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#batch_size-和-learning-rate的关系怎么平衡和调整二者"><span class="nav-text">batch_size 和 learning rate的关系（怎么平衡和调整二者）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#inception-v1-v4的演变"><span class="nav-text">Inception v1-v4的演变</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#简述-cnn-的演变"><span class="nav-text">简述 CNN 的演变</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#roi-pooling-和-roi-align"><span class="nav-text">ROI Pooling 和 ROI Align</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#优化算法区别以及各自的优势"><span class="nav-text">优化算法，区别以及各自的优势</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cnn为什么有效-1-2"><span class="nav-text">CNN为什么有效 1 2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cnn再图像上表现好的原因"><span class="nav-text">CNN再图像上表现好的原因</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对迁移学习的理解为什么能work"><span class="nav-text">对迁移学习的理解，为什么能work</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实现一个卷积操作"><span class="nav-text">实现一个卷积操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模型精简加速"><span class="nav-text">模型精简加速</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#图像处理中的常用算子"><span class="nav-text">图像处理中的常用算子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#卷积与反卷积"><span class="nav-text">卷积与反卷积</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lstm-与-rnn-模型"><span class="nav-text">LSTM 与 RNN 模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lstm的结构其相对于rnn的好处"><span class="nav-text">LSTM的结构，其相对于RNN的好处</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bn原理与实战"><span class="nav-text">BN原理与实战</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#面经集合"><span class="nav-text">面经集合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#c问题"><span class="nav-text">C++问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#c面向对象的三大特性"><span class="nav-text">C++面向对象的三大特性</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#python问题"><span class="nav-text">Python问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#range-和-xrange-区别"><span class="nav-text">range 和 xrange 区别</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#面试算法题目"><span class="nav-text">面试算法题目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#概率智力题"><span class="nav-text">概率智力题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自己整理的思维导图要每天看"><span class="nav-text">自己整理的思维导图要每天看</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面试总结"><span class="nav-text">面试总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#搜狐"><span class="nav-text">搜狐</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一面-2019.03.20"><span class="nav-text">一面 2019.03.20</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网易预研"><span class="nav-text">网易预研</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一面-2019.03.21"><span class="nav-text">一面 2019.03.21</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bigo"><span class="nav-text">BIGO</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#笔试"><span class="nav-text">笔试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#面试"><span class="nav-text">面试</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#模型评估"><span class="nav-text">模型评估</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#模型评估常用方法"><span class="nav-text">模型评估常用方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#机器学习中的bias和variance有什么区别和联系"><span class="nav-text">机器学习中的Bias和Variance有什么区别和联系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#经验误差与泛化误差"><span class="nav-text">经验误差与泛化误差</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#深度学习中的偏差与方差"><span class="nav-text">深度学习中的偏差与方差</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#偏差方差与boosting和bagging联系"><span class="nav-text">偏差方差与Boosting和Bagging联系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#偏差与方差的计算公式"><span class="nav-text">偏差与方差的计算公式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#偏差与方差的权衡过拟合与模型复杂度的权衡"><span class="nav-text">偏差与方差的权衡（过拟合与模型复杂度的权衡）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#欠拟合与过拟合"><span class="nav-text">欠拟合与过拟合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#根据不同的坐标方式图解欠拟合与过拟合"><span class="nav-text">根据不同的坐标方式，图解欠拟合与过拟合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#降低-过拟合-的方法"><span class="nav-text">降低 过拟合 的方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#降低-欠拟合-的方法"><span class="nav-text">降低 欠拟合 的方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#l1l2-范数正则化"><span class="nav-text">L1/L2 范数正则化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#l1l2-范数的作用异同"><span class="nav-text">L1/L2 范数的作用、异同</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么-l1-和-l2-正则化可以防止过拟合"><span class="nav-text">为什么 L1 和 L2 正则化可以防止过拟合？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么-l1-正则化可以产生稀疏权值而-l2-不会"><span class="nav-text">为什么 L1 正则化可以产生稀疏权值，而 L2 不会？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#交叉验证的主要作用"><span class="nav-text">交叉验证的主要作用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#k-折交叉验证"><span class="nav-text">\(k\) 折交叉验证</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#precision和recall"><span class="nav-text">Precision和Recall</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#p-r曲线"><span class="nav-text">P-R曲线</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#roc与auc"><span class="nav-text">ROC与AUC</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#map"><span class="nav-text">mAP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么要设置单一数字评估指标设置指标的意义"><span class="nav-text">为什么要设置单一数字评估指标，设置指标的意义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#训练验证测试集的定义及划分"><span class="nav-text">训练/验证/测试集的定义及划分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是top5错误率"><span class="nav-text">什么是TOP5错误率</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如何通过模型重新观察数据"><span class="nav-text">如何通过模型重新观察数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#有哪些改善模型的思路"><span class="nav-text">有哪些改善模型的思路</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#激活函数"><span class="nav-text">激活函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么需要激活函数"><span class="nav-text">为什么需要激活函数？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么要使用非线性激活函数"><span class="nav-text">为什么要使用非线性激活函数？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#什么时候可以用线性激活函数"><span class="nav-text">什么时候可以用线性激活函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常见的激活函数"><span class="nav-text">常见的激活函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么tanh收敛速度比sigmoid快"><span class="nav-text">为什么Tanh收敛速度比Sigmoid快</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#怎样理解-relu-0-时是非线性激活函数"><span class="nav-text">怎样理解 ReLU（&lt; 0 时）是非线性激活函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#损失函数代价函数"><span class="nav-text">损失函数/代价函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么需要损失代价函数"><span class="nav-text">为什么需要损失/代价函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#损失代价函数的作用及原理"><span class="nav-text">损失/代价函数的作用及原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么损失代价函数要非负"><span class="nav-text">为什么损失/代价函数要非负</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常用的损失函数"><span class="nav-text">常用的损失函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#softmax损失函数"><span class="nav-text">Softmax损失函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#softmax-loss损失函数"><span class="nav-text">Softmax-Loss损失函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#熵条件熵kl散度交叉熵"><span class="nav-text">熵、条件熵、KL散度、交叉熵</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么用交叉熵代替二次代价均方误差函数"><span class="nav-text">为什么用交叉熵代替二次代价(均方误差)函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#范数"><span class="nav-text">范数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#l-p范数"><span class="nav-text">L-P范数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#l0范数"><span class="nav-text">L0范数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#l1范数"><span class="nav-text">L1范数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#l2范数"><span class="nav-text">L2范数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#l-范数"><span class="nav-text">L-∞范数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#欧式距离-与-余弦相似度"><span class="nav-text">欧式距离 与 余弦相似度</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑回归"><span class="nav-text">逻辑回归</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#回归划分"><span class="nav-text">回归划分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#逻辑回归适用性"><span class="nav-text">逻辑回归适用性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#逻辑回归与朴素贝叶斯的区别"><span class="nav-text">逻辑回归与朴素贝叶斯的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#逻辑回归-与-线性回归-的联系与区别"><span class="nav-text">逻辑回归 与 线性回归 的联系与区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#逻辑回归-与-svm-的联系与区别"><span class="nav-text">逻辑回归 与 SVM 的联系与区别 *</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#svm"><span class="nav-text">SVM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是支持向量"><span class="nav-text">什么是支持向量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#支持向量机的分类"><span class="nav-text">支持向量机的分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#核函数与核技巧"><span class="nav-text">核函数与核技巧</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最大间隔超平面背后的原理"><span class="nav-text">最大间隔超平面背后的原理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#支持向量机推导"><span class="nav-text">支持向量机推导</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#线性可分支持向量机推导"><span class="nav-text">线性可分支持向量机推导</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#符号定义"><span class="nav-text">符号定义：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#svm-标准问题的推导2"><span class="nav-text">SVM 标准问题的推导(2)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#svm-对偶算法的推导5"><span class="nav-text">SVM 对偶算法的推导(5)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section"><span class="nav-text"></span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#knn"><span class="nav-text">KNN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#决策树"><span class="nav-text">决策树</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#分类树-id3-决策树与-c4.5-决策树"><span class="nav-text">[分类树] ID3 决策树与 C4.5 决策树</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#回归树---cart-决策树"><span class="nav-text">[回归树] - CART 决策树</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#决策树学习基本算法"><span class="nav-text">决策树学习基本算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#决策树算法优缺点"><span class="nav-text">决策树算法优缺点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#熵的概念以及理解"><span class="nav-text">熵的概念以及理解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#信息增益的-与-信息增益比"><span class="nav-text">信息增益的 与 信息增益比</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#剪枝处理的作用及策略"><span class="nav-text">剪枝处理的作用及策略</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#朴素贝叶斯"><span class="nav-text">朴素贝叶斯</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#图解极大似然估计"><span class="nav-text">图解极大似然估计</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#极大似然估计原理"><span class="nav-text">极大似然估计原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#贝叶斯分类器基本原理"><span class="nav-text">贝叶斯分类器基本原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#朴素贝叶斯分类器"><span class="nav-text">朴素贝叶斯分类器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#极大似然估计原理-1"><span class="nav-text">极大似然估计原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#贝叶斯分类器基本原理-1"><span class="nav-text">贝叶斯分类器基本原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#朴素贝叶斯分类器-1"><span class="nav-text">朴素贝叶斯分类器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#举例理解朴素贝叶斯分类器"><span class="nav-text">举例理解朴素贝叶斯分类器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#半朴素贝叶斯分类器"><span class="nav-text">半朴素贝叶斯分类器</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#k-means"><span class="nav-text">K-means</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#算法流程"><span class="nav-text">算法流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#伪代码实现"><span class="nav-text">伪代码实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#k值的选择-手肘法"><span class="nav-text">K值的选择 手肘法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pca"><span class="nav-text">PCA</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#思想总结"><span class="nav-text">思想总结</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法总结"><span class="nav-text">算法总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lda"><span class="nav-text">LDA</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#lda降维算法流程"><span class="nav-text">LDA降维算法流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lda和pca区别"><span class="nav-text">LDA和PCA区别</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#em"><span class="nav-text">EM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集成学习"><span class="nav-text">集成学习</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#集成学习的基本思想"><span class="nav-text">集成学习的基本思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#集成学习为什么有效"><span class="nav-text">集成学习为什么有效</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#boosting-方法"><span class="nav-text">Boosting 方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bagging-方法booststrap-aggregating"><span class="nav-text">Bagging 方法（Booststrap AGGregatING）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么使用决策树作为基学习器"><span class="nav-text">为什么使用决策树作为基学习器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么不稳定的学习器更适合作为基学习器"><span class="nav-text">为什么不稳定的学习器更适合作为基学习器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#还有哪些模型也适合作为基学习器"><span class="nav-text">还有哪些模型也适合作为基学习器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#boosting-方法中能使用线性分类器作为基学习器吗-bagging-呢"><span class="nav-text">Boosting 方法中能使用线性分类器作为基学习器吗？ Bagging 呢？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#boostingbagging-与-偏差方差-的关系"><span class="nav-text">Boosting/Bagging 与 偏差/方差 的关系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bagging与dropout区别与联系"><span class="nav-text">Bagging与Dropout区别与联系</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#adaboost"><span class="nav-text">AdaBoost</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gbdt"><span class="nav-text">GBDT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rf-随机森林"><span class="nav-text">RF 随机森林</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#xgboost"><span class="nav-text">XGBoost</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#神经网络"><span class="nav-text">神经网络</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#超参数"><span class="nav-text">超参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如何寻找超参数的最优值"><span class="nav-text">如何寻找超参数的最优值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#超参数搜索一般过程"><span class="nav-text">超参数搜索一般过程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#梯度下降"><span class="nav-text">梯度下降</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#机器学习中为什么需要梯度下降"><span class="nav-text">机器学习中为什么需要梯度下降</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#梯度下降法缺点"><span class="nav-text">梯度下降法缺点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#梯度下降法直观理解"><span class="nav-text">梯度下降法直观理解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#梯度下降法算法描述"><span class="nav-text">梯度下降法算法描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如何对梯度下降法进行调优"><span class="nav-text">如何对梯度下降法进行调优</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#随机梯度和批量梯度区别"><span class="nav-text">随机梯度和批量梯度区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#各种梯度下降法性能比较"><span class="nav-text">各种梯度下降法性能比较</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#梯度爆炸与梯度消失"><span class="nav-text">梯度爆炸与梯度消失</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#深度学习为什么要使用梯度更新规则"><span class="nav-text">深度学习为什么要使用梯度更新规则</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#梯度消失爆炸的解决方案"><span class="nav-text">梯度消失、爆炸的解决方案</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如何防止梯度下降陷入局部最优解"><span class="nav-text">如何防止梯度下降陷入局部最优解</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#batch_size"><span class="nav-text">batch_size</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么需要-batch_size"><span class="nav-text">为什么需要 batch_size</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在合理范围内增大batch_size有何好处"><span class="nav-text">在合理范围内，增大Batch_Size有何好处</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#盲目增大-batch_size-有何坏处"><span class="nav-text">盲目增大 Batch_Size 有何坏处</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#学习率-learning-rate"><span class="nav-text">学习率 learning rate</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据处理"><span class="nav-text">数据处理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#权值初始化方法有哪些"><span class="nav-text">权值初始化方法有哪些</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如何解决训练样本少的问题"><span class="nav-text">如何解决训练样本少的问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#深度学习是否能胜任所有数据集"><span class="nav-text">深度学习是否能胜任所有数据集</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#共线性如何判断和解决共线性问题"><span class="nav-text">共线性，如何判断和解决共线性问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常用的数据增强方法"><span class="nav-text">常用的数据增强方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#类别不平衡问题"><span class="nav-text">类别不平衡问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#处理数据中的缺失值"><span class="nav-text">处理数据中的缺失值</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特征选择feature-selection"><span class="nav-text">特征选择(feature selection)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#特征类型有哪些"><span class="nav-text">特征类型有哪些</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如何考虑特征选择"><span class="nav-text">如何考虑特征选择</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#特征选择方法分类"><span class="nav-text">特征选择方法分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#特征选择目的"><span class="nav-text">特征选择目的</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#归一化"><span class="nav-text">归一化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#batch-normalization批标准化"><span class="nav-text">Batch Normalization(批标准化)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#bn层作用以及如何使用bn层"><span class="nav-text">BN层作用，以及如何使用BN层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#动机"><span class="nav-text">动机</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基本原理"><span class="nav-text">基本原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么训练时不采用移动平均"><span class="nav-text">为什么训练时不采用移动平均？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bnlningn的异同"><span class="nav-text">BN、LN、IN、GN的异同</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dropout"><span class="nav-text">Dropout</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优化算法"><span class="nav-text">优化算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#gradient-descent"><span class="nav-text">Gradient Descent</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#gradient-descent-和其算法变种"><span class="nav-text">Gradient Descent 和其算法变种</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#vanilla-sgd"><span class="nav-text">Vanilla SGD</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sgd-with-momentum"><span class="nav-text">SGD with Momentum</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#nesterov-accelerated-gradient"><span class="nav-text">Nesterov Accelerated Gradient</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#adagrad"><span class="nav-text">Adagrad</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#adadelta"><span class="nav-text">AdaDelta</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#rmsprop"><span class="nav-text">RMSprop</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#adam"><span class="nav-text">Adam</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#深度学习为什么不用二阶优化"><span class="nav-text">深度学习为什么不用二阶优化</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#预训练与微调fine-tuning"><span class="nav-text">预训练与微调(fine tuning)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是模型微调-fine-tuning"><span class="nav-text">什么是模型微调 fine tuning</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#微调时候网络参数是否更新"><span class="nav-text">微调时候网络参数是否更新</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#fine-tuning-模型的三种状态"><span class="nav-text">fine-tuning 模型的三种状态</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#caffe"><span class="nav-text">Caffe</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#caffe卷积层的实现"><span class="nav-text">Caffe卷积层的实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#梯度下降与正规方程的比较"><span class="nav-text">梯度下降与正规方程的比较</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据结构"><span class="nav-text">数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#几大排序算法"><span class="nav-text">几大排序算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#面试题目"><span class="nav-text">面试题目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#广义逆阵"><span class="nav-text">广义逆阵</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#待整理"><span class="nav-text">待整理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么用smoothl1-loss而不用-l2-loss"><span class="nav-text">为什么用SmoothL1 loss而不用 L2 loss</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#x1卷积核作用"><span class="nav-text">1x1卷积核作用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#全连接层作用"><span class="nav-text">全连接层作用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#svm-和-softmax-区别"><span class="nav-text">SVM 和 Softmax 区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#仿射变换和透视变化区别"><span class="nav-text">仿射变换和透视变化区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#透视变换矩阵的形状"><span class="nav-text">透视变换矩阵的形状</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常用的算子"><span class="nav-text">常用的算子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#svmlr-和-softmax-区别"><span class="nav-text">SVM、LR 和 Softmax 区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#svm寻参问题"><span class="nav-text">SVM寻参问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#svm核函数解释"><span class="nav-text">SVM核函数解释</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#交叉熵损失-可以用-l2损失替换么"><span class="nav-text">交叉熵损失 可以用 L2损失替换么</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#先把yolo看完500问中有检测论文需要看的顺序"><span class="nav-text">先把YOLO看完（500问中有检测论文需要看的顺序）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#简述-yolo-和-ssd"><span class="nav-text">简述 YOLO 和 SSD</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#yolov2"><span class="nav-text">YOLOv2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#batch_size-和-learning-rate的关系怎么平衡和调整二者"><span class="nav-text">batch_size 和 learning rate的关系（怎么平衡和调整二者）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#inception-v1-v4的演变"><span class="nav-text">Inception v1-v4的演变</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#简述-cnn-的演变"><span class="nav-text">简述 CNN 的演变</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#roi-pooling-和-roi-align"><span class="nav-text">ROI Pooling 和 ROI Align</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#优化算法区别以及各自的优势"><span class="nav-text">优化算法，区别以及各自的优势</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cnn为什么有效-1-2"><span class="nav-text">CNN为什么有效 1 2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cnn再图像上表现好的原因"><span class="nav-text">CNN再图像上表现好的原因</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对迁移学习的理解为什么能work"><span class="nav-text">对迁移学习的理解，为什么能work</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实现一个卷积操作"><span class="nav-text">实现一个卷积操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模型精简加速"><span class="nav-text">模型精简加速</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#图像处理中的常用算子"><span class="nav-text">图像处理中的常用算子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#卷积与反卷积"><span class="nav-text">卷积与反卷积</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lstm-与-rnn-模型"><span class="nav-text">LSTM 与 RNN 模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lstm的结构其相对于rnn的好处"><span class="nav-text">LSTM的结构，其相对于RNN的好处</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bn原理与实战"><span class="nav-text">BN原理与实战</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#面经集合"><span class="nav-text">面经集合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#c问题"><span class="nav-text">C++问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#c面向对象的三大特性"><span class="nav-text">C++面向对象的三大特性</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#python问题"><span class="nav-text">Python问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#range-和-xrange-区别"><span class="nav-text">range 和 xrange 区别</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#面试算法题目"><span class="nav-text">面试算法题目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#概率智力题"><span class="nav-text">概率智力题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自己整理的思维导图要每天看"><span class="nav-text">自己整理的思维导图要每天看</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面试总结"><span class="nav-text">面试总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#搜狐"><span class="nav-text">搜狐</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一面-2019.03.20"><span class="nav-text">一面 2019.03.20</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网易预研"><span class="nav-text">网易预研</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一面-2019.03.21"><span class="nav-text">一面 2019.03.21</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bigo"><span class="nav-text">BIGO</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#笔试"><span class="nav-text">笔试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#面试"><span class="nav-text">面试</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
