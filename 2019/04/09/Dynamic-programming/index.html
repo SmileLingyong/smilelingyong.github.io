@@ -90,7 +90,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/04/09/Dynamic-programming/T3递归公式.png">
 <meta property="og:image" content="http://yoursite.com/2019/04/09/Dynamic-programming/DP二维数组.png">
 <meta property="og:image" content="http://yoursite.com/2019/04/09/Dynamic-programming/DP二维数组2.png">
-<meta property="og:updated_time" content="2019-06-24T02:40:55.648Z">
+<meta property="og:updated_time" content="2019-06-30T02:37:58.310Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【coding】动态规划">
 <meta name="twitter:description" content="code{white-space: pre;}          在 bilibili 看到一个博主讲的比较好的动态规划内容，自己对应整理了一下学习笔记，以便巩固学习">
@@ -387,7 +387,7 @@
 <p><span class="math inline">\(OPT(6)\)</span> ：表示到下标为6 这个位置的最佳方案（最优解）是什么？<br>
 从上往下开始分析：对于 <span class="math inline">\(OPT(6)\)</span> 我们有两种状态，选3，和不选3。即有如上递归式。</p>
 <ul>
-<li>选 <span class="math inline">\(arr[6]\)</span>，此时的最佳方案是 <span class="math inline">\(OPT(4) + arr[6]\)</span> 。这里不能选 <span class="math inline">\(arr[5]\)</span> ，因为 <span class="math inline">\(arr[5]\)</span> 与 <span class="math inline">\(arr[6]\)</span> 是相邻的。</li>
+<li>选 <span class="math inline">\(arr[6]​\)</span>，此时的最佳方案是 <span class="math inline">\(OPT(4) + arr[6]​\)</span> 。这里不能选 <span class="math inline">\(arr[5]​\)</span> ，因为 <span class="math inline">\(arr[5]​\)</span> 与 <span class="math inline">\(arr[6]​\)</span> 是相邻的。</li>
 <li>不选 <span class="math inline">\(arr[6]\)</span>，此时最佳方案是 <span class="math inline">\(OPT(5)\)</span></li>
 </ul>
 <p>然后选这两个状态结果最大的，作为到下标为6这个位置的最优解 <span class="math inline">\(OPT(6)\)</span><br>
@@ -422,7 +422,7 @@ OPT(0) = arr[0] \\
 分析：我们定义 <span class="math inline">\(Subset\)</span> 表示子集，<span class="math inline">\(Subset(arr[5], 9)\)</span> 表示对前面5个数字取数求和为9，应该怎么分配。从上往下分析，当 <span class="math inline">\(i = 5\)</span> 时，我们有两种状态：</p>
 <ul>
 <li>选 <span class="math inline">\(arr[5]\)</span> ，此时方案为 <span class="math inline">\(Subset(arr[4], 7)\)</span> ，选了 <span class="math inline">\(arr[5]\)</span> 之后，只需要前面4个数字取数之和为7就可以。</li>
-<li>不选 <span class="math inline">\(arr[5]\)</span> ，此时方案为 <span class="math inline">\(Subset(arr[4], 9)\)</span> ，前面4个数字取数之和为9。</li>
+<li>不选 <span class="math inline">\(arr[5]​\)</span> ，此时方案为 <span class="math inline">\(Subset(arr[4], 9)​\)</span> ，前面4个数字取数之和为9。</li>
 </ul>
 <p>最后只要这两种方案有一个为 <span class="math inline">\(true\)</span>，则满足要求，所以中间用 <span class="math inline">\(or\)</span></p>
 <blockquote>
