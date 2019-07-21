@@ -81,7 +81,11 @@
 <meta property="og:image" content="http://yoursite.com/2017/03/12/Interview-preparation-of-cpp/copy_01.png">
 <meta property="og:image" content="http://yoursite.com/2017/03/12/Interview-preparation-of-cpp/copy_02.png">
 <meta property="og:image" content="http://yoursite.com/2017/03/12/Interview-preparation-of-cpp/copy_03.png">
-<meta property="og:updated_time" content="2019-07-18T11:29:24.831Z">
+<meta property="og:image" content="http://yoursite.com/2017/03/12/Interview-preparation-of-cpp/撤销修改.png">
+<meta property="og:image" content="http://yoursite.com/2017/03/12/Interview-preparation-of-cpp/git.png">
+<meta property="og:image" content="http://yoursite.com/2017/03/12/Interview-preparation-of-cpp/git_merge.png">
+<meta property="og:image" content="http://yoursite.com/2017/03/12/Interview-preparation-of-cpp/git_rebase.png">
+<meta property="og:updated_time" content="2019-07-21T06:53:35.468Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++面试准备">
 <meta name="twitter:description" content="code{white-space: pre;}">
@@ -924,7 +928,7 @@ C++实现多态的机制很简单，在继承体系下，将父类的某个函�
 <p><a href="https://link.juejin.im?target=https%3A%2F%2Fdata-flair.training%2Fblogs%2Fpython-inheritance%2F" target="_blank" rel="noopener">戳这里</a></p>
 <h4 id="help和dir函数">help()和dir()函数</h4>
 <p>Help()函数是一个内置函数，用于查看函数或模块用途的详细说明：</p>
-<h4 id="python常用函数">**Python常用函数</h4>
+<h4 id="python常用函数">！！！Python常用函数</h4>
 <blockquote>
 <p>Reference: <a href="https://www.runoob.com/python/python-strings.html" target="_blank" rel="noopener">1</a></p>
 </blockquote>
@@ -987,6 +991,27 @@ C++实现多态的机制很简单，在继承体系下，将父类的某个函�
 <p>返回元祖列表</p>
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b = [<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c = [<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>zipped = zip(a,b)     <span class="comment"># 打包为元组的列表</span></span><br><span class="line">[(<span class="number">1</span>, <span class="number">4</span>), (<span class="number">2</span>, <span class="number">5</span>), (<span class="number">3</span>, <span class="number">6</span>)]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>zip(a,c)              <span class="comment"># 元素个数与最短的列表一致</span></span><br><span class="line">[(<span class="number">1</span>, <span class="number">4</span>), (<span class="number">2</span>, <span class="number">5</span>), (<span class="number">3</span>, <span class="number">6</span>)]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>zip(*zipped)          <span class="comment"># 与 zip 相反，*zipped 可理解为解压，返回二维矩阵式</span></span><br><span class="line">[(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>), (<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>)]</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>逆序迭代</strong></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 正序循环</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>):</span><br><span class="line">    print(i)</span><br><span class="line"><span class="comment"># 0 1 2 3 4 </span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 逆序循环</span></span><br><span class="line"><span class="comment"># 方法一：</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>)[::<span class="number">-1</span>]:</span><br><span class="line">    print(i)</span><br><span class="line"><span class="comment"># 4 3 2 1 0</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 方法二：</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">4</span>, <span class="number">-1</span>, <span class="number">-1</span>):  <span class="comment"># 注意这里是4</span></span><br><span class="line">    print(i)</span><br><span class="line"><span class="comment"># 4 3 2 1 0</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 方法三：</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> reversed(range(<span class="number">5</span>)):</span><br><span class="line">    print(i)</span><br><span class="line"><span class="comment"># 4 3 2 1 0</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>range()</strong> 定义步长</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, <span class="number">6</span>, <span class="number">2</span>):</span><br><span class="line">	print(i, end=<span class="string">','</span>)</span><br><span class="line"><span class="comment"># 0,2,4</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>enumerate()</strong></li>
+</ul>
+<p>enumerate() 函数用于将一个可遍历的数据对象(如列表、元组或字符串)组合为一个索引序列，同时列出数据和数据下标，一般用在 for 循环当中.</p>
+<blockquote>
+<p>语法：<strong><code>enumerate(sequence, [start=0])</code></strong></p>
+<p>参数：</p>
+<ul>
+<li>sequence – 一个序列、迭代器或其他支持迭代对象。</li>
+<li>start – 下标起始位置。</li>
+</ul>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">seq = [<span class="string">'one'</span>, <span class="string">'two'</span>, <span class="string">'three'</span>]</span><br><span class="line"><span class="keyword">for</span> i, element <span class="keyword">in</span> enumerate(seq):</span><br><span class="line">	<span class="keyword">print</span> i, element</span><br></pre></td></tr></table></figure>
 <h4 id="什么是flask">什么是Flask？</h4>
 <p>Flask是Python编写的一款轻量级Web应用框架。其 WSGI 工具箱采用 Werkzeug ，模板引擎则使用 Jinja2。Flask使用 BSD 授权。其中两个环境依赖是Werkzeug和jinja2，这意味着它不需要依赖外部库。正因如此，我们将其称为轻量级框架。</p>
 <p>Flask会话使用签名cookie让用户查看和修改会话内容。它会记录从一个请求到另一个请求的信息。不过，要想修改会话，用户必须有密钥Flask.secret_key。</p>
@@ -1002,6 +1027,412 @@ C++实现多态的机制很简单，在继承体系下，将父类的某个函�
 <li>Python的内存回收机制</li>
 <li>使用迭代器遍历和非迭代器遍历的区别</li>
 </ul>
+<hr>
+<h3 id="linux">Linux</h3>
+<table>
+<thead>
+<tr class="header">
+<th>常用Linux命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>cd</td>
+<td>进入目录</td>
+</tr>
+<tr class="even">
+<td>cp</td>
+<td>拷贝文件</td>
+</tr>
+<tr class="odd">
+<td>mv</td>
+<td>移动文件</td>
+</tr>
+<tr class="even">
+<td>rm</td>
+<td>删除文件</td>
+</tr>
+<tr class="odd">
+<td>ls</td>
+<td>查看文件</td>
+</tr>
+<tr class="even">
+<td>ls -l -a</td>
+<td>查看文件目录详情</td>
+</tr>
+<tr class="odd">
+<td>tree -L 2</td>
+<td>以树形结构查看目录</td>
+</tr>
+<tr class="even">
+<td>grep -n -H -R</td>
+<td>递归查找包含某一条语句的文件，并显示行号</td>
+</tr>
+<tr class="odd">
+<td>find / -name test</td>
+<td>查找 / 目录下名为test的文件</td>
+</tr>
+<tr class="even">
+<td>locate test</td>
+<td>查找和 test 相关的文件</td>
+</tr>
+<tr class="odd">
+<td>cat</td>
+<td>查看文本文件内容</td>
+</tr>
+<tr class="even">
+<td>chown</td>
+<td>改变文件的所有者</td>
+</tr>
+<tr class="odd">
+<td>chmod</td>
+<td>改变文件的权限</td>
+</tr>
+<tr class="even">
+<td>mkdir</td>
+<td>新建文件夹</td>
+</tr>
+<tr class="odd">
+<td><code>ls -l | grep '^-' | wc -l</code></td>
+<td>统计某文件夹下文件的个数</td>
+</tr>
+<tr class="even">
+<td><code>ls -l | grep '^d' | wc -l</code></td>
+<td>统计某文件夹下目录的个数</td>
+</tr>
+<tr class="odd">
+<td><code>ls -lR | grep '^d' | wc -l</code></td>
+<td>统计文件夹下文件的个数，包括子文件夹里的</td>
+</tr>
+<tr class="even">
+<td>jobs -l</td>
+<td>查看后台进程</td>
+</tr>
+<tr class="odd">
+<td>bg %1</td>
+<td>将后台进程1切换到当前运行</td>
+</tr>
+<tr class="even">
+<td>kill %1</td>
+<td>杀死进程好为1的进程</td>
+</tr>
+<tr class="odd">
+<td>top</td>
+<td>显示系统中各个进程的资源占用状况</td>
+</tr>
+<tr class="even">
+<td>df</td>
+<td>查看磁盘空间</td>
+</tr>
+<tr class="odd">
+<td>df -hl</td>
+<td>查看磁盘剩余空间</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="gbd">gbd</h4>
+<table>
+<colgroup>
+<col width="31%">
+<col width="34%">
+<col width="34%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>命令</th>
+<th>解释</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="http://man.linuxde.net/file" target="_blank" rel="noopener">file</a> <文件名></文件名></td>
+<td>加载被调试的可执行程序文件。因为一般都在被调试程序所在目录下执行GDB，因而文本名不需要带路径。</td>
+<td>(gdb) file gdb-sample</td>
+</tr>
+<tr class="even">
+<td>r</td>
+<td>Run的简写，运行被调试的程序。如果此前没有下过断点，则执行完整个程序；如果有断点，则程序暂停在第一个可用断点处。</td>
+<td>(gdb) r</td>
+</tr>
+<tr class="odd">
+<td>c</td>
+<td>Continue的简写，继续执行被调试程序，直至下一个断点或程序结束。</td>
+<td>(gdb) c</td>
+</tr>
+<tr class="even">
+<td>b <行号>b <函数名称>b <em><函数名称>b </函数名称></em><代码地址> d [编号]</代码地址></函数名称></行号></td>
+<td>b: Breakpoint的简写，设置断点。两可以使用“行号”“函数名称”“执行地址”等方式指定断点位置。其中在函数名称前面加“*”符号表示将断点设置在“由编译器生成的prolog代码处”。如果不了解汇编，可以不予理会此用法。 d: Delete breakpoint的简写，删除指定编号的某个断点，或删除所有断点。断点编号从1开始递增。</td>
+<td>(gdb) b 8(gdb) b main(gdb) b <em>main(gdb) b </em>0x804835c (gdb) d</td>
+</tr>
+<tr class="odd">
+<td>s, n</td>
+<td>s: 执行一行源程序代码，如果此行代码中有函数调用，则进入该函数；n: 执行一行源程序代码，此行代码中的函数调用也一并执行。 s 相当于其它调试器中的“Step Into (单步跟踪进入)”；n 相当于其它调试器中的“Step Over (单步跟踪)”。 这两个命令必须在有源代码调试信息的情况下才可以使用（GCC编译时使用“-g”参数）。</td>
+<td>(gdb) s(gdb) n</td>
+</tr>
+<tr class="even">
+<td>si, ni</td>
+<td>si命令类似于s命令，ni命令类似于n命令。所不同的是，这两个命令（si/ni）所针对的是汇编指令，而s/n针对的是源代码。</td>
+<td>(gdb) si(gdb) ni</td>
+</tr>
+<tr class="odd">
+<td>p <变量名称></变量名称></td>
+<td>Print的简写，显示指定变量（临时变量或全局变量）的值。</td>
+<td>(gdb) p i(gdb) p nGlobalVar</td>
+</tr>
+<tr class="even">
+<td>display … undisplay <编号></编号></td>
+<td>display，设置程序中断后欲显示的数据及其格式。例如，如果希望每次程序中断后可以看到即将被执行的下一条汇编指令，可以使用命令“display /i $pc”其中 $pc 代表当前汇编指令，/i 表示以十六进行显示。当需要关心汇编代码时，此命令相当有用。 undispaly，取消先前的display设置，编号从1开始递增。</td>
+<td>(gdb) display /i $pc (gdb) undisplay 1</td>
+</tr>
+<tr class="odd">
+<td>i</td>
+<td><a href="http://man.linuxde.net/info" target="_blank" rel="noopener">info</a>的简写，用于显示各类信息，详情请查阅“<a href="http://man.linuxde.net/help" target="_blank" rel="noopener">help</a> i”。</td>
+<td>(gdb) i r</td>
+</tr>
+<tr class="even">
+<td>q</td>
+<td>Quit的简写，退出GDB调试环境。</td>
+<td>(gdb) q</td>
+</tr>
+<tr class="odd">
+<td>help [命令名称]</td>
+<td>GDB帮助命令，提供对GDB名种命令的解释说明。如果指定了“命令名称”参数，则显示该命令的详细说明；如果没有指定参数，则分类显示所有GDB命令，供用户进一步浏览和查询。</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Reference：<a href="http://man.linuxde.net/gdb" target="_blank" rel="noopener">gdb入门</a></p>
+</blockquote>
+<hr>
+<h3 id="git">Git</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">git 常用命令</th>
+<th>命令功能</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">git init</td>
+<td>初始化</td>
+</tr>
+<tr class="even">
+<td align="left">git add</td>
+<td>添加到版本库中的暂存区</td>
+</tr>
+<tr class="odd">
+<td align="left">git commit</td>
+<td>把暂存区的内容提交到当前分支</td>
+</tr>
+<tr class="even">
+<td align="left">git checkout –file</td>
+<td>直接丢弃工作区的修改</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>git reset</strong> –hard HEAD^</td>
+<td>回退到上一个版本</td>
+</tr>
+<tr class="even">
+<td align="left">git reset –herd 362816</td>
+<td>回退到指定版本</td>
+</tr>
+<tr class="odd">
+<td align="left">git log</td>
+<td>查看版本库信息</td>
+</tr>
+<tr class="even">
+<td align="left">git reflog</td>
+<td>查看本地记录的与版本库相关的每一条命令</td>
+</tr>
+<tr class="odd">
+<td align="left">git status</td>
+<td>查看工作区的状态</td>
+</tr>
+<tr class="even">
+<td align="left">git diff</td>
+<td>查看修改内容</td>
+</tr>
+<tr class="odd">
+<td align="left">git remote add origin</td>
+<td>添加远程仓库</td>
+</tr>
+<tr class="even">
+<td align="left">git push -u origin master</td>
+<td>将本地库内容推送到远程仓库（第一次推送加-u）</td>
+</tr>
+<tr class="odd">
+<td align="left">git push origin master</td>
+<td>推送至主分支</td>
+</tr>
+<tr class="even">
+<td align="left">git push origin dev</td>
+<td>推送至dev分支</td>
+</tr>
+<tr class="odd">
+<td align="left">git clone</td>
+<td>从远程仓库克隆</td>
+</tr>
+<tr class="even">
+<td align="left">git branch name</td>
+<td>创建name分支</td>
+</tr>
+<tr class="odd">
+<td align="left">git checkout name</td>
+<td>切换至name分支</td>
+</tr>
+<tr class="even">
+<td align="left">git branch -b name</td>
+<td>创建并切换至name分支</td>
+</tr>
+<tr class="odd">
+<td align="left">git branch</td>
+<td>查看当前分支</td>
+</tr>
+<tr class="even">
+<td align="left">git branch -d name</td>
+<td>删除分支</td>
+</tr>
+<tr class="odd">
+<td align="left">git branch -D name</td>
+<td>强行删除分支</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>git merge name</strong></td>
+<td>将name分支合并到master分支上</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>git rebase</strong></td>
+<td></td>
+</tr>
+<tr class="even">
+<td align="left">git remote</td>
+<td>查看远程库信息</td>
+</tr>
+<tr class="odd">
+<td align="left">git remote -v</td>
+<td>查看远程库详细信息</td>
+</tr>
+<tr class="even">
+<td align="left">git log –graph</td>
+<td>查看分支合并图</td>
+</tr>
+<tr class="odd">
+<td align="left">git pull</td>
+<td>将远程库最新提交抓取下来</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td align="left">git tag v1.0</td>
+<td>创建名为v1.0的标签</td>
+</tr>
+<tr class="even">
+<td align="left">git tag</td>
+<td>查看所有标签</td>
+</tr>
+<tr class="odd">
+<td align="left">git tag v0.9 0abc</td>
+<td>为指定commit提交打标签</td>
+</tr>
+<tr class="even">
+<td align="left">git show v0.9</td>
+<td>查看指定标签信息</td>
+</tr>
+<tr class="odd">
+<td align="left">git tag -d v0.1</td>
+<td>删除标签</td>
+</tr>
+<tr class="even">
+<td align="left">git push origin v1.0</td>
+<td>推送某一个标签到远程</td>
+</tr>
+<tr class="odd">
+<td align="left">git push origin –tags</td>
+<td>一次性推送全部尚未推送到远程的本地标签</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>撤销修改</strong></li>
+</ul>
+<div class="figure">
+<img src="/2017/03/12/Interview-preparation-of-cpp/撤销修改.png">
+
+</div>
+<ul>
+<li><strong>多人协作</strong></li>
+</ul>
+<div class="figure">
+<img src="/2017/03/12/Interview-preparation-of-cpp/git.png">
+
+</div>
+<ul>
+<li><strong>git merge 和 git rebase 区别</strong></li>
+</ul>
+<blockquote>
+<p><strong>git merge使用方法</strong></p>
+</blockquote>
+<p>比如将分支 <code>feature</code> 合并到分支 <code>master</code>，那么只需执行如下两步即可：</p>
+<ol style="list-style-type: decimal">
+<li>将分支切换到 <code>master</code> 上去：<code>git checkout master</code></li>
+<li>将分支 <code>feature</code> 合并到当前分支（即 <code>master</code> 分支）上：<code>git merge feature</code></li>
+</ol>
+<div class="figure">
+<img src="/2017/03/12/Interview-preparation-of-cpp/git_merge.png">
+
+</div>
+<p><strong>特点：</strong></p>
+<ol style="list-style-type: decimal">
+<li>自动创建一个新的合并的历史记录commit</li>
+<li>如果合并的时候遇到冲突，仅需要修改后重新commit，合并后的所有 <code>commit</code> 会按照提交时间从旧到新排列</li>
+<li>所有的过程信息更多，可能会提高之后查找问题的难度</li>
+</ol>
+<p><strong>优点：</strong></p>
+<ol style="list-style-type: decimal">
+<li>记录了真实的commit情况，包括每个分支的详情</li>
+</ol>
+<blockquote>
+<p><strong>git rebase 合并操作</strong></p>
+</blockquote>
+<p>与 <code>git merge</code> 一致，<code>git rebase</code> 的目的也是将一个分支的更改并入到另外一个分支中去。</p>
+<div class="figure">
+<img src="/2017/03/12/Interview-preparation-of-cpp/git_rebase.png">
+
+</div>
+<p>主要特点是：</p>
+<ol style="list-style-type: decimal">
+<li>得到更简洁的项目历史，去掉了merge commit</li>
+<li>会合并之前的commit历史</li>
+<li>没有多余的合并历史的记录，且合并后的 <code>commit</code> 顺序不一定按照 <code>commit</code> 的提交时间排列</li>
+<li>改变当前分支从 <code>master</code> 上拉出分支的位置</li>
+<li>如果合并出现代码问题不容易定位</li>
+</ol>
+<p>合并时如果出现冲突需要按照如下步骤解决</p>
+<ul>
+<li>修改冲突部分</li>
+<li>git add</li>
+<li><code>git rebase --continue</code></li>
+<li>（如果第三步无效可以执行 <code>git rebase --skip</code>）</li>
+</ul>
+<blockquote>
+<p><strong>总结</strong></p>
+</blockquote>
+<p>（1）当需要保留详细的合并信息的时候建议使用<code>git merge</code>，特别是需要将分支合并进入<code>master</code>分支时。</p>
+<p>（2）如果你想要一个干净的，没有merge commit的线性历史树，那么你应该选择git rebase。比如当发现自己修改某个功能时，频繁进行了<code>git commit</code>提交时，发现其实过多的提交信息没有必要时，可以尝试<code>git rebase</code>。</p>
+<blockquote>
+<p>Reference: <a href="https://juejin.im/post/5af26c4d5188256728605809" target="_blank" rel="noopener">Git知识</a></p>
+</blockquote>
+<hr>
 <h3 id="reference">Reference</h3>
 <ul>
 <li><a href="https://mp.weixin.qq.com/s?__biz=MzUxNjcxMjQxNg==&amp;mid=2247490302&amp;idx=2&amp;sn=65dd20ad57f62a1f9f6015d7106afc2c&amp;pass_ticket=YQUuRNDSktmCTNEQiVxLaq%2FsjKeEZe7UAyeMwFVb%2BLcajMRRSXFXmPDHvTKr9pef" target="_blank" rel="noopener">常见C++笔试面试题整理</a></li>
@@ -1167,7 +1598,7 @@ C++实现多态的机制很简单，在继承体系下，将父类的某个函�
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#c"><span class="nav-text">C++</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#define-和-const-的区别"><span class="nav-text">define 和 const 的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#const-作用"><span class="nav-text">const 作用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#static"><span class="nav-text">static</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#this-指针"><span class="nav-text">this 指针</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#inline-内联函数"><span class="nav-text">inline 内联函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#虚函数virtual可以是内联函数inline吗"><span class="nav-text">虚函数（virtual）可以是内联函数（inline）吗？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#volatile"><span class="nav-text">volatile</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#assert"><span class="nav-text">assert()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sizeof"><span class="nav-text">sizeof()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#pragma-packn"><span class="nav-text">#pragma pack(n)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#位域"><span class="nav-text">位域</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#extern-c"><span class="nav-text">extern “C”</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#c-中-struct-和-class"><span class="nav-text">C++ 中 struct 和 class</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#结构体struct-和-共同体union联合的区别"><span class="nav-text">结构体struct 和 共同体union（联合）的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#结构体为什么要内存对齐呢"><span class="nav-text">结构体为什么要内存对齐呢？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#定义和声明的区别"><span class="nav-text">定义和声明的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#c和c的区别"><span class="nav-text">C和C++的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#c中指针和引用的区别"><span class="nav-text">C++中指针和引用的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#section"><span class="nav-text">———-</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#继承中的特点"><span class="nav-text">继承中的特点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#重载overload覆盖重写override隐藏重定义overwrite这三者之间的区别"><span class="nav-text">重载overload，覆盖（重写）override，隐藏（重定义）overwrite，这三者之间的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多态-虚函数-纯虚函数"><span class="nav-text">**多态， 虚函数， 纯虚函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#虚函数-与-纯虚函数"><span class="nav-text">虚函数 与 纯虚函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#虚函数是怎么实现的"><span class="nav-text">虚函数是怎么实现的</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#构造函数为什么一般不定义为虚函数而析构函数一般写成虚函数的原因"><span class="nav-text">构造函数为什么一般不定义为虚函数？而析构函数一般写成虚函数的原因 ？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#虚函数指针虚函数表"><span class="nav-text">虚函数指针、虚函数表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#继承中子类构造函数和析构函数调用顺序"><span class="nav-text">继承中，子类构造函数和析构函数调用顺序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#子类析构时要调用父类的析构函数吗"><span class="nav-text">子类析构时，要调用父类的析构函数吗？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#虚继承"><span class="nav-text">虚继承</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#虚继承-与-虚函数的联系与区别"><span class="nav-text">虚继承 与 虚函数的联系与区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模板类成员模板虚函数"><span class="nav-text">模板类、成员模板、虚函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#抽象类接口类聚合类"><span class="nav-text">抽象类、接口类、聚合类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#friend-友元类和友元函数"><span class="nav-text">friend 友元类和友元函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#友元函数和友元类"><span class="nav-text">友元函数和友元类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#c的内存管理"><span class="nav-text">C++的内存管理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#栈和堆的区别"><span class="nav-text">栈和堆的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#c中内存泄漏的几种情况"><span class="nav-text">C++中内存泄漏的几种情况</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#栈溢出的原因以及解决方法"><span class="nav-text">栈溢出的原因以及解决方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是野指针"><span class="nav-text">什么是野指针</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#newdeletemallocfree之间的关系"><span class="nav-text">new、delete、malloc、free之间的关系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#既然有了mallocfreec中为什么还需要newdelete呢"><span class="nav-text">既然有了malloc/free，C++中为什么还需要new/delete呢？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#delete和delete的区别"><span class="nav-text">delete和delete的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#delete-this-合法吗"><span class="nav-text">delete this 合法吗？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#stl库用过吗常见的stl容器有哪些算法用过几个"><span class="nav-text">STL库用过吗？常见的STL容器有哪些？算法用过几个？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#c中vector和list的区别"><span class="nav-text">C++中vector和list的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#c常见容器的时间复杂度"><span class="nav-text">C++常见容器的时间复杂度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#c包含的新特性"><span class="nav-text">C++包含的新特性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#智能指针"><span class="nav-text">智能指针</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常用的智能指针"><span class="nav-text">常用的智能指针</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#智能指针的作用"><span class="nav-text">智能指针的作用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#强制类型转换运算符"><span class="nav-text">强制类型转换运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#c文件编译与执行的四个阶段"><span class="nav-text">C++文件编译与执行的四个阶段</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#线程安全和线程不安全"><span class="nav-text">线程安全和线程不安全</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件操作"><span class="nav-text">文件操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他问题待整理"><span class="nav-text">**其他问题待整理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#python"><span class="nav-text">Python</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#python深拷贝和浅拷贝"><span class="nav-text">python深拷贝和浅拷贝</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#range-和-xrange-区别"><span class="nav-text">range 和 xrange 区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#list-和-tuple-区别"><span class="nav-text">list 和 tuple 区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解释一下python中的三元运算子"><span class="nav-text">解释一下Python中的三元运算子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在python中是如何管理内存"><span class="nav-text">在Python中是如何管理内存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#简述python引用计数机制"><span class="nav-text">简述python引用计数机制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#当退出python时是否释放全部内存"><span class="nav-text">当退出Python时，是否释放全部内存？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在python中如何实现多线程"><span class="nav-text">在Python中如何实现多线程？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是猴子补丁"><span class="nav-text">什么是猴子补丁？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解释一下python中的继承"><span class="nav-text">解释一下Python中的继承</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#help和dir函数"><span class="nav-text">help()和dir()函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#python常用函数"><span class="nav-text">**Python常用函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是flask"><span class="nav-text">什么是Flask？</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#section-1"><span class="nav-text"></span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#文件操作-1"><span class="nav-text">文件操作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#reference"><span class="nav-text">Reference</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#c"><span class="nav-text">C++</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#define-和-const-的区别"><span class="nav-text">define 和 const 的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#const-作用"><span class="nav-text">const 作用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#static"><span class="nav-text">static</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#this-指针"><span class="nav-text">this 指针</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#inline-内联函数"><span class="nav-text">inline 内联函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#虚函数virtual可以是内联函数inline吗"><span class="nav-text">虚函数（virtual）可以是内联函数（inline）吗？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#volatile"><span class="nav-text">volatile</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#assert"><span class="nav-text">assert()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sizeof"><span class="nav-text">sizeof()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#pragma-packn"><span class="nav-text">#pragma pack(n)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#位域"><span class="nav-text">位域</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#extern-c"><span class="nav-text">extern “C”</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#c-中-struct-和-class"><span class="nav-text">C++ 中 struct 和 class</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#结构体struct-和-共同体union联合的区别"><span class="nav-text">结构体struct 和 共同体union（联合）的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#结构体为什么要内存对齐呢"><span class="nav-text">结构体为什么要内存对齐呢？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#定义和声明的区别"><span class="nav-text">定义和声明的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#c和c的区别"><span class="nav-text">C和C++的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#c中指针和引用的区别"><span class="nav-text">C++中指针和引用的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#section"><span class="nav-text">———-</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#继承中的特点"><span class="nav-text">继承中的特点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#重载overload覆盖重写override隐藏重定义overwrite这三者之间的区别"><span class="nav-text">重载overload，覆盖（重写）override，隐藏（重定义）overwrite，这三者之间的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多态-虚函数-纯虚函数"><span class="nav-text">**多态， 虚函数， 纯虚函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#虚函数-与-纯虚函数"><span class="nav-text">虚函数 与 纯虚函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#虚函数是怎么实现的"><span class="nav-text">虚函数是怎么实现的</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#构造函数为什么一般不定义为虚函数而析构函数一般写成虚函数的原因"><span class="nav-text">构造函数为什么一般不定义为虚函数？而析构函数一般写成虚函数的原因 ？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#虚函数指针虚函数表"><span class="nav-text">虚函数指针、虚函数表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#继承中子类构造函数和析构函数调用顺序"><span class="nav-text">继承中，子类构造函数和析构函数调用顺序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#子类析构时要调用父类的析构函数吗"><span class="nav-text">子类析构时，要调用父类的析构函数吗？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#虚继承"><span class="nav-text">虚继承</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#虚继承-与-虚函数的联系与区别"><span class="nav-text">虚继承 与 虚函数的联系与区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模板类成员模板虚函数"><span class="nav-text">模板类、成员模板、虚函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#抽象类接口类聚合类"><span class="nav-text">抽象类、接口类、聚合类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#friend-友元类和友元函数"><span class="nav-text">friend 友元类和友元函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#友元函数和友元类"><span class="nav-text">友元函数和友元类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#c的内存管理"><span class="nav-text">C++的内存管理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#栈和堆的区别"><span class="nav-text">栈和堆的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#c中内存泄漏的几种情况"><span class="nav-text">C++中内存泄漏的几种情况</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#栈溢出的原因以及解决方法"><span class="nav-text">栈溢出的原因以及解决方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是野指针"><span class="nav-text">什么是野指针</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#newdeletemallocfree之间的关系"><span class="nav-text">new、delete、malloc、free之间的关系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#既然有了mallocfreec中为什么还需要newdelete呢"><span class="nav-text">既然有了malloc/free，C++中为什么还需要new/delete呢？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#delete和delete的区别"><span class="nav-text">delete和delete的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#delete-this-合法吗"><span class="nav-text">delete this 合法吗？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#stl库用过吗常见的stl容器有哪些算法用过几个"><span class="nav-text">STL库用过吗？常见的STL容器有哪些？算法用过几个？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#c中vector和list的区别"><span class="nav-text">C++中vector和list的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#c常见容器的时间复杂度"><span class="nav-text">C++常见容器的时间复杂度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#c包含的新特性"><span class="nav-text">C++包含的新特性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#智能指针"><span class="nav-text">智能指针</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常用的智能指针"><span class="nav-text">常用的智能指针</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#智能指针的作用"><span class="nav-text">智能指针的作用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#强制类型转换运算符"><span class="nav-text">强制类型转换运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#c文件编译与执行的四个阶段"><span class="nav-text">C++文件编译与执行的四个阶段</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#线程安全和线程不安全"><span class="nav-text">线程安全和线程不安全</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件操作"><span class="nav-text">文件操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他问题待整理"><span class="nav-text">**其他问题待整理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#python"><span class="nav-text">Python</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#python深拷贝和浅拷贝"><span class="nav-text">python深拷贝和浅拷贝</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#range-和-xrange-区别"><span class="nav-text">range 和 xrange 区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#list-和-tuple-区别"><span class="nav-text">list 和 tuple 区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解释一下python中的三元运算子"><span class="nav-text">解释一下Python中的三元运算子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在python中是如何管理内存"><span class="nav-text">在Python中是如何管理内存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#简述python引用计数机制"><span class="nav-text">简述python引用计数机制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#当退出python时是否释放全部内存"><span class="nav-text">当退出Python时，是否释放全部内存？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在python中如何实现多线程"><span class="nav-text">在Python中如何实现多线程？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是猴子补丁"><span class="nav-text">什么是猴子补丁？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解释一下python中的继承"><span class="nav-text">解释一下Python中的继承</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#help和dir函数"><span class="nav-text">help()和dir()函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#python常用函数"><span class="nav-text">！！！Python常用函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是flask"><span class="nav-text">什么是Flask？</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#section-1"><span class="nav-text"></span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#文件操作-1"><span class="nav-text">文件操作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#linux"><span class="nav-text">Linux</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#gbd"><span class="nav-text">gbd</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git"><span class="nav-text">Git</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#reference"><span class="nav-text">Reference</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
