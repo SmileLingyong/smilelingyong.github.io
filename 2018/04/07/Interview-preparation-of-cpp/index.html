@@ -1,0 +1,1962 @@
+<!doctype html>
+<html class="theme-next use-motion ">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/others/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+
+
+  <link href="/vendors/googleapis/css/Lato.css" rel="stylesheet" type="text/css">
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/others/font-awesome/css/font-awesome.min.css?v=4.4.0" />
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.2"/>
+
+
+    <meta name="description" content="向上，向阳！" />
+
+
+
+  <meta name="keywords" content="C,算法,数据结构," />
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=0.4.5.2" />
+
+
+<meta name="description" content="code{white-space: pre;}">
+<meta name="keywords" content="C,算法,数据结构">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++面试准备">
+<meta property="og:url" content="http://yoursite.com/2018/04/07/Interview-preparation-of-cpp/index.html">
+<meta property="og:site_name" content="SmileLingyong">
+<meta property="og:description" content="code{white-space: pre;}">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2018/04/07/Interview-preparation-of-cpp/内存对齐.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/04/07/Interview-preparation-of-cpp/虚表.png">
+<meta property="og:image" content="http://yoursite.com/2018/04/07/Interview-preparation-of-cpp/associative.png">
+<meta property="og:image" content="http://yoursite.com/2018/04/07/Interview-preparation-of-cpp/copy_01.png">
+<meta property="og:image" content="http://yoursite.com/2018/04/07/Interview-preparation-of-cpp/copy_02.png">
+<meta property="og:image" content="http://yoursite.com/2018/04/07/Interview-preparation-of-cpp/copy_03.png">
+<meta property="og:image" content="http://yoursite.com/2018/04/07/Interview-preparation-of-cpp/撤销修改.png">
+<meta property="og:image" content="http://yoursite.com/2018/04/07/Interview-preparation-of-cpp/git.png">
+<meta property="og:image" content="http://yoursite.com/2018/04/07/Interview-preparation-of-cpp/git_merge.png">
+<meta property="og:image" content="http://yoursite.com/2018/04/07/Interview-preparation-of-cpp/git_rebase.png">
+<meta property="og:updated_time" content="2019-07-22T08:11:48.826Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="C++面试准备">
+<meta name="twitter:description" content="code{white-space: pre;}">
+<meta name="twitter:image" content="http://yoursite.com/2018/04/07/Interview-preparation-of-cpp/内存对齐.jpg">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: '',
+    sidebar: 'always'
+  };
+</script>
+
+
+
+  <title> C++面试准备 | SmileLingyong </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+
+
+
+  <div id="container" class="container one-column page-post-detail">
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+      
+	  	<span style="font-size:14px;float:right;padding:39px 40px 0 0;">——穷则独善其身，达则兼济天下.</span>
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+
+        	<div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                C++面试准备
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            Posted on
+            <time itemprop="dateCreated" datetime="2018-04-07T23:54:00+08:00" content="2018-04-07">
+              2018-04-07 23:54
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; In
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/算法与数据结构/" itemprop="url" rel="index">
+                    <span itemprop="name">算法与数据结构</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+            <span id="/2018/04/07/Interview-preparation-of-cpp/"class="leancloud_visitors"  data-flag-title="C++面试准备">
+            &nbsp; | &nbsp;   
+            views
+            </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <meta name="generator" content="pandoc">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pygments-css@1.0.0/github.min.css" type="text/css">
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+</head>
+<body>
+<a id="more"></a>
+<h3 id="c">C++</h3>
+<h4 id="define-和-const-的区别">define 和 const 的区别</h4>
+<ul>
+<li>#define定义的常量没有类型，所给出的是一个立即数；const定义的常量有类型名字，存放在静态区域</li>
+<li>处理阶段不同，#define定义的宏变量在预处理时进行替换，可能有多个拷贝，const所定义的变量在编译时确定其值，只有一个拷贝。</li>
+<li>#define定义的常量是不可以用指针去指向，const定义的常量可以用指针去指向该常量的地址</li>
+<li>#define可以定义简单的函数，const不可以定义函数</li>
+</ul>
+<h4 id="const-作用">const 作用</h4>
+<ul>
+<li>修饰变量，说明该变量不可以被改变</li>
+<li>修饰指针，分为指向常量的指针和指针常量</li>
+<li>常量引用，经常用于形参类型，即避免了拷贝，又避免了函数对值的修改</li>
+<li>修饰成员函数，说明该成员函数内不能修改成员变量</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> a;                <span class="comment">// 常对象成员，只能在初始化列表赋值</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// 构造函数</span></span><br><span class="line">    A() : a(<span class="number">0</span>) &#123; &#125;;</span><br><span class="line">    A(<span class="keyword">int</span> x) : a(x) &#123; &#125;;        <span class="comment">// 初始化列表</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// const可用于对重载函数的区分</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getValue</span><span class="params">()</span></span>;             <span class="comment">// 普通成员函数</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getValue</span><span class="params">()</span> <span class="keyword">const</span></span>;       <span class="comment">// 常成员函数，不得修改类中的任何数据成员的值</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">function</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 对象</span></span><br><span class="line">    A b;                        <span class="comment">// 普通对象，可以调用全部成员函数、更新常成员变量</span></span><br><span class="line">    <span class="keyword">const</span> A a;                  <span class="comment">// 常对象，只能调用常成员函数</span></span><br><span class="line">    <span class="keyword">const</span> A *p = &amp;a;            <span class="comment">// 常指针</span></span><br><span class="line">    <span class="keyword">const</span> A &amp;q = a;             <span class="comment">// 常引用</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 指针</span></span><br><span class="line">    <span class="keyword">char</span> greeting[] = <span class="string">"Hello"</span>;</span><br><span class="line">    <span class="keyword">char</span>* p1 = greeting;                <span class="comment">// 指针变量，指向字符数组变量</span></span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">char</span>* p2 = greeting;          <span class="comment">// 指针变量，指向字符数组常量</span></span><br><span class="line">    <span class="keyword">char</span>* <span class="keyword">const</span> p3 = greeting;          <span class="comment">// 常指针，指向字符数组变量</span></span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">char</span>* <span class="keyword">const</span> p4 = greeting;    <span class="comment">// 常指针，指向字符数组常量</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 函数</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">function1</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> Var)</span></span>;           <span class="comment">// 传递过来的参数在函数内不可变</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">function2</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>* Var)</span></span>;         <span class="comment">// 参数指针所指内容为常量</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">function3</span><span class="params">(<span class="keyword">char</span>* <span class="keyword">const</span> Var)</span></span>;         <span class="comment">// 参数指针为常指针</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">function4</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span>&amp; Var)</span></span>;          <span class="comment">// 引用参数在函数内为常量</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 函数返回值</span></span><br><span class="line"><span class="function"><span class="keyword">const</span> <span class="keyword">int</span> <span class="title">function5</span><span class="params">()</span></span>;      <span class="comment">// 返回一个常数</span></span><br><span class="line"><span class="function"><span class="keyword">const</span> <span class="keyword">int</span>* <span class="title">function6</span><span class="params">()</span></span>;     <span class="comment">// 返回一个指向常量的指针变量，使用：const int *p = function6();</span></span><br><span class="line"><span class="function"><span class="keyword">int</span>* <span class="keyword">const</span> <span class="title">function7</span><span class="params">()</span></span>;     <span class="comment">// 返回一个指向变量的常指针，使用：int* const p = function7();</span></span><br></pre></td></tr></table></figure>
+<h4 id="static">static</h4>
+<ul>
+<li>函数体内： static 修饰的局部变量作用范围为该函数体，不同于auto变量，其内存只被分配一次，因此其值在下次调用的时候维持了上次的值</li>
+<li>模块内：static修饰全局变量或全局函数，可以被模块内的所有函数访问，但是不能被模块外的其他函数访问，使用范围限制在声明它的模块内</li>
+<li>类中：修饰成员变量，表示该变量属于整个类所有，对类的所有对象只有一份拷贝</li>
+<li>类中：修饰成员函数，表示该函数属于整个类所有，不接受this指针，只能访问类中的static成员变量</li>
+</ul>
+<blockquote>
+<p>注意和const的区别！！！const强调值不能被修改，而static强调唯一的拷贝，对所有类的对象</p>
+</blockquote>
+<h4 id="this-指针">this 指针</h4>
+<ol style="list-style-type: decimal">
+<li><code>this</code> 指针是一个隐含于每一个非静态成员函数中的特殊指针。它指向调用该成员函数的那个对象。</li>
+<li>当对一个对象调用成员函数时，编译程序先将对象的地址赋给 <code>this</code> 指针，然后调用成员函数，每次成员函数存取数据成员时，都隐式使用 <code>this</code> 指针。</li>
+<li>当一个成员函数被调用时，自动向它传递一个隐含的参数，该参数是一个指向这个成员函数所在的对象的指针。</li>
+<li><code>this</code> 指针被隐含地声明为: <code>ClassName *const this</code>，这意味着不能给 <code>this</code> 指针赋值；在 <code>ClassName</code> 类的 <code>const</code>成员函数中，<code>this</code> 指针的类型为：<code>const ClassName* const</code>，这说明不能对 <code>this</code> 指针所指向的这种对象是不可修改的（即不能对这种对象的数据成员进行赋值操作）；</li>
+<li><code>this</code> 并不是一个常规变量，而是个右值，所以不能取得 <code>this</code> 的地址（不能 <code>&amp;this</code>）。</li>
+<li>在以下场景中，经常需要显式引用this指针：</li>
+</ol>
+<ul>
+<li>为实现对象的链式引用；</li>
+<li>为避免对同一对象进行赋值操作；</li>
+<li>在实现一些数据结构时，如 <code>list</code>。</li>
+</ul>
+<h4 id="inline-内联函数">inline 内联函数</h4>
+<ul>
+<li>相当于把内联函数里面的内容写在调用内联函数处；</li>
+<li>相当于不用执行进入函数的步骤，直接执行函数体；</li>
+<li>相当于宏，却比宏多了类型检查，真正具有函数特性；</li>
+<li>编译器一般不内联包含循环、递归、switch 等复杂操作的内联函数；</li>
+<li>在类声明中定义的函数，除了虚函数的其他函数都会自动隐式地当成内联函数。</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 声明1（加 inline，建议使用）</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">functionName</span><span class="params">(<span class="keyword">int</span> first, <span class="keyword">int</span> second,...)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 声明2（不加 inline）</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">functionName</span><span class="params">(<span class="keyword">int</span> first, <span class="keyword">int</span> second,...)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">functionName</span><span class="params">(<span class="keyword">int</span> first, <span class="keyword">int</span> second,...)</span> </span>&#123;<span class="comment">/****/</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 类内定义，隐式内联</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> &#123;</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">doA</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> <span class="number">0</span>; &#125;         <span class="comment">// 隐式内联</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 类外定义，需要显式内联</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> &#123;</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">doA</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">inline</span> <span class="keyword">int</span> A::doA() &#123; <span class="keyword">return</span> <span class="number">0</span>; &#125;   <span class="comment">// 需要显式内联</span></span><br></pre></td></tr></table></figure>
+<p><strong>编译器对 inline 函数的处理步骤</strong></p>
+<ul>
+<li>将 inline 函数体复制到 inline 函数调用点处；</li>
+<li>为所用 inline 函数中的局部变量分配内存空间；</li>
+<li>将 inline 函数的的输入参数和返回值映射到调用方法的局部变量空间中；</li>
+<li>如果 inline 函数有多个返回点，将其转变为 inline 函数代码块末尾的分支（使用 GOTO）。</li>
+</ul>
+<p><strong>优缺点</strong></p>
+<p><strong>1. 优点</strong></p>
+<ul>
+<li>内联函数同宏函数一样将在被调用处进行代码展开，省去了参数压栈、栈帧开辟与回收，结果返回等，从而提高程序运行速度。</li>
+<li>内联函数相比宏函数来说，在代码展开时，会做安全检查或自动类型转换（同普通函数），而宏定义则不会。</li>
+<li>在类中声明同时定义的成员函数，自动转化为内联函数，因此内联函数可以访问类的成员变量，宏定义则不能。</li>
+<li>内联函数在运行时可调试，而宏定义不可以。</li>
+</ul>
+<p><strong>2. 缺点</strong></p>
+<ul>
+<li>代码膨胀。内联是以代码膨胀（复制）为代价，消除函数调用带来的开销。如果执行函数体内代码的时间，相比于函数调用的开销较大，那么效率的收获会很少。另一方面，每一处内联函数的调用都要复制代码，将使程序的总代码量增大，消耗更多的内存空间。</li>
+<li>inline 函数无法随着函数库升级而升级。inline函数的改变需要重新编译，不像 non-inline 可以直接链接。</li>
+<li>是否内联，程序员不可控。内联函数只是对编译器的建议，是否对函数内联，决定权在于编译器。</li>
+</ul>
+<h4 id="虚函数virtual可以是内联函数inline吗">虚函数（virtual）可以是内联函数（inline）吗？</h4>
+<ul>
+<li>虚函数可以是内联函数，内联是可以修饰虚函数的，但是当虚函数表现多态性的时候不能内联。</li>
+<li>内联是在编译器建议编译器内联，而虚函数的多态性在运行期，编译器无法知道运行期调用哪个代码，因此虚函数表现为多态性时（运行期）不可以内联。</li>
+<li><code>inline virtual</code> 唯一可以内联的时候是：编译器知道所调用的对象是哪个类（如 <code>Base::who()</code>），这只有在编译器具有实际对象而不是对象的指针或引用时才会发生。</li>
+</ul>
+<h4 id="volatile">volatile</h4>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">volatile</span> <span class="keyword">int</span> i = <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>volatile 关键字是一种类型修饰符，用它声明的类型变量表示可以被某些编译器未知的因素（操作系统、硬件、其它线程等）更改。所以使用 volatile 告诉编译器不应对这样的对象进行优化。</li>
+<li>volatile 关键字声明的变量，每次访问时都必须从内存中取出值（没有被 volatile 修饰的变量，可能由于编译器的优化，从 CPU 寄存器中取值）</li>
+<li>const 可以是 volatile （如只读的状态寄存器）</li>
+<li>指针可以是 volatile</li>
+</ul>
+<h4 id="assert">assert()</h4>
+<p>断言，是宏，而非函数。assert 宏的原型定义在 <code>&lt;assert.h&gt;</code>（C）、<code>&lt;cassert&gt;</code>（C++）中，其作用是如果它的条件返回错误，则终止程序执行。可以通过定义 <code>NDEBUG</code> 来关闭 assert，但是需要在源代码的开头，<code>include &lt;assert.h&gt;</code> 之前。</p>
+<p>assert() 使用</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> NDEBUG          <span class="comment">// 加上这行，则 assert 不可用</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;assert.h&gt;</span></span></span><br><span class="line"></span><br><span class="line">assert( p != <span class="literal">NULL</span> );    <span class="comment">// assert 不可用</span></span><br></pre></td></tr></table></figure>
+<h4 id="sizeof">sizeof()</h4>
+<p>sizeof()是操作符，而非函数。</p>
+<ul>
+<li>sizeof 对数组，得到整个数组所占空间大小。</li>
+<li>sizeof 对指针，得到指针本身所占空间大小。</li>
+</ul>
+<h4 id="pragma-packn">#pragma pack(n)</h4>
+<p>设定结构体、联合以及类成员变量以 n 字节方式对齐</p>
+<p>#pragma pack(n) 使用</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> pack(push)  <span class="comment">// 保存对齐状态</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> pack(4)     <span class="comment">// 设定为 4 字节对齐</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">test</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">char</span> m1;</span><br><span class="line">    <span class="keyword">double</span> m4;</span><br><span class="line">    <span class="keyword">int</span> m3;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> pack(pop)   <span class="comment">// 恢复对齐状态</span></span></span><br></pre></td></tr></table></figure>
+<h4 id="位域">位域</h4>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Bit mode: <span class="number">2</span>;    <span class="comment">// mode 占 2 位</span></span><br></pre></td></tr></table></figure>
+<p>类可以将其（非静态）数据成员定义为位域（bit-field），在一个位域中含有一定数量的二进制位。当一个程序需要向其他程序或硬件设备传递二进制数据时，通常会用到位域。</p>
+<ul>
+<li>位域在内存中的布局是与机器有关的</li>
+<li>位域的类型必须是整型或枚举类型，带符号类型中的位域的行为将因具体实现而定</li>
+<li>取地址运算符（&amp;）不能作用于位域，任何指针都无法指向类的位域</li>
+</ul>
+<h4 id="extern-c">extern “C”</h4>
+<ul>
+<li>被 extern 限定的函数或变量是 extern 类型的</li>
+<li>被 <code>extern &quot;C&quot;</code> 修饰的变量和函数是按照 C 语言方式编译和链接的</li>
+</ul>
+<p>extern “C”的主要作用就是为了能够正确实现C++代码调用其他C语言代码。加上extern “C”后，会指示编译器这部分代码按C语言的进行编译，而不是C++的。</p>
+<p><strong>extern “C” 使用</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> __cplusplus</span></span><br><span class="line"><span class="keyword">extern</span> <span class="string">"C"</span> &#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> *<span class="title">memset</span><span class="params">(<span class="keyword">void</span> *, <span class="keyword">int</span>, <span class="keyword">size_t</span>)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> __cplusplus</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+<h4 id="c-中-struct-和-class">C++ 中 struct 和 class</h4>
+<p>总的来说，struct 更适合看成是一个数据结构的实现体，class 更适合看成是一个对象的实现体。</p>
+<p><strong>区别</strong></p>
+<p>最本质的一个区别就是默认的访问控制</p>
+<ul>
+<li>默认的继承访问权限。struct 是 public 的，class 是 private 的。</li>
+<li>struct 作为数据结构的实现体，它默认的数据访问控制是 public 的，而 class 作为对象的实现体，它默认的成员变量访问控制是 private 的。</li>
+</ul>
+<h4 id="结构体struct-和-共同体union联合的区别">结构体struct 和 共同体union（联合）的区别</h4>
+<p><strong>结构体</strong>：将不同类型的数据组合成一个整体，是自定义类型</p>
+<p><strong>共同体</strong>：不同类型的几个变量共同占用一段内存</p>
+<p>1）结构体中的每个成员都有自己独立的地址，它们是同时存在的；共同体中的所有成员占用同一段内存，它们不能同时存在。</p>
+<p>2）sizeof(struct)是内存对齐后所有成员长度的总和，sizeof(union)是内存对齐后最长数据成员的长度。</p>
+<h4 id="结构体为什么要内存对齐呢">结构体为什么要内存对齐呢？</h4>
+<p>1 . <strong>平台原因（移植原因）</strong>：不是所有的硬件平台都能访问任意地址上的任意数据，某些硬件平台只能在某些地址处取某些特定类型的数据，否则抛出硬件异常。内存对齐，是为了让内存存取更有效率而采用的一种编译阶段优化内存存取的手段。</p>
+<p>2 . <strong>硬件原因</strong>：经过内存对齐之后，CPU的内存访问速度大大提升。</p>
+<p><strong>内存对齐规则</strong></p>
+<ol style="list-style-type: decimal">
+<li>内存对齐是指首地址对齐，而不是说每个变量大小对齐</li>
+<li>结构体内存对齐要求结构体内每一个成员变量都是内存对齐的</li>
+<li>结构体第一个成员的 <strong>偏移量（offset）</strong>为0，以后每个成员相对于结构体首地址的 offset 都是<strong>该成员大小 与 有效对齐值 中较小那个</strong>的整数倍，如有需要编译器会在成员之间加上填充字节。</li>
+<li><strong>结构体的总大小</strong>为 有效对齐值 的<strong>整数倍</strong>，如有需要编译器会在最末一个成员之后加上填充字节。</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//32位系统</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> i;    </span><br><span class="line">    <span class="keyword">char</span> c1;  </span><br><span class="line">    <span class="keyword">char</span> c2;  </span><br><span class="line">&#125;x1;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span>&#123;</span></span><br><span class="line">    <span class="keyword">char</span> c1;  </span><br><span class="line">    <span class="keyword">int</span> i;    </span><br><span class="line">    <span class="keyword">char</span> c2;  </span><br><span class="line">&#125;x2;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span>&#123;</span></span><br><span class="line">    <span class="keyword">char</span> c1;  </span><br><span class="line">    <span class="keyword">char</span> c2; </span><br><span class="line">    <span class="keyword">int</span> i;    </span><br><span class="line">&#125;x3;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,<span class="keyword">sizeof</span>(x1));  <span class="comment">// 输出8</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,<span class="keyword">sizeof</span>(x2));  <span class="comment">// 输出12</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,<span class="keyword">sizeof</span>(x3));  <span class="comment">// 输出8</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>以上测试都是再Linux环境下进行，linux下默认#pragma pack(4)，且结构体中最长的数据类型为4个字节，所以有效对齐单位为4字节，下面根据上面所说的规则以 x2 来分析其内存布局：<br>
+首先使用规则1，对成员变量进行对齐：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">sizeof</span>(c1) = <span class="number">1</span> &lt;= <span class="number">4</span>(有效对齐位)，按照<span class="number">1</span>字节对齐，占用第<span class="number">0</span>单元；</span><br><span class="line"><span class="keyword">sizeof</span>(i) = <span class="number">4</span> &lt;= <span class="number">4</span>(有效对齐位)，相对于结构体首地址的偏移要为<span class="number">4</span>的倍数，占用第<span class="number">4</span>，<span class="number">5</span>，<span class="number">6</span>，<span class="number">7</span>单元；</span><br><span class="line"><span class="keyword">sizeof</span>(c2) = <span class="number">1</span> &lt;= <span class="number">4</span>(有效对齐位)，相对于结构体首地址的偏移要为<span class="number">1</span>的倍数，占用第<span class="number">8</span>单元；</span><br></pre></td></tr></table></figure>
+<p>然后使用规则2，对结构体整体进行对齐：</p>
+<p>x2 中变量 i 占用内存最大占4字节，而有效对齐单位也为4字节，两者较小值就是4字节。因此整体也是按照4字节对齐。由规则1得到 x2 占9个字节，此处再按照规则2进行整体的4字节对齐，所以整个结构体占用12个字节。</p>
+<p>根据上面的分析，不难得出上面例子三个结构体的内存布局如下：</p>
+<div class="figure">
+<img src="/2018/04/07/Interview-preparation-of-cpp/内存对齐.jpg">
+
+</div>
+<h4 id="定义和声明的区别">定义和声明的区别</h4>
+<ul>
+<li>声明是告诉编译器变量的类型和名字，不会为变量分配空间</li>
+<li>定义需要分配空间，同一个变量可以被声明多次，但是只能被定义一次</li>
+</ul>
+<h4 id="c和c的区别">C和C++的区别</h4>
+<p>（1）C是面向过程的语言，是一个结构化的语言，考虑如何通过一个过程对输入进行处理得到输出；C++是面向对象的语言，主要特征是“封装、继承和多态”。封装隐藏了实现细节，使得代码模块化；派生类可以继承父类的数据和方法，扩展了已经存在的模块，实现了代码重用；多态则是“一个接口，多种实现”，通过派生类重写父类的虚函数，实现了接口的重用。<br>
+（2）C和C++动态管理内存的方法不一样，C是使用malloc/free，而C++除此之外还有new/delete关键字。<br>
+（3）C++支持函数重载，C不支持函数重载<br>
+（4）C++中有引用，C中不存在引用的概念</p>
+<h4 id="c中指针和引用的区别">C++中指针和引用的区别</h4>
+<p>1）指针是一个新的变量，存储了另一个变量的地址，我们可以通过访问这个地址来修改另一个变量；<br>
+引用只是一个别名，还是变量本身，对引用的任何操作就是对变量本身进行操作，以达到修改变量的目的<br>
+2）引用只有一级，而指针可以有多级<br>
+3）指针传参的时候，还是值传递，指针本身的值不可以修改，需要通过解引用才能对指向的对象进行操作。引用传参的时候，传进来的就是变量本身，因此变量可以被修改</p>
+<h4 id="section">———-</h4>
+<hr>
+<h4 id="继承中的特点">继承中的特点</h4>
+<p>有public, protected, private三种继承方式，它们相应地改变了基类成员的访问属性。</p>
+<ul>
+<li>1.<strong>public 继承：</strong>基类 public 成员，protected 成员，private 成员的访问属性在派生类中分别变成：public, protected, private</li>
+<li>2.<strong>protected 继承：</strong>基类 public 成员，protected 成员，private 成员的访问属性在派生类中分别变成：protected, protected, private</li>
+<li>3.<strong>private 继承：</strong>基类 public 成员，protected 成员，private 成员的访问属性在派生类中分别变成：private, private, private</li>
+</ul>
+<p>但无论哪种继承方式，上面两点都没有改变：</p>
+<ul>
+<li>1.private 成员只能被本类成员（类内）和友元访问，不能被派生类访问；</li>
+<li>2.protected 成员可以被派生类访问。</li>
+</ul>
+<h4 id="重载overload覆盖重写override隐藏重定义overwrite这三者之间的区别">重载overload，覆盖（重写）override，隐藏（重定义）overwrite，这三者之间的区别</h4>
+<p>1）overload，函数名相同，参数列表（参数的类型，个数，顺序不同）不同，这就是函数重载，返回值类型可以不同。<br>
+特征：相同范围（同一个类中）、函数名字相同、参数不同、virtual关键字可有可无<br>
+2）override，派生类覆盖基类的虚函数，实现接口的重用，返回值类型必须相同<br>
+特征：不同范围（基类和派生类）、函数名字相同、参数相同、基类中必须有virtual关键字（必须是虚函数）<br>
+3）overwrite，派生类屏蔽了其同名的基类函数，返回值类型可以不同<br>
+特征：不同范围（基类和派生类）、函数名字相同、参数不同或者参数相同且无virtual关键字</p>
+<h4 id="多态-虚函数-纯虚函数">**多态， 虚函数， 纯虚函数</h4>
+<p><strong>多态</strong>：不同对象接收相同的消息产生不同的动作。多态包括 <u>编译时多态</u> 和 <u>运行时多态</u></p>
+<ul>
+<li><strong>运行时多态</strong>：通过继承和虚函数来体现的。</li>
+<li><strong>编译时多态</strong>：运算符重载上。</li>
+</ul>
+<p>封装可以隐藏实现细节，使得代码模块化；继承可以扩展已存在的代码模块（类）；它们的目的都是为了——代码重用。多态也有代码重用的功能，还有解决项目中紧耦合的问题，提高程序的可扩展性。<br>
+C++实现多态的机制很简单，在继承体系下，将父类的某个函数给成虚函数（即加上virtual关键字），在派生类中对这个虚函数进行重写，利用父类的指针或引用调用虚函数。通过指向派生类的基类指针或引用，访问派生类中同名覆盖成员函数。对于虚函数调用来说，每一个对象内部都有一个虚表指针，在构造子类对象时，执行构造函数中进行虚表的创建和虚表指针的初始化，该虚表指针被初始化为本类的虚表。所以在程序中，不管你的对象类型如何转换，但该对象内部的虚表指针是固定的，所以呢，才能实现动态的对象函数调用，这就是C++多态性实现的原理。</p>
+<p>需要注意的几点总结（基类有虚函数）：<br>
+1、每一个类都有虚表，单继承的子类拥有一张虚表，子类对象拥有一个虚表指针；若子类是多重继承（同时继承多个基类），则子类维护多张虚函数表（针对不同基类构建不同虚表），该子类的对象也将包含多个虚表指针。</p>
+<p>2、虚表可以继承，如果子类没有重写虚函数，那么子类虚表中仍然会有该函数的地址，只不过这个地址指向的是基类的虚函数实现。如果基类3个虚函数，那么基类的虚表中就有三项（虚函数地址），派生类也会有虚表，至少有三项，如果重写了相应的虚函数，那么虚表中的地址就会改变，指向自身的虚函数实现。如果派生类有自己的虚函数，那么虚表中就会添加该项。</p>
+<p>3、派生类的虚表中虚函数地址的排列顺序和基类的虚表中虚函数地址排列顺序相同。</p>
+<div class="figure">
+<img src="/2018/04/07/Interview-preparation-of-cpp/虚表.png">
+
+</div>
+<p>第一：编译器在发现Father 类中有虚函数时，会自动为每个含有虚函数的类生成一份虚函数表，也叫做虚表，该表是一个一维数组，虚表里保存了虚函数的入口地址。</p>
+<p>第二：编译器会在每个对象的前四个字节中保存一个虚表指针，即（vptr),指向对象所属类的虚表。在程序运行时的合适时机，根据对象的类型去初始化vptr，从而让vptr指向正确的虚表，从而在调用虚函数时，能找到正确的函数。</p>
+<p>第三：所谓的合适时机，在派生类定义对象时，程序运行会自动调用构造函数，在构造函数中创建虚表并对虚表初始化。在构造子类对象时，会先调用父类的构造函数，此时，编译器只“看到了”父类，并为父类对象初始化虚表指针，令它指向父类的虚表；当调用子类的构造函数时，为子类对象初始化虚表指针，令它指向子类的虚表。</p>
+<h4 id="虚函数-与-纯虚函数">虚函数 与 纯虚函数</h4>
+<p><strong>虚函数</strong>： 在基类中用virtual的成员函数。允许在派生类中对基类的虚函数重新定义。<br>
+基类的虚函数可以有函数体，基类也可以实例化。<br>
+虚函数要有函数体，否则编译过不去。<br>
+虚函数在子类中可以不覆盖。<br>
+构造函数不能是虚函数。</p>
+<p><strong>纯虚函数</strong>：纯虚函数是只有声明没有实现的虚函数，是对子类的约束，是接口继承。包含纯虚函数的类是抽象类，它不能被实例化，只有实现了这个纯虚函数的子类才能生成对象。</p>
+<p>纯虚函数后面有 = 0；<br>
+抽象类不可以实例化。但可以定义指针。<br>
+如果派生类如果不是先基类的纯虚函数，则仍然是抽象类。<br>
+抽象类可以包含虚函数。</p>
+<blockquote>
+<p>类里如果声明了虚函数，这个函数是实现的，哪怕是空实现，它的作用就是为了能让这个函数在它的子类里面可以被覆盖，这样的话，编译器就可以使用后期绑定来达到多态了。纯虚函数只是一个接口，是个函数的声明而已，它要留到子类里去实现。</p>
+</blockquote>
+<h4 id="虚函数是怎么实现的">虚函数是怎么实现的</h4>
+<p>每一个含有虚函数的类都至少有有一个与之对应的虚函数表，其中存放着该类所有虚函数对应的函数指针（地址）</p>
+<p>类的示例对象不包含虚函数表，只有虚指针</p>
+<p>派生类会生成一个兼容基类的虚函数表。</p>
+<h4 id="构造函数为什么一般不定义为虚函数而析构函数一般写成虚函数的原因">构造函数为什么一般不定义为虚函数？而析构函数一般写成虚函数的原因 ？</h4>
+<p><strong>1、构造函数不能声明为虚函数</strong></p>
+<ul>
+<li>因为创建一个对象时需要确定对象的类型，而虚函数是在运行时确定其类型的。而在构造一个对象时，由于对象还未创建成功，编译器无法知道对象的实际类型，是类本身还是类的派生类等等</li>
+<li>虚函数的调用需要虚函数表指针，而该指针存放在对象的内存空间中；若构造函数声明为虚函数，那么由于对象还未创建，还没有内存空间，更没有虚函数表地址用来调用虚函数及构造函数了</li>
+</ul>
+<p><strong>2、析构函数最好声明为虚函数</strong></p>
+<ul>
+<li>首先析构函数可以为虚函数，当析构一个指向派生类的基类指针时，最好将基类的析构函数声明为虚函数，否则可以存在内存泄露的问题。</li>
+<li>如果析构函数不被声明成虚函数，则编译器实施静态绑定，在删除指向派生类的基类指针时，只会调用基类的析构函数而不调用派生类析构函数，这样就会造成派生类对象析构不完全。</li>
+</ul>
+<h4 id="虚函数指针虚函数表">虚函数指针、虚函数表</h4>
+<ul>
+<li>虚函数指针：在含有虚函数类的对象中，指向虚函数表，在运行时确定。</li>
+<li>虚函数表：在程序只读数据段（<code>.rodata section</code>，见：<a href="https://github.com/huihut/interview#%E7%9B%AE%E6%A0%87%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84" target="_blank" rel="noopener">目标文件存储结构</a>），存放虚函数指针，如果派生类实现了基类的某个虚函数，则在虚表中覆盖原本基类的那个虚函数指针，在编译时根据类的声明创建。</li>
+</ul>
+<h4 id="继承中子类构造函数和析构函数调用顺序">继承中，子类构造函数和析构函数调用顺序</h4>
+<h4 id="子类析构时要调用父类的析构函数吗">子类析构时，要调用父类的析构函数吗？</h4>
+<p>构造函数：先调用父类构造函数，然后调用子类。</p>
+<p>析构函数：先调用子类析构，然后调用父类。</p>
+<p>并且析构函数要是virtual的，否则如果用父类的指针指向子类对象的时候，析构函数静态绑定，不会调用子类的析构。</p>
+<p>不用显式调用，会自动调用</p>
+<h4 id="虚继承">虚继承</h4>
+<p>虚继承用于解决多继承条件下的菱形继承问题（浪费存储空间、存在二义性）。</p>
+<p>底层实现原理与编译器相关，一般通过<strong>虚基类指针</strong>和<strong>虚基类表</strong>实现，每个虚继承的子类都有一个虚基类指针（占用一个指针的存储空间，4字节）和虚基类表（不占用类对象的存储空间）（需要强调的是，虚基类依旧会在子类里面存在拷贝，只是仅仅最多存在一份而已，并不是不在子类里面了）；当虚继承的子类被当做父类继承时，虚基类指针也会被继承。</p>
+<p>实际上，vbptr 指的是虚基类表指针（virtual base table pointer），该指针指向了一个虚基类表（virtual table），虚表中记录了虚基类与本类的偏移地址；通过偏移地址，这样就找到了虚基类成员，而虚继承也不用像普通多继承那样维持着公共基类（虚基类）的两份同样的拷贝，节省了存储空间。</p>
+<h4 id="虚继承-与-虚函数的联系与区别">虚继承 与 虚函数的联系与区别</h4>
+<ul>
+<li>相同之处：都利用了虚指针（均占用类的存储空间）和虚表（均不占用类的存储空间）</li>
+<li>不同之处：</li>
+<li>虚继承
+<ul>
+<li>虚基类依旧存在继承类中，只占用存储空间</li>
+<li>虚基类表存储的是虚基类相对直接继承类的偏移</li>
+</ul></li>
+<li>虚函数
+<ul>
+<li>虚函数不占用存储空间</li>
+<li>虚函数表存储的是虚函数地址</li>
+</ul></li>
+</ul>
+<h4 id="模板类成员模板虚函数">模板类、成员模板、虚函数</h4>
+<ul>
+<li>模板类中可以使用虚函数</li>
+<li>一个类（无论是普通类还是类模板）的成员模板（本身是模板的成员函数）不能是虚函数</li>
+</ul>
+<h4 id="抽象类接口类聚合类">抽象类、接口类、聚合类</h4>
+<ul>
+<li>抽象类：含有纯虚函数的类</li>
+<li>接口类：仅含有纯虚函数的抽象类</li>
+<li>聚合类：用户可以直接访问其成员，并且具有特殊的初始化语法形式。满足如下特点：</li>
+<li>所有成员都是 public</li>
+<li>没有定义任何构造函数</li>
+<li>没有类内初始化</li>
+<li>没有基类，也没有 virtual 函数</li>
+</ul>
+<h4 id="friend-友元类和友元函数">friend 友元类和友元函数</h4>
+<ul>
+<li>能访问私有成员</li>
+<li>破坏封装性</li>
+<li>友元关系不可传递</li>
+<li>友元关系的单向性</li>
+<li>友元声明的形式及数量不受限制</li>
+</ul>
+<h4 id="友元函数和友元类">友元函数和友元类</h4>
+<p>友元提供了不同类的成员函数之间、类的成员函数和一般函数之间进行数据共享的机制。</p>
+<p>通过友元，一个不同函数或者另一个类中的成员函数可以访问类中的私有成员和保护成员。</p>
+<p>友元的正确使用能提高程序的运行效率，但同时也破坏了类的封装性和数据的隐藏性，导致程序可维护性变差。</p>
+<p>1）友元函数</p>
+<p>友元函数是可以访问类的私有成员的非成员函数。它是定义在类外的普通函数，不属于任何类，但是需要在类的定义中加以声明。</p>
+<blockquote>
+<p><strong>friend 类型 函数名(形式参数);</strong></p>
+</blockquote>
+<p>一个函数可以是多个类的友元函数，只需要在各个类中分别声明。</p>
+<p>2）友元类</p>
+<p>友元类的所有成员函数都是另一个类的友元函数，都可以访问另一个类中的隐藏信息（包括私有成员和保护成员）。</p>
+<blockquote>
+<p><strong>friend class 类名;</strong></p>
+</blockquote>
+<p>使用友元类时注意：</p>
+<ol style="list-style-type: decimal">
+<li><p>友元关系不能被继承。</p></li>
+<li><p>友元关系是单向的，不具有交换性。若类B是类A的友元，类A不一定是类B的友元，要看在类中是否有相应的声明。</p></li>
+<li><p>友元关系不具有传递性。若类B是类A的友元，类C是B的友元，类C不一定是类A的友元，同样要看类中是否有相应的申明</p></li>
+</ol>
+<h4 id="c的内存管理">C++的内存管理</h4>
+<p>在C++中，内存被分成五个区：栈、堆、自由存储区、静态存储区、常量区</p>
+<ul>
+<li><strong>栈</strong>：存放函数的参数和局部变量，编译器自动分配和释放</li>
+<li><strong>堆</strong>：new关键字动态分配的内存，由程序员手动进行释放，否则程序结束后，由操作系统自动进行回收</li>
+<li><strong>自由存储区</strong>：由malloc分配的内存，和堆十分相似，由对应的free进行释放</li>
+<li><strong>全局/静态存储区</strong>：存放全局变量和静态变量</li>
+<li><strong>常量区</strong>：存放常量，不允许被修改</li>
+</ul>
+<h4 id="栈和堆的区别">栈和堆的区别</h4>
+<table>
+<colgroup>
+<col width="9%">
+<col width="45%">
+<col width="45%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>堆</th>
+<th>栈</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>管理方式</td>
+<td>堆中资源由程序员控制（容易产生memory leak）</td>
+<td>栈资源由编译器自动管理，无需手工控制</td>
+</tr>
+<tr class="even">
+<td>内存管理机制</td>
+<td>系统有一个记录空闲内存地址的链表，当系统收到程序申请时，遍历该链表，寻找第一个空间大于申请空间的堆结点，删 除空闲结点链表中的该结点，并将该结点空间分配给程序（大多数系统会在这块内存空间首地址记录本次分配的大小，这样delete才能正确释放本内存 空间，另外系统会将多余的部分重新放入空闲链表中）</td>
+<td>只要栈的剩余空间大于所申请空间，系统为程序提供内存，否则报异常提示栈出。（这一块理解一下链表和队列的区别，不连续空间和连续空间的区别，应该就比较好理解这两种机制的区别了）</td>
+</tr>
+<tr class="odd">
+<td>空间大小</td>
+<td>堆是不连续的内存区域（因为系统是用链表来存储空闲内存地址，自然不是连续的），堆大小受限于计算机系统中有效的虚拟内存（32bit 系统理论上是4G），所以堆的空间比较灵活，比较大</td>
+<td>栈是一块连续的内存区域，大小是操作系统预定好的，windows下栈大小是2M（也有是1M，在 编译时确定，VC中可设置）。</td>
+</tr>
+<tr class="even">
+<td>碎片问题</td>
+<td>对于堆，频繁的new/delete会造成大量碎片，使程序效率降低</td>
+<td>对于栈，它是一个先进后出的队列，进出一一对应，不会产生碎片。（看到这里我突然明白了为什么面试官在问我堆和栈的区别之前先问了我栈和队列的区别）</td>
+</tr>
+<tr class="odd">
+<td>生长方向</td>
+<td>堆向上，向高地址方向增长。</td>
+<td>栈向下，向低地址方向增长。</td>
+</tr>
+<tr class="even">
+<td>分配方式</td>
+<td>堆都是动态分配（没有静态分配的堆）</td>
+<td>栈有静态分配和动态分配，静态分配由编译器完成（如局部变量分配），动态分配由alloca函数 分 配，但栈的动态分配的资源由编译器进行释放，无需程序员实现。</td>
+</tr>
+<tr class="odd">
+<td>分配效率</td>
+<td>堆由C/C++函数库提供，机制很复杂。所以堆的效率比栈低很多。</td>
+<td>栈是极其系统提供的数据结构，计算机在底层对栈提供支持，分配专门 寄存 器存放栈地址，栈操作有专门指令。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="c中内存泄漏的几种情况">C++中内存泄漏的几种情况</h4>
+<p>内存泄漏是指己动态分配的堆内存由于某种原因程序未释放或无法释放，造成系统内存的浪费，导致程序运行速度减慢甚至系统崩溃等严重后果。</p>
+<ul>
+<li><p>类的构造函数和析构函数中new和delete没有配套</p></li>
+<li>在释放对象数组时没有使用delete<a href="#section-1"></a>，使用了delete</li>
+<li>没有将基类的析构函数定义为虚函数，当基类指针指向子类对象时，如果基类的析构函数不是virtual，那么子类的析构函数将不会被调用，子类的资源没有正确释放，因此造成内存泄露</li>
+<li><p>没有正确的清楚嵌套的对象指针</p></li>
+</ul>
+<h4 id="栈溢出的原因以及解决方法">栈溢出的原因以及解决方法</h4>
+<p>栈溢出是指函数中的局部变量造成的溢出（注：函数中形参和函数中的局部变量存放在栈上）</p>
+<p>栈的大小通常是1M-2M，所以栈溢出包含两种情况，一是分配的的大小超过栈的最大值，二是分配的大小没有超过最大值，但是接收的buf比原buf小。</p>
+<p>1）函数调用层次过深,每调用一次,函数的参数、局部变量等信息就压一次栈</p>
+<p>2）局部变量体积太大。</p>
+<p><strong>解决办法大致说来也有两种：</strong></p>
+<p>1&gt; 增加栈内存的数目；如果是不超过栈大小但是分配值小的，就增大分配的大小</p>
+<p>2&gt; 使用堆内存；具体实现由很多种方法可以直接把数组定义改成指针,然后动态申请内存;也可以把局部变量变成全局变量，一个偷懒的办法是直接在定义前边加个static，呵呵，直接变成静态变量(实质就是全局变量)</p>
+<h4 id="什么是野指针">什么是野指针</h4>
+<p>野指针不是NULL指针，是未初始化或者未清零的指针，它指向的内存地址不是程序员所期望的，可能指向了受限的内存。</p>
+<p>成因：</p>
+<ul>
+<li>指针变量没有被初始化</li>
+<li>指针指向的内存被释放了，但是指针没有置NULL</li>
+<li>指针超过了变量了的作用范围，比如b[10]，指针b+11</li>
+</ul>
+<h4 id="newdeletemallocfree之间的关系">new、delete、malloc、free之间的关系</h4>
+<p>new/delete，malloc/free都是动态分配内存的方式</p>
+<ul>
+<li>new / new<a href="#section-1"></a>：完成两件事，先底层调用 malloc 分配了内存，然后调用构造函数（创建对象）</li>
+<li>delete/delete<a href="#section-1"></a>：也完成两件事，先调用析构函数（清理资源），然后底层调用 free 释放空间</li>
+<li>new 在申请内存时会自动计算所需字节数，而 malloc 则需我们自己输入申请内存空间的字节数</li>
+</ul>
+<h4 id="既然有了mallocfreec中为什么还需要newdelete呢">既然有了malloc/free，C++中为什么还需要new/delete呢？</h4>
+<p>（1）<strong>库函数</strong>是依赖于库的，一定程度上独立于语言的。编译器不关心库函数的作用，只保证编译，调用函数参数和返回值符合语法，生成call函数的代码。<br>
+（2）<strong>运算符</strong>是语言自身的特性，有固定的语义，编译器知道意味着什么，由编译器解释语义，生成相应的代码。</p>
+<p>malloc/free是库函数，new/delete是C++运算符。对于非内部数据类型而言，光用malloc/free无法满足动态对象的要求。new/delete是运算符，编译器保证调用构造和析构函数对对象进行初始化/析构。但是库函数malloc/free是库函数，不会执行构造/析构。</p>
+<h4 id="delete和delete的区别">delete和delete<a href="#section-1"></a>的区别</h4>
+<p>delete只会调用一次析构函数，而delete<a href="#section-1"></a>会调用每个成员的析构函数<br>
+用new分配的内存用delete释放，用new<a href="#section-1"></a>分配的内存用delete<a href="#section-1"></a>释放</p>
+<h4 id="delete-this-合法吗">delete this 合法吗？</h4>
+<p>合法，但：</p>
+<ol style="list-style-type: decimal">
+<li>必须保证 this 对象是通过 <code>new</code>（不是 <code>new[]</code>、不是 placement new、不是栈上、不是全局、不是其他对象成员）分配的</li>
+<li>必须保证调用 <code>delete this</code> 的成员函数是最后一个调用 this 的成员函数</li>
+<li>必须保证成员函数的 <code>delete this</code>后面没有调用 this 了</li>
+<li>必须保证 <code>delete this</code> 后没有人使用了</li>
+</ol>
+<h4 id="stl库用过吗常见的stl容器有哪些算法用过几个">STL库用过吗？常见的STL容器有哪些？算法用过几个？</h4>
+<p>STL包括两部分内容：<strong>容器</strong> 和 <strong>算法</strong></p>
+<p><strong>1. 容器</strong>即存放数据的地方，比如 array, vector，分为两类，<strong>序列式容器</strong> 和<strong>关联式容</strong></p>
+<ul>
+<li>序列式容器，其中的元素不一定有序，但是都可以被排序，比如vector,list,queue,stack，heap, priority-queue, slist</li>
+<li>关联式容器，内部结构是一个平衡二叉树，每个元素都有一个键值和一个实值，比如map, set, hashtable, hash_set</li>
+</ul>
+<p><strong>2. 算法</strong> 有排序，复制等，以及各个容器特定的算法</p>
+<p><strong>3. 迭代器</strong> 是STL的精髓，迭代器提供了一种方法，使得它能够按照顺序访问某个容器所含的各个元素，但无需暴露该容器的内部结构，它将容器和算法分开，让二者独立设计。</p>
+<h4 id="c中vector和list的区别">C++中vector和list的区别</h4>
+<p><strong>vector</strong>和<u>数组类似</u>，拥有一段连续的内存空间。vector申请的是一段连续的内存，当插入新的元素内存不够时，通常以2倍重新申请更大的一块内存，将原来的元素拷贝过去，释放旧空间。因为内存空间是连续的，所以在进行插入和删除操作时，会造成内存块的拷贝，时间复杂度为o(n)。</p>
+<p><strong>list</strong> 是<u>由双向链表实现的</u>，因此内存空间是不连续的。只能通过指针访问数据，所以list的随机存取非常没有效率，时间复杂度为o(n); 但由于链表的特点，能高效地进行插入和删除。</p>
+<p><strong>vector</strong> 拥有一段连续的内存空间，能很好的支持随机存取，因此vector<int>::iterator支持“+”，“+=”，“&lt;”等操作符。</int></p>
+<p><strong>list</strong> 的内存空间可以是不连续，它不支持随机访问，因此list<int>::iterator则不支持“+”、“+=”、“&lt;”等</int></p>
+<p>vector<int>::iterator和list<int>::iterator都重载了“++”运算符。</int></int></p>
+<p>总之，如果需要高效的随机存取，而不在乎插入和删除的效率，使用vector;</p>
+<p>如果需要大量的插入和删除，而不关心随机存取，则应使用list。</p>
+<h4 id="c常见容器的时间复杂度">C++常见容器的时间复杂度</h4>
+<p><code>map</code> ，<code>set</code>，<code>multimap</code>，<code>multiset</code> ：这4种容器是采用红黑树实现，红黑树是平衡二叉树的一种。不同操作的时间复杂度近似为:</p>
+<ul>
+<li>插入：<span class="math inline">\(O(logN)\)</span></li>
+<li>查找：<span class="math inline">\(O(logN)\)</span></li>
+<li>删除：<span class="math inline">\(O(logN)\)</span></li>
+</ul>
+<p><code>hash_map</code>，<code>hash_set</code>，<code>hash_multimap</code>，<code>hash_multiset</code>：这4种容器采用哈希表实现。</p>
+<ul>
+<li>插入：O(1)，最坏情况 O(N)</li>
+<li>查找：O(1)，最坏情况 O(N)</li>
+<li>删除：O(1)，最坏情况 O(N)</li>
+</ul>
+<p><strong>标准库提供的8个关联容器</strong></p>
+<div class="figure">
+<img src="/2018/04/07/Interview-preparation-of-cpp/associative.png">
+
+</div>
+<h4 id="c包含的新特性">C++包含的新特性</h4>
+<ul>
+<li>列表初始化。在引入C++11之前，仅仅有数组能使用初始化列表，C++11则其它容比如vertor、map、string都可以使用列表初始化</li>
+<li>类型指示符 auto，decltype</li>
+<li>auto：让编译器通过初始值来推算变量的类型</li>
+<li>decltype：从表达式的类型推断出要定义变量的类型</li>
+<li>使用基于范围的for循环</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="built_in">string</span> <span class="title">str</span><span class="params">(<span class="string">"some string"</span>)</span></span>;</span><br><span class="line"><span class="comment">// 每行输出str中的一个字符</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">auto</span> c : str)</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; c &lt;&lt; <span class="built_in">endl</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>lambda表达式</li>
+</ul>
+<h4 id="智能指针">智能指针</h4>
+<p>智能指针是将基本类型指针封装为类对象指针（这个类肯定是个模板，以适应不同基本类型的需求），并在析构函数里编写delete语句删除指针指向的内存空间。</p>
+<p>智能指针是一个类，这个类的构造函数中传入一个普通指针，析构函数中释放传入的指针。智能指针的类都是栈上的对象，所以当函数（或程序）结束时会自动被释放。</p>
+<p>智能指针就是一种栈上创建的对象，函数退出时会调用其析构函数，这个析构函数里面往往就是一堆计数之类的条件判断，如果达到某个条件，就把真正指针指向的空间给释放了。</p>
+<blockquote>
+<p><strong>注意事项：</strong>不能将指针直接赋值给一个智能指针，一个是类，一个是指针。</p>
+</blockquote>
+<h4 id="常用的智能指针">常用的智能指针</h4>
+<p>C++ 标准库（STL）中，头文件：<code>#include &lt;memory&gt;</code></p>
+<blockquote>
+<p>C++ 98</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">auto_ptr</span>&lt;<span class="built_in">std</span>::<span class="built_in">string</span>&gt; ps (<span class="keyword">new</span> <span class="built_in">std</span>::<span class="built_in">string</span>(str));</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>C++ 11</p>
+</blockquote>
+<ul>
+<li>Class shared_ptr 实现共享式拥有（shared ownership）概念。多个智能指针指向相同对象，该对象和其相关资源会在 “最后一个 reference 被销毁” 时被释放。为了在结构较复杂的情景中执行上述工作，标准库提供 weak_ptr、bad_weak_ptr 和 enable_shared_from_this 等辅助类。</li>
+<li>Class unique_ptr 实现独占式拥有（exclusive ownership）或严格拥有（strict ownership）概念，保证同一时间内只有一个智能指针可以指向该对象。你可以移交拥有权。它对于避免内存泄漏（resource leak）——如 new 后忘记 delete ——特别有用。</li>
+</ul>
+<p><strong>shared_ptr</strong></p>
+<p>多个智能指针可以共享同一个对象，对象的最末一个拥有着有责任销毁对象，并清理与该对象相关的所有资源。</p>
+<ul>
+<li>支持定制型删除器（custom deleter），可防范 Cross-DLL 问题（对象在动态链接库（DLL）中被 new 创建，却在另一个 DLL 内被 delete 销毁）、自动解除互斥锁</li>
+</ul>
+<p><strong>weak_ptr</strong></p>
+<p>weak_ptr 允许你共享但不拥有某对象，一旦最末一个拥有该对象的智能指针失去了所有权，任何 weak_ptr 都会自动成空（empty）。因此，在 default 和 copy 构造函数之外，weak_ptr 只提供 “接受一个 shared_ptr” 的构造函数。</p>
+<ul>
+<li>可打破环状引用（cycles of references，两个其实已经没有被使用的对象彼此互指，使之看似还在 “被使用” 的状态）的问题</li>
+</ul>
+<p><strong>unique_ptr</strong></p>
+<p>unique_ptr 是 C++11 才开始提供的类型，是一种在异常时可以帮助避免资源泄漏的智能指针。采用独占式拥有，意味着可以确保一个对象和其相应的资源同一时间只被一个 pointer 拥有。一旦拥有着被销毁或编程 empty，或开始拥有另一个对象，先前拥有的那个对象就会被销毁，其任何相应资源亦会被释放。</p>
+<ul>
+<li>unique_ptr 用于取代 auto_ptr</li>
+</ul>
+<p><strong>auto_ptr</strong></p>
+<p>被 c++11 弃用，原因是缺乏语言特性如 “针对构造和赋值” 的 <code>std::move</code> 语义，以及其他瑕疵。</p>
+<p>auto_ptr 与 unique_ptr 比较</p>
+<ul>
+<li>auto_ptr 可以赋值拷贝，复制拷贝后所有权转移；unqiue_ptr 无拷贝赋值语义，但实现了<code>move</code> 语义；</li>
+<li>auto_ptr 对象不能管理数组（析构调用 <code>delete</code>），unique_ptr 可以管理数组（析构调用 <code>delete[]</code> ）；</li>
+</ul>
+<h4 id="智能指针的作用">智能指针的作用</h4>
+<p>C++程序设计中使用<strong>堆内存</strong>是非常频繁的操作，堆内存的申请和释放都由程序员自己管理。程序员自己管理堆内存可以提高了程序的效率，但是整体来说堆内存的管理是麻烦的，C++11中引入了智能指针的概念，方便管理堆内存。使用普通指针，容易造成堆内存泄露（忘记释放），二次释放，野指针，程序发生异常时内存泄露等问题等，使用智能指针能更好的管理堆内存。</p>
+<h4 id="强制类型转换运算符">强制类型转换运算符</h4>
+<p>类型转化机制可以分为隐式类型转换和显示类型转化（强制类型转换）</p>
+<p>(new-type) expression</p>
+<p>new-type (expression)</p>
+<p>隐式类型转换比较常见，在混合类型表达式中经常发生；四种强制类型转换操作符：</p>
+<p>static_cast、dynamic_cast、const_cast、reinterpret_cast</p>
+<p>1）static_cast ：编译时期的静态类型检查</p>
+<p>static_cast &lt; type-id &gt; ( expression )</p>
+<p>该运算符把expression转换成type-id类型，在编译时使用类型信息执行转换，在转换时执行必要的检测（指针越界、类型检查），其操作数相对是安全的</p>
+<p>2）dynamic_cast：运行时的检查</p>
+<p>用于在集成体系中进行安全的向下转换downcast，即基类指针/引用-&gt;派生类指针/引用</p>
+<p>dynamic_cast是4个转换中唯一的RTTI操作符，提供运行时类型检查。</p>
+<p>dynamic_cast如果不能转换返回NULL</p>
+<p>dynamic_cast转为引用类型的时候转型失败会抛bad_cast</p>
+<p>源类中必须要有虚函数，保证多态，才能使用dynamic_cast<source>(expression)</p>
+<p>3）const_cast</p>
+<p>去除const常量属性，使其可以修改 ; volatile属性的转换</p>
+<p>4）reinterpret_cast</p>
+<p>通常为了将一种数据类型转换成另一种数据类型</p>
+<h4 id="c文件编译与执行的四个阶段">C++文件编译与执行的四个阶段</h4>
+<p>1）预处理：根据文件中的预处理指令来修改源文件的内容</p>
+<p>2）编译：编译成汇编代码</p>
+<p>3）汇编：把汇编代码翻译成目标机器指令</p>
+<p>4）链接：链接目标代码生成可执行程序</p>
+<h4 id="线程安全和线程不安全">线程安全和线程不安全</h4>
+<ul>
+<li><strong>线程安全</strong>：就是多线程访问时，采用了加锁机制，当一个线程访问该类的某个数据时，进行保护，其他线程不能进行访问直到该线程读取完，其他线程才可以使用，不会出现数据不一致或者数据污染。</li>
+<li><strong>线程不安全</strong>：就是不提供数据访问保护，有可能多个线程先后更改数据所得到的数据就是脏数据。</li>
+</ul>
+<h4 id="文件操作">文件操作</h4>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    文件操作：写入+读取字符串</span></span><br><span class="line"><span class="comment">    r: 只读方式打开文本文件，不能写</span></span><br><span class="line"><span class="comment">    w: 只写方式打开文本文件，写了直接覆盖原来的</span></span><br><span class="line"><span class="comment">    a: 只写（添加）方式打开，写了添加在原来的后面</span></span><br><span class="line"><span class="comment">    +: 与上面的 r、 w、 a 结合，表示以读写方式打开文文本件</span></span><br><span class="line"><span class="comment">    b: 与上面的字符组合，表示打开二进制文件</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">/* ----------------- 打开文件并写入一行语句 ------------------- */</span></span><br><span class="line">    FILE *fp;</span><br><span class="line">    <span class="keyword">char</span> line[<span class="number">100</span>];</span><br><span class="line">    <span class="keyword">int</span> len;</span><br><span class="line">    <span class="keyword">while</span> ((fp = fopen(<span class="string">"./file.txt"</span>, <span class="string">"a+"</span>)) == <span class="literal">NULL</span>) &#123;   <span class="comment">// 只写方式打开文件，并用</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"打开文件失败！\n"</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    gets(line);                 <span class="comment">// 控制台获取一行</span></span><br><span class="line">    len = <span class="built_in">strlen</span>(line);</span><br><span class="line">    <span class="built_in">fputs</span>(line, fp);</span><br><span class="line">    fclose(fp);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* ----------------- 打开文件，读取一行，并输出读取的一行 ------------------- */</span></span><br><span class="line">    <span class="keyword">while</span> ((fp = fopen(<span class="string">"./file.txt"</span>, <span class="string">"rb"</span>)) == <span class="literal">NULL</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"打开文件失败！\n"</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    fgets(line, <span class="number">100</span>, fp);    <span class="comment">// 从文件中读取100个字符 </span></span><br><span class="line">    <span class="built_in">puts</span>(line);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="其他问题待整理">**其他问题待整理</h4>
+<ul>
+<li><p><a href="https://www.zhihu.com/question/34574154" target="_blank" rel="noopener">C++开发准备-知乎</a></p></li>
+<li><p><a href="https://www.nowcoder.com/discuss/27739?type=2&amp;order=3&amp;pos=57&amp;page=2" target="_blank" rel="noopener">C++面试汇总</a></p></li>
+<li><a href="https://blog.csdn.net/shanghairuoxiao/article/details/72876248" target="_blank" rel="noopener">C++后台开发校招面试常见问题</a></li>
+<li><p><a href="https://www.nowcoder.com/discuss/164781" target="_blank" rel="noopener">C++后台开发学习路线</a></p></li>
+</ul>
+<hr>
+<h3 id="python">Python</h3>
+<h4 id="python深拷贝和浅拷贝">python深拷贝和浅拷贝</h4>
+<ul>
+<li><strong>直接赋值：</strong>其实就是对象的引用（别名）。</li>
+<li><strong>浅拷贝(copy)：</strong>拷贝父对象，不会拷贝对象的内部的子对象。</li>
+<li><strong>深拷贝(deepcopy)：</strong> copy 模块的 deepcopy 方法，完全拷贝了父对象及其子对象。</li>
+</ul>
+<p>1、<strong>b = a: </strong>赋值引用，a 和 b 都指向同一个对象。</p>
+<div class="figure">
+<img src="/2018/04/07/Interview-preparation-of-cpp/copy_01.png">
+
+</div>
+<p><strong>2、b = a.copy():</strong> 浅拷贝, a 和 b 是一个独立的对象，但他们的子对象还是指向统一对象（是引用）。</p>
+<div class="figure">
+<img src="/2018/04/07/Interview-preparation-of-cpp/copy_02.png">
+
+</div>
+<p><strong>b = copy.deepcopy(a):</strong> 深度拷贝, a 和 b 完全拷贝了父对象及其子对象，两者是完全独立的。</p>
+<div class="figure">
+<img src="/2018/04/07/Interview-preparation-of-cpp/copy_03.png">
+
+</div>
+<ul>
+<li><p>c 和c++的结构体、类有什么区别</p></li>
+<li><p>如果给定一个正整数数N，对于一个最小位是2的s次幂的数，需要多少位才能表示这个数？如何确定数字系统中的参数位数。</p></li>
+</ul>
+<h4 id="range-和-xrange-区别">range 和 xrange 区别</h4>
+<blockquote>
+<p><strong>Python2.7</strong></p>
+</blockquote>
+<ul>
+<li><strong>range</strong> ：返回一个列表 list，type是 <type 'list'> 类型，会直接分配相应的内存空间给 list</type></li>
+<li><strong>xrange</strong>：返回一个生成器，type 是 <type 'xrange'> 类型，在for in 循环中中，每次调用就生成一个。</type></li>
+</ul>
+<blockquote>
+<p><strong>Python3</strong></p>
+</blockquote>
+<p>Python3 中取消了 <code>xrange</code> 函数，此时的 <code>range</code> 就是 <code>xrange</code> 函数</p>
+<ul>
+<li><strong>range</strong>： 返回一个生成器，type 是 <type 'range'>，并没有将数据完全实例化，for 循环每次用的时候返回一个，这样可以大大节省空间，优化性能。</type></li>
+</ul>
+<h4 id="list-和-tuple-区别">list 和 tuple 区别</h4>
+<p>两者的主要区别是列表是可变的，而元组是不可变的</p>
+<h4 id="解释一下python中的三元运算子">解释一下Python中的三元运算子</h4>
+<p>不像C++，我们在Python中没有?:，但我们有这个：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[on true] <span class="keyword">if</span> [expression] <span class="keyword">else</span> [on false]</span><br></pre></td></tr></table></figure>
+<p>如果表达式为True，就执行[on true]中的语句。否则，就执行[on false]中的语句。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a,b = <span class="number">2</span>,<span class="number">3</span></span><br><span class="line">min=a <span class="keyword">if</span> a&lt;b <span class="keyword">else</span> b</span><br><span class="line">print(min)  <span class="comment"># 2</span></span><br></pre></td></tr></table></figure>
+<h4 id="在python中是如何管理内存">在Python中是如何管理内存</h4>
+<p>Python有一个私有堆空间来保存所有的对象和数据结构。作为开发者，我们无法访问它，是解释器在管理它。但是有了核心API后，我们可以访问一些工具。Python内存管理器控制内存分配。</p>
+<p>另外，内置垃圾回收器会回收使用所有的未使用内存，所以使其适用于堆空间。</p>
+<h4 id="简述python引用计数机制">简述python引用计数机制</h4>
+<p><strong>python垃圾回收</strong>主要以引用计数为主，标记-清除和分代清除为辅的机制，其中标记-清除和分代回收主要是为了处理循环引用的难题。<br>
+<strong>引用计数算法</strong></p>
+<p>当有1个变量保存了对象的引用时，此对象的引用计数就会加1</p>
+<p>当使用del删除变量指向的对象时，如果对象的引用计数不为1，比如3，那么此时只会让这个引用计数减1，即变为2，当再次调用del时，变为1，如果再调用1次del，此时会真的把对象进行删除。</p>
+<h4 id="当退出python时是否释放全部内存">当退出Python时，是否释放全部内存？</h4>
+<p>答案是No。循环引用其它对象或引用自全局命名空间的对象的模块，在Python退出时并非完全释放。</p>
+<p>另外，也不会释放C库保留的内存部分。</p>
+<h4 id="在python中如何实现多线程">在Python中如何实现多线程？</h4>
+<h4 id="什么是猴子补丁">什么是猴子补丁？</h4>
+<p>在运行期间动态修改一个类或模块。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">A</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">"Hi"</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">monkey</span><span class="params">(self)</span>:</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">"Hi, monkey"</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>m.A.func = monkey</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = m.A()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.func()</span><br></pre></td></tr></table></figure>
+<p>运行结果为：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hi, Monkey</span><br></pre></td></tr></table></figure>
+<h4 id="解释一下python中的继承">解释一下Python中的继承</h4>
+<p>当一个类继承自另一个类，它就被称为一个子类/派生类，继承自父类/基类/超类。它会继承/获取所有类成员（属性和方法）。</p>
+<p>继承能让我们重新使用代码，也能更容易的创建和维护应用。Python支持如下种类的继承：</p>
+<ul>
+<li>单继承：一个类继承自单个基类</li>
+<li>多继承：一个类继承自多个基类</li>
+<li>多级继承：一个类继承自单个基类，后者则继承自另一个基类</li>
+<li>分层继承：多个类继承自单个基类</li>
+<li>混合继承：两种或多种类型继承的混合更多关于继承的内容，参见：</li>
+</ul>
+<p><a href="https://link.juejin.im?target=https%3A%2F%2Fdata-flair.training%2Fblogs%2Fpython-inheritance%2F" target="_blank" rel="noopener">戳这里</a></p>
+<h4 id="help和dir函数">help()和dir()函数</h4>
+<p>Help()函数是一个内置函数，用于查看函数或模块用途的详细说明：</p>
+<h4 id="python常用函数">！！！Python常用函数</h4>
+<blockquote>
+<p>Reference: <a href="https://www.runoob.com/python/python-strings.html" target="_blank" rel="noopener">1</a></p>
+</blockquote>
+<ul>
+<li><strong>map()</strong></li>
+</ul>
+<blockquote>
+<p>语法：<strong><code>map(func, *iterable)</code>：将func用于每个iterable对象</strong></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line">str = input()								<span class="comment"># [1, 2, 3]</span></span><br><span class="line">pattern = re.compile(<span class="string">r'\d+'</span>)</span><br><span class="line">num_str_list = re.findall(pattern, str)		<span class="comment"># ['1', '2', '3']</span></span><br><span class="line">num_list = list(map(int, num_str_list))		<span class="comment"># [1, 2, 3]</span></span><br><span class="line">print(num_list)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">list(map(<span class="keyword">lambda</span> a,b:a+b,[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>],[<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>])) <span class="comment"># [6, 8, 10]</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>split()</strong></li>
+</ul>
+<blockquote>
+<p>通过指定分隔符对字符串进行切片，如果参数 num 有指定值，则分隔 num+1 个子字符串</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">str = <span class="string">"Line1-abcdef \nLine2-abc \nLine4-abcd"</span>;</span><br><span class="line"><span class="keyword">print</span> str.split( );       <span class="comment"># 以空格为分隔符，包含 \n</span></span><br><span class="line"><span class="keyword">print</span> str.split(<span class="string">' '</span>, <span class="number">1</span> ); <span class="comment"># 以空格为分隔符，分隔成两个</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ['Line1-abcdef', 'Line2-abc', 'Line4-abcd']</span></span><br><span class="line"><span class="comment"># ['Line1-abcdef', '\nLine2-abc \nLine4-abcd']</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>join()</strong></li>
+</ul>
+<p>Python join() 方法用于将序列中的元素以指定的字符连接生成一个新的字符串。</p>
+<blockquote>
+<p>语法：<strong><code>str.join(sequence)</code></strong></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">str = <span class="string">"-"</span>;</span><br><span class="line">seq = (<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>); <span class="comment"># 字符串序列</span></span><br><span class="line"><span class="keyword">print</span> str.join( seq ); <span class="comment"># a-b-c</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>find()</strong></li>
+</ul>
+<p>检测字符串中是否包含子字符串 str ，如果指定 beg（开始） 和 end（结束） 范围，则检查是否包含在指定范围内，如果包含子字符串返回开始的索引值，否则返回-1。</p>
+<blockquote>
+<p>语法：<strong><code>str.find(str, beg=0, end=len(string))</code></strong></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">str1 = <span class="string">"this is string example....wow!!!"</span>;</span><br><span class="line">str2 = <span class="string">"exam"</span>;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">print</span> str1.find(str2);		<span class="comment"># 15</span></span><br><span class="line"><span class="keyword">print</span> str1.find(str2, <span class="number">10</span>);	<span class="comment"># 15</span></span><br><span class="line"><span class="keyword">print</span> str1.find(str2, <span class="number">40</span>);	<span class="comment"># -1</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>index()</strong></li>
+</ul>
+<p>Python index() 方法检测字符串中是否包含子字符串 str ，如果指定 beg（开始） 和 end（结束） 范围，则检查是否包含在指定范围内，该方法与 python find()方法一样，只不过如果str不在 string中会报一个异常。</p>
+<blockquote>
+<p>语法：<strong>str.index(str, beg=0, end=len(string))</strong></p>
+<p>如果包含子字符串返回开始的索引值，否则抛出异常。</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">str1 = <span class="string">"this is string example....wow!!!"</span>;</span><br><span class="line">str2 = <span class="string">"exam"</span>;</span><br><span class="line"><span class="keyword">print</span> str1.index(str2); 	<span class="comment"># 15</span></span><br><span class="line"><span class="keyword">print</span> str1.index(str2, <span class="number">10</span>); <span class="comment"># 15</span></span><br><span class="line"><span class="keyword">print</span> str1.index(str2, <span class="number">40</span>); <span class="comment"># 报异常</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>count()</strong></li>
+</ul>
+<p>用于统计字符串里某个字符出现的次数。可选参数为在字符串搜索的开始与结束位置。</p>
+<blockquote>
+<p>语法：<strong><code>str.count(sub, start= 0,end=len(string))</code></strong></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">str = <span class="string">"this is string example....wow!!!"</span>;</span><br><span class="line"> </span><br><span class="line">sub = <span class="string">"i"</span>;</span><br><span class="line"><span class="keyword">print</span> <span class="string">"str.count(sub, 4, 40) : "</span>, str.count(sub, <span class="number">4</span>, <span class="number">40</span>)</span><br><span class="line">sub = <span class="string">"wow"</span>;</span><br><span class="line"><span class="keyword">print</span> <span class="string">"str.count(sub) : "</span>, str.count(sub)</span><br><span class="line"></span><br><span class="line"><span class="comment"># str.count(sub, 4, 40) :  2</span></span><br><span class="line"><span class="comment"># str.count(sub) :  1</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>zip()</strong></li>
+</ul>
+<p><strong>zip()</strong> 函数用于将可迭代的对象作为参数，将对象中对应的元素打包成一个个元组，然后返回由这些元组组成的列表。</p>
+<p>如果各个迭代器的元素个数不一致，则返回列表长度与最短的对象相同，利用 * 号操作符，可以将元组解压为列表。</p>
+<blockquote>
+<p>语法：<strong><code>zip([iterable, ...])</code></strong></p>
+<p>参数说明：iterabl：一个或多个迭代器;</p>
+<p>返回元祖列表</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b = [<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c = [<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>zipped = zip(a,b)     <span class="comment"># 打包为元组的列表</span></span><br><span class="line">[(<span class="number">1</span>, <span class="number">4</span>), (<span class="number">2</span>, <span class="number">5</span>), (<span class="number">3</span>, <span class="number">6</span>)]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>zip(a,c)              <span class="comment"># 元素个数与最短的列表一致</span></span><br><span class="line">[(<span class="number">1</span>, <span class="number">4</span>), (<span class="number">2</span>, <span class="number">5</span>), (<span class="number">3</span>, <span class="number">6</span>)]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>zip(*zipped)          <span class="comment"># 与 zip 相反，*zipped 可理解为解压，返回二维矩阵式</span></span><br><span class="line">[(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>), (<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>)]</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>逆序迭代</strong></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 正序循环</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>):</span><br><span class="line">    print(i)</span><br><span class="line"><span class="comment"># 0 1 2 3 4 </span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 逆序循环</span></span><br><span class="line"><span class="comment"># 方法一：</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>)[::<span class="number">-1</span>]:</span><br><span class="line">    print(i)</span><br><span class="line"><span class="comment"># 4 3 2 1 0</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 方法二：</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">4</span>, <span class="number">-1</span>, <span class="number">-1</span>):  <span class="comment"># 注意这里是4</span></span><br><span class="line">    print(i)</span><br><span class="line"><span class="comment"># 4 3 2 1 0</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 方法三：</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> reversed(range(<span class="number">5</span>)):</span><br><span class="line">    print(i)</span><br><span class="line"><span class="comment"># 4 3 2 1 0</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>range()</strong> 定义步长</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, <span class="number">6</span>, <span class="number">2</span>):</span><br><span class="line">	print(i, end=<span class="string">','</span>)</span><br><span class="line"><span class="comment"># 0,2,4</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>enumerate()</strong></li>
+</ul>
+<p>enumerate() 函数用于将一个可遍历的数据对象(如列表、元组或字符串)组合为一个索引序列，同时列出数据和数据下标，一般用在 for 循环当中.</p>
+<blockquote>
+<p>语法：<strong><code>enumerate(sequence, [start=0])</code></strong></p>
+<p>参数：</p>
+<ul>
+<li>sequence – 一个序列、迭代器或其他支持迭代对象。</li>
+<li>start – 下标起始位置。</li>
+</ul>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">seq = [<span class="string">'one'</span>, <span class="string">'two'</span>, <span class="string">'three'</span>]</span><br><span class="line"><span class="keyword">for</span> i, element <span class="keyword">in</span> enumerate(seq):</span><br><span class="line">	<span class="keyword">print</span> i, element</span><br></pre></td></tr></table></figure>
+<h4 id="什么是flask">什么是Flask？</h4>
+<p>Flask是Python编写的一款轻量级Web应用框架。其 WSGI 工具箱采用 Werkzeug ，模板引擎则使用 Jinja2。Flask使用 BSD 授权。其中两个环境依赖是Werkzeug和jinja2，这意味着它不需要依赖外部库。正因如此，我们将其称为轻量级框架。</p>
+<p>Flask会话使用签名cookie让用户查看和修改会话内容。它会记录从一个请求到另一个请求的信息。不过，要想修改会话，用户必须有密钥Flask.secret_key。</p>
+<h3 id="section-1"></h3>
+<h4 id="文件操作-1">文件操作</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 读文件</span></span><br><span class="line"><span class="comment"># r: 只读方式打开文件</span></span><br><span class="line"><span class="comment"># rb：二进制格式打开文件只读</span></span><br><span class="line"><span class="comment"># r+: 打开文件用于读写，不存在则会创建该文件。文件指针在文件的开头</span></span><br><span class="line"><span class="comment"># rb+: 以二进制格式打开文件用于读写，不存在则会创建该文件。文件指针在文件的开头</span></span><br><span class="line">f = open(<span class="string">'./file.txt'</span>, <span class="string">'r'</span>)</span><br><span class="line">print(f.read())</span><br><span class="line">f.close()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 写文件</span></span><br><span class="line"><span class="comment"># w : 打开文件，只写（覆盖写）</span></span><br><span class="line"><span class="comment"># wb：以二进制格式打开文件，只写（覆盖）</span></span><br><span class="line"><span class="comment"># w+: 打开文件用于读写（覆盖写），不存在则会创建该文件</span></span><br><span class="line"><span class="comment"># wb+: 以二进制格式打开文件，读写（覆盖写），不存在则会创建该文件</span></span><br><span class="line">f = open(<span class="string">'./file.txt'</span>, <span class="string">'w+'</span>)</span><br><span class="line">f.write(<span class="string">'Hello, world!'</span>)</span><br><span class="line">f.close()</span><br><span class="line"></span><br><span class="line"><span class="comment"># a: 打开文件并再文件末尾追加，文件不存在则创建新的文件</span></span><br><span class="line"><span class="comment"># ab: 二进制方式打开文件并在末尾追加</span></span><br><span class="line"><span class="comment"># a+： 打开文件用于读写，追加</span></span><br><span class="line"><span class="comment"># ab+: 以二进制格式打开文件并在末尾追加</span></span><br><span class="line">f = open(<span class="string">'./file.txt'</span>, <span class="string">'a+'</span>)</span><br><span class="line">f.write(<span class="string">'你好'</span>)   <span class="comment"># 写入字符串</span></span><br><span class="line">f.close()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 以上都没有做异常处理，由于文件读写时，会产生IOError，以上一旦出错，后面的f.close()就不会调用。</span></span><br><span class="line"><span class="comment"># 所以我们为了要保证文件正确地关闭，可以使用try...finally来实现</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    f = open(<span class="string">'./file.txt'</span>, <span class="string">'r'</span>)</span><br><span class="line">    print(f.read())</span><br><span class="line">    <span class="keyword">finally</span>:</span><br><span class="line">        <span class="keyword">if</span> f:</span><br><span class="line">            f.close()</span><br><span class="line"></span><br><span class="line">            <span class="comment"># 每次都这样写比较繁琐，Python引入了with语句来自动帮我们调用close()方法</span></span><br><span class="line">            <span class="keyword">with</span> open(<span class="string">'./file.txt'</span>, <span class="string">'r'</span>) <span class="keyword">as</span> f:</span><br><span class="line">                <span class="comment"># print(f.read())         # read()        读取文件所有内容</span></span><br><span class="line">                <span class="comment"># print(f.readline())     # readline()    读取一行内容</span></span><br><span class="line">                print(f.read(<span class="number">5</span>))        <span class="comment"># read(size)    读取5个字节的字符串</span></span><br></pre></td></tr></table></figure>
+<hr>
+<ul>
+<li>Python的多线程和多进程，Python伪多线程，那什么时候应该用它？（有空闲等待的情况）讲一下Java线程池（举了Android多线程的例子）</li>
+<li>Python tuple和list的区别（只读和读写，什么时候用只读的容器？）</li>
+<li>tensorflow while_loop和python for循环的区别，什么情况下for更优？</li>
+<li>如何自己实现迭代器</li>
+<li>Python的内存回收机制</li>
+<li>使用迭代器遍历和非迭代器遍历的区别</li>
+</ul>
+<hr>
+<h3 id="linux">Linux</h3>
+<table>
+<thead>
+<tr class="header">
+<th>常用Linux命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>cd</td>
+<td>进入目录</td>
+</tr>
+<tr class="even">
+<td>cp</td>
+<td>拷贝文件</td>
+</tr>
+<tr class="odd">
+<td>mv</td>
+<td>移动文件</td>
+</tr>
+<tr class="even">
+<td>rm</td>
+<td>删除文件</td>
+</tr>
+<tr class="odd">
+<td>ls</td>
+<td>查看文件</td>
+</tr>
+<tr class="even">
+<td>ls -l -a</td>
+<td>查看文件目录详情</td>
+</tr>
+<tr class="odd">
+<td>tree -L 2</td>
+<td>以树形结构查看目录</td>
+</tr>
+<tr class="even">
+<td>grep -n -H -R</td>
+<td>递归查找包含某一条语句的文件，并显示行号</td>
+</tr>
+<tr class="odd">
+<td>find / -name test</td>
+<td>查找 / 目录下名为test的文件</td>
+</tr>
+<tr class="even">
+<td>locate test</td>
+<td>查找和 test 相关的文件</td>
+</tr>
+<tr class="odd">
+<td>cat</td>
+<td>查看文本文件内容</td>
+</tr>
+<tr class="even">
+<td>chown</td>
+<td>改变文件的所有者</td>
+</tr>
+<tr class="odd">
+<td>chmod</td>
+<td>改变文件的权限</td>
+</tr>
+<tr class="even">
+<td>mkdir</td>
+<td>新建文件夹</td>
+</tr>
+<tr class="odd">
+<td><code>ls -l | grep '^-' | wc -l</code></td>
+<td>统计某文件夹下文件的个数</td>
+</tr>
+<tr class="even">
+<td><code>ls -l | grep '^d' | wc -l</code></td>
+<td>统计某文件夹下目录的个数</td>
+</tr>
+<tr class="odd">
+<td><code>ls -lR | grep '^d' | wc -l</code></td>
+<td>统计文件夹下文件的个数，包括子文件夹里的</td>
+</tr>
+<tr class="even">
+<td>jobs -l</td>
+<td>查看后台进程</td>
+</tr>
+<tr class="odd">
+<td>bg %1</td>
+<td>将后台进程1切换到当前运行</td>
+</tr>
+<tr class="even">
+<td>kill %1</td>
+<td>杀死进程好为1的进程</td>
+</tr>
+<tr class="odd">
+<td>top</td>
+<td>显示系统中各个进程的资源占用状况</td>
+</tr>
+<tr class="even">
+<td>df</td>
+<td>查看磁盘空间</td>
+</tr>
+<tr class="odd">
+<td>df -hl</td>
+<td>查看磁盘剩余空间</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="gbd">gbd</h4>
+<table>
+<colgroup>
+<col width="31%">
+<col width="34%">
+<col width="34%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>命令</th>
+<th>解释</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="http://man.linuxde.net/file" target="_blank" rel="noopener">file</a> <文件名></文件名></td>
+<td>加载被调试的可执行程序文件。因为一般都在被调试程序所在目录下执行GDB，因而文本名不需要带路径。</td>
+<td>(gdb) file gdb-sample</td>
+</tr>
+<tr class="even">
+<td>r</td>
+<td>Run的简写，运行被调试的程序。如果此前没有下过断点，则执行完整个程序；如果有断点，则程序暂停在第一个可用断点处。</td>
+<td>(gdb) r</td>
+</tr>
+<tr class="odd">
+<td>c</td>
+<td>Continue的简写，继续执行被调试程序，直至下一个断点或程序结束。</td>
+<td>(gdb) c</td>
+</tr>
+<tr class="even">
+<td>b <行号>b <函数名称>b <em><函数名称>b </函数名称></em><代码地址> d [编号]</代码地址></函数名称></行号></td>
+<td>b: Breakpoint的简写，设置断点。两可以使用“行号”“函数名称”“执行地址”等方式指定断点位置。其中在函数名称前面加“*”符号表示将断点设置在“由编译器生成的prolog代码处”。如果不了解汇编，可以不予理会此用法。 d: Delete breakpoint的简写，删除指定编号的某个断点，或删除所有断点。断点编号从1开始递增。</td>
+<td>(gdb) b 8(gdb) b main(gdb) b <em>main(gdb) b </em>0x804835c (gdb) d</td>
+</tr>
+<tr class="odd">
+<td>s, n</td>
+<td>s: 执行一行源程序代码，如果此行代码中有函数调用，则进入该函数；n: 执行一行源程序代码，此行代码中的函数调用也一并执行。 s 相当于其它调试器中的“Step Into (单步跟踪进入)”；n 相当于其它调试器中的“Step Over (单步跟踪)”。 这两个命令必须在有源代码调试信息的情况下才可以使用（GCC编译时使用“-g”参数）。</td>
+<td>(gdb) s(gdb) n</td>
+</tr>
+<tr class="even">
+<td>si, ni</td>
+<td>si命令类似于s命令，ni命令类似于n命令。所不同的是，这两个命令（si/ni）所针对的是汇编指令，而s/n针对的是源代码。</td>
+<td>(gdb) si(gdb) ni</td>
+</tr>
+<tr class="odd">
+<td>p <变量名称></变量名称></td>
+<td>Print的简写，显示指定变量（临时变量或全局变量）的值。</td>
+<td>(gdb) p i(gdb) p nGlobalVar</td>
+</tr>
+<tr class="even">
+<td>display … undisplay <编号></编号></td>
+<td>display，设置程序中断后欲显示的数据及其格式。例如，如果希望每次程序中断后可以看到即将被执行的下一条汇编指令，可以使用命令“display /i $pc”其中 $pc 代表当前汇编指令，/i 表示以十六进行显示。当需要关心汇编代码时，此命令相当有用。 undispaly，取消先前的display设置，编号从1开始递增。</td>
+<td>(gdb) display /i $pc (gdb) undisplay 1</td>
+</tr>
+<tr class="odd">
+<td>i</td>
+<td><a href="http://man.linuxde.net/info" target="_blank" rel="noopener">info</a>的简写，用于显示各类信息，详情请查阅“<a href="http://man.linuxde.net/help" target="_blank" rel="noopener">help</a> i”。</td>
+<td>(gdb) i r</td>
+</tr>
+<tr class="even">
+<td>q</td>
+<td>Quit的简写，退出GDB调试环境。</td>
+<td>(gdb) q</td>
+</tr>
+<tr class="odd">
+<td>help [命令名称]</td>
+<td>GDB帮助命令，提供对GDB名种命令的解释说明。如果指定了“命令名称”参数，则显示该命令的详细说明；如果没有指定参数，则分类显示所有GDB命令，供用户进一步浏览和查询。</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Reference：<a href="http://man.linuxde.net/gdb" target="_blank" rel="noopener">gdb入门</a></p>
+</blockquote>
+<hr>
+<h3 id="git">Git</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">git 常用命令</th>
+<th>命令功能</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">git init</td>
+<td>初始化</td>
+</tr>
+<tr class="even">
+<td align="left">git add</td>
+<td>添加到版本库中的暂存区</td>
+</tr>
+<tr class="odd">
+<td align="left">git commit</td>
+<td>把暂存区的内容提交到当前分支</td>
+</tr>
+<tr class="even">
+<td align="left">git checkout –file</td>
+<td>直接丢弃工作区的修改</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>git reset</strong> –hard HEAD^</td>
+<td>回退到上一个版本</td>
+</tr>
+<tr class="even">
+<td align="left">git reset –herd 362816</td>
+<td>回退到指定版本</td>
+</tr>
+<tr class="odd">
+<td align="left">git log</td>
+<td>查看版本库信息</td>
+</tr>
+<tr class="even">
+<td align="left">git reflog</td>
+<td>查看本地记录的与版本库相关的每一条命令</td>
+</tr>
+<tr class="odd">
+<td align="left">git status</td>
+<td>查看工作区的状态</td>
+</tr>
+<tr class="even">
+<td align="left">git diff</td>
+<td>查看修改内容</td>
+</tr>
+<tr class="odd">
+<td align="left">git remote add origin</td>
+<td>添加远程仓库</td>
+</tr>
+<tr class="even">
+<td align="left">git push -u origin master</td>
+<td>将本地库内容推送到远程仓库（第一次推送加-u）</td>
+</tr>
+<tr class="odd">
+<td align="left">git push origin master</td>
+<td>推送至主分支</td>
+</tr>
+<tr class="even">
+<td align="left">git push origin dev</td>
+<td>推送至dev分支</td>
+</tr>
+<tr class="odd">
+<td align="left">git clone</td>
+<td>从远程仓库克隆</td>
+</tr>
+<tr class="even">
+<td align="left">git branch name</td>
+<td>创建name分支</td>
+</tr>
+<tr class="odd">
+<td align="left">git checkout name</td>
+<td>切换至name分支</td>
+</tr>
+<tr class="even">
+<td align="left">git branch -b name</td>
+<td>创建并切换至name分支</td>
+</tr>
+<tr class="odd">
+<td align="left">git branch</td>
+<td>查看当前分支</td>
+</tr>
+<tr class="even">
+<td align="left">git branch -d name</td>
+<td>删除分支</td>
+</tr>
+<tr class="odd">
+<td align="left">git branch -D name</td>
+<td>强行删除分支</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>git merge name</strong></td>
+<td>将name分支合并到master分支上</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>git rebase</strong></td>
+<td></td>
+</tr>
+<tr class="even">
+<td align="left">git remote</td>
+<td>查看远程库信息</td>
+</tr>
+<tr class="odd">
+<td align="left">git remote -v</td>
+<td>查看远程库详细信息</td>
+</tr>
+<tr class="even">
+<td align="left">git log –graph</td>
+<td>查看分支合并图</td>
+</tr>
+<tr class="odd">
+<td align="left">git pull</td>
+<td>将远程库最新提交抓取下来</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td align="left">git tag v1.0</td>
+<td>创建名为v1.0的标签</td>
+</tr>
+<tr class="even">
+<td align="left">git tag</td>
+<td>查看所有标签</td>
+</tr>
+<tr class="odd">
+<td align="left">git tag v0.9 0abc</td>
+<td>为指定commit提交打标签</td>
+</tr>
+<tr class="even">
+<td align="left">git show v0.9</td>
+<td>查看指定标签信息</td>
+</tr>
+<tr class="odd">
+<td align="left">git tag -d v0.1</td>
+<td>删除标签</td>
+</tr>
+<tr class="even">
+<td align="left">git push origin v1.0</td>
+<td>推送某一个标签到远程</td>
+</tr>
+<tr class="odd">
+<td align="left">git push origin –tags</td>
+<td>一次性推送全部尚未推送到远程的本地标签</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>撤销修改</strong></li>
+</ul>
+<div class="figure">
+<img src="/2018/04/07/Interview-preparation-of-cpp/撤销修改.png">
+
+</div>
+<ul>
+<li><strong>多人协作</strong></li>
+</ul>
+<div class="figure">
+<img src="/2018/04/07/Interview-preparation-of-cpp/git.png">
+
+</div>
+<ul>
+<li><strong>git merge 和 git rebase 区别</strong></li>
+</ul>
+<blockquote>
+<p><strong>git merge使用方法</strong></p>
+</blockquote>
+<p>比如将分支 <code>feature</code> 合并到分支 <code>master</code>，那么只需执行如下两步即可：</p>
+<ol style="list-style-type: decimal">
+<li>将分支切换到 <code>master</code> 上去：<code>git checkout master</code></li>
+<li>将分支 <code>feature</code> 合并到当前分支（即 <code>master</code> 分支）上：<code>git merge feature</code></li>
+</ol>
+<div class="figure">
+<img src="/2018/04/07/Interview-preparation-of-cpp/git_merge.png">
+
+</div>
+<p><strong>特点：</strong></p>
+<ol style="list-style-type: decimal">
+<li>自动创建一个新的合并的历史记录commit</li>
+<li>如果合并的时候遇到冲突，仅需要修改后重新commit，合并后的所有 <code>commit</code> 会按照提交时间从旧到新排列</li>
+<li>所有的过程信息更多，可能会提高之后查找问题的难度</li>
+</ol>
+<p><strong>优点：</strong></p>
+<ol style="list-style-type: decimal">
+<li>记录了真实的commit情况，包括每个分支的详情</li>
+</ol>
+<blockquote>
+<p><strong>git rebase 合并操作</strong></p>
+</blockquote>
+<p>与 <code>git merge</code> 一致，<code>git rebase</code> 的目的也是将一个分支的更改并入到另外一个分支中去。</p>
+<div class="figure">
+<img src="/2018/04/07/Interview-preparation-of-cpp/git_rebase.png">
+
+</div>
+<p>主要特点是：</p>
+<ol style="list-style-type: decimal">
+<li>得到更简洁的项目历史，去掉了merge commit</li>
+<li>会合并之前的commit历史</li>
+<li>没有多余的合并历史的记录，且合并后的 <code>commit</code> 顺序不一定按照 <code>commit</code> 的提交时间排列</li>
+<li>改变当前分支从 <code>master</code> 上拉出分支的位置</li>
+<li>如果合并出现代码问题不容易定位</li>
+</ol>
+<p>合并时如果出现冲突需要按照如下步骤解决</p>
+<ul>
+<li>修改冲突部分</li>
+<li>git add</li>
+<li><code>git rebase --continue</code></li>
+<li>（如果第三步无效可以执行 <code>git rebase --skip</code>）</li>
+</ul>
+<blockquote>
+<p><strong>总结</strong></p>
+</blockquote>
+<p>（1）当需要保留详细的合并信息的时候建议使用<code>git merge</code>，特别是需要将分支合并进入<code>master</code>分支时。</p>
+<p>（2）如果你想要一个干净的，没有merge commit的线性历史树，那么你应该选择git rebase。比如当发现自己修改某个功能时，频繁进行了<code>git commit</code>提交时，发现其实过多的提交信息没有必要时，可以尝试<code>git rebase</code>。</p>
+<blockquote>
+<p>Reference: <a href="https://juejin.im/post/5af26c4d5188256728605809" target="_blank" rel="noopener">Git知识</a></p>
+</blockquote>
+<hr>
+<h3 id="reference">Reference</h3>
+<ul>
+<li><a href="https://mp.weixin.qq.com/s?__biz=MzUxNjcxMjQxNg==&amp;mid=2247490302&amp;idx=2&amp;sn=65dd20ad57f62a1f9f6015d7106afc2c&amp;pass_ticket=YQUuRNDSktmCTNEQiVxLaq%2FsjKeEZe7UAyeMwFVb%2BLcajMRRSXFXmPDHvTKr9pef" target="_blank" rel="noopener">常见C++笔试面试题整理</a></li>
+<li><a href="https://github.com/huihut/interview#-cc" target="_blank" rel="noopener">huihut/interview</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/54430650" target="_blank" rel="noopener">110道python面试题(真题)</a></li>
+</ul>
+</body>
+</html>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/C/" rel="tag">#C</a>
+          
+            <a href="/tags/算法/" rel="tag">#算法</a>
+          
+            <a href="/tags/数据结构/" rel="tag">#数据结构</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/07/Try-your-best!You-will-find-the-job/" rel="prev">
+                <i class="fa fa-chevron-left"></i> 加油！一定能找到好工作！
+              </a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/07/Ubuntu-common-commands/" rel="next">
+                Ubuntu常用命令 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+          </div>
+        
+      
+
+        
+          
+  
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+      
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table Of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview" sidebar-panel >
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/avatar.jpg" alt="SmileLingyong" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">SmileLingyong</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">向上，向阳！</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">32</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-name">categories</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">22</span>
+              <span class="site-state-item-name">tags</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="smilelingyong@gmail.com" target="_blank">
+                  <i class="fa fa-e-mail"></i> E-Mail
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/SmileLingyong" target="_blank">
+                  <i class="fa fa-github"></i> Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://blog.csdn.net/forever__1234" target="_blank">
+                  <i class="fa fa-csdn"></i> CSDN
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#c"><span class="nav-text">C++</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#define-和-const-的区别"><span class="nav-text">define 和 const 的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#const-作用"><span class="nav-text">const 作用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#static"><span class="nav-text">static</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#this-指针"><span class="nav-text">this 指针</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#inline-内联函数"><span class="nav-text">inline 内联函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#虚函数virtual可以是内联函数inline吗"><span class="nav-text">虚函数（virtual）可以是内联函数（inline）吗？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#volatile"><span class="nav-text">volatile</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#assert"><span class="nav-text">assert()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sizeof"><span class="nav-text">sizeof()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#pragma-packn"><span class="nav-text">#pragma pack(n)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#位域"><span class="nav-text">位域</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#extern-c"><span class="nav-text">extern “C”</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#c-中-struct-和-class"><span class="nav-text">C++ 中 struct 和 class</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#结构体struct-和-共同体union联合的区别"><span class="nav-text">结构体struct 和 共同体union（联合）的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#结构体为什么要内存对齐呢"><span class="nav-text">结构体为什么要内存对齐呢？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#定义和声明的区别"><span class="nav-text">定义和声明的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#c和c的区别"><span class="nav-text">C和C++的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#c中指针和引用的区别"><span class="nav-text">C++中指针和引用的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#section"><span class="nav-text">———-</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#继承中的特点"><span class="nav-text">继承中的特点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#重载overload覆盖重写override隐藏重定义overwrite这三者之间的区别"><span class="nav-text">重载overload，覆盖（重写）override，隐藏（重定义）overwrite，这三者之间的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多态-虚函数-纯虚函数"><span class="nav-text">**多态， 虚函数， 纯虚函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#虚函数-与-纯虚函数"><span class="nav-text">虚函数 与 纯虚函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#虚函数是怎么实现的"><span class="nav-text">虚函数是怎么实现的</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#构造函数为什么一般不定义为虚函数而析构函数一般写成虚函数的原因"><span class="nav-text">构造函数为什么一般不定义为虚函数？而析构函数一般写成虚函数的原因 ？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#虚函数指针虚函数表"><span class="nav-text">虚函数指针、虚函数表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#继承中子类构造函数和析构函数调用顺序"><span class="nav-text">继承中，子类构造函数和析构函数调用顺序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#子类析构时要调用父类的析构函数吗"><span class="nav-text">子类析构时，要调用父类的析构函数吗？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#虚继承"><span class="nav-text">虚继承</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#虚继承-与-虚函数的联系与区别"><span class="nav-text">虚继承 与 虚函数的联系与区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模板类成员模板虚函数"><span class="nav-text">模板类、成员模板、虚函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#抽象类接口类聚合类"><span class="nav-text">抽象类、接口类、聚合类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#friend-友元类和友元函数"><span class="nav-text">friend 友元类和友元函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#友元函数和友元类"><span class="nav-text">友元函数和友元类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#c的内存管理"><span class="nav-text">C++的内存管理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#栈和堆的区别"><span class="nav-text">栈和堆的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#c中内存泄漏的几种情况"><span class="nav-text">C++中内存泄漏的几种情况</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#栈溢出的原因以及解决方法"><span class="nav-text">栈溢出的原因以及解决方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是野指针"><span class="nav-text">什么是野指针</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#newdeletemallocfree之间的关系"><span class="nav-text">new、delete、malloc、free之间的关系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#既然有了mallocfreec中为什么还需要newdelete呢"><span class="nav-text">既然有了malloc/free，C++中为什么还需要new/delete呢？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#delete和delete的区别"><span class="nav-text">delete和delete的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#delete-this-合法吗"><span class="nav-text">delete this 合法吗？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#stl库用过吗常见的stl容器有哪些算法用过几个"><span class="nav-text">STL库用过吗？常见的STL容器有哪些？算法用过几个？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#c中vector和list的区别"><span class="nav-text">C++中vector和list的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#c常见容器的时间复杂度"><span class="nav-text">C++常见容器的时间复杂度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#c包含的新特性"><span class="nav-text">C++包含的新特性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#智能指针"><span class="nav-text">智能指针</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常用的智能指针"><span class="nav-text">常用的智能指针</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#智能指针的作用"><span class="nav-text">智能指针的作用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#强制类型转换运算符"><span class="nav-text">强制类型转换运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#c文件编译与执行的四个阶段"><span class="nav-text">C++文件编译与执行的四个阶段</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#线程安全和线程不安全"><span class="nav-text">线程安全和线程不安全</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件操作"><span class="nav-text">文件操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他问题待整理"><span class="nav-text">**其他问题待整理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#python"><span class="nav-text">Python</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#python深拷贝和浅拷贝"><span class="nav-text">python深拷贝和浅拷贝</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#range-和-xrange-区别"><span class="nav-text">range 和 xrange 区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#list-和-tuple-区别"><span class="nav-text">list 和 tuple 区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解释一下python中的三元运算子"><span class="nav-text">解释一下Python中的三元运算子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在python中是如何管理内存"><span class="nav-text">在Python中是如何管理内存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#简述python引用计数机制"><span class="nav-text">简述python引用计数机制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#当退出python时是否释放全部内存"><span class="nav-text">当退出Python时，是否释放全部内存？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在python中如何实现多线程"><span class="nav-text">在Python中如何实现多线程？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是猴子补丁"><span class="nav-text">什么是猴子补丁？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解释一下python中的继承"><span class="nav-text">解释一下Python中的继承</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#help和dir函数"><span class="nav-text">help()和dir()函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#python常用函数"><span class="nav-text">！！！Python常用函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是flask"><span class="nav-text">什么是Flask？</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#section-1"><span class="nav-text"></span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#文件操作-1"><span class="nav-text">文件操作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#linux"><span class="nav-text">Linux</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#gbd"><span class="nav-text">gbd</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git"><span class="nav-text">Git</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#reference"><span class="nav-text">Reference</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+	  </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">SmileLingyong</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="#">
+    FreeSky
+  </a>(Reserved)
+
+  
+  <span id="busuanzi_container_site_uv">
+     &nbsp; | &nbsp;  用户量: <span id="busuanzi_value_site_uv"></span>
+  </span>
+  <span id="busuanzi_container_site_pv">
+    &nbsp; | &nbsp;  总访问量: <span id="busuanzi_value_site_pv"></span>
+  </span>
+
+  
+</div>
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/others/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+    
+
+  
+
+
+  
+  
+  <script type="text/javascript" src="/others/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
+  
+
+  <script type="text/javascript" src="/others/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/others/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.2" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.2"></script>
+  <script type="text/javascript" src="/others/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    var $aboutContent = $('#posts-about');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0 && $aboutContent.length === 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+
+      motionIntegrator.bootstrap();
+    });
+  </script>
+
+  
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+  
+     <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("9QoQXWnRR4zwSFuxRv52kUpi-gzGzoHsz", "zlgcRzgHF7AHu8TKLJUwCAjw");</script>
+<script>
+function showTime(Counter) {
+  var query = new AV.Query(Counter);
+  $(".leancloud_visitors").each(function() {
+    var url = $(this).attr("id").trim();
+    query.equalTo("url", url);
+    query.find({
+      success: function(results) {
+        if (results.length == 0) {
+          var content = $(document.getElementById(url)).text() + ': 0';
+          $(document.getElementById(url)).text(content);
+          return;
+        }
+        for (var i = 0; i < results.length; i++) {
+          var object = results[i];
+          var content = $(document.getElementById(url)).text() + ': ' + object.get('time');
+          $(document.getElementById(url)).text(content);
+        }
+      },
+      error: function(object, error) {
+        console.log("Error: " + error.code + " " + error.message);
+      }
+    });
+
+  });
+}
+
+function addCount(Counter) {
+  var Counter = AV.Object.extend("Counter");
+  url = $(".leancloud_visitors").attr('id').trim();
+  title = $(".leancloud_visitors").attr('data-flag-title').trim();
+  var query = new AV.Query(Counter);
+  query.equalTo("url", url);
+  query.find({
+    success: function(results) {
+      if (results.length > 0) {
+        var counter = results[0];
+        counter.fetchWhenSave(true);
+        counter.increment("time");
+        counter.save(null, {
+          success: function(counter) {
+            var content = $(document.getElementById(url)).text() + ': ' + counter.get('time');
+            $(document.getElementById(url)).text(content);
+          },
+          error: function(counter, error) {
+            console.log('Failed to save Visitor num, with error message: ' + error.message);
+          }
+        });
+      } else {
+        var newcounter = new Counter();
+        newcounter.set("title", title);
+        newcounter.set("url", url);
+        newcounter.set("time", 1);
+        newcounter.save(null, {
+          success: function(newcounter) {
+              console.log("newcounter.get('time')="+newcounter.get('time'));
+            var content = $(document.getElementById(url)).text() + ': ' + newcounter.get('time');
+            $(document.getElementById(url)).text(content);
+          },
+          error: function(newcounter, error) {
+            console.log('Failed to create');
+          }
+        });
+      }
+    },
+    error: function(error) {
+      console.log('Error:' + error.code + " " + error.message);
+    }
+  });
+}
+$(function() {
+  var Counter = AV.Object.extend("Counter");
+  if ($('.leancloud_visitors').length == 1) {
+    addCount(Counter);
+  } else if ($('.post-title-link').length > 1) {
+    showTime(Counter);
+  }
+}); 
+</script>
+  
+</body>
+</html>
