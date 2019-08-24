@@ -138,7 +138,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/04/07/Try-your-best!You-will-find-the-job/红黑树.png">
 <meta property="og:image" content="http://simtalk.cn/img/%E7%89%B9%E5%BE%81%E4%B8%8E%E5%8C%B9%E9%85%8D/corner.png">
 <meta property="og:image" content="http://yoursite.com/2018/04/07/Try-your-best!You-will-find-the-job/Trie.png">
-<meta property="og:updated_time" content="2019-08-09T04:22:25.415Z">
+<meta property="og:updated_time" content="2019-08-13T03:07:11.041Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="加油！一定能找到好工作！">
 <meta name="twitter:description" content="code{white-space: pre;}">
@@ -1368,6 +1368,12 @@ euc = \sqrt{(x_1 - y_1)^2 + (x_2-y_2)^2}
 <h4 id="逻辑回归与朴素贝叶斯的区别">逻辑回归与朴素贝叶斯的区别</h4>
 <ol style="list-style-type: decimal">
 <li>逻辑回归是判别模型， 朴素贝叶斯是生成模型，所以生成和判别的所有区别它们都有。</li>
+</ol>
+<ul>
+<li><strong>判别模型</strong>：由数据直接学习决策函数 <span class="math inline">\(f(X)\)</span> 或者条件概率分布 <span class="math inline">\(P(Y|X)\)</span> 做为预测的模型，即判别模型。判别方法关系的是对给定的输入 <span class="math inline">\(X\)</span>，应该预测什么样的输出 <span class="math inline">\(Y\)</span></li>
+<li><strong>生成模型</strong>：由数据学习联合概率分布 <span class="math inline">\(P(X, Y)\)</span>，然后求出条件概率分布 <span class="math inline">\(P(Y|X)\)</span> 作为预测的模型，即生成模型：　<span class="math inline">\(P(Y|X) = \frac{P(X, Y)}{P(X)}\)</span></li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
 <li>朴素贝叶斯属于贝叶斯，逻辑回归是极大似然，两种概率哲学间的区别。</li>
 <li>朴素贝叶斯需要条件独立假设。</li>
 <li>逻辑回归需要求特征参数间是线性的。</li>
