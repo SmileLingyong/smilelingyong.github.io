@@ -173,7 +173,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/04/07/Try-your-best!You-will-find-the-job/哈夫曼编码.jpg">
 <meta property="og:image" content="http://simtalk.cn/img/%E7%89%B9%E5%BE%81%E4%B8%8E%E5%8C%B9%E9%85%8D/corner.png">
 <meta property="og:image" content="http://yoursite.com/2018/04/07/Try-your-best!You-will-find-the-job/Trie.png">
-<meta property="og:updated_time" content="2019-09-14T13:38:11.818Z">
+<meta property="og:updated_time" content="2019-09-15T13:44:25.109Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="加油！一定能找到好工作！">
 <meta name="twitter:description" content="code{white-space: pre;}">
@@ -4246,8 +4246,13 @@ mean pooling比较容易让人理解错的地方就是会简单的认为直接�
 </ul>
 <p>二叉排序数是一个递归的数据结构，可以很方便的使用递归算法对二叉排序树进行各种预算。由于 <strong>左子树节点值 &lt; 根节点值 &lt; 右子树节点值</strong> ，所以可以通过<strong>中序遍历</strong>，得到一个<u>递增的有序序列</u>。</p>
 <h4 id="b-树-和-b树">B 树 和 B+树</h4>
+<p>1、B+<strong>树的层级更少</strong>：相较于B树B+每个<strong>非叶子</strong>节点存储的关键字数更多，树的层级更少所以查询数据更快；</p>
+<p>2、B+<strong>树查询速度更稳定</strong>：B+所有关键字数据地址都存在<strong>叶子</strong>节点上，所以每次查找的次数都相同所以查询速度要比B树更稳定;</p>
+<p>3、B+<strong>树天然具备排序功能：</strong>B+树所有的<strong>叶子</strong>节点数据构成了一个有序链表，在查询大小区间的数据时候更方便，数据紧密性很高，缓存的命中率也会比B树高。</p>
+<p>4、B+<strong>树全节点遍历更快：</strong>B+树遍历整棵树只需要遍历所有的<strong>叶子</strong>节点即可，，而不需要像B树一样需要对每一层进行遍历，这有利于数据库做全表扫描。</p>
+<p><strong>B树</strong>相对于<strong>B+树</strong>的优点是，如果经常访问的数据离根节点很近，而<strong>B树</strong>的<strong>非叶子</strong>节点本身存有关键字其数据的地址，所以这种数据检索的时候会要比<strong>B+树</strong>快。</p>
 <blockquote>
-<p>Reference: <a href="https://blog.csdn.net/yutianxin123/article/details/52269810" target="_blank" rel="noopener">1</a> <a href="https://blog.csdn.net/yu876876/article/details/84896789" target="_blank" rel="noopener">2</a></p>
+<p>Reference: <a href="https://blog.csdn.net/yutianxin123/article/details/52269810" target="_blank" rel="noopener">1</a> <a href="https://blog.csdn.net/yu876876/article/details/84896789" target="_blank" rel="noopener">2</a> <a href="https://zhuanlan.zhihu.com/p/27700617" target="_blank" rel="noopener">3</a> <a href="https://blog.csdn.net/login_sonata/article/details/75268075" target="_blank" rel="noopener">4</a> <a href="https://blog.csdn.net/zhangshk_/article/details/83013482" target="_blank" rel="noopener">5</a></p>
 </blockquote>
 <hr>
 <h3 id="面试题目">面试题目</h3>
@@ -4932,7 +4937,7 @@ AGA = A
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">32</span>
+              <span class="site-state-item-count">33</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
