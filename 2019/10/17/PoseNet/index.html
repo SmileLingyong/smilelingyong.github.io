@@ -58,7 +58,7 @@
 
 
 
-  <meta name="keywords" content="Machine Learning,Deeping Learning,Paper,SSD," />
+  <meta name="keywords" content="Machine Learning,Deeping Learning,DeepSLAM,Paper," />
 
 
 
@@ -67,18 +67,21 @@
   <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=0.4.5.2" />
 
 
-<meta name="description" content="code{white-space: pre;}      Todo">
-<meta name="keywords" content="Machine Learning,Deeping Learning,Paper,SSD">
+<meta name="description" content="code{white-space: pre;}          A. Kendall, M. Grimes, and R. Cipolla. Posenet: A convolutional network for real-time 6-dof camera relocalization. In IEEE International Conference on">
+<meta name="keywords" content="Machine Learning,Deeping Learning,DeepSLAM,Paper">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【目标检测】SSD:Single Shot MultiBox Detector">
-<meta property="og:url" content="http://yoursite.com/2018/04/25/SSD/index.html">
+<meta property="og:title" content="【DeepSLAM】PoseNet: A Convolutional Network for Real-Time 6-DOF Camera Relocalization [ICCV 2015]">
+<meta property="og:url" content="http://yoursite.com/2019/10/17/PoseNet/index.html">
 <meta property="og:site_name" content="SmileLingyong">
-<meta property="og:description" content="code{white-space: pre;}      Todo">
+<meta property="og:description" content="code{white-space: pre;}          A. Kendall, M. Grimes, and R. Cipolla. Posenet: A convolutional network for real-time 6-dof camera relocalization. In IEEE International Conference on">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-24T06:20:01.096Z">
+<meta property="og:image" content="http://yoursite.com/2019/10/17/PoseNet/PoseNet.png">
+<meta property="og:image" content="http://yoursite.com/2019/10/17/PoseNet/PoseNet_accuracy.png">
+<meta property="og:updated_time" content="2019-10-17T06:59:00.928Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【目标检测】SSD:Single Shot MultiBox Detector">
-<meta name="twitter:description" content="code{white-space: pre;}      Todo">
+<meta name="twitter:title" content="【DeepSLAM】PoseNet: A Convolutional Network for Real-Time 6-DOF Camera Relocalization [ICCV 2015]">
+<meta name="twitter:description" content="code{white-space: pre;}          A. Kendall, M. Grimes, and R. Cipolla. Posenet: A convolutional network for real-time 6-dof camera relocalization. In IEEE International Conference on">
+<meta name="twitter:image" content="http://yoursite.com/2019/10/17/PoseNet/PoseNet.png">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -90,7 +93,7 @@
 
 
 
-  <title> 【目标检测】SSD:Single Shot MultiBox Detector | SmileLingyong </title>
+  <title> 【DeepSLAM】PoseNet: A Convolutional Network for Real-Time 6-DOF Camera Relocalization [ICCV 2015] | SmileLingyong </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -216,7 +219,7 @@
             
             
               
-                【目标检测】SSD:Single Shot MultiBox Detector
+                【DeepSLAM】PoseNet: A Convolutional Network for Real-Time 6-DOF Camera Relocalization [ICCV 2015]
               
             
           </h1>
@@ -225,8 +228,8 @@
         <div class="post-meta">
           <span class="post-time">
             Posted on
-            <time itemprop="dateCreated" datetime="2018-04-25T10:06:36+08:00" content="2018-04-25">
-              2018-04-25 10:06
+            <time itemprop="dateCreated" datetime="2019-10-17T11:31:09+08:00" content="2019-10-17">
+              2019-10-17 11:31
             </time>
           </span>
 
@@ -271,8 +274,8 @@
 
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/SSD/" itemprop="url" rel="index">
-                    <span itemprop="name">SSD</span>
+                  <a href="/categories/DeepSLAM/" itemprop="url" rel="index">
+                    <span itemprop="name">DeepSLAM</span>
                   </a>
                 </span>
 
@@ -302,7 +305,7 @@
           
 
           
-            <span id="/2018/04/25/SSD/"class="leancloud_visitors"  data-flag-title="【目标检测】SSD:Single Shot MultiBox Detector">
+            <span id="/2019/10/17/PoseNet/"class="leancloud_visitors"  data-flag-title="【DeepSLAM】PoseNet: A Convolutional Network for Real-Time 6-DOF Camera Relocalization [ICCV 2015]">
             &nbsp; | &nbsp;   
             views
             </span>
@@ -327,10 +330,58 @@
   <title></title>
   <style type="text/css">code{white-space: pre;}</style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pygments-css@1.0.0/github.min.css" type="text/css">
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
 </head>
 <body>
-<p>Todo</p>
+<blockquote>
+<p>A. Kendall, M. Grimes, and R. Cipolla. Posenet: A convolutional network for real-time 6-dof camera relocalization. In IEEE International Conference on Computer Vision (ICCV), 2015.</p>
+</blockquote>
 <a id="more"></a>
+<blockquote>
+<p><a href="http://mi.eng.cam.ac.uk/projects/relocalisation/" target="_blank" rel="noopener"><strong>Project</strong></a> <a href="https://arxiv.org/abs/1505.07427" target="_blank" rel="noopener"><strong>Paper</strong></a> <a href="https://github.com/alexgkendall/caffe-posenet" target="_blank" rel="noopener"><strong>Code</strong></a></p>
+</blockquote>
+<blockquote>
+<p><strong>Dataset</strong></p>
+</blockquote>
+<ul>
+<li><strong><a href="http://mi.eng.cam.ac.uk/projects/relocalisation/" target="_blank" rel="noopener">Cambridge Landmarks</a></strong></li>
+<li><strong><a href="https://www.microsoft.com/en-us/research/project/rgb-d-dataset-7-scenes/" target="_blank" rel="noopener">7Scenes</a></strong> <strong><a href="https://www.cv-foundation.org/openaccess/content_cvpr_2013/papers/Shotton_Scene_Coordinate_Regression_2013_CVPR_paper.pdf" target="_blank" rel="noopener">Paper</a></strong></li>
+</ul>
+<div class="figure">
+<img src="/2019/10/17/PoseNet/PoseNet.png">
+
+</div>
+<p>PoseNet，第一行是原图，第二行是根据所估计的相机姿态做 3D重建后的场景图，第三行是原图和重建后的场景的重叠。</p>
+<blockquote>
+<p><strong>主要思想</strong></p>
+</blockquote>
+<p>首次提出一种利用卷积神经网络对相机6维姿态进行端到端的估计的方法，输入单张RGB图片，实时回归出当前的相机6维姿态。网络架构是基于GoogLeNet Inceptionv1 进行修改的，通过将网络最后3个softmax分类器替换为3个全连接层，分别对相机位置 <span class="math inline">\(x\)</span> (3维) 和 旋转 <span class="math inline">\(q\)</span> (4维，采用四元数表示) 进行归回；并在最后的回归层前面增加一个大小为2048的全连接层，用于提取区域特征。网络可实时端到端的回归出相机当前姿态 <span class="math inline">\(p = [x, q]\)</span> ，损失函数如下：<br>
+<span class="math display">\[
+loss(I) = ||\hat{x} - x||_2 + \beta||\hat{q} - \frac{ q}{|| q||}||_2
+\]</span><br>
+由于位置 <span class="math inline">\(x\)</span> 和旋转 <span class="math inline">\(q\)</span> 之间存在着尺度问题，所以其中的 <span class="math inline">\(\beta\)</span> 超参数是用于平衡两个loss的，需要根据场景的大小进行相应的手动调整。</p>
+<blockquote>
+<p><strong>实验细节</strong></p>
+</blockquote>
+<p>训练数据由5个大型室外场景<code>Cambridge Landmarks</code>以及7个小型室内场景<code>7Scenes</code>组成，所有图片对应的相机姿态ground truth 都是通过 <code>SFM(Structure from motion)</code> 技术计算得到。训练时，先对每张图片按长宽比进行resize，将短边resize到256，即256x455 (7Scenes数据集resize到255x340)，让后将resize后的所有训练图片计算均值。训练时，将训练图片256x455减去均值再进行<strong>随机剪裁</strong>到224x224再输入CNN。测试时，将测试图片256x455减去均值再进行<strong>中心剪裁</strong>到224x224再输入到CNN。</p>
+<blockquote>
+<p><strong>实验结果</strong></p>
+</blockquote>
+<p>实验结果显示，在室外场景误差大约为2m， 6°，室内场景大约为0.5m，10°，单张图片测试时间为<strong>5ms</strong></p>
+<div class="figure">
+<img src="/2019/10/17/PoseNet/PoseNet_accuracy.png">
+
+</div>
+<blockquote>
+<p><strong>待改进问题</strong></p>
+</blockquote>
+<p>PoseNet 需要手动调节一个超参数 <span class="math inline">\(\beta\)</span> ，并且对于出现障碍物的场景定位效果不精确。</p>
+<blockquote>
+<p><strong>Reference</strong></p>
+</blockquote>
+<ul>
+<li><a href="https://cloud.tencent.com/developer/article/1064536" target="_blank" rel="noopener">当前深度学习和 SLAM 结合有哪些比较好的论文</a></li>
+</ul>
 </body>
 </html>
 </span>
@@ -345,9 +396,9 @@
           
             <a href="/tags/Deeping-Learning/" rel="tag">#Deeping Learning</a>
           
-            <a href="/tags/Paper/" rel="tag">#Paper</a>
+            <a href="/tags/DeepSLAM/" rel="tag">#DeepSLAM</a>
           
-            <a href="/tags/SSD/" rel="tag">#SSD</a>
+            <a href="/tags/Paper/" rel="tag">#Paper</a>
           
         </div>
       
@@ -356,16 +407,12 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/03/20/SVM-achieves-multiple-classification/" rel="prev">
-                <i class="fa fa-chevron-left"></i> SVM实现多分类
-              </a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/24/Faster-RCNN/" rel="next">
-                【目标检测】Faster-R-CNN  (Towards Real-Time Object Detection with Region Proposal Networks) <i class="fa fa-chevron-right"></i>
+              <a href="/2019/05/24/optimization/" rel="next">
+                优化算法 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
