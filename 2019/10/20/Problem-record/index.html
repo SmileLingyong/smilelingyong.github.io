@@ -67,18 +67,20 @@
   <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=0.4.5.2" />
 
 
-<meta name="description" content="code{white-space: pre;}      记录自己日常所遇到的问题，方便以后查看 (^ _ ^)">
+<meta name="description" content="code{white-space: pre;}       记录自己日常所遇到的问题，方便以后查看 (^ _ ^)">
 <meta name="keywords" content="Tools,Linux,Git,问题">
 <meta property="og:type" content="article">
 <meta property="og:title" content="问题记录">
 <meta property="og:url" content="http://yoursite.com/2019/10/20/Problem-record/index.html">
 <meta property="og:site_name" content="SmileLingyong">
-<meta property="og:description" content="code{white-space: pre;}      记录自己日常所遇到的问题，方便以后查看 (^ _ ^)">
+<meta property="og:description" content="code{white-space: pre;}       记录自己日常所遇到的问题，方便以后查看 (^ _ ^)">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-10-20T08:49:49.782Z">
+<meta property="og:image" content="http://yoursite.com/2019/10/20/Problem-record/working.png">
+<meta property="og:updated_time" content="2019-10-20T09:05:23.558Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="问题记录">
-<meta name="twitter:description" content="code{white-space: pre;}      记录自己日常所遇到的问题，方便以后查看 (^ _ ^)">
+<meta name="twitter:description" content="code{white-space: pre;}       记录自己日常所遇到的问题，方便以后查看 (^ _ ^)">
+<meta name="twitter:image" content="http://yoursite.com/2019/10/20/Problem-record/working.png">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -235,8 +237,8 @@
               &nbsp; | &nbsp; In
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">学习笔记</span>
+                  <a href="/categories/Tools/" itemprop="url" rel="index">
+                    <span itemprop="name">Tools</span>
                   </a>
                 </span>
 
@@ -247,8 +249,8 @@
 
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Tools/" itemprop="url" rel="index">
-                    <span itemprop="name">Tools</span>
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
                   </a>
                 </span>
 
@@ -329,7 +331,13 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pygments-css@1.0.0/github.min.css" type="text/css">
 </head>
 <body>
+<blockquote>
 <p>记录自己日常所遇到的问题，方便以后查看 (^ _ ^)</p>
+</blockquote>
+<div class="figure">
+<img src="/2019/10/20/Problem-record/working.png">
+
+</div>
 <a id="more"></a>
 <h3 id="git-diff-中将文件当成二进制文件">1. git diff 中将文件当成二进制文件</h3>
 <p>最近项目使用 git diff 时，自己工作区明明修改了 test.m 文件，但只显示 Binary file … 并没有显示修改的内容。这表明 git 将其当做二进制文件来处理了，并没有将其当做文本文件进行处理。然后自己通过在项目中添加了 <code>.gitattributes</code> 文件，在其中写入如下一项：</p>
