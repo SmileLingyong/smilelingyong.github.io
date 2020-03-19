@@ -320,7 +320,7 @@
   <title></title>
   <style type="text/css">code{white-space: pre;}</style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pygments-css@1.0.0/github.min.css" type="text/css">
-  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 </head>
 <body>
 <a id="more"></a>
@@ -340,7 +340,7 @@
 <table>
 <thead>
 <tr class="header">
-<th>Type</th>
+<th align="left">Type</th>
 <th align="center">Storage size</th>
 <th align="center">Value range</th>
 <th align="center">Precision</th>
@@ -348,73 +348,73 @@
 </thead>
 <tbody>
 <tr class="odd">
-<td>char</td>
+<td align="left">char</td>
 <td align="center">1 Byte</td>
 <td align="center">-128 to 127 or 0 to 255</td>
 <td align="center"></td>
 </tr>
 <tr class="even">
-<td>unsigned char</td>
+<td align="left">unsigned char</td>
 <td align="center">1 Byte</td>
 <td align="center">0 to 255</td>
 <td align="center"></td>
 </tr>
 <tr class="odd">
-<td>signed char</td>
+<td align="left">signed char</td>
 <td align="center">1 Byte</td>
 <td align="center">-128 to 127</td>
 <td align="center"></td>
 </tr>
 <tr class="even">
-<td>int</td>
+<td align="left">int</td>
 <td align="center">4 Bytes</td>
 <td align="center">-2,147,483,648 to 2,147,483,647</td>
 <td align="center"></td>
 </tr>
 <tr class="odd">
-<td>unsigned int</td>
+<td align="left">unsigned int</td>
 <td align="center">4 Bytes</td>
 <td align="center">0 to 4,294,967,295</td>
 <td align="center"></td>
 </tr>
 <tr class="even">
-<td>short</td>
+<td align="left">short</td>
 <td align="center">2 Bytes</td>
 <td align="center">-32,768 to 32,767</td>
 <td align="center"></td>
 </tr>
 <tr class="odd">
-<td>unsigned short</td>
+<td align="left">unsigned short</td>
 <td align="center">2 Bytes</td>
 <td align="center">0 to 65,535</td>
 <td align="center"></td>
 </tr>
 <tr class="even">
-<td>long</td>
+<td align="left">long</td>
 <td align="center">4 Bytes</td>
 <td align="center">-2,147,483,648 to 2,147,483,647</td>
 <td align="center"></td>
 </tr>
 <tr class="odd">
-<td>unsigned long</td>
+<td align="left">unsigned long</td>
 <td align="center">4 Bytes</td>
 <td align="center">0 to 4,294,967,295</td>
 <td align="center"></td>
 </tr>
 <tr class="even">
-<td>float</td>
+<td align="left">float</td>
 <td align="center">4 Bytes</td>
 <td align="center">1.2E-38 to 3.4E+38</td>
 <td align="center">6 decimal places</td>
 </tr>
 <tr class="odd">
-<td>double</td>
+<td align="left">double</td>
 <td align="center">8 Bytes</td>
 <td align="center">2.3E-308 to 1.7E+308</td>
 <td align="center">15 decimal places</td>
 </tr>
 <tr class="even">
-<td>long double</td>
+<td align="left">long double</td>
 <td align="center">10</td>
 <td align="center">3.4E-4932 to 1.1E+4932</td>
 <td align="center">19 decimal places</td>
@@ -888,46 +888,46 @@ C++实现多态的机制很简单，在继承体系下，将父类的某个函�
 </colgroup>
 <thead>
 <tr class="header">
-<th></th>
-<th>堆</th>
-<th>栈</th>
+<th align="left"></th>
+<th align="left">堆</th>
+<th align="left">栈</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>管理方式</td>
-<td>堆中资源由程序员控制（容易产生memory leak）</td>
-<td>栈资源由编译器自动管理，无需手工控制</td>
+<td align="left">管理方式</td>
+<td align="left">堆中资源由程序员控制（容易产生memory leak）</td>
+<td align="left">栈资源由编译器自动管理，无需手工控制</td>
 </tr>
 <tr class="even">
-<td>内存管理机制</td>
-<td>系统有一个记录空闲内存地址的链表，当系统收到程序申请时，遍历该链表，寻找第一个空间大于申请空间的堆结点，删 除空闲结点链表中的该结点，并将该结点空间分配给程序（大多数系统会在这块内存空间首地址记录本次分配的大小，这样delete才能正确释放本内存 空间，另外系统会将多余的部分重新放入空闲链表中）</td>
-<td>只要栈的剩余空间大于所申请空间，系统为程序提供内存，否则报异常提示栈出。（这一块理解一下链表和队列的区别，不连续空间和连续空间的区别，应该就比较好理解这两种机制的区别了）</td>
+<td align="left">内存管理机制</td>
+<td align="left">系统有一个记录空闲内存地址的链表，当系统收到程序申请时，遍历该链表，寻找第一个空间大于申请空间的堆结点，删 除空闲结点链表中的该结点，并将该结点空间分配给程序（大多数系统会在这块内存空间首地址记录本次分配的大小，这样delete才能正确释放本内存 空间，另外系统会将多余的部分重新放入空闲链表中）</td>
+<td align="left">只要栈的剩余空间大于所申请空间，系统为程序提供内存，否则报异常提示栈出。（这一块理解一下链表和队列的区别，不连续空间和连续空间的区别，应该就比较好理解这两种机制的区别了）</td>
 </tr>
 <tr class="odd">
-<td>空间大小</td>
-<td>堆是不连续的内存区域（因为系统是用链表来存储空闲内存地址，自然不是连续的），堆大小受限于计算机系统中有效的虚拟内存（32bit 系统理论上是4G），所以堆的空间比较灵活，比较大</td>
-<td>栈是一块连续的内存区域，大小是操作系统预定好的，windows下栈大小是2M（也有是1M，在 编译时确定，VC中可设置）。</td>
+<td align="left">空间大小</td>
+<td align="left">堆是不连续的内存区域（因为系统是用链表来存储空闲内存地址，自然不是连续的），堆大小受限于计算机系统中有效的虚拟内存（32bit 系统理论上是4G），所以堆的空间比较灵活，比较大</td>
+<td align="left">栈是一块连续的内存区域，大小是操作系统预定好的，windows下栈大小是2M（也有是1M，在 编译时确定，VC中可设置）。</td>
 </tr>
 <tr class="even">
-<td>碎片问题</td>
-<td>对于堆，频繁的new/delete会造成大量碎片，使程序效率降低</td>
-<td>对于栈，它是一个先进后出的队列，进出一一对应，不会产生碎片。（看到这里我突然明白了为什么面试官在问我堆和栈的区别之前先问了我栈和队列的区别）</td>
+<td align="left">碎片问题</td>
+<td align="left">对于堆，频繁的new/delete会造成大量碎片，使程序效率降低</td>
+<td align="left">对于栈，它是一个先进后出的队列，进出一一对应，不会产生碎片。（看到这里我突然明白了为什么面试官在问我堆和栈的区别之前先问了我栈和队列的区别）</td>
 </tr>
 <tr class="odd">
-<td>生长方向</td>
-<td>堆向上，向高地址方向增长。</td>
-<td>栈向下，向低地址方向增长。</td>
+<td align="left">生长方向</td>
+<td align="left">堆向上，向高地址方向增长。</td>
+<td align="left">栈向下，向低地址方向增长。</td>
 </tr>
 <tr class="even">
-<td>分配方式</td>
-<td>堆都是动态分配（没有静态分配的堆）</td>
-<td>栈有静态分配和动态分配，静态分配由编译器完成（如局部变量分配），动态分配由alloca函数 分 配，但栈的动态分配的资源由编译器进行释放，无需程序员实现。</td>
+<td align="left">分配方式</td>
+<td align="left">堆都是动态分配（没有静态分配的堆）</td>
+<td align="left">栈有静态分配和动态分配，静态分配由编译器完成（如局部变量分配），动态分配由alloca函数 分 配，但栈的动态分配的资源由编译器进行释放，无需程序员实现。</td>
 </tr>
 <tr class="odd">
-<td>分配效率</td>
-<td>堆由C/C++函数库提供，机制很复杂。所以堆的效率比栈低很多。</td>
-<td>栈是极其系统提供的数据结构，计算机在底层对栈提供支持，分配专门 寄存 器存放栈地址，栈操作有专门指令。</td>
+<td align="left">分配效率</td>
+<td align="left">堆由C/C++函数库提供，机制很复杂。所以堆的效率比栈低很多。</td>
+<td align="left">栈是极其系统提供的数据结构，计算机在底层对栈提供支持，分配专门 寄存 器存放栈地址，栈操作有专门指令。</td>
 </tr>
 </tbody>
 </table>
@@ -1331,48 +1331,48 @@ Hello World!</p>
 <table>
 <thead>
 <tr class="header">
-<th>对比维度</th>
-<th>多进程</th>
-<th>多线程</th>
-<th>总结</th>
+<th align="left">对比维度</th>
+<th align="left">多进程</th>
+<th align="left">多线程</th>
+<th align="left">总结</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>数据共享、同步</td>
-<td>数据共享复杂，需要用 IPC；数据是分开的，同步简单</td>
-<td>因为共享进程数据，数据共享简单，但也是因为这个原因导致同步复杂</td>
-<td>各有优势</td>
+<td align="left">数据共享、同步</td>
+<td align="left">数据共享复杂，需要用 IPC；数据是分开的，同步简单</td>
+<td align="left">因为共享进程数据，数据共享简单，但也是因为这个原因导致同步复杂</td>
+<td align="left">各有优势</td>
 </tr>
 <tr class="even">
-<td>内存、CPU</td>
-<td>占用内存多，切换复杂，CPU 利用率低</td>
-<td>占用内存少，切换简单，CPU 利用率高</td>
-<td>线程占优</td>
+<td align="left">内存、CPU</td>
+<td align="left">占用内存多，切换复杂，CPU 利用率低</td>
+<td align="left">占用内存少，切换简单，CPU 利用率高</td>
+<td align="left">线程占优</td>
 </tr>
 <tr class="odd">
-<td>创建销毁、切换</td>
-<td>创建销毁、切换复杂，速度慢</td>
-<td>创建销毁、切换简单，速度很快</td>
-<td>线程占优</td>
+<td align="left">创建销毁、切换</td>
+<td align="left">创建销毁、切换复杂，速度慢</td>
+<td align="left">创建销毁、切换简单，速度很快</td>
+<td align="left">线程占优</td>
 </tr>
 <tr class="even">
-<td>编程、调试</td>
-<td>编程简单，调试简单</td>
-<td>编程复杂，调试复杂</td>
-<td>进程占优</td>
+<td align="left">编程、调试</td>
+<td align="left">编程简单，调试简单</td>
+<td align="left">编程复杂，调试复杂</td>
+<td align="left">进程占优</td>
 </tr>
 <tr class="odd">
-<td>可靠性</td>
-<td>进程间不会互相影响</td>
-<td>一个线程挂掉将导致整个进程挂掉</td>
-<td>进程占优</td>
+<td align="left">可靠性</td>
+<td align="left">进程间不会互相影响</td>
+<td align="left">一个线程挂掉将导致整个进程挂掉</td>
+<td align="left">进程占优</td>
 </tr>
 <tr class="even">
-<td>分布式</td>
-<td>适应于多核、多机分布式；如果一台机器不够，扩展到多台机器比较简单</td>
-<td>适应于多核分布式</td>
-<td>进程占优</td>
+<td align="left">分布式</td>
+<td align="left">适应于多核、多机分布式；如果一台机器不够，扩展到多台机器比较简单</td>
+<td align="left">适应于多核分布式</td>
+<td align="left">进程占优</td>
 </tr>
 </tbody>
 </table>
@@ -1380,21 +1380,21 @@ Hello World!</p>
 <table>
 <thead>
 <tr class="header">
-<th>优劣</th>
-<th>多进程</th>
-<th>多线程</th>
+<th align="left">优劣</th>
+<th align="left">多进程</th>
+<th align="left">多线程</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>优点</td>
-<td>编程、调试简单，可靠性较高</td>
-<td>创建、销毁、切换速度快，内存、资源占用小</td>
+<td align="left">优点</td>
+<td align="left">编程、调试简单，可靠性较高</td>
+<td align="left">创建、销毁、切换速度快，内存、资源占用小</td>
 </tr>
 <tr class="even">
-<td>缺点</td>
-<td>创建、销毁、切换速度慢，内存、资源占用大</td>
-<td>编程、调试复杂，可靠性较差</td>
+<td align="left">缺点</td>
+<td align="left">创建、销毁、切换速度慢，内存、资源占用大</td>
+<td align="left">编程、调试复杂，可靠性较差</td>
 </tr>
 </tbody>
 </table>
@@ -1880,15 +1880,15 @@ Hello World!</p>
 <p><strong>Python2.7</strong></p>
 </blockquote>
 <ul>
-<li><strong>range</strong> ：返回一个列表 list，type是 <type 'list'> 类型，会直接分配相应的内存空间给 list</type></li>
-<li><strong>xrange</strong>：返回一个生成器，type 是 <type 'xrange'> 类型，在for in 循环中中，每次调用就生成一个。</type></li>
+<li><strong>range</strong> ：返回一个列表 list，type是 &lt;type ‘list’&gt; 类型，会直接分配相应的内存空间给 list</li>
+<li><strong>xrange</strong>：返回一个生成器，type 是 &lt;type ‘xrange’&gt; 类型，在for in 循环中中，每次调用就生成一个。</li>
 </ul>
 <blockquote>
 <p><strong>Python3</strong></p>
 </blockquote>
 <p>Python3 中取消了 <code>xrange</code> 函数，此时的 <code>range</code> 就是 <code>xrange</code> 函数</p>
 <ul>
-<li><strong>range</strong>： 返回一个生成器，type 是 <type 'range'>，并没有将数据完全实例化，for 循环每次用的时候返回一个，这样可以大大节省空间，优化性能。</type></li>
+<li><strong>range</strong>： 返回一个生成器，type 是 &lt;type ‘range’&gt;，并没有将数据完全实例化，for 循环每次用的时候返回一个，这样可以大大节省空间，优化性能。</li>
 </ul>
 <h4 id="内建数据类型">内建数据类型</h4>
 <ul>
@@ -1909,69 +1909,69 @@ Hello World!</p>
 <table>
 <thead>
 <tr class="header">
-<th></th>
-<th>列表</th>
-<th>元组</th>
-<th>集合</th>
-<th>字典</th>
+<th align="left"></th>
+<th align="left">列表</th>
+<th align="left">元组</th>
+<th align="left">集合</th>
+<th align="left">字典</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>英文</td>
-<td>list</td>
-<td>tuple</td>
-<td>set</td>
-<td>dict</td>
+<td align="left">英文</td>
+<td align="left">list</td>
+<td align="left">tuple</td>
+<td align="left">set</td>
+<td align="left">dict</td>
 </tr>
 <tr class="even">
-<td>可否读写</td>
-<td>读写</td>
-<td>只读</td>
-<td>读写</td>
-<td>读写</td>
+<td align="left">可否读写</td>
+<td align="left">读写</td>
+<td align="left">只读</td>
+<td align="left">读写</td>
+<td align="left">读写</td>
 </tr>
 <tr class="odd">
-<td>可否重复</td>
-<td>是</td>
-<td>是</td>
-<td>否</td>
-<td>是</td>
+<td align="left">可否重复</td>
+<td align="left">是</td>
+<td align="left">是</td>
+<td align="left">否</td>
+<td align="left">是</td>
 </tr>
 <tr class="even">
-<td>存储方式</td>
-<td>值</td>
-<td>值</td>
-<td>键(不能重复)</td>
-<td>键值对(键不能重复)</td>
+<td align="left">存储方式</td>
+<td align="left">值</td>
+<td align="left">值</td>
+<td align="left">键(不能重复)</td>
+<td align="left">键值对(键不能重复)</td>
 </tr>
 <tr class="odd">
-<td>是否有序</td>
-<td>有序</td>
-<td>有序</td>
-<td>无序</td>
-<td>无序，自动正序</td>
+<td align="left">是否有序</td>
+<td align="left">有序</td>
+<td align="left">有序</td>
+<td align="left">无序</td>
+<td align="left">无序，自动正序</td>
 </tr>
 <tr class="even">
-<td>初始化</td>
-<td><code>[1,'a']</code></td>
-<td><code>('a', 1)</code></td>
-<td><code>set([1,2])</code> 或 <code>{1,2}</code></td>
-<td><code>{'a':1,'b':2}</code></td>
+<td align="left">初始化</td>
+<td align="left"><code>[1,'a']</code></td>
+<td align="left"><code>('a', 1)</code></td>
+<td align="left"><code>set([1,2])</code> 或 <code>{1,2}</code></td>
+<td align="left"><code>{'a':1,'b':2}</code></td>
 </tr>
 <tr class="odd">
-<td>添加</td>
-<td><code>append</code></td>
-<td>只读</td>
-<td><code>add</code></td>
-<td><code>d['key'] = 'value'</code></td>
+<td align="left">添加</td>
+<td align="left"><code>append</code></td>
+<td align="left">只读</td>
+<td align="left"><code>add</code></td>
+<td align="left"><code>d['key'] = 'value'</code></td>
 </tr>
 <tr class="even">
-<td>读元素</td>
-<td><code>l[2:]</code></td>
-<td><code>t[0]</code></td>
-<td>无</td>
-<td><code>d['a']</code></td>
+<td align="left">读元素</td>
+<td align="left"><code>l[2:]</code></td>
+<td align="left"><code>t[0]</code></td>
+<td align="left">无</td>
+<td align="left"><code>d['a']</code></td>
 </tr>
 </tbody>
 </table>
@@ -2230,106 +2230,106 @@ list只提供了append和pop方法来从list的尾部插入或者删除元素，
 <table>
 <thead>
 <tr class="header">
-<th>常用Linux命令</th>
-<th>作用</th>
+<th align="left">常用Linux命令</th>
+<th align="left">作用</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>cd</td>
-<td>进入目录</td>
+<td align="left">cd</td>
+<td align="left">进入目录</td>
 </tr>
 <tr class="even">
-<td>cp</td>
-<td>拷贝文件</td>
+<td align="left">cp</td>
+<td align="left">拷贝文件</td>
 </tr>
 <tr class="odd">
-<td>mv</td>
-<td>移动文件</td>
+<td align="left">mv</td>
+<td align="left">移动文件</td>
 </tr>
 <tr class="even">
-<td>rm</td>
-<td>删除文件</td>
+<td align="left">rm</td>
+<td align="left">删除文件</td>
 </tr>
 <tr class="odd">
-<td>ls</td>
-<td>查看文件</td>
+<td align="left">ls</td>
+<td align="left">查看文件</td>
 </tr>
 <tr class="even">
-<td>ls -l -a</td>
-<td>查看文件目录详情</td>
+<td align="left">ls -l -a</td>
+<td align="left">查看文件目录详情</td>
 </tr>
 <tr class="odd">
-<td>tree -L 2</td>
-<td>以树形结构查看目录</td>
+<td align="left">tree -L 2</td>
+<td align="left">以树形结构查看目录</td>
 </tr>
 <tr class="even">
-<td>grep -n -H -R</td>
-<td>递归查找包含某一条语句的文件，并显示行号</td>
+<td align="left">grep -n -H -R</td>
+<td align="left">递归查找包含某一条语句的文件，并显示行号</td>
 </tr>
 <tr class="odd">
-<td>find / -name test</td>
-<td>查找 / 目录下名为test的文件</td>
+<td align="left">find / -name test</td>
+<td align="left">查找 / 目录下名为test的文件</td>
 </tr>
 <tr class="even">
-<td>locate test</td>
-<td>查找和 test 相关的文件</td>
+<td align="left">locate test</td>
+<td align="left">查找和 test 相关的文件</td>
 </tr>
 <tr class="odd">
-<td>cat</td>
-<td>查看文本文件内容</td>
+<td align="left">cat</td>
+<td align="left">查看文本文件内容</td>
 </tr>
 <tr class="even">
-<td>chown</td>
-<td>改变文件的所有者</td>
+<td align="left">chown</td>
+<td align="left">改变文件的所有者</td>
 </tr>
 <tr class="odd">
-<td>chmod</td>
-<td>改变文件的权限</td>
+<td align="left">chmod</td>
+<td align="left">改变文件的权限</td>
 </tr>
 <tr class="even">
-<td>mkdir</td>
-<td>新建文件夹</td>
+<td align="left">mkdir</td>
+<td align="left">新建文件夹</td>
 </tr>
 <tr class="odd">
-<td><code>ls -l | grep '^-' | wc -l</code></td>
-<td>统计某文件夹下文件的个数</td>
+<td align="left"><code>ls -l | grep '^-' | wc -l</code></td>
+<td align="left">统计某文件夹下文件的个数</td>
 </tr>
 <tr class="even">
-<td><code>ls -l | grep '^d' | wc -l</code></td>
-<td>统计某文件夹下目录的个数</td>
+<td align="left"><code>ls -l | grep '^d' | wc -l</code></td>
+<td align="left">统计某文件夹下目录的个数</td>
 </tr>
 <tr class="odd">
-<td><code>ls -lR | grep '^d' | wc -l</code></td>
-<td>统计文件夹下文件的个数，包括子文件夹里的</td>
+<td align="left"><code>ls -lR | grep '^d' | wc -l</code></td>
+<td align="left">统计文件夹下文件的个数，包括子文件夹里的</td>
 </tr>
 <tr class="even">
-<td>jobs -l</td>
-<td>查看后台进程</td>
+<td align="left">jobs -l</td>
+<td align="left">查看后台进程</td>
 </tr>
 <tr class="odd">
-<td>bg %1</td>
-<td>将后台进程1切换到当前运行</td>
+<td align="left">bg %1</td>
+<td align="left">将后台进程1切换到当前运行</td>
 </tr>
 <tr class="even">
-<td>kill %1</td>
-<td>杀死进程好为1的进程</td>
+<td align="left">kill %1</td>
+<td align="left">杀死进程好为1的进程</td>
 </tr>
 <tr class="odd">
-<td>top</td>
-<td>显示系统中各个进程的资源占用状况</td>
+<td align="left">top</td>
+<td align="left">显示系统中各个进程的资源占用状况</td>
 </tr>
 <tr class="even">
-<td>df</td>
-<td>查看磁盘空间</td>
+<td align="left">df</td>
+<td align="left">查看磁盘空间</td>
 </tr>
 <tr class="odd">
-<td>df -hl</td>
-<td>查看磁盘剩余空间</td>
+<td align="left">df -hl</td>
+<td align="left">查看磁盘剩余空间</td>
 </tr>
 <tr class="even">
-<td></td>
-<td></td>
+<td align="left"></td>
+<td align="left"></td>
 </tr>
 </tbody>
 </table>
@@ -2342,66 +2342,37 @@ list只提供了append和pop方法来从list的尾部插入或者删除元素，
 </colgroup>
 <thead>
 <tr class="header">
-<th>命令</th>
-<th>解释</th>
-<th>示例</th>
+<th align="left">命令</th>
+<th align="left">解释</th>
+<th align="left">示例</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><a href="http://man.linuxde.net/file" target="_blank" rel="noopener">file</a> <文件名></文件名></td>
-<td>加载被调试的可执行程序文件。因为一般都在被调试程序所在目录下执行GDB，因而文本名不需要带路径。</td>
-<td>(gdb) file gdb-sample</td>
+<td align="left"><a href="http://man.linuxde.net/file" target="_blank" rel="noopener">file</a> <文件名></文件名></td>
+<td align="left">加载被调试的可执行程序文件。因为一般都在被调试程序所在目录下执行GDB，因而文本名不需要带路径。</td>
+<td align="left">(gdb) file gdb-sample</td>
 </tr>
 <tr class="even">
-<td>r</td>
-<td>Run的简写，运行被调试的程序。如果此前没有下过断点，则执行完整个程序；如果有断点，则程序暂停在第一个可用断点处。</td>
-<td>(gdb) r</td>
+<td align="left">r</td>
+<td align="left">Run的简写，运行被调试的程序。如果此前没有下过断点，则执行完整个程序；如果有断点，则程序暂停在第一个可用断点处。</td>
+<td align="left">(gdb) r</td>
 </tr>
 <tr class="odd">
-<td>c</td>
-<td>Continue的简写，继续执行被调试程序，直至下一个断点或程序结束。</td>
-<td>(gdb) c</td>
+<td align="left">c</td>
+<td align="left">Continue的简写，继续执行被调试程序，直至下一个断点或程序结束。</td>
+<td align="left">(gdb) c</td>
 </tr>
 <tr class="even">
-<td>b <行号>b <函数名称>b <em><函数名称>b </函数名称></em><代码地址> d [编号]</代码地址></函数名称></行号></td>
-<td>b: Breakpoint的简写，设置断点。两可以使用“行号”“函数名称”“执行地址”等方式指定断点位置。其中在函数名称前面加“*”符号表示将断点设置在“由编译器生成的prolog代码处”。如果不了解汇编，可以不予理会此用法。 d: Delete breakpoint的简写，删除指定编号的某个断点，或删除所有断点。断点编号从1开始递增。</td>
-<td>(gdb) b 8(gdb) b main(gdb) b <em>main(gdb) b </em>0x804835c (gdb) d</td>
-</tr>
-<tr class="odd">
-<td>s, n</td>
-<td>s: 执行一行源程序代码，如果此行代码中有函数调用，则进入该函数；n: 执行一行源程序代码，此行代码中的函数调用也一并执行。 s 相当于其它调试器中的“Step Into (单步跟踪进入)”；n 相当于其它调试器中的“Step Over (单步跟踪)”。 这两个命令必须在有源代码调试信息的情况下才可以使用（GCC编译时使用“-g”参数）。</td>
-<td>(gdb) s(gdb) n</td>
-</tr>
-<tr class="even">
-<td>si, ni</td>
-<td>si命令类似于s命令，ni命令类似于n命令。所不同的是，这两个命令（si/ni）所针对的是汇编指令，而s/n针对的是源代码。</td>
-<td>(gdb) si(gdb) ni</td>
-</tr>
-<tr class="odd">
-<td>p <变量名称></变量名称></td>
-<td>Print的简写，显示指定变量（临时变量或全局变量）的值。</td>
-<td>(gdb) p i(gdb) p nGlobalVar</td>
-</tr>
-<tr class="even">
-<td>display … undisplay <编号></编号></td>
-<td>display，设置程序中断后欲显示的数据及其格式。例如，如果希望每次程序中断后可以看到即将被执行的下一条汇编指令，可以使用命令“display /i $pc”其中 $pc 代表当前汇编指令，/i 表示以十六进行显示。当需要关心汇编代码时，此命令相当有用。 undispaly，取消先前的display设置，编号从1开始递增。</td>
-<td>(gdb) display /i $pc (gdb) undisplay 1</td>
-</tr>
-<tr class="odd">
-<td>i</td>
-<td><a href="http://man.linuxde.net/info" target="_blank" rel="noopener">info</a>的简写，用于显示各类信息，详情请查阅“<a href="http://man.linuxde.net/help" target="_blank" rel="noopener">help</a> i”。</td>
-<td>(gdb) i r</td>
-</tr>
-<tr class="even">
-<td>q</td>
-<td>Quit的简写，退出GDB调试环境。</td>
-<td>(gdb) q</td>
-</tr>
-<tr class="odd">
-<td>help [命令名称]</td>
-<td>GDB帮助命令，提供对GDB名种命令的解释说明。如果指定了“命令名称”参数，则显示该命令的详细说明；如果没有指定参数，则分类显示所有GDB命令，供用户进一步浏览和查询。</td>
-<td></td>
+<td align="left">b <行号>b <函数名称>b <em><函数名称>b </函数名称></em><代码地址> d [编号]</代码地址></函数名称></行号></td>
+<td align="left">b: Breakpoint的简写，设置断点。两可以使用“行号”“函数名称”“执行地址”等方式指定断点位置。其中在函数名称前面加“<em>”符号表示将断点设置在“由编译器生成的prolog代码处”。如果不了解汇编，可以不予理会此用法。 d: Delete breakpoint的简写，删除指定编号的某个断点，或删除所有断点。断点编号从1开始递增。 | (gdb) b 8(gdb) b main(gdb) b </em>main(gdb) b *0x804835c (gdb) d |<br>
+| s, n | s: 执行一行源程序代码，如果此行代码中有函数调用，则进入该函数；n: 执行一行源程序代码，此行代码中的函数调用也一并执行。 s 相当于其它调试器中的“Step Into (单步跟踪进入)”；n 相当于其它调试器中的“Step Over (单步跟踪)”。 这两个命令必须在有源代码调试信息的情况下才可以使用（GCC编译时使用“-g”参数）。 | (gdb) s(gdb) n |<br>
+| si, ni | si命令类似于s命令，ni命令类似于n命令。所不同的是，这两个命令（si/ni）所针对的是汇编指令，而s/n针对的是源代码。 | (gdb) si(gdb) ni |<br>
+| p <变量名称> | Print的简写，显示指定变量（临时变量或全局变量）的值。 | (gdb) p i(gdb) p nGlobalVar |<br>
+| display … undisplay <编号> | display，设置程序中断后欲显示的数据及其格式。例如，如果希望每次程序中断后可以看到即将被执行的下一条汇编指令，可以使用命令“display /i $pc”其中 $pc 代表当前汇编指令，/i 表示以十六进行显示。当需要关心汇编代码时，此命令相当有用。 undispaly，取消先前的display设置，编号从1开始递增。 | (gdb) display /i $pc (gdb) undisplay 1 |<br>
+| i | <a href="http://man.linuxde.net/info" target="_blank" rel="noopener">info</a>的简写，用于显示各类信息，详情请查阅“<a href="http://man.linuxde.net/help" target="_blank" rel="noopener">help</a> i”。 | (gdb) i r |<br>
+| q | Quit的简写，退出GDB调试环境。 | (gdb) q |<br>
+| help [命令名称] | GDB帮助命令，提供对GDB名种命令的解释说明。如果指定了“命令名称”参数，则显示该命令的详细说明；如果没有指定参数，则分类显示所有GDB命令，供用户进一步浏览和查询。 | |</编号></变量名称></td>
 </tr>
 </tbody>
 </table>
@@ -2415,169 +2386,169 @@ list只提供了append和pop方法来从list的尾部插入或者删除元素，
 <thead>
 <tr class="header">
 <th align="left">git 常用命令</th>
-<th>命令功能</th>
+<th align="left">命令功能</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td align="left">git init</td>
-<td>初始化</td>
+<td align="left">初始化</td>
 </tr>
 <tr class="even">
 <td align="left">git add</td>
-<td>添加到版本库中的暂存区</td>
+<td align="left">添加到版本库中的暂存区</td>
 </tr>
 <tr class="odd">
 <td align="left">git commit</td>
-<td>把暂存区的内容提交到当前分支</td>
+<td align="left">把暂存区的内容提交到当前分支</td>
 </tr>
 <tr class="even">
 <td align="left">git checkout –file</td>
-<td>直接丢弃工作区的修改</td>
+<td align="left">直接丢弃工作区的修改</td>
 </tr>
 <tr class="odd">
 <td align="left"><strong>git reset</strong> –hard HEAD^</td>
-<td>回退到上一个版本</td>
+<td align="left">回退到上一个版本</td>
 </tr>
 <tr class="even">
 <td align="left">git reset –herd 362816</td>
-<td>回退到指定版本</td>
+<td align="left">回退到指定版本</td>
 </tr>
 <tr class="odd">
 <td align="left">git log</td>
-<td>查看版本库信息</td>
+<td align="left">查看版本库信息</td>
 </tr>
 <tr class="even">
 <td align="left">git reflog</td>
-<td>查看本地记录的与版本库相关的每一条命令</td>
+<td align="left">查看本地记录的与版本库相关的每一条命令</td>
 </tr>
 <tr class="odd">
 <td align="left">git status</td>
-<td>查看工作区的状态</td>
+<td align="left">查看工作区的状态</td>
 </tr>
 <tr class="even">
 <td align="left">git diff</td>
-<td>查看修改内容</td>
+<td align="left">查看修改内容</td>
 </tr>
 <tr class="odd">
 <td align="left">git remote add origin</td>
-<td>添加远程仓库</td>
+<td align="left">添加远程仓库</td>
 </tr>
 <tr class="even">
 <td align="left">git push -u origin master</td>
-<td>将本地库内容推送到远程仓库（第一次推送加-u）</td>
+<td align="left">将本地库内容推送到远程仓库（第一次推送加-u）</td>
 </tr>
 <tr class="odd">
 <td align="left">git push origin master</td>
-<td>推送至主分支</td>
+<td align="left">推送至主分支</td>
 </tr>
 <tr class="even">
 <td align="left">git push origin dev</td>
-<td>推送至dev分支</td>
+<td align="left">推送至dev分支</td>
 </tr>
 <tr class="odd">
 <td align="left">git clone</td>
-<td>从远程仓库克隆</td>
+<td align="left">从远程仓库克隆</td>
 </tr>
 <tr class="even">
 <td align="left">git branch name</td>
-<td>创建name分支</td>
+<td align="left">创建name分支</td>
 </tr>
 <tr class="odd">
 <td align="left">git checkout name</td>
-<td>切换至name分支</td>
+<td align="left">切换至name分支</td>
 </tr>
 <tr class="even">
 <td align="left">git branch -b name</td>
-<td>创建并切换至name分支</td>
+<td align="left">创建并切换至name分支</td>
 </tr>
 <tr class="odd">
 <td align="left">git branch</td>
-<td>查看当前分支</td>
+<td align="left">查看当前分支</td>
 </tr>
 <tr class="even">
 <td align="left">git branch -d name</td>
-<td>删除分支</td>
+<td align="left">删除分支</td>
 </tr>
 <tr class="odd">
 <td align="left">git branch -D name</td>
-<td>强行删除分支</td>
+<td align="left">强行删除分支</td>
 </tr>
 <tr class="even">
 <td align="left"><strong>git merge name</strong></td>
-<td>将name分支合并到master分支上</td>
+<td align="left">将name分支合并到master分支上</td>
 </tr>
 <tr class="odd">
 <td align="left"><strong>git rebase</strong></td>
-<td></td>
+<td align="left"></td>
 </tr>
 <tr class="even">
 <td align="left">git remote</td>
-<td>查看远程库信息</td>
+<td align="left">查看远程库信息</td>
 </tr>
 <tr class="odd">
 <td align="left">git remote -v</td>
-<td>查看远程库详细信息</td>
+<td align="left">查看远程库详细信息</td>
 </tr>
 <tr class="even">
 <td align="left">git log –graph</td>
-<td>查看分支合并图</td>
+<td align="left">查看分支合并图</td>
 </tr>
 <tr class="odd">
 <td align="left">git pull</td>
-<td>将远程库最新提交抓取下来</td>
+<td align="left">将远程库最新提交抓取下来</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
-<td></td>
+<td align="left"></td>
 </tr>
 <tr class="odd">
 <td align="left">git tag v1.0</td>
-<td>创建名为v1.0的标签</td>
+<td align="left">创建名为v1.0的标签</td>
 </tr>
 <tr class="even">
 <td align="left">git tag</td>
-<td>查看所有标签</td>
+<td align="left">查看所有标签</td>
 </tr>
 <tr class="odd">
 <td align="left">git tag v0.9 0abc</td>
-<td>为指定commit提交打标签</td>
+<td align="left">为指定commit提交打标签</td>
 </tr>
 <tr class="even">
 <td align="left">git show v0.9</td>
-<td>查看指定标签信息</td>
+<td align="left">查看指定标签信息</td>
 </tr>
 <tr class="odd">
 <td align="left">git tag -d v0.1</td>
-<td>删除标签</td>
+<td align="left">删除标签</td>
 </tr>
 <tr class="even">
 <td align="left">git push origin v1.0</td>
-<td>推送某一个标签到远程</td>
+<td align="left">推送某一个标签到远程</td>
 </tr>
 <tr class="odd">
 <td align="left">git push origin –tags</td>
-<td>一次性推送全部尚未推送到远程的本地标签</td>
+<td align="left">一次性推送全部尚未推送到远程的本地标签</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
-<td></td>
+<td align="left"></td>
 </tr>
 <tr class="odd">
 <td align="left">git stash</td>
-<td>保存当前工作现场</td>
+<td align="left">保存当前工作现场</td>
 </tr>
 <tr class="even">
 <td align="left">git stash list</td>
-<td>查看工作现场</td>
+<td align="left">查看工作现场</td>
 </tr>
 <tr class="odd">
 <td align="left">git stash pop</td>
-<td>回到工作现场</td>
+<td align="left">回到工作现场</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
-<td></td>
+<td align="left"></td>
 </tr>
 </tbody>
 </table>
@@ -2773,21 +2744,21 @@ list只提供了append和pop方法来从list的尾部插入或者删除元素，
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">35</span>
+              <span class="site-state-item-count">36</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">categories</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">25</span>
+              <span class="site-state-item-count">27</span>
               <span class="site-state-item-name">tags</span>
               </a>
           </div>
@@ -2854,7 +2825,7 @@ list只提供了append和pop方法来从list的尾部插入或者删除元素，
       <div class="footer-inner"> <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2019</span>
+  <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="icon-next-heart fa fa-heart"></i>
   </span>

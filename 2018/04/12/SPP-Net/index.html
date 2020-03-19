@@ -354,7 +354,7 @@
   <title></title>
   <style type="text/css">code{white-space: pre;}</style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pygments-css@1.0.0/github.min.css" type="text/css">
-  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 </head>
 <body>
 <blockquote>
@@ -381,14 +381,14 @@
 </colgroup>
 <thead>
 <tr class="header">
-<th>R-CNN模型</th>
-<th>SPPNet模型</th>
+<th align="left">R-CNN模型</th>
+<th align="left">SPPNet模型</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>将侯选区域送到CNN里面提取特征向量时，因为CNN的输入图像需要固定大小，而候选区域的长宽都是不固定的，<strong>故需要对候选区域做填充到固定大小，当我们对侯选区域做cropping或者warping操作，可能会让图片不完整包含物体，一些我们不想见到的几何失真，这都会造成识别精度损失。</strong></td>
-<td>SPPNet的解决办法是<strong>使用“空间金字塔变换层”将接收任意大小的图像输入，输出固定长度的输出向量</strong>，这样就能让SPPNet可接受任意大小的输入图片，不需要对图像做crop/wrap操作。</td>
+<td align="left">将侯选区域送到CNN里面提取特征向量时，因为CNN的输入图像需要固定大小，而候选区域的长宽都是不固定的，<strong>故需要对候选区域做填充到固定大小，当我们对侯选区域做cropping或者warping操作，可能会让图片不完整包含物体，一些我们不想见到的几何失真，这都会造成识别精度损失。</strong></td>
+<td align="left">SPPNet的解决办法是<strong>使用“空间金字塔变换层”将接收任意大小的图像输入，输出固定长度的输出向量</strong>，这样就能让SPPNet可接受任意大小的输入图片，不需要对图像做crop/wrap操作。</td>
 </tr>
 </tbody>
 </table>
@@ -405,14 +405,14 @@
 </colgroup>
 <thead>
 <tr class="header">
-<th>R-CNN模型</th>
-<th>SPPNet模型</th>
+<th align="left">R-CNN模型</th>
+<th align="left">SPPNet模型</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>在R-CNN中，每个候选区域都要塞到CNN内提取特征向量，一张图片有2000个候选区域，<strong>也就是一张图片需要经过2000次CNN的前向传播，这2000重复计算过程会有大量的计算冗余，耗费大量的时间。</strong></td>
-<td><strong>SPPNet提出了一种从候选区域到全图的特征映射(feature map)之间的对应关系，通过此种映射关系可以直接获取到候选区域的特征向量</strong>，不需要重复使用CNN提取特征，从而大幅度缩短训练时间。</td>
+<td align="left">在R-CNN中，每个候选区域都要塞到CNN内提取特征向量，一张图片有2000个候选区域，<strong>也就是一张图片需要经过2000次CNN的前向传播，这2000重复计算过程会有大量的计算冗余，耗费大量的时间。</strong></td>
+<td align="left"><strong>SPPNet提出了一种从候选区域到全图的特征映射(feature map)之间的对应关系，通过此种映射关系可以直接获取到候选区域的特征向量</strong>，不需要重复使用CNN提取特征，从而大幅度缩短训练时间。</td>
 </tr>
 </tbody>
 </table>
@@ -429,13 +429,13 @@
 </colgroup>
 <thead>
 <tr class="header">
-<th>R-CNN模型</th>
+<th align="left">R-CNN模型</th>
 <th align="left">SPPNet模型</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>R-CNN是让每个候选区域经过crop/wrap等操作变换成固定大小的图像<br><br>固定大小的图像塞给CNN <br>CNN输出获得固定大小的feature map<br>feature map传给后面的层做训练回归分类操作。<br><br>这里每个候选区域是需要单独过一下CNN，2000个候选区域过2000次CNN，耗费时间啊</td>
+<td align="left">R-CNN是让每个候选区域经过crop/wrap等操作变换成固定大小的图像<br><br>固定大小的图像塞给CNN <br>CNN输出获得固定大小的feature map<br>feature map传给后面的层做训练回归分类操作。<br><br>这里每个候选区域是需要单独过一下CNN，2000个候选区域过2000次CNN，耗费时间啊</td>
 <td align="left">SPPNet把全图塞给CNN得到全图的feature map<br>让候选区域与feature map直接映射，得到候选区域的映射特征向量(这是映射来的，不需要过CNN).<br><br>映射过来的特征向量大小不固定，所以这些特征向量塞给SPP层(空间金字塔变换层)，SPP层接收任何大小的输入，输出固定大小的特征向量，再塞给FC层<br><br>经过映射+SPP转换，简化了计算，速度/精确度也上去了</td>
 </tr>
 </tbody>
@@ -477,30 +477,30 @@
 <table>
 <thead>
 <tr class="header">
-<th>类型</th>
-<th>大小</th>
+<th align="left">类型</th>
+<th align="left">大小</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>输入尺寸</td>
-<td><span class="math inline">\(W1×H1\)</span></td>
+<td align="left">输入尺寸</td>
+<td align="left"><span class="math inline">\(W1×H1\)</span></td>
 </tr>
 <tr class="even">
-<td>卷积核</td>
-<td><span class="math inline">\(F×F\)</span></td>
+<td align="left">卷积核</td>
+<td align="left"><span class="math inline">\(F×F\)</span></td>
 </tr>
 <tr class="odd">
-<td>输出尺寸</td>
-<td><span class="math inline">\(W2×H2\)</span></td>
+<td align="left">输出尺寸</td>
+<td align="left"><span class="math inline">\(W2×H2\)</span></td>
 </tr>
 <tr class="even">
-<td>步长</td>
-<td>stride：<span class="math inline">\(S\)</span></td>
+<td align="left">步长</td>
+<td align="left">stride：<span class="math inline">\(S\)</span></td>
 </tr>
 <tr class="odd">
-<td>填充大小</td>
-<td>padding:<span class="math inline">\(P\)</span></td>
+<td align="left">填充大小</td>
+<td align="left">padding:<span class="math inline">\(P\)</span></td>
 </tr>
 </tbody>
 </table>
@@ -719,21 +719,21 @@ strides_i=stride_1⋅stride_2⋅⋅⋅stride_{i−1}
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">35</span>
+              <span class="site-state-item-count">36</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">categories</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">25</span>
+              <span class="site-state-item-count">27</span>
               <span class="site-state-item-name">tags</span>
               </a>
           </div>
@@ -800,7 +800,7 @@ strides_i=stride_1⋅stride_2⋅⋅⋅stride_{i−1}
       <div class="footer-inner"> <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2019</span>
+  <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="icon-next-heart fa fa-heart"></i>
   </span>

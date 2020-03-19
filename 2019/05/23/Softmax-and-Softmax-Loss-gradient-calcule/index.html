@@ -77,7 +77,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2019/05/23/Softmax-and-Softmax-Loss-gradient-calcule/maxresdefault.jpg">
 <meta property="og:image" content="http://yoursite.com/2019/05/23/Softmax-and-Softmax-Loss-gradient-calcule/softmax-loss-discrepancy.svg">
-<meta property="og:updated_time" content="2019-05-24T07:09:09.879Z">
+<meta property="og:updated_time" content="2020-03-18T03:20:11.321Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Softmax和Softmax-Loss函数及梯度计算">
 <meta name="twitter:description" content="code{white-space: pre;}              文章转载于：Softmax vs. Softmax-Loss: Numerical Stability">
@@ -330,7 +330,7 @@
   <title></title>
   <style type="text/css">code{white-space: pre;}</style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pygments-css@1.0.0/github.min.css" type="text/css">
-  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 </head>
 <body>
 <div class="figure">
@@ -513,7 +513,7 @@ e^{x}=10^{x / \log 10}
 <p>比较有趣的是往右边的正数半轴看，发现到了 <span class="math inline">\(10^2\)</span> 之后蓝线和黄线都没有了，说明他们都得到了 <code>NaN</code>，不过这里是另一个问题：<strong>对一个比较大的数求 exponential 非常容易发生 overflow</strong>。还是用刚才的式子可以看到 ，已经超过了 float 可以表达的最大上限，所以会变成 <code>Inf</code>，然后在 normalize 的一步会出现 <code>Inf/Inf</code> 这样的情况，于是就得到 <code>NaN</code> 了。</p>
 <p>这个问题其实也是有解决办法的，我们刚才贴的代码里的 <code>softmax</code> 函数第一行有一行被注释掉的代码，就是 <strong>在求 exponential 之前将 <span class="math inline">\(z\)</span> 的每一个元素减去 <span class="math inline">\(z_i\)</span> 的最大值</strong>。这样求 exponential 的时候会碰到的最大的数就是 0 了，不会发生 overflow 的问题，但是如果其他数原本是正常范围，现在全部被减去了一个非常大的数，于是都变成了绝对值非常大的负数，所以全部都会发生 underflow，但是 underflow 的时候得到的是 0，这其实是非常 meaningful 的近似值，而且后续的计算也不会出现奇怪的 <code>NaN</code>。</p>
 <blockquote>
-<p>证明：将输入 <span class="math inline">\(z\)</span> 的每一个元素都减去 <span class="math inline">\(z_i\)</span> 元素中的最大值，然后求 Softmax 函数结果相等</p>
+<p>证明：将输入 <span class="math inline">\(z​\)</span> 的每一个元素都减去 <span class="math inline">\(z_i​\)</span> 元素中的最大值，然后求 Softmax 函数结果相等</p>
 </blockquote>
 <p><span class="math display">\[
 \begin{aligned}
@@ -628,21 +628,21 @@ e^{x}=10^{x / \log 10}
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">35</span>
+              <span class="site-state-item-count">36</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">categories</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">25</span>
+              <span class="site-state-item-count">27</span>
               <span class="site-state-item-name">tags</span>
               </a>
           </div>
@@ -709,7 +709,7 @@ e^{x}=10^{x / \log 10}
       <div class="footer-inner"> <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2019</span>
+  <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="icon-next-heart fa fa-heart"></i>
   </span>
